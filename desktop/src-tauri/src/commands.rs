@@ -135,3 +135,24 @@ pub fn set_launch_at_login(app: tauri::AppHandle, enabled: bool) -> Result<(), S
     let res = if enabled { mgr.enable() } else { mgr.disable() };
     res.map_err(|e| e.to_string())
 }
+
+#[tauri::command]
+pub fn set_app_locale(locale: String, app: tauri::AppHandle) -> Result<(), String> {
+    let locale = crate::locale::AppLocale::parse(&locale)
+        .ok_or_else(|| "unsupported desktop locale".to_string())?;
+    let changed = crate::locale::load() != locale;
+
+    crate::locale::save(locale)?;
+
+    if changed {
+        let menu = crate::menu::build(&app).map_err(|error| error.to_string())?;
+        app.set_menu(menu).map_err(|error| error.to_string())?;
+    }
+
+    if let Some(window) = app.get_webview_window("prefs") {
+        let title = crate::locale::strings(locale).preferences_title;
+        window.set_title(title).map_err(|error| error.to_string())?;
+    }
+
+    Ok(())
+}

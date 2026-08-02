@@ -1,0 +1,12 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        impersonation_session:
+          attributes:
+            impersonator:
+              super_admin_required: "musí být hlavní správce"
+              must_differ: "se musí lišit od zastupovaného uživatele"
+            impersonated:
+              super_admin_forbidden: "nesmí být hlavní správce"

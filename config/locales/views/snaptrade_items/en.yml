@@ -45,6 +45,7 @@ en:
       success: "Successfully linked to SnapTrade account."
       failed: "Failed to link account: %{message}"
       not_found: "Account not found."
+      provider_link_failed: "Failed to create the SnapTrade account link."
     connections:
       unknown_brokerage: "Unknown Brokerage"
     delete_connection:
@@ -81,6 +82,8 @@ en:
         crypto: "Crypto Account"
         loan: "Loan or Line of Credit"
         other_asset: "Other Asset"
+      invalid_account_type: "Invalid SnapTrade account type: %{type}"
+      provider_link_failed: "Failed to link the SnapTrade account."
       sync_start_date_label: "Import transactions from:"
       sync_start_date_help: "Leave blank for all available history"
       create_button: "Create Selected Accounts"

@@ -65,7 +65,9 @@
                 data: {
                   controller: "bulk-select checkbox-toggle",
                   bulk_select_singular_label_value: t(".entry"),
-                  bulk_select_plural_label_value: t(".entries")
+                  bulk_select_plural_label_value: t(".entries"),
+                  bulk_select_selected_label_value: t("transactions.selection_bar.selected"),
+                  bulk_select_edit_label_value: t("transactions.selection_bar.edit")
                 } do %>
         <div id="entry-selection-bar" data-bulk-select-target="selectionBar" class="flex justify-center hidden">
           <%= render "entries/selection_bar" %>

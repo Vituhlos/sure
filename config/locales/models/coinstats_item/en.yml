@@ -8,3 +8,9 @@ en:
         wallets_need_setup: "%{count} crypto accounts need setup..."
         processing_holdings: Processing holdings...
         calculating_balances: Calculating balances...
+      wallet_linker:
+        no_tokens_found: No tokens were found in this wallet.
+        create_failed: "Could not create %{account}."
+        account: account
+        unexpected_error: An unexpected error occurred while linking the wallet.
+        crypto_wallet: Crypto Wallet

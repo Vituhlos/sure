@@ -15,7 +15,7 @@ class WiseItem::Importer
     Rails.logger.info "WiseItem::Importer - Starting import for item #{wise_item.id} (profile #{wise_item.profile_id})"
 
     balances = fetch_balances
-    return failed_result("Failed to fetch balances") if balances.nil?
+    return failed_result(I18n.t("wise_items.importer.fetch_balances_failed")) if balances.nil?
 
     savings_balances = fetch_savings_balances
     all_balances = Array(balances) + Array(savings_balances)

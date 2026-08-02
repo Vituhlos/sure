@@ -1,0 +1,48 @@
+---
+cs:
+  chats:
+    demo_banner_title: "Aktivní ukázkový režim"
+    demo_banner_message: "Modely LLM používáte prostřednictvím kreditů poskytovaných službou Cloudflare Workers AI. Výsledky se mohou lišit, protože kód byl testován s modelem `gpt-4.1`. Vaše data se však nikam neposílají za účelem trénování! 🤖"
+    thinking: "Přemýšlím…"
+    worker_unhealthy_warning: "Odpovědi AI se nyní nemusí doručovat — proces na pozadí zřejmě neběží nebo je přetížený. Ověřte, že je spuštěný proces Sidekiq."
+    ai_greeting:
+      greeting_with_name: "Dobrý den, %{name}! Jsem asistent využívající AI a velký jazykový model. Mohu vám pomoci s financemi a mám přístup k webu i údajům ve vašem účtu."
+      greeting: "Dobrý den! Jsem asistent využívající AI a velký jazykový model. Mohu vám pomoci s financemi a mám přístup k webu i údajům ve vašem účtu."
+      commands_hint_html: "Příkazy zobrazíte pomocí <span class=\"bg-container border border-secondary px-1.5 py-0.5 rounded font-mono text-xs\">/</span>"
+      questions_intro: "Můžete se například zeptat:"
+      evaluate_portfolio: "Vyhodnoť mé investiční portfolio"
+      spending_insights: "Ukaž mi přehled výdajů"
+      unusual_patterns: "Najdi neobvyklé vzorce"
+    chat:
+      edit_chat_title: "Upravit název chatu"
+      delete_chat: "Odstranit chat"
+      updated_ago: "před %{time}"
+    chat_nav:
+      all_chats: "Všechny chaty"
+      start_new_chat: "Zahájit nový chat"
+      edit_chat_title: "Upravit název chatu"
+      delete_chat: "Odstranit chat"
+    error:
+      retry: "Zkusit znovu"
+    destroy:
+      notice: "Chat byl úspěšně odstraněn."
+    index:
+      chats: "Chaty"
+      new_chat: "Nový chat"
+    new:
+      default_title: "Nový chat %{timestamp}"
+    update:
+      success: "Chat byl aktualizován."
+    ai_consent:
+      title: "Zapnout chaty s AI"
+      available_description: "Chat s AI dokáže odpovídat na otázky o financích a poskytovat postřehy založené na vašich datech. Tuto funkci musíte před použitím výslovně zapnout."
+      unavailable_description_html: "Chcete-li používat asistenta AI, nastavte proměnnou prostředí <code class=\"bg-surface-inset px-1 py-0.5 rounded font-mono text-xs\">OPENAI_ACCESS_TOKEN</code> nebo ji nakonfigurujte v nastavení vlastního hostování."
+      enable_button: "Zapnout chaty s AI"
+      disable_note: "Funkci můžete kdykoli vypnout. Všechna data odesílaná poskytovatelům LLM jsou anonymizována."
+  assistant_messages:
+    assistant_message:
+      assistant_reasoning: "Uvažování asistenta"
+    tool_calls:
+      tool_calls: "Volání nástrojů"
+      function: "Funkce:"
+      arguments: "Argumenty:"

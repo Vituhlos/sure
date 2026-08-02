@@ -1,0 +1,13 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        category_import:
+          own_parent: "Kategorie „%{name}“ nemůže být sama sobě nadřazenou kategorií."
+          missing_columns: "Chybějí povinné sloupce: %{columns}"
+  category_import:
+    samples:
+      food_and_drink: "Jídlo a nápoje"
+      groceries: "Potraviny"
+      salary: "Mzda"

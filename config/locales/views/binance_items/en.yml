@@ -1,6 +1,13 @@
 ---
 en:
   binance_items:
+    transaction_names:
+      buy: "Buy %{quantity} %{symbol}"
+      sell: "Sell %{quantity} %{symbol}"
+      p2p_payment: "P2P Payment (%{currency})"
+      p2p_buy: "P2P Buy %{quantity} %{symbol}"
+      p2p_sell: "P2P Sell %{quantity} %{symbol}"
+      p2p_receipt: "P2P Receipt (%{currency})"
     create:
       default_name: Binance
       success: Successfully connected to Binance! Your account is being synced.
@@ -20,7 +27,9 @@ en:
       import_selected: Import Selected
       cancel: Cancel
       creating: Importing...
+      historical_import: Historical import
     complete_account_setup:
+      invalid_sync_start_date: Sync start date must be a valid date in the past.
       success:
         one: "Imported %{count} account"
         other: "Imported %{count} accounts"
@@ -73,3 +82,4 @@ en:
         other: "%{count} accounts need setup"
       processing_accounts: Processing account data...
       calculating_balances: Calculating balances...
+      failed: Binance synchronization failed. Please try again.

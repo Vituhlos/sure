@@ -35,7 +35,7 @@ class BinanceItem < ApplicationRecord
   def import_latest_binance_data
     provider = binance_provider
     unless provider
-      raise StandardError, "Binance credentials not configured"
+      raise StandardError, I18n.t("binance_item.syncer.credentials_invalid")
     end
 
     BinanceItem::Importer.new(self, binance_provider: provider).import

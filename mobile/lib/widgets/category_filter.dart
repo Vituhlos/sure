@@ -65,7 +65,7 @@ class CategoryFilter extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(right: 8),
               child: FilterChip(
-                label: Text(category.displayName),
+                label: Text(category.localizedDisplayName(l)),
                 selected: isSelected,
                 onSelected: (_) {
                   final newSelection = Set<String>.from(selectedCategoryIds);

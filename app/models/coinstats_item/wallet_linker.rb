@@ -22,7 +22,7 @@ class CoinstatsItem::WalletLinker
     balance_data = fetch_balance_data
     tokens = normalize_tokens(balance_data)
 
-    return Result.new(success?: false, created_count: 0, errors: [ "No tokens found for wallet" ]) if tokens.empty?
+    return Result.new(success?: false, created_count: 0, errors: [ I18n.t("models.coinstats_item.wallet_linker.no_tokens_found") ]) if tokens.empty?
 
     created_count = 0
     errors = []
@@ -107,10 +107,10 @@ class CoinstatsItem::WalletLinker
       end
     rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => e
       Rails.logger.error("CoinstatsItem::WalletLinker - Failed to create account: #{e.message}")
-      { success: false, error: "Failed to create #{account_name || 'account'}: #{e.message}" }
+      { success: false, error: I18n.t("models.coinstats_item.wallet_linker.create_failed", account: account_name.presence || I18n.t("models.coinstats_item.wallet_linker.account")) }
     rescue => e
       Rails.logger.error("CoinstatsItem::WalletLinker - Unexpected error: #{e.class} - #{e.message}")
-      { success: false, error: "Unexpected error: #{e.message}" }
+      { success: false, error: I18n.t("models.coinstats_item.wallet_linker.unexpected_error") }
     end
 
     # Builds a display name for the account from token and address.
@@ -127,7 +127,7 @@ class CoinstatsItem::WalletLinker
       elsif truncated_address.present?
         "#{blockchain.capitalize} (#{truncated_address})"
       else
-        "Crypto Wallet"
+        I18n.t("models.coinstats_item.wallet_linker.crypto_wallet")
       end
     end
 

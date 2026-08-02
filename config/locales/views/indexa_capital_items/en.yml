@@ -1,6 +1,11 @@
 ---
 en:
   indexa_capital_items:
+    account_type_labels:
+      mutual: Mutual fund
+      pension: Pension
+      investment: Investment
+      retirement: Retirement
     # Model method strings (i18n for item_model.rb)
     sync_status:
       no_accounts: "No accounts found"
@@ -64,6 +69,7 @@ en:
 
     # CRUD success messages
     create:
+      default_name: "IndexaCapital connection"
       success: "IndexaCapital connection created successfully"
     update:
       success: "IndexaCapital connection updated"
@@ -244,6 +250,7 @@ en:
     complete_account_setup:
       all_skipped: "All accounts were skipped. No accounts were created."
       creation_failed: "Failed to create accounts: %{error}"
+      unknown_error: Unknown error
       no_accounts: "No accounts to set up."
       success: "Successfully created %{count} account(s)."
 

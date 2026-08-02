@@ -12,6 +12,15 @@ en:
         no_users: "No users found."
         unnamed_family: "Unnamed Family/Group"
         no_subscription: "No subscription"
+        subscription_statuses:
+          incomplete: "Incomplete"
+          incomplete_expired: "Incomplete, expired"
+          trialing: "On trial"
+          active: "Active"
+          past_due: "Past due"
+          canceled: "Canceled"
+          unpaid: "Unpaid"
+          paused: "Paused"
         family_summary: "%{members} members · %{accounts} accounts · %{transactions} transactions"
         filters:
           role: "Role"

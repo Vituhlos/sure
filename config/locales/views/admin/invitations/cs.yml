@@ -1,0 +1,8 @@
+---
+cs:
+  admin:
+    invitations:
+      destroy:
+        success: "Pozvánka byla odstraněna."
+      destroy_all:
+        success: "Všechny pozvánky této domácnosti byly odstraněny."

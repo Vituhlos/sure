@@ -17,9 +17,12 @@ class TransactionImport < Import
         # Guard against nil account - this happens when an account name in CSV is not mapped
         if mapped_account.nil?
           row_number = index + 1
-          account_name = row.account.presence || "(blank)"
-          error_message = "Row #{row_number}: Account '#{account_name}' is not mapped to an existing account. " \
-                         "Please map this account in the import configuration."
+          account_name = row.account.presence || I18n.t("imports.transaction_import.blank_account")
+          error_message = I18n.t(
+            "imports.transaction_import.unmapped_account",
+            row: row_number,
+            account: account_name
+          )
           errors.add(:base, error_message)
           raise Import::MappingError, error_message
         end

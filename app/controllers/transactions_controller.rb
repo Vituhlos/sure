@@ -400,7 +400,7 @@ class TransactionsController < ApplicationController
       )
 
       if rate_obj.nil?
-        return render json: { error: "Exchange rate not found" }, status: :not_found
+        return render json: { error: t("transactions.exchange_rate_not_found") }, status: :not_found
       end
 
       rate_value = rate_obj.is_a?(Numeric) ? rate_obj : rate_obj.rate

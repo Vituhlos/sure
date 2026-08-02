@@ -1,0 +1,58 @@
+---
+cs:
+  period:
+    last_day:
+      label_short: "1D"
+      label: "Poslední den"
+      comparison_label: "oproti včerejšku"
+    current_week:
+      label_short: "TÝD"
+      label: "Tento týden"
+      comparison_label: "oproti začátku týdne"
+    last_7_days:
+      label_short: "7D"
+      label: "Posledních 7 dní"
+      comparison_label: "oproti minulému týdnu"
+    current_month:
+      label_short: "MĚS"
+      label: "Tento měsíc"
+      comparison_label: "oproti začátku měsíce"
+    last_month:
+      label_short: "MIN"
+      label: "Minulý měsíc"
+      comparison_label: "oproti minulému měsíci"
+    last_30_days:
+      label_short: "30D"
+      label: "Posledních 30 dní"
+      comparison_label: "oproti předchozím 30 dnům"
+    last_90_days:
+      label_short: "90D"
+      label: "Posledních 90 dní"
+      comparison_label: "oproti předchozímu čtvrtletí"
+    current_year:
+      label_short: "ROK"
+      label: "Tento rok"
+      comparison_label: "oproti začátku roku"
+    last_365_days:
+      label_short: "365D"
+      label: "Posledních 365 dní"
+      comparison_label: "oproti stavu před rokem"
+    last_5_years:
+      label_short: "5R"
+      label: "Posledních 5 let"
+      comparison_label: "oproti stavu před 5 lety"
+    last_10_years:
+      label_short: "10R"
+      label: "Posledních 10 let"
+      comparison_label: "oproti stavu před 10 lety"
+    all_time:
+      label_short: "Vše"
+      label: "Celé období"
+      comparison_label: "oproti začátku"
+    custom:
+      label_short: "Vlastní"
+      label: "Vlastní období"
+      comparison_label: "%{start} až %{end_date}"
+    errors:
+      invalid_date: "musí být platné datum; zadáno: %{value}"
+      start_after_end: "musí být před koncovým datem"

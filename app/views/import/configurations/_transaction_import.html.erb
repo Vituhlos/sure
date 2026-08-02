@@ -8,12 +8,13 @@
                      data: {
                        controller: "import",
                        import_csv_value: import.csv_rows.to_json,
-                       import_amount_type_column_key_value: @import.entity_type_col_label
+                       import_amount_type_column_key_value: @import.entity_type_col_label,
+                       import_select_value_prompt_value: t(".select_value")
                      } do |form| %>
 
   <%# Row Skip Configuration - must be first to configure before column mapping %>
   <%= form.number_field :rows_to_skip,
-                        { label: t(".rows_to_skip_label", default: "Skip first n rows"), min: 0, step: 1, data: { action: "change->import#refreshForm" } } %>
+                        { label: t(".rows_to_skip_label"), min: 0, step: 1, data: { action: "change->import#refreshForm" } } %>
 
   <%# Date Configuration %>
   <div class="flex items-center gap-4">
@@ -44,7 +45,7 @@
 
   <%# Amount Type Strategy %>
   <%= form.select :amount_type_strategy,
-                  Import::AMOUNT_TYPE_STRATEGIES.map { |strategy| [strategy.humanize, strategy] },
+                  Import::AMOUNT_TYPE_STRATEGIES.map { |strategy| [t(".amount_type_strategies.#{strategy}"), strategy] },
                   { label: t(".amount_type_strategy_label"), prompt: t(".select_strategy") },
                   required: true,
                   data: {

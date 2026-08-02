@@ -53,6 +53,7 @@ class Trading212ActivitiesProcessorTest < ActiveSupport::TestCase
     assert_equal 1, result[:trades]
     entry = @account.entries.find_by(external_id: "trading212_order_fill_001")
     assert_not_nil entry
+    assert_equal "Buy 10.0 shares of AAPL", entry.name
     assert_equal "Trade", entry.entryable_type
     assert_equal "Buy", entry.entryable.investment_activity_label
     assert entry.entryable.qty.positive?
@@ -171,6 +172,7 @@ class Trading212ActivitiesProcessorTest < ActiveSupport::TestCase
     assert_equal 1, result[:dividends]
     entry = @account.entries.find_by(external_id: "trading212_dividend_div_001")
     assert_not_nil entry
+    assert_equal "Dividend from AAPL", entry.name
     assert_equal "Transaction", entry.entryable_type
     assert_equal "Dividend", entry.entryable.investment_activity_label
     # Dividends are negative in Sure (inflow)
@@ -223,11 +225,12 @@ class Trading212ActivitiesProcessorTest < ActiveSupport::TestCase
     )
 
     processor = Trading212Account::ActivitiesProcessor.new(@trading212_account)
-    result = processor.process
+    result = I18n.with_locale(:cs) { processor.process }
 
     assert_equal 1, result[:transactions]
     entry = @account.entries.find_by(external_id: "trading212_transaction_txn_001")
     assert_not_nil entry
+    assert_equal "Vklad", entry.name
     assert_equal "Contribution", entry.entryable.investment_activity_label
     # Deposits are negative in Sure (inflow)
     assert entry.amount.negative?

@@ -8,10 +8,15 @@ class Category::Merger
     @target_category = target_category
     @merged_count = 0
 
-    validate_category_belongs_to_family!(target_category, "Target category")
+    validate_category_belongs_to_family!(target_category, I18n.t("models.category.merge.target"))
 
     sources = Array(source_categories)
-    sources.each { |category| validate_category_belongs_to_family!(category, "Source category '#{category.name}'") }
+    sources.each do |category|
+      validate_category_belongs_to_family!(
+        category,
+        I18n.t("models.category.merge.source", name: category.name)
+      )
+    end
 
     @source_categories = sources.reject { |category| category.id == target_category.id }
     validate_hierarchy!
@@ -39,21 +44,21 @@ class Category::Merger
     def validate_category_belongs_to_family!(category, label)
       return if category&.family_id == family.id
 
-      raise UnauthorizedCategoryError, "#{label} does not belong to this family"
+      raise UnauthorizedCategoryError, I18n.t("models.category.merge.not_in_family", category: label)
     end
 
     def validate_hierarchy!
       target_ancestor_ids = ancestor_ids_for(target_category)
       return unless source_categories.any? { |source| target_ancestor_ids.include?(source.id) }
 
-      raise UnauthorizedCategoryError, "A parent category cannot be merged into its own subcategory"
+      raise UnauthorizedCategoryError, I18n.t("models.category.merge.parent_into_subcategory")
     end
 
     def validate_reparenting!
       return if target_category.parent_id.blank?
       return unless source_categories.any? { |source| family.categories.exists?(parent_id: source.id) }
 
-      raise UnauthorizedCategoryError, "Cannot merge a category with subcategories into a subcategory"
+      raise UnauthorizedCategoryError, I18n.t("models.category.merge.nested_source_into_subcategory")
     end
 
     def ancestor_ids_for(category)

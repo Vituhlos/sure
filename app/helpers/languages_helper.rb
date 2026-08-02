@@ -1,7 +1,7 @@
 module LanguagesHelper
   LANGUAGE_MAPPING = {
     en: "English",
-    ru: "Russian",
+    ru: "Русский",
     ar: "Arabic",
     bg: "Bulgarian",
     'ca-CAT': "Catalan (Catalonia)",
@@ -9,7 +9,7 @@ module LanguagesHelper
     'da-DK': "Danish (Denmark)",
     'de-AT': "German (Austria)",
     'de-CH': "German (Switzerland)",
-    de: "German",
+    de: "Deutsch",
     ee: "Ewe",
     'en-AU': "English (Australia)",
     'en-BORK': "English (Bork)",
@@ -30,33 +30,33 @@ module LanguagesHelper
     'en-au-ocker': "English (Australian Ocker)",
     'es-AR': "Spanish (Argentina)",
     'es-MX': "Spanish (Mexico)",
-    es: "Spanish",
+    es: "Español",
     fa: "Persian",
     'fi-FI': "Finnish (Finland)",
-    fr: "French",
+    fr: "Français",
     'fr-CA': "French (Canada)",
     'fr-CH': "French (Switzerland)",
     he: "Hebrew",
     hy: "Armenian",
     id: "Indonesian",
-    it: "Italian",
+    it: "Italiano",
     ja: "Japanese",
     ko: "Korean",
     lt: "Lithuanian",
     lv: "Latvian",
     'mi-NZ': "Maori (New Zealand)",
     'nb-NO': "Norwegian Bokmål (Norway)",
-    nl: "Dutch",
+    nl: "Nederlands",
     'no-NO': "Norwegian (Norway)",
-    pl: "Polish",
-    'pt-BR': "Portuguese (Brazil)",
+    pl: "Polski",
+    'pt-BR': "Português (Brasil)",
     pt: "Portuguese",
     sk: "Slovak",
     sv: "Swedish",
     th: "Thai",
-    tr: "Turkish",
+    tr: "Türkçe",
     uk: "Ukrainian",
-    vi: "Vietnamese",
+    vi: "Tiếng Việt",
     'zh-CN': "简体中文",
     'zh-TW': "繁體中文",
     af: "Afrikaans",
@@ -64,9 +64,9 @@ module LanguagesHelper
     be: "Belarusian",
     bn: "Bengali",
     bs: "Bosnian",
-    cs: "Czech",
+    cs: "Čeština",
     cy: "Welsh",
-    da: "Danish",
+    da: "Dansk",
     'de-DE': "German (Germany)",
     dz: "Dzongkha",
     'el-CY': "Greek (Cyprus)",
@@ -97,7 +97,7 @@ module LanguagesHelper
     'hi-IN': "Hindi (India)",
     hi: "Hindi",
     hr: "Croatian",
-    hu: "Hungarian",
+    hu: "Magyar",
     is: "Icelandic",
     'it-CH': "Italian (Switzerland)",
     ka: "Georgian",
@@ -112,14 +112,14 @@ module LanguagesHelper
     mn: "Mongolian",
     'mr-IN': "Marathi (India)",
     ms: "Malay",
-    nb: "Norwegian Bokmål",
+    nb: "Norsk bokmål",
     ne: "Nepali",
     nn: "Norwegian Nynorsk",
     oc: "Occitan",
     or: "Odia",
     pa: "Punjabi",
     rm: "Romansh",
-    ro: "Romanian",
+    ro: "Română",
     sc: "Sardinian",
     sl: "Slovenian",
     sq: "Albanian",
@@ -163,6 +163,7 @@ module LanguagesHelper
     "tr",   # Turkish
     "nb",   # Norwegian Bokmål
     "ca",   # Catalan
+    "cs",   # Czech
     "ro",   # Romanian
     "ru",   # Russian
     "pl",   # Polish
@@ -396,7 +397,9 @@ module LanguagesHelper
     ActiveSupport::TimeZone.all
       .sort_by { |tz| [ tz.utc_offset, tz.name ] }
       .map do |tz|
-        name = tz.name.split(" - ").first.gsub(" (US & Canada)", "")
+        default_name = tz.name.split(" - ").first.gsub(" (US & Canada)", "")
+        name = I18n.t(tz.name, scope: %i[timezones names], separator: "\0", default: default_name)
+        name = "#{name} – #{tz.tzinfo.identifier}" if I18n.locale.to_s == "cs"
         [ "(#{tz.formatted_offset}) #{name}", tz.tzinfo.identifier ]
       end
   end

@@ -2,7 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["rowsContainer", "row", "amountInput", "remaining", "remainingContainer", "error", "submitButton", "nameInput"]
-  static values = { total: Number, currency: String }
+  static values = {
+    total: Number,
+    currency: String,
+    nameLabel: String,
+    namePlaceholder: String,
+    amountLabel: String,
+    uncategorized: String,
+    removeLabel: String
+  }
 
   connect() {
     this.updateRemaining()
@@ -38,7 +46,7 @@ export default class extends Controller {
       if (button) {
         // Find the uncategorized option text from the menu
         const uncategorizedOption = cloned.querySelector("[data-value='']")
-        const placeholderText = uncategorizedOption ? uncategorizedOption.dataset.filterName : "(uncategorized)"
+        const placeholderText = uncategorizedOption ? uncategorizedOption.dataset.filterName : this.uncategorizedValue
         button.innerHTML = placeholderText
         button.setAttribute("aria-expanded", "false")
       }
@@ -72,17 +80,16 @@ export default class extends Controller {
     row.innerHTML = `
       <div class="flex flex-wrap md:flex-nowrap items-end gap-2">
         <div class="w-full md:flex-1 md:w-auto min-w-0">
-          <label class="text-xs font-medium text-secondary uppercase tracking-wide block mb-1">Name</label>
+          <label data-new-split-label="name" class="text-xs font-medium text-secondary uppercase tracking-wide block mb-1"></label>
           <input type="text"
                  name="split[splits][${index}][name]"
-                 placeholder="Split name"
                  class="form-field__input border border-secondary rounded-md px-2.5 py-1.5 w-full text-sm text-primary bg-container"
                  required
                  autocomplete="off"
                  data-split-transaction-target="nameInput">
         </div>
         <div class="flex-1 md:flex-none md:w-28">
-          <label class="text-xs font-medium text-secondary uppercase tracking-wide block mb-1">Amount</label>
+          <label data-new-split-label="amount" class="text-xs font-medium text-secondary uppercase tracking-wide block mb-1"></label>
           <input type="number"
                  name="split[splits][${index}][amount]"
                  placeholder="0.00"
@@ -101,6 +108,11 @@ export default class extends Controller {
         </button>
       </div>
     `
+
+    row.querySelector("[data-new-split-label='name']").textContent = this.nameLabelValue
+    row.querySelector("[data-new-split-label='amount']").textContent = this.amountLabelValue
+    row.querySelector("[data-split-transaction-target='nameInput']").placeholder = this.namePlaceholderValue
+    row.querySelector("[data-action='click->split-transaction#removeRow']").setAttribute("aria-label", this.removeLabelValue)
 
     container.appendChild(row)
     this.updateRemaining()

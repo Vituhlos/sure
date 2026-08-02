@@ -1,0 +1,31 @@
+---
+cs:
+  settings:
+    securities:
+      show:
+        disable_mfa: Vypnout dvoufázové ověřování
+        disable_mfa_confirm: Opravdu chcete vypnout dvoufázové ověřování? Zabezpečení vašeho účtu se tím sníží.
+        enable_mfa: Zapnout dvoufázové ověřování
+        mfa_enabled_status_html: "Dvoufázové ověřování je <span class=\"font-medium text-green-600\">zapnuté</span>"
+        mfa_enabled_description: Váš účet chrání další úroveň zabezpečení.
+        mfa_disabled_status_html: "Dvoufázové ověřování je <span class=\"font-medium text-red-600\">vypnuté</span>"
+        mfa_disabled_description: Zapnutím dvoufázového ověřování přidáte účtu další úroveň zabezpečení.
+        mfa_description: Přidejte účtu další úroveň zabezpečení vyžadováním kódu z ověřovací aplikace při přihlašování.
+        mfa_title: Dvoufázové ověřování
+        webauthn_add: Přidat přístupový nebo bezpečnostní klíč
+        webauthn_added: "Přidán %{date}"
+        webauthn_description: Používejte při přihlašování jako druhý faktor přístupový klíč, Touch ID, Windows Hello nebo hardwarový bezpečnostní klíč.
+        webauthn_empty: Zatím není zaregistrován žádný přístupový ani bezpečnostní klíč.
+        webauthn_last_used: "Naposledy použit před %{time_ago}"
+        webauthn_name_label: Název klíče
+        webauthn_name_placeholder: MacBook Touch ID, YubiKey apod.
+        webauthn_remove: Odebrat
+        webauthn_remove_confirm: Opravdu chcete tento přístupový nebo bezpečnostní klíč odebrat?
+        webauthn_remove_confirm_body: Před dalším použitím k ověření přihlášení budete muset tento přístupový nebo bezpečnostní klíč znovu zaregistrovat.
+        webauthn_title: Přístupové a bezpečnostní klíče
+        webauthn_unsupported: Tento prohlížeč přístupové ani bezpečnostní klíče nepodporuje.
+  webauthn_credentials:
+    default_name: Bezpečnostní klíč
+    failure: Přístupový nebo bezpečnostní klíč se nepodařilo uložit. Zkuste to znovu.
+    mfa_required: Před přidáním přístupového nebo bezpečnostního klíče zapněte dvoufázové ověřování.
+    success: Přístupový nebo bezpečnostní klíč byl odebrán.

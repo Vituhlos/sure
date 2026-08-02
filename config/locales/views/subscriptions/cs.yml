@@ -1,0 +1,37 @@
+---
+cs:
+  subscriptions:
+    self_hosted_alert: "%{product_name} není k dispozici v režimu vlastního hostování."
+    plans:
+      annual:
+        title: "Roční"
+        price: "%{price} ročně"
+        billing: "Účtuje se jednou ročně"
+      monthly:
+        title: "Měsíční"
+        price: "%{price} měsíčně"
+        billing: "Účtuje se jednou měsíčně"
+    upgrade:
+      already_contributing: "Již přispíváte. Děkujeme!"
+      page_title: "Podpořit Sure"
+      account_settings: "Nastavení účtu"
+      sign_out: "Odhlásit se"
+      contribute_and_support_sure: "Přispějte a podpořte Sure"
+      cta: "Pomozte i nadále financovat vývoj tohoto otevřeného projektu."
+      header:
+        support: "Podpořte"
+        sure: "Sure"
+        today: "ještě dnes"
+      redirect_to_stripe: "V dalším kroku budete přesměrováni na Stripe, který bezpečně zpracuje platbu kartou."
+      trialing:
+        one: "Vaše data budou odstraněna za 1 den"
+        few: "Vaše data budou odstraněna za %{count} dny"
+        many: "Vaše data budou odstraněna za %{count} dne"
+        other: "Vaše data budou odstraněna za %{count} dní"
+      trial_over: "Zkušební období skončilo"
+    create:
+      welcome: "Vítejte v Sure!"
+      trial_already_used: "Zkušební období jste již zahájili nebo dokončili. Chcete-li pokračovat, podpořte prosím Sure."
+    success:
+      welcome_with_contribution: "Vítejte v Sure! Děkujeme za váš příspěvek."
+      contribution_failed: "Příspěvek se nepodařilo zpracovat. Zkuste to prosím znovu."

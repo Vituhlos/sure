@@ -108,6 +108,16 @@ en:
         col_tokens: "Tokens"
         col_cost: "Cost"
         failed: "Failed"
+        http_status: "HTTP status: %{status}"
+        not_available: "N/A"
+        operations:
+          chat: Chat
+          auto_categorize: Auto-categorization
+          auto_detect_merchants: Automatic merchant detection
+          enhance_provider_merchants: Provider merchant enhancement
+          process_pdf: PDF processing
+          process_pdf_vision: PDF visual processing
+          extract_bank_statement: Bank statement extraction
         no_usage_data: "No usage data found for the selected period"
         cost_estimates_title: "About Cost Estimates"
         cost_estimates_description: "Costs are estimated from published provider pricing, including OpenAI pricing as of July 2026. Actual costs may vary. Pricing is per 1 million tokens and varies by model. Custom or self-hosted models will show \"N/A\" and are not included in cost totals."
@@ -150,6 +160,7 @@ en:
         theme_dark: Dark
         theme_light: Light
         theme_system: System
+        theme_preview_alt: "%{theme} theme preview"
         modals_title: Modals
         modals_subtitle: Customize modal behavior
         disable_modal_click_outside_title: Keep modals open on outside click
@@ -171,6 +182,11 @@ en:
         general_title: General
         default_period: Default Period
         default_account_order: Default Account Order
+        account_orders:
+          name_asc: Name (A–Z)
+          name_desc: Name (Z–A)
+          balance_asc: Balance (low to high)
+          balance_desc: Balance (high to low)
         language: Language
         language_auto: Browser language
         page_title: Preferences
@@ -246,6 +262,7 @@ en:
         household_subtitle: Invitees can login to your %{moniker} account and access shared resources.
         household_title: Household
         invitation_link: Invitation link
+        copy_invitation_link: Copy invitation link
         invite_member: Add member
         last_name: Last Name
         page_title: Profile Info
@@ -254,6 +271,7 @@ en:
         profile_title: Personal
         remove_invitation: Remove Invitation
         remove_member: Remove Member
+        member_avatar_alt: "%{name}'s profile photo"
         resend_confirmation_link: request a new confirmation email
         save: Save
         unconfirmed_email_notice_html: You have requested to change your email to %{email}. Please go to your email and confirm for the change to take effect. If you haven't received the email, please check your spam folder, or %{resend_link}.
@@ -268,11 +286,6 @@ en:
             - ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY
             - ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT
           generate: "Generate a set with: bin/rails db:encryption:init"
-        mfa_title: Two-Factor Authentication
-        mfa_description: Add an extra layer of security to your account by requiring a code from your authenticator app when signing in
-        enable_mfa: Enable 2FA
-        disable_mfa: Disable 2FA
-        disable_mfa_confirm: Are you sure you want to disable two-factor authentication?
         sso_title: Connected Accounts
         sso_subtitle: Manage your single sign-on account connections
         sso_disconnect: Disconnect
@@ -348,10 +361,14 @@ en:
       choose: Upload photo
       choose_label: (optional)
       change: Change photo
+      profile_image_alt: Profile photo
+      preview_alt: Profile photo preview
+      remove_photo: Remove profile photo
     providers:
       update:
         updated_successfully: Provider settings updated successfully
         no_changes: No changes were made
+        update_failed: Failed to update provider settings. Please try again.
       not_authorized: Not authorized
       bank_sync:
         page_title: Bank sync
@@ -427,6 +444,30 @@ en:
         title: Encryption keys missing
         message: "Bank sync needs Active Record encryption configured. Set primary_key, deterministic_key and key_derivation_salt in your Rails credentials or environment variables."
       provider_form:
+        environment_configuration_notice: Configuration can be set via environment variables or overridden below.
+        optional: Optional
+        plaid_dashboard: Plaid Dashboard
+        fields:
+          plaid:
+            client_id:
+              label: Client ID
+              description: Your Plaid Client ID from the Plaid Dashboard
+            secret:
+              label: Secret Key
+              description: Your Plaid Secret from the Plaid Dashboard
+            environment:
+              label: Environment
+              description: "Plaid environment: sandbox, development, or production"
+          plaid_eu:
+            client_id:
+              label: Client ID
+              description: Your Plaid Client ID from the Plaid Dashboard for EU region
+            secret:
+              label: Secret Key
+              description: Your Plaid Secret from the Plaid Dashboard for EU region
+            environment:
+              label: Environment
+              description: "Plaid environment: sandbox, development, or production"
         save_and_connect: "Save and connect"
       coinbase_panel:
         setup_instructions: "To connect Coinbase:"
@@ -514,6 +555,7 @@ en:
         syncing: "Syncing"
         select_country: "Select country..."
         country_label: "Country"
+        default_connection_name: "Enable Banking Connection"
       lunchflow_panel:
         step_1_html: "Go to %{link} and create an API key."
         step_2: "Paste your key below and connect."
@@ -525,6 +567,7 @@ en:
         base_url_placeholder: "https://lunchflow.app/api/v1 (default)"
         save_and_connect: "Save and connect"
         update_connection: "Update connection"
+        default_connection_name: "Lunch Flow Connection"
       akahu_panel:
         step_1_html: "Go to %{link} and create a personal app."
         step_2: "Copy your app token and user token."
@@ -546,6 +589,28 @@ en:
         step_3: "Paste your credentials below and connect."
       plaid_eu_panel:
         step_1_html: "Open the %{link} and copy your EU Client ID and Secret Key."
+      questrade_panel:
+        eyebrow: "Setup · desktop only"
+        steps:
+          s1_html: 'Sign in to the <a href="https://my.questrade.com" target="_blank" rel="noopener noreferrer" class="text-primary font-medium underline">Questrade portal</a> on a desktop browser. The API settings are not available in the mobile app.'
+          s2: Open Settings, and under General settings edit the IQ API settings.
+          s3_html: In the API access modal, click <strong>Manage</strong> under <strong>My applications</strong>.
+          s4: Register a personal app with a name and description, then save.
+          s5: Add a new device and generate a token.
+          s6: Paste the generated token below and save.
+        help_text: Questrade API docs
+        status_configured_html: 'Configured and ready to use. Visit the <a href="%{accounts_path}" class="link">Accounts</a> tab to manage and set up accounts.'
+        token_refresh_hint: Questrade tokens renew automatically each time your accounts sync. If a connection sits unused for over 7 days and goes stale, paste a new token here to re-arm it without disconnecting.
+        refresh_token_label: Refresh Token
+        refresh_token_placeholder_new: Paste refresh token here
+        refresh_token_placeholder_update: Enter new refresh token to update
+        save_button: Save Configuration
+        update_button: Update Configuration
+        disconnect: Disconnect
+        disconnect_confirm: Disconnect Questrade? This removes the connection and unlinks its synced accounts.
+        default_connection_name: Questrade Connection
+      indexa_capital_panel:
+        default_connection_name: Indexa Capital Connection
       not_found: Provider not found.
       sync_provider_no_items: No connections available to sync.
       ibkr_panel:

@@ -53,9 +53,9 @@ class CategoryImport < Import
   def csv_template
     template = <<-CSV
       name*,color,parent_category,lucide_icon
-      Food & Drink,#f97316,,carrot
-      Groceries,#407706,Food & Drink,shopping-basket
-      Salary,#22c55e,,briefcase
+      #{I18n.t("category_import.samples.food_and_drink")},#f97316,,carrot
+      #{I18n.t("category_import.samples.groceries")},#407706,#{I18n.t("category_import.samples.food_and_drink")},shopping-basket
+      #{I18n.t("category_import.samples.salary")},#22c55e,,briefcase
     CSV
 
     CSV.parse(template, headers: true)

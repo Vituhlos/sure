@@ -1,6 +1,16 @@
 ---
 en:
   coinbase_items:
+    transaction_names:
+      buy: "Buy %{quantity} %{symbol}"
+      sell: "Sell %{quantity} %{symbol}"
+      buy_without_quantity: "Buy %{symbol}"
+      sell_without_quantity: "Sell %{symbol}"
+    institution_summary:
+      none: No institutions connected
+      count:
+        one: 1 institution
+        other: "%{count} institutions"
     create:
       default_name: Coinbase
       success: Successfully connected to Coinbase! Your accounts are being synced.

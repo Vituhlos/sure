@@ -35,19 +35,19 @@ class AccountsService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to fetch accounts',
+          'error': responseData['error'] ?? 'fetch_accounts_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }

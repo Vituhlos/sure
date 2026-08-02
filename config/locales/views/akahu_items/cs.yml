@@ -1,0 +1,163 @@
+---
+cs:
+  providers:
+    akahu:
+      name: "Akahu"
+      description: "Připojení novozélandských bankovních účtů přes Akahu"
+  family:
+    akahu:
+      create_akahu_item:
+        default_name: "Připojení Akahu"
+  akahu_account:
+    fallback: "Účet Akahu"
+  akahu_entry:
+    notes:
+      reference: "Reference"
+      particulars: "Podrobnosti"
+      code: "Kód"
+      other_account: "Protistrana"
+  akahu_item:
+    errors:
+      account_processing_failed: "Účet Akahu se nepodařilo synchronizovat"
+      account_sync_schedule_failed: "Synchronizaci účtu Akahu se nepodařilo naplánovat"
+      pending_transactions_failed: "Čekající transakce Akahu se nepodařilo načíst"
+      provider_not_configured: "Akahu není nastaveno."
+      response_parse_failed: "Odpověď z Akahu se nepodařilo zpracovat."
+      transactions_failed: "Transakce Akahu se nepodařilo načíst"
+      sync_failed: "Připojení Akahu se nepodařilo synchronizovat"
+    sync_status:
+      no_accounts: "Nebyly nalezeny žádné účty"
+      all_synced:
+        one: "Synchronizován 1 účet"
+        few: "Synchronizovány %{count} účty"
+        many: "Synchronizováno %{count} účtu"
+        other: "Synchronizováno %{count} účtů"
+      partial: "Synchronizováno: %{linked}; nastavení vyžaduje: %{unlinked}"
+    institution_summary:
+      none: "Nejsou připojeny žádné instituce"
+      one: "1 instituce"
+      count:
+        one: "1 instituce"
+        few: "%{count} instituce"
+        many: "%{count} instituce"
+        other: "%{count} institucí"
+    syncer:
+      importing_accounts: "Import účtů z Akahu…"
+      checking_account_configuration: "Kontrola nastavení účtů…"
+      accounts_need_setup:
+        one: "1 účet vyžaduje nastavení…"
+        few: "%{count} účty vyžadují nastavení…"
+        many: "%{count} účtu vyžaduje nastavení…"
+        other: "%{count} účtů vyžaduje nastavení…"
+      processing_transactions: "Zpracování transakcí…"
+      calculating_balances: "Výpočet zůstatků…"
+      accounts_failed:
+        one: "Zpracování 1 účtu se nezdařilo"
+        few: "Zpracování %{count} účtů se nezdařilo"
+        many: "Zpracování %{count} účtu se nezdařilo"
+        other: "Zpracování %{count} účtů se nezdařilo"
+      transactions_failed:
+        one: "Zpracování 1 transakce se nezdařilo"
+        few: "Zpracování %{count} transakcí se nezdařilo"
+        many: "Zpracování %{count} transakce se nezdařilo"
+        other: "Zpracování %{count} transakcí se nezdařilo"
+      stage_failed: "Tento krok synchronizace se nezdařil"
+      error_with_stage: "%{stage}: %{message}"
+      stages:
+        import: "Import z Akahu"
+        account_processing: "Zpracování účtů Akahu"
+        account_sync_scheduling: "Plánování synchronizace účtů Akahu"
+  akahu_items:
+    provider_panel:
+      default_connection_name: "Připojení Akahu"
+      add_connection: "Přidat připojení Akahu"
+      update_connection: "Aktualizovat připojení"
+      connection_name_label: "Název připojení"
+      connection_name_placeholder: "Hlavní připojení Akahu"
+      app_token_label: "Token aplikace"
+      app_token_placeholder: "Vložte token aplikace Akahu"
+      keep_app_token_placeholder: "Ponecháním prázdného pole zachováte stávající token aplikace"
+      user_token_label: "Uživatelský token"
+      user_token_placeholder: "Vložte uživatelský token Akahu"
+      keep_user_token_placeholder: "Ponecháním prázdného pole zachováte stávající uživatelský token"
+      setup_accounts: "Nastavit účty"
+      syncing: "Synchronizace…"
+      sync: "Synchronizovat"
+      disconnect: "Odpojit"
+      disconnect_confirm: "Opravdu chcete odpojit připojení %{name}?"
+    create:
+      success: "Připojení Akahu bylo uloženo."
+    update:
+      success: "Připojení Akahu bylo aktualizováno."
+    destroy:
+      success: "Připojení Akahu bylo zařazeno k odstranění."
+      unlink_failed: "Připojení Akahu se nepodařilo odpojit"
+    select_accounts:
+      title: "Propojení účtů Akahu"
+      description: "Vyberte účty Akahu, které chcete přidat."
+      no_accounts_found: "Nebyly nalezeny žádné nepropojené účty Akahu."
+      no_credentials_configured: "Nejprve nastavte Akahu v nastavení poskytovatelů."
+      cancel: "Zrušit"
+      link_accounts: "Propojit účty"
+    link_accounts:
+      success:
+        one: "Propojen 1 účet Akahu."
+        few: "Propojeny %{count} účty Akahu."
+        many: "Propojeno %{count} účtu Akahu."
+        other: "Propojeno %{count} účtů Akahu."
+      no_accounts_selected: "Vyberte alespoň jeden účet."
+      no_credentials_configured: "Nejprve nastavte Akahu v nastavení poskytovatelů."
+      unsupported_account_type: "Akahu tento typ účtu nepodporuje."
+      link_failed: "Nebyl propojen žádný účet."
+    select_existing_account:
+      title: "Propojení účtu Akahu s účtem %{account_name}"
+      description: "Vyberte nepropojený účet Akahu, který chcete připojit k tomuto účtu."
+      no_accounts_found: "Nebyly nalezeny žádné nepropojené účty Akahu."
+      no_credentials_configured: "Nejprve nastavte Akahu v nastavení poskytovatelů."
+      account_already_linked: "Tento účet už je propojen s poskytovatelem."
+      cancel: "Zrušit"
+      link_account: "Propojit účet"
+    link_existing_account:
+      success: "Účet Akahu byl propojen s účtem %{account_name}."
+      account_already_linked: "Tento účet už je propojen s poskytovatelem."
+      akahu_account_already_linked: "Tento účet Akahu už je propojen."
+    setup_accounts:
+      title: "Nastavení účtů Akahu"
+      subtitle: "Zvolte, jak se mají jednotlivé účty Akahu zobrazovat v aplikaci Sure."
+      no_credentials: "Nejprve nastavte přihlašovací údaje Akahu."
+      api_error: "Účty Akahu se nepodařilo načíst."
+      fetch_failed: "Účty se nepodařilo načíst"
+      no_accounts_to_setup: "Nejsou k dispozici žádné účty k nastavení"
+      all_accounts_linked: "Všechny účty Akahu už jsou propojeny."
+      choose_account_type: "Vyberte typ účtu"
+      choose_account_type_description: "Účty, které nechcete sledovat, přeskočte."
+      account_type_label: "Typ účtu"
+      account_types:
+        skip: "Přeskočit"
+        depository: "Peněžní účet"
+        credit_card: "Kreditní karta"
+        investment: "Investice"
+        loan: "Úvěr"
+      create_accounts: "Vytvořit účty"
+      cancel: "Zrušit"
+    complete_account_setup:
+      success:
+        one: "Vytvořen 1 účet Akahu."
+        few: "Vytvořeny %{count} účty Akahu."
+        many: "Vytvořeno %{count} účtu Akahu."
+        other: "Vytvořeno %{count} účtů Akahu."
+      all_skipped: "Nebyly vytvořeny žádné účty Akahu."
+      no_accounts: "Nebyly vybrány žádné účty Akahu."
+      creation_failed: "Účty Akahu se nepodařilo vytvořit."
+    akahu_item:
+      deletion_in_progress: "Probíhá odstraňování"
+      syncing: "Synchronizace"
+      error: "Chyba"
+      status_with_summary: "Synchronizováno před %{timestamp} · %{summary}"
+      status_never: "Dosud nesynchronizováno"
+      delete: "Odstranit"
+      setup_needed: "Je třeba nastavit účty"
+      setup_description: "Propojeno %{linked} z %{total} účtů."
+      setup_action: "Nastavit účty"
+      no_accounts_title: "Dosud nebyly importovány žádné účty"
+      no_accounts_description: "Načtěte účty Akahu a vyberte ty, které chcete propojit."

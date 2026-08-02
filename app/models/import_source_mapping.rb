@@ -20,14 +20,14 @@ class ImportSourceMapping < ApplicationRecord
     def family_matches_import_session
       return if import_session.blank? || family_id == import_session.family_id
 
-      errors.add(:family, "must match import session")
+      errors.add(:family, :session_mismatch)
     end
 
     def target_exists
       return if target_type.blank? || target_id.blank? || !SOURCE_TYPES.include?(target_type)
       return if target.present?
 
-      errors.add(:target, "must exist")
+      errors.add(:target, :missing)
     end
 
     def target_matches_family
@@ -36,6 +36,6 @@ class ImportSourceMapping < ApplicationRecord
       return unless target.respond_to?(:family_id)
       return if target.family_id == family_id
 
-      errors.add(:target, "must belong to your family")
+      errors.add(:target, :wrong_family)
     end
 end

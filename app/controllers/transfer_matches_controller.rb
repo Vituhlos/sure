@@ -61,7 +61,7 @@ class TransferMatchesController < ApplicationController
             amount: @entry.amount * -1,
             currency: @entry.currency,
             date: @entry.date,
-            name: "Transfer to #{@entry.amount.negative? ? @entry.account.name : target_account.name}",
+            name: I18n.t("transfer.name", to_account: (@entry.amount.negative? ? @entry.account.name : target_account.name)),
             user_modified: true,
           )
         )

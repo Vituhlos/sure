@@ -21,6 +21,8 @@ en:
       account_processing_failed: Could not sync Akahu account
       account_sync_schedule_failed: Could not schedule Akahu account sync
       pending_transactions_failed: Could not fetch Akahu pending transactions
+      provider_not_configured: Akahu is not configured.
+      response_parse_failed: Could not process the response from Akahu.
       transactions_failed: Could not fetch Akahu transactions
       sync_failed: Could not sync Akahu connection
     sync_status:
@@ -35,6 +37,26 @@ en:
       count:
         one: 1 institution
         other: "%{count} institutions"
+    syncer:
+      importing_accounts: Importing accounts from Akahu...
+      checking_account_configuration: Checking account configuration...
+      accounts_need_setup:
+        one: 1 account needs setup...
+        other: "%{count} accounts need setup..."
+      processing_transactions: Processing transactions...
+      calculating_balances: Calculating balances...
+      accounts_failed:
+        one: 1 account failed
+        other: "%{count} accounts failed"
+      transactions_failed:
+        one: 1 transaction failed
+        other: "%{count} transactions failed"
+      stage_failed: This synchronization step failed
+      error_with_stage: "%{stage}: %{message}"
+      stages:
+        import: Akahu import
+        account_processing: Akahu account processing
+        account_sync_scheduling: Akahu account sync scheduling
   akahu_items:
     provider_panel:
       default_connection_name: Akahu Connection

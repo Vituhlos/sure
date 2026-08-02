@@ -9,11 +9,11 @@ class LunchflowItem::Syncer
 
   def perform_sync(sync)
     # Phase 1: Import data from Lunchflow API
-    sync.update!(status_text: "Importing accounts from Lunchflow...") if sync.respond_to?(:status_text)
+    update_status(sync, :importing_accounts)
     lunchflow_item.import_latest_lunchflow_data
 
     # Phase 2: Collect setup statistics using shared concern
-    sync.update!(status_text: "Checking account configuration...") if sync.respond_to?(:status_text)
+    update_status(sync, :checking_account_configuration)
     collect_setup_stats(sync, provider_accounts: lunchflow_item.lunchflow_accounts)
 
     # Check for unlinked accounts
@@ -23,14 +23,14 @@ class LunchflowItem::Syncer
     # Set pending_account_setup if there are unlinked accounts
     if unlinked_accounts.any?
       lunchflow_item.update!(pending_account_setup: true)
-      sync.update!(status_text: "#{unlinked_accounts.count} accounts need setup...") if sync.respond_to?(:status_text)
+      update_status(sync, :accounts_need_setup, count: unlinked_accounts.count)
     else
       lunchflow_item.update!(pending_account_setup: false)
     end
 
     # Phase 3: Process transactions and holdings for linked accounts only
     if linked_accounts.any?
-      sync.update!(status_text: "Processing transactions and holdings...") if sync.respond_to?(:status_text)
+      update_status(sync, :processing_transactions_and_holdings)
       mark_import_started(sync)
       Rails.logger.info "LunchflowItem::Syncer - Processing #{linked_accounts.count} linked accounts"
       lunchflow_item.process_accounts
@@ -40,7 +40,7 @@ class LunchflowItem::Syncer
       collect_investment_data_quality_warning(sync, linked_accounts)
 
       # Phase 4: Schedule balance calculations for linked accounts
-      sync.update!(status_text: "Calculating balances...") if sync.respond_to?(:status_text)
+      update_status(sync, :calculating_balances)
       lunchflow_item.schedule_account_syncs(
         parent_sync: sync,
         window_start_date: sync.window_start_date,
@@ -57,7 +57,7 @@ class LunchflowItem::Syncer
     # Mark sync health
     collect_health_stats(sync, errors: nil)
   rescue => e
-    collect_health_stats(sync, errors: [ { message: e.message, category: "sync_error" } ])
+    collect_health_stats(sync, errors: [ { message: I18n.t("lunchflow_items.syncer.failed"), category: "sync_error" } ])
     raise
   end
 
@@ -66,6 +66,12 @@ class LunchflowItem::Syncer
   end
 
   private
+
+    def update_status(sync, key, **options)
+      return unless sync.respond_to?(:status_text)
+
+      sync.update!(status_text: I18n.t("lunchflow_items.syncer.#{key}", **options))
+    end
 
     # Collects a data quality warning if any linked accounts are investment or crypto accounts.
     # Lunchflow cannot provide activity labels (Buy, Sell, Dividend, etc.) for investment transactions,

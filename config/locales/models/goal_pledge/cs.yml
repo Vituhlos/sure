@@ -1,0 +1,20 @@
+---
+cs:
+  activerecord:
+    attributes:
+      goal_pledge:
+        amount: Částka
+        currency: Měna
+        account: Účet
+        kind: Druh
+        status: Stav
+        expires_at: Platnost do
+    errors:
+      models:
+        goal_pledge:
+          attributes:
+            account:
+              must_be_linked_to_goal: musí být jedním z účtů propojených s cílem
+            currency:
+              must_match_goal: musí odpovídat měně cíle
+          duplicate_open_pledge: Pro stejnou částku a účet už existuje příspěvek čekající na potvrzení. Před zaznamenáním dalšího příspěvku stávající příspěvek zrušte nebo prodlužte jeho platnost.

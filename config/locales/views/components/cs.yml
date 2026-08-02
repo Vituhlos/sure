@@ -1,0 +1,180 @@
+---
+cs:
+  UI:
+    period_picker:
+      aria_label: "Období: %{period}"
+    account:
+      activity_feed:
+        toggle_selection_checkboxes: "Přepnout výběr"
+      balance_reconciliation:
+        labels:
+          adjustments: "Úpravy"
+          buys: "Nákupy"
+          change_in_brokerage_cash: "Změna volné hotovosti"
+          change_in_holdings_market: "Změna hodnoty pozic vlivem trhu"
+          change_in_holdings_trades: "Změna pozic vlivem nákupů a prodejů"
+          charges: "Nová čerpání"
+          end_balance: "Vypočtený konečný zůstatek"
+          end_principal: "Vypočtená konečná jistina"
+          end_value: "Vypočtená konečná hodnota"
+          final_balance: "Konečný zůstatek"
+          final_principal: "Konečná jistina"
+          final_value: "Konečná hodnota"
+          market_changes: "Tržní změny"
+          net_cash_flow: "Čistý peněžní tok"
+          net_principal_change: "Čistá změna jistiny"
+          net_value_change: "Čistá změna hodnoty"
+          payments: "Platby"
+          sells: "Prodeje"
+          start_balance: "Počáteční zůstatek"
+          start_principal: "Počáteční jistina"
+          start_value: "Počáteční hodnota"
+        tooltips:
+          adjustments: "Ruční dorovnání zůstatku nebo jiné úpravy"
+          adjustments_asset: "Ruční změny hodnoty nebo ocenění"
+          buys: "Nákupy kryptoaktiv během dne"
+          change_in_brokerage_cash: "Čistá změna hotovosti způsobená vklady, výběry a obchody"
+          change_in_holdings_market: "Změna hodnoty pozic způsobená pohybem tržních cen"
+          change_in_holdings_trades: "Vliv nákupů a prodejů investičních nástrojů na pozice"
+          charges: "Nová čerpání provedená během dne"
+          end_balance: "Zůstatek vypočtený po zohlednění všech transakcí"
+          end_balance_investment: "Zůstatek vypočtený po zohlednění všech pohybů"
+          end_principal: "Jistina vypočtená po zohlednění všech transakcí"
+          end_value: "Hodnota vypočtená po zohlednění všech změn"
+          final_balance: "Konečný zůstatek účtu za daný den"
+          final_balance_credit: "Konečná dlužná částka za daný den"
+          final_balance_crypto: "Konečná hodnota kryptoaktiv za daný den"
+          final_balance_investment: "Konečná hodnota portfolia za daný den"
+          final_principal: "Konečný zůstatek jistiny za daný den"
+          final_value: "Konečná hodnota majetku za daný den"
+          market_changes: "Změny hodnoty způsobené pohybem tržních cen"
+          net_cash_flow: "Čistá změna zůstatku ze všech transakcí během dne"
+          net_principal_change: "Splátky jistiny a nové čerpání během dne"
+          net_value_change: "Všechny změny hodnoty včetně zhodnocení a odpisů"
+          payments: "Platby na kartu provedené během dne"
+          sells: "Prodeje kryptoaktiv během dne"
+          start_balance: "Zůstatek účtu na začátku dne"
+          start_balance_credit: "Dlužná částka na začátku dne"
+          start_balance_crypto: "Hodnota kryptoaktiv na začátku dne"
+          start_balance_investment: "Celková hodnota portfolia na začátku dne"
+          start_principal: "Zůstatek jistiny na začátku dne"
+          start_value: "Hodnota majetku na začátku dne"
+      chart:
+        no_data_available: "Nejsou k dispozici žádné údaje"
+        title:
+          balance: "Zůstatek"
+          cash_value: "Hodnota peněžních prostředků"
+          debt_balance: "Zůstatek dluhu"
+          estimated_property_value: "Odhadovaná hodnota nemovitosti"
+          estimated_vehicle_value: "Odhadovaná hodnota vozidla"
+          holdings_value: "Hodnota pozic"
+          remaining_principal_balance: "Zbývající jistina"
+          total_account_value: "Celková hodnota účtu"
+          total_gains: "Celkové zisky"
+        views:
+          cash: "Peněžní prostředky"
+          gains: "Výnos / ROI"
+          holdings: "Pozice"
+          total_value: "Celková hodnota"
+        vs_available_history: "oproti dostupné historii"
+      activity_date:
+        balance_tooltip: "Zůstatek na konci dne po zohlednění všech transakcí a úprav"
+        no_balance_data: "Pro toto datum nejsou k dispozici údaje o zůstatku"
+  ds:
+    alert:
+      variants:
+        info: "Informace"
+        success: "Úspěch"
+        warning: "Upozornění"
+        error: "Chyba"
+        destructive: "Chyba"
+    pill:
+      aria_label: "%{label}"
+      default_label: "Náhled"
+    dialog:
+      close: "Zavřít"
+    popover:
+      avatar_default_label: "Otevřít nabídku"
+    tooltip:
+      trigger_label: "Další informace"
+    link:
+      opens_in_new_tab: "(otevře se na nové kartě)"
+  provider_sync_summary:
+    title: "Souhrn synchronizace"
+    last_sync: "Poslední synchronizace před %{time_ago}"
+    accounts:
+      title: "Účty"
+      total: "Celkem: %{count}"
+      linked: "Propojeno: %{count}"
+      unlinked: "Odpojeno: %{count}"
+      institutions: "Instituce: %{count}"
+    transactions:
+      title: "Transakce"
+      seen: "Nalezeno: %{count}"
+      imported: "Importováno: %{count}"
+      updated: "Aktualizováno: %{count}"
+      skipped: "Přeskočeno: %{count}"
+      fetching: "Načítání od brokera…"
+      protected:
+        one: "%{count} chráněný záznam nebyl přepsán"
+        few: "%{count} chráněné záznamy nebyly přepsány"
+        many: "%{count} chráněného záznamu nebylo přepsáno"
+        other: "%{count} chráněných záznamů nebylo přepsáno"
+      view_protected: "Zobrazit chráněné záznamy"
+    skip_reasons:
+      excluded: "Vyloučeno"
+      user_modified: "Upraveno uživatelem"
+      import_locked: "Import CSV"
+      protected: "Chráněno"
+    holdings:
+      title: "Pozice"
+      found: "Nalezeno: %{count}"
+      processed: "Zpracováno: %{count}"
+    trades:
+      title: "Obchody"
+      imported: "Importováno: %{count}"
+      skipped: "Přeskočeno: %{count}"
+      fetching: "Načítání pohybů od brokera…"
+    health:
+      title: "Stav"
+      view_error_details: "Zobrazit podrobnosti chyb"
+      rate_limited: "Omezení požadavků před %{time_ago}"
+      recently: "nedávno"
+      errors: "Chyby: %{count}"
+      pending_reconciled:
+        one: "Spárována %{count} duplicitní nezaúčtovaná transakce"
+        few: "Spárovány %{count} duplicitní nezaúčtované transakce"
+        many: "Spárováno %{count} duplicitní nezaúčtované transakce"
+        other: "Spárováno %{count} duplicitních nezaúčtovaných transakcí"
+      view_reconciled: "Zobrazit spárované transakce"
+      duplicate_suggestions:
+        one: "%{count} možná duplicita vyžaduje kontrolu"
+        few: "%{count} možné duplicity vyžadují kontrolu"
+        many: "%{count} možné duplicity vyžaduje kontrolu"
+        other: "%{count} možných duplicit vyžaduje kontrolu"
+      view_duplicate_suggestions: "Zobrazit navržené duplicity"
+      stale_pending:
+        one: "%{count} neaktuální nezaúčtovaná transakce (nezahrnuta do rozpočtů)"
+        few: "%{count} neaktuální nezaúčtované transakce (nezahrnuty do rozpočtů)"
+        many: "%{count} neaktuální nezaúčtované transakce (nezahrnuto do rozpočtů)"
+        other: "%{count} neaktuálních nezaúčtovaných transakcí (nezahrnuto do rozpočtů)"
+      view_stale_pending: "Zobrazit dotčené účty"
+      stale_pending_count:
+        one: "%{count} transakce"
+        few: "%{count} transakce"
+        many: "%{count} transakce"
+        other: "%{count} transakcí"
+      stale_unmatched:
+        one: "%{count} nezaúčtovaná transakce vyžaduje ruční kontrolu"
+        few: "%{count} nezaúčtované transakce vyžadují ruční kontrolu"
+        many: "%{count} nezaúčtované transakce vyžaduje ruční kontrolu"
+        other: "%{count} nezaúčtovaných transakcí vyžaduje ruční kontrolu"
+      view_stale_unmatched: "Zobrazit transakce vyžadující kontrolu"
+      stale_unmatched_count:
+        one: "%{count} transakce"
+        few: "%{count} transakce"
+        many: "%{count} transakce"
+        other: "%{count} transakcí"
+      data_warnings: "Upozornění na data: %{count}"
+      notices: "Oznámení: %{count}"
+      view_data_quality: "Zobrazit podrobnosti o kvalitě dat"

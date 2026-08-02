@@ -1,7 +1,22 @@
 ---
 en:
   activerecord:
+    attributes:
+      recurring_transaction:
+        expected_amount_min: Minimum expected amount
+        account: Source account
+        destination_account: Destination account
     errors:
       models:
         recurring_transaction:
           merchant_or_name_required: "Either merchant or name must be present"
+          attributes:
+            expected_amount_min:
+              greater_than_max: "cannot be greater than expected_amount_max"
+            account:
+              required_for_transfer: "must be present on a recurring transfer"
+              missing: "must exist"
+            destination_account:
+              missing: "must exist"
+              same_as_source: "cannot be the same as the source account"
+              different_family: "must belong to the same family as the source account"

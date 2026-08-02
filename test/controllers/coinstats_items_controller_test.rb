@@ -174,7 +174,7 @@ class CoinstatsItemsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_response :unprocessable_entity
-    assert_match(/No tokens found/, response.body)
+    assert_includes response.body, I18n.t("models.coinstats_item.wallet_linker.no_tokens_found")
   end
 
   test "link_exchange filters unexpected connection fields" do

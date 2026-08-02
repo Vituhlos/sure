@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../providers/auth_provider.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class SsoOnboardingScreen extends StatefulWidget {
   const SsoOnboardingScreen({super.key});
@@ -117,7 +118,10 @@ class _SsoOnboardingScreenState extends State<SsoOnboardingScreen> {
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
-                              authProvider.errorMessage!,
+                              localizedClientError(
+                                l,
+                                authProvider.errorMessage,
+                              ),
                               style: TextStyle(
                                   color: colorScheme.onErrorContainer),
                             ),

@@ -1,0 +1,9 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        sync:
+          attributes:
+            window_end_date:
+              after_start: "must be greater than window_start_date"

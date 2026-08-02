@@ -1,0 +1,5 @@
+---
+cs:
+  invitation_mailer:
+    invite_email:
+      subject: "%{inviter}: Pozvánka do aplikace %{product_name}"

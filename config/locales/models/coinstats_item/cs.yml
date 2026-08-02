@@ -1,0 +1,16 @@
+---
+cs:
+  models:
+    coinstats_item:
+      syncer:
+        importing_wallets: "Import kryptoměnových účtů z CoinStats…"
+        checking_configuration: "Kontrola nastavení účtů CoinStats…"
+        wallets_need_setup: "Nastavení vyžaduje tento počet kryptoměnových účtů: %{count}…"
+        processing_holdings: "Zpracování pozic…"
+        calculating_balances: "Výpočet zůstatků…"
+      wallet_linker:
+        no_tokens_found: "V této peněžence nebyly nalezeny žádné tokeny."
+        create_failed: "Účet %{account} se nepodařilo vytvořit."
+        account: "účet"
+        unexpected_error: "Při propojování peněženky došlo k neočekávané chybě."
+        crypto_wallet: "Kryptoměnová peněženka"

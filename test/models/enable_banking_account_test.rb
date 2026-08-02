@@ -91,6 +91,26 @@ class EnableBankingAccountTest < ActiveSupport::TestCase
     assert_equal "savings", @account.suggested_subtype
   end
 
+  test "localizes the account type for display" do
+    @account.update!(account_type: "CACC")
+
+    I18n.with_locale(:cs) do
+      assert_equal "Běžný účet", @account.account_type_display
+    end
+  end
+
+  test "uses a language-neutral fallback account name" do
+    @account.upsert_enable_banking_snapshot!({
+      uid: "uid_uuid_123",
+      identification_hash: "hash_abc123",
+      currency: "EUR",
+      cash_account_type: "CACC",
+      account_id: { iban: "CZ6508000000192000145399" }
+    })
+
+    assert_equal "Enable Banking ····5399", @account.reload.name
+  end
+
   # upsert_enable_banking_snapshot! stores new fields
   test "stores product from snapshot" do
     @account.upsert_enable_banking_snapshot!({

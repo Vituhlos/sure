@@ -9,6 +9,7 @@ void main() {
     ApiConfig.clearApiKeyAuth();
     ApiConfig.setBaseUrl(ApiConfig.defaultBaseUrl);
     ApiConfig.setCustomProxyHeaders([]);
+    ApiConfig.setLocale('en');
   });
 
   test('adds custom proxy headers to token auth headers', () {
@@ -22,6 +23,7 @@ void main() {
       'X-Auth-Secret': 'secret',
       'Authorization': 'Bearer token',
       'Accept': 'application/json',
+      'Accept-Language': 'en',
     });
   });
 
@@ -34,6 +36,7 @@ void main() {
       'X-Mobile-Bypass': 'pass',
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Accept-Language': 'en',
     });
   });
 
@@ -73,6 +76,18 @@ void main() {
     expect(ApiConfig.htmlHeaders(), {
       'X-Auth-Id': 'id',
       'Accept': 'text/html',
+      'Accept-Language': 'en',
     });
+  });
+
+  test('normalizes and sends the active locale', () {
+    ApiConfig.setLocale('cs_CZ');
+
+    expect(ApiConfig.jsonHeaders()['Accept-Language'], 'cs-CZ');
+    expect(ApiConfig.htmlHeaders()['Accept-Language'], 'cs-CZ');
+    expect(
+      ApiConfig.getAuthHeaders('token')['Accept-Language'],
+      'cs-CZ',
+    );
   });
 }

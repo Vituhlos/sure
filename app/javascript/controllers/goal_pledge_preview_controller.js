@@ -15,6 +15,7 @@ export default class extends Controller {
     currentBalance: Number,
     targetAmount: Number,
     currency: String,
+    locale: String,
     templateZero: String,
     templateNonzero: String,
     templateReached: String,
@@ -79,12 +80,12 @@ export default class extends Controller {
       // USD/EUR previews show cents while JPY/KRW stay whole-unit. The
       // server saves the user-entered amount verbatim; the preview must
       // not silently round it.
-      return new Intl.NumberFormat(undefined, {
+      return new Intl.NumberFormat(this.localeValue || undefined, {
         style: "currency",
         currency: this.currencyValue || "USD",
       }).format(value);
     } catch {
-      return `${this.currencyValue || "$"}${value.toLocaleString()}`;
+      return `${this.currencyValue || "$"}${value.toLocaleString(this.localeValue || undefined)}`;
     }
   }
 }

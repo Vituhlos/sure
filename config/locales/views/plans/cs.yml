@@ -1,0 +1,44 @@
+---
+cs:
+  plans:
+    show:
+      title: "Plán"
+      subtitle: "Rozhodněte, kam vaše peníze směřují – kolik utratíte a kolik odložíte."
+    budget_card:
+      title: "Tento měsíc"
+      edit_budget: "Upravit rozpočet"
+      of_total: "z %{total}"
+      days_left:
+        one: "Zbývá 1 den"
+        few: "Zbývají %{count} dny"
+        many: "Zbývá %{count} dne"
+        other: "Zbývá %{count} dní"
+      percent_used: "Vyčerpáno %{percent} %"
+      top_categories: "Kategorie s nejvyššími výdaji"
+      view_budget: "Zobrazit celý rozpočet"
+      empty_body: "Nastavte měsíční limit výdajů a limity jednotlivých kategorií, abyste mohli sledovat čerpání rozpočtu v tomto měsíci."
+      set_up: "Nastavit rozpočet na tento měsíc"
+    goals_card:
+      title: "Vaše cíle"
+      new_goal: "Nový cíl"
+      active_count:
+        one: "1 aktivní"
+        few: "%{count} aktivní"
+        many: "%{count} aktivního"
+        other: "%{count} aktivních"
+      of_targets: "z celkové cílové částky %{total}"
+      behind_count:
+        one: "1 cíl ve skluzu"
+        few: "%{count} cíle ve skluzu"
+        many: "%{count} cíle ve skluzu"
+        other: "%{count} cílů ve skluzu"
+      pending_count:
+        one: "1 příspěvek čeká na potvrzení"
+        few: "%{count} příspěvky čekají na potvrzení"
+        many: "%{count} příspěvku čeká na potvrzení"
+        other: "%{count} příspěvků čeká na potvrzení"
+      all_on_pace: "Všechny cíle postupují podle plánu"
+      active_goals: "Aktivní cíle"
+      pending_marker: "čekající příspěvek"
+      runway: "Rezerva na %{months} měs. · %{pace}/měs."
+      all_goals: "Všechny cíle"

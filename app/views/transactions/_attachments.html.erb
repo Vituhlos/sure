@@ -11,7 +11,14 @@
           data: {
             controller: "attachment-upload",
             attachment_upload_max_files_value: Transaction::MAX_ATTACHMENTS_PER_TRANSACTION - transaction.attachments.count,
-            attachment_upload_max_size_value: Transaction::MAX_ATTACHMENT_SIZE
+            attachment_upload_max_size_value: Transaction::MAX_ATTACHMENT_SIZE,
+            attachment_upload_upload_value: t(".upload"),
+            attachment_upload_upload_one_value: t(".upload_files.one", count: "__COUNT__"),
+            attachment_upload_upload_few_value: t(".upload_files.few", count: "__COUNT__"),
+            attachment_upload_upload_many_value: t(".upload_files.many", count: "__COUNT__"),
+            attachment_upload_upload_other_value: t(".upload_files.other", count: "__COUNT__"),
+            attachment_upload_too_many_files_value: t(".too_many_files", count: "__COUNT__"),
+            attachment_upload_file_too_large_value: t(".file_too_large", size: "__SIZE__")
           } do |form| %>
       <div class="space-y-3">
         <div>
@@ -113,7 +120,12 @@
                       variant: :outline_destructive,
                       size: :sm,
                       icon: "trash-2",
-                      confirm: CustomConfirm.for_resource_deletion("attachment")
+                      confirm: CustomConfirm.new(
+                        title: t(".delete_title"),
+                        body: t(".delete_subtitle"),
+                        btn_text: t(".delete_button"),
+                        destructive: true
+                      )
                     ) %>
               <% end %>
             </div>

@@ -59,7 +59,7 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       return {
         success: false,
         error: "PDF import not found",
-        message: "Could not find a PDF import with ID: #{params["pdf_import_id"]}"
+        message: I18n.t("assistant.functions.import_bank_statement.not_found", id: params["pdf_import_id"])
       }
     end
 
@@ -67,8 +67,8 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       return {
         success: false,
         error: "not_bank_statement",
-        message: "This PDF is not a bank statement. Document type: #{pdf_import.document_type}",
-        available_actions: [ "Use a different PDF that is a bank statement" ]
+        message: I18n.t("assistant.functions.import_bank_statement.not_bank_statement", type: pdf_import.document_type),
+        available_actions: [ I18n.t("assistant.functions.import_bank_statement.use_different_pdf") ]
       }
     end
 
@@ -77,7 +77,7 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       return {
         success: false,
         error: "account_required",
-        message: "Please specify which account to import transactions into",
+        message: I18n.t("assistant.functions.import_bank_statement.account_required"),
         available_accounts: family.accounts.visible.depository.map { |a| { id: a.id, name: a.name } }
       }
     end
@@ -87,7 +87,7 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       return {
         success: false,
         error: "account_not_found",
-        message: "Account not found",
+        message: I18n.t("assistant.functions.import_bank_statement.account_not_found"),
         available_accounts: family.accounts.visible.depository.map { |a| { id: a.id, name: a.name } }
       }
     end
@@ -100,7 +100,7 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       return {
         success: false,
         error: "provider_not_configured",
-        message: "AI provider is not configured"
+        message: I18n.t("assistant.functions.import_bank_statement.provider_not_configured")
       }
     end
 
@@ -111,11 +111,10 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
     )
 
     unless response.success?
-      error_message = response.error&.message || "Unknown extraction error"
       return {
         success: false,
         error: "extraction_failed",
-        message: "Failed to extract transactions: #{error_message}"
+        message: I18n.t("assistant.functions.import_bank_statement.extraction_failed")
       }
     end
 
@@ -125,7 +124,7 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       return {
         success: false,
         error: "no_transactions_found",
-        message: "Could not extract any transactions from the bank statement"
+        message: I18n.t("assistant.functions.import_bank_statement.no_transactions")
       }
     end
 
@@ -155,7 +154,11 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
       transactions_preview: result[:transactions].first(5),
       statement_period: result[:period],
       account_holder: result[:account_holder],
-      message: "Successfully extracted #{result[:transactions].size} transactions. Import created with ID: #{import.id}. Review and publish when ready."
+      message: I18n.t(
+        "assistant.functions.import_bank_statement.created",
+        count: result[:transactions].size,
+        id: import.id
+      )
     }
   rescue Provider::Error, Faraday::Error, Timeout::Error, RuntimeError => e
     Rails.logger.error("ImportBankStatement error: #{e.class.name} - #{e.message}")
@@ -163,7 +166,7 @@ class Assistant::Function::ImportBankStatement < Assistant::Function
     {
       success: false,
       error: "extraction_failed",
-      message: "Failed to extract transactions: #{e.message.truncate(200)}"
+      message: I18n.t("assistant.functions.import_bank_statement.extraction_failed")
     }
   end
 

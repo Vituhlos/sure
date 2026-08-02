@@ -1,0 +1,7 @@
+---
+en:
+  subscription:
+    names:
+      monthly: "Monthly Contribution"
+      annual: "Annual Contribution"
+      demo: "Open demo"

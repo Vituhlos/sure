@@ -1,0 +1,20 @@
+---
+cs:
+  rule_notification_mailer:
+    digest:
+      subject:
+        one: "1 nová transakce odpovídá vašemu pravidlu v aplikaci %{product_name}"
+        few: "%{count} nové transakce odpovídají vašemu pravidlu v aplikaci %{product_name}"
+        many: "%{count} nové transakce odpovídá vašemu pravidlu v aplikaci %{product_name}"
+        other: "%{count} nových transakcí odpovídá vašemu pravidlu v aplikaci %{product_name}"
+      heading:
+        one: "1 nová transakce odpovídá vašemu pravidlu"
+        few: "%{count} nové transakce odpovídají vašemu pravidlu"
+        many: "%{count} nové transakce odpovídá vašemu pravidlu"
+        other: "%{count} nových transakcí odpovídá vašemu pravidlu"
+      intro: "Tyto transakce odpovídají pravidlu „%{rule}“:"
+      date: "Datum"
+      name: "Název"
+      account: "Účet"
+      amount: "Částka"
+      cta: "Zobrazit transakce"

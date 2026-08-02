@@ -46,6 +46,12 @@ module Money::Formatting
         return { delimiter: "\u00A0", separator: ",", format: "%n\u00A0%u" }
       end
 
+      # Czech typography uses non-breaking spaces both for digit grouping and
+      # between the amount and currency symbol.
+      if locale_sym == :cs
+        return { delimiter: "\u00A0", separator: ",", format: "%n\u00A0%u" }
+      end
+
       # European style: dot delimiter, comma separator, symbol after number
       if EUROPEAN_SYMBOL_AFTER.include?(locale_sym)
         return { delimiter: ".", separator: ",", format: "%n %u" }

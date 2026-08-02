@@ -6,3 +6,8 @@ en:
         merchant_import:
           missing_columns: "Missing required columns: %{columns}"
           duplicate_columns: "Duplicate column names after normalization: %{columns}"
+  merchant_import:
+    samples:
+      coffee_shop: "Coffee Shop"
+      pizza_palace: "Pizza Palace"
+      bookstore: "Bookstore"

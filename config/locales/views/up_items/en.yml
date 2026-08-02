@@ -29,6 +29,9 @@ en:
         one: 1 institution
         other: "%{count} institutions"
   up_items:
+    importer:
+      fetch_accounts_failed: Failed to fetch accounts data
+      parse_response_failed: Failed to parse response
     provider_panel:
       default_connection_name: Up Connection
       add_connection: Add Up connection

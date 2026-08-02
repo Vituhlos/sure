@@ -260,7 +260,7 @@ class WiseItemsController < ApplicationController
       name = details["name"].presence ||
              [ details["firstName"], details["lastName"] ].compact.join(" ").presence
 
-      name.present? ? "#{name} (#{type_label})" : "Wise #{type_label}"
+      name.present? ? "#{name} (#{type_label})" : t("wise_items.profile_display_name.fallback", type: type_label)
     end
 
     def render_provider_panel_success(message)

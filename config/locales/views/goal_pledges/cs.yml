@@ -1,0 +1,20 @@
+---
+cs:
+  goal_pledges:
+    new:
+      helper_transfer: Sure vyhledá odpovídající vklad na propojeném účtu. Příspěvek zůstane čekat na potvrzení nejvýše 7 dní a Sure jej automaticky potvrdí, jakmile vklad rozpozná.
+      helper_manual: Sure příspěvek zaznamená při příští ruční úpravě zůstatku a následně jej potvrdí.
+      amount_label: Částka
+      account_label: Na účet
+      submit: Zaznamenat příspěvek
+      preview_zero: "Aktuálně je naspořeno {current} z {target}."
+      preview_nonzero: "Po příspěvku bude splněno {percent} %: {newTotal} z {target}."
+      preview_reached: "Příspěvkem dosáhnete cílové částky {target}. Cíl bude splněn."
+    create:
+      success: Příspěvek byl zaznamenán. Sure jej potvrdí při příští synchronizaci.
+    renew:
+      success: Lhůta pro potvrzení příspěvku byla prodloužena o 7 dní.
+      not_open: Prodloužit lze pouze příspěvky čekající na potvrzení.
+    destroy:
+      success: Příspěvek byl zrušen.
+      not_open: Zrušit lze pouze příspěvky čekající na potvrzení.

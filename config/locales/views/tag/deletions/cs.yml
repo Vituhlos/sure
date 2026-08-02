@@ -1,0 +1,14 @@
+---
+cs:
+  tag:
+    deletions:
+      create:
+        deleted: "Štítek byl odstraněn."
+      new:
+        delete_and_leave_uncategorized: "Odstranit štítek „%{tag_name}“"
+        delete_and_recategorize: "Odstranit štítek „%{tag_name}“ a přiřadit jiný"
+        delete_and_reassign: "Odstranit a přeřadit"
+        delete_tag: "Odstranit štítek?"
+        explanation: "Štítek „%{tag_name}“ se odebere z transakcí a ostatních označených položek. Chcete-li, můžete jim níže rovnou přiřadit jiný štítek."
+        replacement_tag_prompt: "Vyberte štítek"
+        tag: "Štítek"

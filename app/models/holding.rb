@@ -31,6 +31,12 @@ class Holding < ApplicationRecord
   delegate :ticker, to: :security
 
   def name
+    if security.cash?
+      return I18n.t("securities.cash.name_with_currency", currency: currency) if currency != account.currency
+
+      return I18n.t("securities.cash.name")
+    end
+
     security.name || ticker
   end
 

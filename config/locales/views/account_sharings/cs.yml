@@ -1,0 +1,31 @@
+---
+cs:
+  account_sharings:
+    show:
+      title: "Sdílení účtu"
+      subtitle: "Nastavte, kdo může tento účet zobrazit a pracovat s ním"
+      member: "Člen"
+      permission: "Oprávnění"
+      shared: "Sdíleno"
+      no_members: "Ve skupině „%{moniker}“ nejsou žádní další členové, se kterými by bylo možné účet sdílet"
+      permissions:
+        full_control: "Úplná správa"
+        full_control_description: "Může zobrazovat a upravovat transakce a spravovat je"
+        read_write: "Doplňování údajů"
+        read_write_description: "Může přiřazovat kategorie a štítky a přidávat poznámky"
+        read_only: "Pouze pro čtení"
+        read_only_description: "Může pouze zobrazovat údaje o účtu"
+      save: "Uložit nastavení sdílení"
+      owner_label: "Vlastník: %{name}"
+      shared_with_count:
+        one: "Sdíleno s 1 členem"
+        few: "Sdíleno se %{count} členy"
+        many: "Sdíleno s %{count} člena"
+        other: "Sdíleno s %{count} členy"
+      include_in_finances: "Zahrnout do mých rozpočtů a přehledů"
+      exclude_from_finances: "Nezahrnovat do mých rozpočtů a přehledů"
+      finance_toggle_description: "Zahrnout tento účet do čistého jmění, rozpočtů a přehledů"
+    update:
+      success: "Nastavení sdílení bylo aktualizováno."
+      not_owner: "Sdílení může spravovat pouze vlastník účtu."
+      finance_toggle_success: "Nastavení zahrnutí účtu do financí bylo aktualizováno."

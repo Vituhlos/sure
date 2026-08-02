@@ -29,6 +29,10 @@ class ImportSession < ApplicationRecord
             allow_nil: true
   validate :payloads_are_json_objects
 
+  def self.localized_error(key, **options)
+    I18n.t("imports.import_session.errors.#{key}", **options)
+  end
+
   # See Import::STUCK_AFTER — same dead-worker failure mode, same sweep.
   # A session wedged in importing is otherwise unrecoverable: publish_later
   # refuses to re-publish while importing. Before failing it, chunks whose
@@ -105,7 +109,7 @@ class ImportSession < ApplicationRecord
     expected_chunks = normalize_positive_integer(expected_chunks)
     unless IMPORT_TYPES.include?(import_type)
       session = new(import_type: import_type)
-      session.errors.add(:import_type, "must be SureImport")
+      session.errors.add(:import_type, :invalid_type)
       raise ActiveRecord::RecordInvalid.new(session)
     end
 
@@ -115,7 +119,7 @@ class ImportSession < ApplicationRecord
          expected_chunks.present? &&
          session.expected_chunks.present? &&
          session.expected_chunks != expected_chunks
-        raise ConflictError, "client_session_id already exists with a different expected_chunks value"
+        raise ConflictError, localized_error(:client_session_expected_chunks_conflict)
       end
     else
       session = family.import_sessions.build
@@ -134,7 +138,7 @@ class ImportSession < ApplicationRecord
     if expected_chunks.present? &&
        existing.expected_chunks.present? &&
        existing.expected_chunks != expected_chunks
-      raise ConflictError, "client_session_id already exists with a different expected_chunks value"
+      raise ConflictError, localized_error(:client_session_expected_chunks_conflict)
     end
     if expected_chunks.present? && existing.expected_chunks.nil?
       existing.update!(expected_chunks: expected_chunks)
@@ -152,15 +156,15 @@ class ImportSession < ApplicationRecord
 
   def attach_chunk!(sequence:, content:, filename:, content_type:, client_chunk_id: nil)
     sequence = self.class.send(:normalize_positive_integer, sequence)
-    raise ConflictError, "sequence must be a positive integer" unless sequence.positive?
-    raise ConflictError, "sequence exceeds expected_chunks" if expected_chunks.present? && sequence > expected_chunks
+    raise ConflictError, localized_error(:sequence_positive) unless sequence.positive?
+    raise ConflictError, localized_error(:sequence_exceeds_expected_chunks) if expected_chunks.present? && sequence > expected_chunks
 
     checksum = Digest::SHA256.hexdigest(content)
     normalized_client_chunk_id = client_chunk_id.presence
     chunk_needs_finalization = false
 
     chunk = with_lock do
-      raise ConflictError, "cannot add chunks after publishing starts" unless pending? || failed?
+      raise ConflictError, localized_error(:publishing_started) unless pending? || failed?
 
       existing = existing_chunk_for!(
         sequence: sequence,
@@ -207,7 +211,7 @@ class ImportSession < ApplicationRecord
       content_type: content_type
     ) if existing
 
-    raise ConflictError, "chunk already exists with different content"
+    raise ConflictError, localized_error(:chunk_content_conflict)
   end
 
   def create_chunk!(sequence:, client_chunk_id:, checksum:, content:, filename:, content_type:)
@@ -255,7 +259,7 @@ class ImportSession < ApplicationRecord
         end
       end
       Rails.logger.error("ImportSession enqueue failed import_session_id=#{id} exception=#{error.class}")
-      raise EnqueueError, "Import session could not be queued."
+      raise EnqueueError, localized_error(:enqueue_failed)
     end
   end
 
@@ -314,21 +318,21 @@ class ImportSession < ApplicationRecord
       client_chunk_match = imports.find_by(client_chunk_id: client_chunk_id) if client_chunk_id.present?
 
       if sequence_match && client_chunk_match && sequence_match.id != client_chunk_match.id
-        raise ConflictError, "sequence and client_chunk_id refer to different chunks"
+        raise ConflictError, localized_error(:identifiers_refer_to_different_chunks)
       end
 
       existing = sequence_match || client_chunk_match
       return unless existing
 
       if existing.sequence != sequence
-        raise ConflictError, "client_chunk_id already exists with a different sequence"
+        raise ConflictError, localized_error(:client_chunk_sequence_conflict)
       end
 
       if client_chunk_id.present? && existing.client_chunk_id.present? && existing.client_chunk_id != client_chunk_id
-        raise ConflictError, "sequence already exists with a different client_chunk_id"
+        raise ConflictError, localized_error(:sequence_client_chunk_conflict)
       end
 
-      raise ConflictError, "chunk already exists with different content" unless existing.checksum == checksum
+      raise ConflictError, localized_error(:chunk_content_conflict) unless existing.checksum == checksum
 
       existing
     end
@@ -365,9 +369,9 @@ class ImportSession < ApplicationRecord
       chunk.reload
       return chunk if chunk_ready_for_retry?(chunk, checksum)
 
-      raise ConflictError, "chunk already exists but is incomplete"
+      raise ConflictError, localized_error(:chunk_incomplete)
     rescue ActiveStorage::FileNotFoundError
-      raise ConflictError, "chunk already exists but is incomplete"
+      raise ConflictError, localized_error(:chunk_incomplete)
     end
 
     def chunk_ready_for_retry?(chunk, checksum)
@@ -403,16 +407,16 @@ class ImportSession < ApplicationRecord
     end
 
     def validate_publishable_chunks!
-      raise ConflictError, "import session has no chunks" unless imports.exists?
+      raise ConflictError, localized_error(:no_chunks) unless imports.exists?
       raise Import::MaxRowCountExceededError if row_count_exceeded?
       validate_expected_chunk_sequences!
     end
 
     def sync_chunk_row_counts!
-      raise ConflictError, "import session has no chunks" unless imports.exists?
+      raise ConflictError, localized_error(:no_chunks) unless imports.exists?
       imports.reload.each(&:sync_ndjson_rows_count!)
     rescue ActiveStorage::FileNotFoundError
-      raise ConflictError, "import session chunks are incomplete"
+      raise ConflictError, localized_error(:chunks_incomplete)
     end
 
     def validate_expected_chunk_sequences!
@@ -425,10 +429,10 @@ class ImportSession < ApplicationRecord
       missing_sequences = expected_sequences - actual_sequences
       unexpected_sequences = actual_sequences - expected_sequences
       details = []
-      details << "missing sequences: #{missing_sequences.join(', ')}" if missing_sequences.any?
-      details << "unexpected sequences: #{unexpected_sequences.join(', ')}" if unexpected_sequences.any?
+      details << localized_error(:missing_sequences, sequences: missing_sequences.join(", ")) if missing_sequences.any?
+      details << localized_error(:unexpected_sequences, sequences: unexpected_sequences.join(", ")) if unexpected_sequences.any?
 
-      raise ConflictError, "import session chunks do not match expected sequences (#{details.join('; ')})"
+      raise ConflictError, localized_error(:sequence_mismatch, details: details.join("; "))
     end
 
     def error_details_for(error)
@@ -447,20 +451,20 @@ class ImportSession < ApplicationRecord
     def public_error_message_for(error)
       return error.message if error.respond_to?(:code)
 
-      "Import session failed."
+      localized_error(:failed)
     end
 
     def enqueue_error_details
       {
         "code" => "import_enqueue_failed",
-        "message" => "Import session could not be queued."
+        "message" => localized_error(:enqueue_failed)
       }
     end
 
     def sync_enqueue_error_details
       {
         "code" => "family_sync_enqueue_failed",
-        "message" => "Family sync could not be queued after import completion."
+        "message" => localized_error(:family_sync_enqueue_failed)
       }
     end
 
@@ -490,7 +494,11 @@ class ImportSession < ApplicationRecord
     end
 
     def payloads_are_json_objects
-      errors.add(:summary, "must be an object") unless summary.is_a?(Hash)
-      errors.add(:error_details, "must be an object") unless error_details.is_a?(Hash)
+      errors.add(:summary, :must_be_object) unless summary.is_a?(Hash)
+      errors.add(:error_details, :must_be_object) unless error_details.is_a?(Hash)
+    end
+
+    def localized_error(key, **options)
+      self.class.localized_error(key, **options)
     end
 end

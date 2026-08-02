@@ -13,7 +13,9 @@ class ChatsController < ApplicationController
   end
 
   def new
-    @chat = Current.user.chats.new(title: "New chat #{Time.current.strftime("%Y-%m-%d %H:%M")}")
+    @chat = Current.user.chats.new(
+      title: t(".default_title", timestamp: helpers.l(Time.current, format: :long))
+    )
   end
 
   def create

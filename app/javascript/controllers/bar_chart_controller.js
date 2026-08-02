@@ -11,8 +11,8 @@ export default class extends Controller {
   static values = {
     data: Array,
     currency: { type: String, default: "USD" },
-    incomeLabel: { type: String, default: "Income" },
-    expenseLabel: { type: String, default: "Expenses" },
+    incomeLabel: String,
+    expenseLabel: String,
   };
 
   _resizeObserver = null;

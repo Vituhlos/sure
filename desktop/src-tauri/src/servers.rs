@@ -71,7 +71,7 @@ fn keyring_entry() -> Result<keyring::Entry, ServerError> {
 // On-disk fallback: Keychain items are unreliable for unsigned/dev builds
 // (they don't persist across launches without proper code signing), so we also
 // mirror the data to the app support directory. Server URLs are not secrets.
-fn data_dir() -> Option<std::path::PathBuf> {
+pub(crate) fn data_dir() -> Option<std::path::PathBuf> {
     let home = std::env::var_os("HOME")?;
     let dir = std::path::Path::new(&home)
         .join("Library/Application Support")

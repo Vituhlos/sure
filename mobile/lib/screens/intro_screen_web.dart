@@ -1,6 +1,7 @@
 import 'dart:html' as html;
 import 'dart:ui_web' as ui;
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class IntroScreenPlatform extends StatefulWidget {
   const IntroScreenPlatform({super.key, this.onStartChat});
@@ -15,6 +16,7 @@ class _IntroScreenPlatformState extends State<IntroScreenPlatform> {
   static int _nextViewId = 0;
 
   late final String _viewType;
+  bool _viewRegistered = false;
 
   @override
   void initState() {
@@ -22,16 +24,29 @@ class _IntroScreenPlatformState extends State<IntroScreenPlatform> {
     final currentId = _nextViewId;
     _nextViewId += 1;
     _viewType = 'intro-screen-web-$currentId';
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_viewRegistered) return;
+
+    final l = AppLocalizations.of(context);
+    final content = _introHtmlContent(
+      title: l.introComingSoon,
+      body: l.introComingSoonBody,
+    );
 
     ui.platformViewRegistry.registerViewFactory(_viewType, (int viewId) {
       final frame = html.IFrameElement()
-        ..srcdoc = _introHtmlContent
+        ..srcdoc = content
         ..style.width = '100%'
         ..style.height = '100%'
         ..style.border = '0';
 
       return frame;
     });
+    _viewRegistered = true;
   }
 
   @override
@@ -44,7 +59,7 @@ class _IntroScreenPlatformState extends State<IntroScreenPlatform> {
   }
 }
 
-const String _introHtmlContent = '''
+String _introHtmlContent({required String title, required String body}) => '''
 <!doctype html>
 <html>
   <head>
@@ -230,9 +245,9 @@ const String _introHtmlContent = '''
     <main class="grow overflow-y-auto px-3 lg:px-10 pt-0 pb-4 w-full mx-auto max-w-5xl" data-app-layout-target="content">
       <div class="mx-auto max-w-3xl intro-card-shell">
         <div class="bg-container shadow-border-xs rounded-2xl p-8 text-center space-y-4">
-          <h2 class="text-xl font-semibold text-primary">Intro experience coming soon</h2>
+          <h2 class="text-xl font-semibold text-primary">${_escapeHtml(title)}</h2>
           <p class="text-secondary">
-            We're building a richer onboarding journey to learn about your goals, milestones, and day-to-day needs. For now, head over to the chat sidebar to start a conversation with Sure and let us know where you are in your financial journey.
+            ${_escapeHtml(body)}
           </p>
         </div>
       </div>
@@ -240,3 +255,10 @@ const String _introHtmlContent = '''
   </body>
 </html>
 ''';
+
+String _escapeHtml(String value) => value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');

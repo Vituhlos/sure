@@ -1,6 +1,7 @@
 pub mod badge;
 pub mod commands;
 pub mod deep_link;
+pub mod locale;
 pub mod menu;
 pub mod notifications;
 pub mod servers;
@@ -29,6 +30,7 @@ pub fn run() {
             commands::set_active_server,
             commands::get_launch_at_login,
             commands::set_launch_at_login,
+            commands::set_app_locale,
             commands::start_sso,
         ])
         .setup(|app| {

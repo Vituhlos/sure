@@ -12,7 +12,7 @@ class MerchantsService {
       resultKey: 'merchants',
       fromJson: Merchant.fromJson,
       isValid: (merchant) => merchant.id.isNotEmpty,
-      failureMessage: 'Failed to fetch merchants',
+      failureMessage: 'fetch_merchants_failed',
     );
   }
 }

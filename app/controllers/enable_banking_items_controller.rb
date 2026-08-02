@@ -10,11 +10,11 @@ class EnableBankingItemsController < ApplicationController
 
   def create
     @enable_banking_item = Current.family.enable_banking_items.build(enable_banking_item_params)
-    @enable_banking_item.name ||= "Enable Banking Connection"
+    @enable_banking_item.name ||= t(".default_name")
 
     if @enable_banking_item.save
       if turbo_frame_request?
-        flash.now[:notice] = t(".success", default: "Successfully configured Enable Banking.")
+        flash.now[:notice] = t(".success")
         @enable_banking_items = Current.family.enable_banking_items.ordered
         render turbo_stream: [
           turbo_stream.replace(
@@ -45,7 +45,7 @@ class EnableBankingItemsController < ApplicationController
   def update
     if @enable_banking_item.update(enable_banking_item_params)
       if turbo_frame_request?
-        flash.now[:notice] = t(".success", default: "Successfully updated Enable Banking configuration.")
+        flash.now[:notice] = t(".success")
         @enable_banking_items = Current.family.enable_banking_items.ordered
         render turbo_stream: [
           turbo_stream.replace(
@@ -82,7 +82,7 @@ class EnableBankingItemsController < ApplicationController
     end
     @enable_banking_item.revoke_session
     @enable_banking_item.destroy_later
-    redirect_to settings_providers_path, notice: t(".success", default: "Scheduled Enable Banking connection for deletion.")
+    redirect_to settings_providers_path, notice: t(".success")
   end
 
   def sync
@@ -99,7 +99,7 @@ class EnableBankingItemsController < ApplicationController
   # Show bank selection page
   def select_bank
     unless @enable_banking_item.credentials_configured?
-      redirect_to settings_providers_path, alert: t(".credentials_required", default: "Please configure your Enable Banking credentials first.")
+      redirect_to settings_providers_path, alert: t(".credentials_required")
       return
     end
 
@@ -127,14 +127,14 @@ class EnableBankingItemsController < ApplicationController
     psu_type   = params[:psu_type].presence || "personal"
 
     unless aspsp_name.present?
-      redirect_to settings_providers_path, alert: t(".bank_required", default: "Please select a bank.")
+      redirect_to settings_providers_path, alert: t(".bank_required")
       return
     end
 
     begin
       target_item = if params[:new_connection] == "true"
         Current.family.enable_banking_items.create!(
-          name: "Enable Banking Connection",
+          name: t("enable_banking_items.create.default_name"),
           country_code: @enable_banking_item.country_code,
           application_id: @enable_banking_item.application_id,
           client_certificate: @enable_banking_item.client_certificate
@@ -162,22 +162,19 @@ class EnableBankingItemsController < ApplicationController
       safe_redirect_to_enable_banking(
         redirect_url,
         fallback_path: settings_providers_path,
-        fallback_alert: t(".invalid_redirect", default: "Invalid authorization URL received. Please try again.")
+        fallback_alert: t(".invalid_redirect")
       )
     rescue Provider::EnableBanking::EnableBankingError => e
       if e.message.include?("REDIRECT_URI_NOT_ALLOWED")
         Rails.logger.error "Enable Banking redirect URI not allowed: #{e.message}"
-        redirect_to settings_providers_path, alert: t(".redirect_uri_not_allowed",
-          default: "Redirect not allowed. Configure `%{callback_url}` in your Enable Banking application settings.",
-          callback_url: enable_banking_callback_url)
+        redirect_to settings_providers_path, alert: t(".redirect_uri_not_allowed", callback_url: enable_banking_callback_url)
       else
         Rails.logger.error "Enable Banking authorization error: #{e.message}"
-        redirect_to settings_providers_path, alert: t(".authorization_failed",
-          default: "Failed to start authorization: %{message}", message: e.message)
+        redirect_to settings_providers_path, alert: t(".authorization_failed", message: e.message)
       end
     rescue => e
       Rails.logger.error "Unexpected error in authorize: #{e.class}: #{e.message}"
-      redirect_to settings_providers_path, alert: t(".unexpected_error", default: "An unexpected error occurred. Please try again.")
+      redirect_to settings_providers_path, alert: t(".unexpected_error")
     end
   end
 
@@ -190,12 +187,12 @@ class EnableBankingItemsController < ApplicationController
 
     if error.present?
       Rails.logger.error "Enable Banking callback error: #{error} - #{error_description}"
-      redirect_to settings_providers_path, alert: t(".authorization_error", default: "Authorization failed: %{error}", error: error_description || error)
+      redirect_to settings_providers_path, alert: t(".authorization_error", error: error_description || error)
       return
     end
 
     unless code.present? && state.present?
-      redirect_to settings_providers_path, alert: t(".invalid_callback", default: "Invalid callback parameters.")
+      redirect_to settings_providers_path, alert: t(".invalid_callback")
       return
     end
 
@@ -203,7 +200,7 @@ class EnableBankingItemsController < ApplicationController
     enable_banking_item = Current.family.enable_banking_items.find_by(id: state)
 
     unless enable_banking_item.present?
-      redirect_to settings_providers_path, alert: t(".item_not_found", default: "Connection not found.")
+      redirect_to settings_providers_path, alert: t(".item_not_found")
       return
     end
 
@@ -216,13 +213,13 @@ class EnableBankingItemsController < ApplicationController
       # Trigger sync to process accounts
       enable_banking_item.sync_later
 
-      redirect_to accounts_path, notice: t(".success", default: "Successfully connected to your bank. Your accounts are being synced.")
+      redirect_to accounts_path, notice: t(".success")
     rescue Provider::EnableBanking::EnableBankingError => e
       Rails.logger.error "Enable Banking session creation error: #{e.message}"
-      redirect_to settings_providers_path, alert: t(".session_failed", default: "Failed to complete authorization: %{message}", message: e.message)
+      redirect_to settings_providers_path, alert: t(".session_failed", message: e.message)
     rescue => e
       Rails.logger.error "Unexpected error in callback: #{e.class}: #{e.message}"
-      redirect_to settings_providers_path, alert: t(".unexpected_error", default: "An unexpected error occurred. Please try again.")
+      redirect_to settings_providers_path, alert: t(".unexpected_error")
     end
   end
 
@@ -249,12 +246,11 @@ class EnableBankingItemsController < ApplicationController
       safe_redirect_to_enable_banking(
         redirect_url,
         fallback_path: settings_providers_path,
-        fallback_alert: t(".invalid_redirect", default: "Invalid authorization URL received. Please try again.")
+        fallback_alert: t(".invalid_redirect")
       )
     rescue Provider::EnableBanking::EnableBankingError => e
       Rails.logger.error "Enable Banking reauthorization error: #{e.message}"
-      redirect_to settings_providers_path, alert: t(".reauthorization_failed",
-        default: "Failed to re-authorize: %{message}", message: e.message)
+      redirect_to settings_providers_path, alert: t(".reauthorization_failed", message: e.message)
     end
   end
 
@@ -264,14 +260,14 @@ class EnableBankingItemsController < ApplicationController
     accountable_type = params[:accountable_type] || "Depository"
 
     if selected_uids.empty?
-      redirect_to accounts_path, alert: t(".no_accounts_selected", default: "No accounts selected.")
+      redirect_to accounts_path, alert: t(".no_accounts_selected")
       return
     end
 
     enable_banking_item = Current.family.enable_banking_items.where.not(session_id: nil).first
 
     unless enable_banking_item.present?
-      redirect_to settings_providers_path, alert: t(".no_session", default: "No active Enable Banking connection. Please connect a bank first.")
+      redirect_to settings_providers_path, alert: t(".no_session")
       return
     end
 
@@ -317,7 +313,7 @@ class EnableBankingItemsController < ApplicationController
       end
     rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => e
       Rails.logger.error "Enable Banking link_accounts failed: #{e.class} - #{e.message}"
-      redirect_to accounts_path, alert: t(".link_failed", default: "Failed to link accounts: %{error}", error: e.message)
+      redirect_to accounts_path, alert: t(".link_failed", error: e.message)
       return
     end
 
@@ -325,11 +321,11 @@ class EnableBankingItemsController < ApplicationController
     enable_banking_item.sync_later if created_accounts.any?
 
     if created_accounts.any?
-      redirect_to accounts_path, notice: t(".success", default: "%{count} account(s) linked successfully.", count: created_accounts.count)
+      redirect_to accounts_path, notice: t(".success", count: created_accounts.count)
     elsif already_linked_accounts.any?
-      redirect_to accounts_path, alert: t(".already_linked", default: "Selected accounts are already linked.")
+      redirect_to accounts_path, alert: t(".already_linked")
     else
-      redirect_to accounts_path, alert: t(".link_failed", default: "Failed to link accounts.")
+      redirect_to accounts_path, alert: t(".link_failed")
     end
   end
 
@@ -340,36 +336,36 @@ class EnableBankingItemsController < ApplicationController
       .where(account_providers: { id: nil })
 
     @account_type_options = [
-      [ "Skip this account", "skip" ],
-      [ "Checking or Savings Account", "Depository" ],
-      [ "Credit Card", "CreditCard" ],
-      [ "Investment Account", "Investment" ],
-      [ "Loan or Mortgage", "Loan" ],
-      [ "Other Asset", "OtherAsset" ]
+      [ t(".account_types.skip"), "skip" ],
+      [ t(".account_types.depository"), "Depository" ],
+      [ t(".account_types.credit_card"), "CreditCard" ],
+      [ t(".account_types.investment"), "Investment" ],
+      [ t(".account_types.loan"), "Loan" ],
+      [ t(".account_types.other_asset"), "OtherAsset" ]
     ]
 
     @subtype_options = {
       "Depository" => {
-        label: "Account Subtype:",
-        options: Depository::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.depository"),
+        options: Depository::SUBTYPES.map { |key, _value| [ t(".subtypes.depository.#{key}"), key ] }
       },
       "CreditCard" => {
-        label: "",
+        label: t(".subtype_labels.credit_card"),
         options: [],
-        message: "Credit cards will be automatically set up as credit card accounts."
+        message: t(".subtype_messages.credit_card")
       },
       "Investment" => {
-        label: "Investment Type:",
-        options: Investment::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.investment"),
+        options: Investment::SUBTYPES.map { |key, _value| [ t(".subtypes.investment.#{key}"), key ] }
       },
       "Loan" => {
-        label: "Loan Type:",
-        options: Loan::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.loan"),
+        options: Loan::SUBTYPES.map { |key, _value| [ t(".subtypes.loan.#{key}"), key ] }
       },
       "OtherAsset" => {
-        label: nil,
+        label: t(".subtype_labels.other_asset"),
         options: [],
-        message: "Other assets will be set up as general assets."
+        message: t(".subtype_messages.other_asset")
       }
     }
 
@@ -425,11 +421,11 @@ class EnableBankingItemsController < ApplicationController
     @enable_banking_item.sync_later if created_count > 0
 
     if created_count > 0
-      flash[:notice] = t(".success", default: "%{count} account(s) created successfully!", count: created_count)
+      flash[:notice] = t(".success", count: created_count)
     elsif skipped_count > 0
-      flash[:notice] = t(".all_skipped", default: "All accounts were skipped. You can set them up later from the accounts page.")
+      flash[:notice] = t(".all_skipped")
     else
-      flash[:notice] = t(".no_accounts", default: "No accounts to set up.")
+      flash[:notice] = t(".no_accounts")
     end
 
     redirect_to accounts_path, status: :see_other

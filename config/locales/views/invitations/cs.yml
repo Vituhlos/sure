@@ -1,0 +1,28 @@
+---
+cs:
+  invitations:
+    accept_choice:
+      create_account: "Vytvořit nový účet"
+      joined_household: "Připojení proběhlo úspěšně."
+      message: "%{inviter} vám posílá pozvánku s rolí %{role}."
+      sign_in_existing: "Už mám účet"
+      title: "Připojit se: %{family}"
+    create:
+      existing_user_added: "Uživatel byl přidán do vaší domácnosti."
+      existing_user_has_family_data: "Tento uživatel už vlastní domácnost s účty. Před připojením k vaší domácnosti musí tyto účty odstranit nebo převést."
+      failure: "Pozvánku se nepodařilo odeslat."
+      success: "Pozvánka byla odeslána."
+    destroy:
+      failure: "Pozvánku se nepodařilo odebrat."
+      not_authorized: "Ke správě pozvánek nemáte oprávnění."
+      success: "Pozvánka byla odebrána."
+    new:
+      email_label: "E-mailová adresa"
+      email_placeholder: "Zadejte e-mailovou adresu"
+      role_admin: "Správce"
+      role_guest: "Host"
+      role_label: "Role"
+      role_member: "Člen"
+      submit: "Odeslat pozvánku"
+      subtitle: "Odeslat pozvánku do aplikace %{product_name} – %{moniker}"
+      title: "Pozvat uživatele"

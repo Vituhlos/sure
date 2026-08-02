@@ -10,6 +10,7 @@ import 'intro_screen.dart';
 import 'more_screen.dart';
 import 'settings_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -140,7 +141,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           padding: const EdgeInsets.only(right: 12),
           child: Center(
             child: Tooltip(
-              message: 'Toggle privacy',
+              message: l.navTogglePrivacy,
               child: InkWell(
                 onTap: () => context.read<PrivacyProvider>().toggle(),
                 child: SizedBox(
@@ -150,7 +151,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     context.watch<PrivacyProvider>().hidden
                         ? Icons.visibility_off_outlined
                         : Icons.visibility_outlined,
-                    semanticLabel: 'Toggle privacy',
+                    semanticLabel: l.navTogglePrivacy,
                   ),
                 ),
               ),
@@ -210,7 +211,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     if (!enabled && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(authProvider.errorMessage ?? l.navEnableAiChatFailed),
+          content: Text(
+            authProvider.errorMessage == null
+                ? l.navEnableAiChatFailed
+                : localizedClientError(l, authProvider.errorMessage),
+          ),
           backgroundColor: Colors.red,
         ),
       );

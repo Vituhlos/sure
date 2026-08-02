@@ -13,7 +13,7 @@ class Import::TagMapping < Import::Mapping
     family_tags = import.family.tags.alphabetically.map { |tag| [ tag.name, tag.id ] }
 
     unless key.blank?
-      family_tags.unshift [ "Add as new tag", CREATE_NEW_KEY ]
+      family_tags.unshift [ I18n.t("imports.mapping_options.add_new_tag"), CREATE_NEW_KEY ]
     end
 
     family_tags

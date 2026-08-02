@@ -11,7 +11,7 @@ class SnaptradeItemsController < ApplicationController
 
   def destroy
     @snaptrade_item.destroy_later
-    redirect_to settings_providers_path, notice: t(".success", default: "Scheduled SnapTrade connection for deletion.")
+    redirect_to settings_providers_path, notice: t(".success")
   end
 
   def sync
@@ -156,19 +156,18 @@ class SnaptradeItemsController < ApplicationController
       if errors.any?
         # Partial success - some linked, some failed
         redirect_to accounts_path,
-                    notice: t(".partial_success", count: linked_count, failed_count: errors.size,
-                              default: "Linked #{linked_count} account(s). #{errors.size} failed to link.")
+                    notice: t(".partial_success", count: linked_count, failed_count: errors.size)
       else
-        redirect_to accounts_path, notice: t(".success", count: linked_count, default: "Successfully linked #{linked_count} account(s).")
+        redirect_to accounts_path, notice: t(".success", count: linked_count)
       end
     else
       if errors.any?
         # All failed
         redirect_to setup_accounts_snaptrade_item_path(@snaptrade_item),
-                    alert: t(".link_failed", default: "Failed to link accounts: %{errors}", errors: errors.first)
+                    alert: t(".link_failed", errors: errors.first)
       else
         redirect_to setup_accounts_snaptrade_item_path(@snaptrade_item),
-                    alert: t(".no_accounts", default: "No accounts were selected for linking.")
+                    alert: t(".no_accounts")
       end
     end
   end
@@ -317,7 +316,7 @@ class SnaptradeItemsController < ApplicationController
   def preload_accounts
     snaptrade_item = current_snaptrade_item
     unless snaptrade_item
-      redirect_to settings_providers_path, alert: t(".not_configured", default: "SnapTrade is not configured.")
+      redirect_to settings_providers_path, alert: t(".not_configured")
       return
     end
 
@@ -335,7 +334,7 @@ class SnaptradeItemsController < ApplicationController
     snaptrade_item = current_snaptrade_item
 
     unless snaptrade_item
-      redirect_to settings_providers_path, alert: t(".not_configured", default: "SnapTrade is not configured.")
+      redirect_to settings_providers_path, alert: t(".not_configured")
       return
     end
 
@@ -357,7 +356,7 @@ class SnaptradeItemsController < ApplicationController
         .where(account_providers: { id: nil })
       render :select_existing_account
     else
-      redirect_to settings_providers_path, alert: t(".not_found", default: "Account or SnapTrade configuration not found.")
+      redirect_to settings_providers_path, alert: t(".not_found")
     end
   end
 
@@ -376,19 +375,19 @@ class SnaptradeItemsController < ApplicationController
         provider = snaptrade_account.ensure_account_provider!(account)
 
         unless provider
-          raise "Failed to create AccountProvider link"
+          raise I18n.t("snaptrade_items.link_existing_account.provider_link_failed")
         end
 
         # Trigger sync to process the linked account
         snaptrade_item.sync_later_with_follow_up
 
-        redirect_to account_path(account), notice: t(".success", default: "Successfully linked to SnapTrade account.")
+        redirect_to account_path(account), notice: t(".success")
       rescue => e
         Rails.logger.error "Failed to link existing account: #{e.message}"
-        redirect_to settings_providers_path, alert: t(".failed", default: "Failed to link account: #{e.message}")
+        redirect_to settings_providers_path, alert: t(".failed", message: e.message)
       end
     else
-      redirect_to settings_providers_path, alert: t(".not_found", default: "Account not found.")
+      redirect_to settings_providers_path, alert: t(".not_found")
     end
   end
 
@@ -438,7 +437,7 @@ class SnaptradeItemsController < ApplicationController
     def link_snaptrade_account(snaptrade_account, selected_type)
       accountable_type = selected_type.presence || snaptrade_account.suggested_account_type
       unless Accountable::TYPES.include?(accountable_type)
-        raise ArgumentError, "Invalid SnapTrade account type: #{accountable_type}"
+        raise ArgumentError, I18n.t("snaptrade_items.setup_accounts.invalid_account_type", type: accountable_type)
       end
 
       # Create the Sure account
@@ -455,7 +454,7 @@ class SnaptradeItemsController < ApplicationController
 
       unless provider
         Rails.logger.error "SnapTrade: Failed to create AccountProvider for snaptrade_account #{snaptrade_account.id}"
-        raise "Failed to link account"
+        raise I18n.t("snaptrade_items.setup_accounts.provider_link_failed")
       end
 
       account

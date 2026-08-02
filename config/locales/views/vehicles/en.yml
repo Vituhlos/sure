@@ -13,6 +13,9 @@ en:
       model_placeholder: Camry
       year: Year
       year_placeholder: '2023'
+      mileage_units:
+        miles: Miles
+        kilometers: Kilometers
     new:
       title: Enter vehicle details
     overview:

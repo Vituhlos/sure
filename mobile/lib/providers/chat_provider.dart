@@ -59,11 +59,11 @@ class ChatProvider with ChangeNotifier {
         _chats = result['chats'] as List<Chat>;
         _errorMessage = null;
       } else {
-        _errorMessage = result['error'] ?? 'Failed to fetch chats';
+        _errorMessage = result['error'] ?? 'fetch_chats_failed';
       }
     } catch (e) {
       _log.warning('ChatProvider', 'fetchChats failed: ${e.runtimeType}');
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -93,11 +93,11 @@ class ChatProvider with ChangeNotifier {
         _currentChat = result['chat'] as Chat;
         _errorMessage = null;
       } else {
-        _errorMessage = result['error'] ?? 'Failed to fetch chat';
+        _errorMessage = result['error'] ?? 'fetch_chat_failed';
       }
     } catch (e) {
       _log.warning('ChatProvider', 'fetchChat failed: ${e.runtimeType}');
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -149,14 +149,14 @@ class ChatProvider with ChangeNotifier {
         notifyListeners();
         return _currentChat!;
       } else {
-        _errorMessage = result['error'] ?? 'Failed to create chat';
+        _errorMessage = result['error'] ?? 'create_chat_failed';
         _isLoading = false;
         notifyListeners();
         return null;
       }
     } catch (e) {
       _log.warning('ChatProvider', 'createChat failed: ${e.runtimeType}');
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
       _isLoading = false;
       notifyListeners();
       return null;
@@ -231,14 +231,14 @@ class ChatProvider with ChangeNotifier {
       } else {
         // Roll back the optimistic message on failure.
         _rollbackOptimisticMessage(optimisticId, chatId);
-        _errorMessage = result['error'] ?? 'Failed to send message';
+        _errorMessage = result['error'] ?? 'send_message_failed';
         return false;
       }
     } catch (e) {
       // Roll back the optimistic message on error.
       _rollbackOptimisticMessage(optimisticId, chatId);
       _log.warning('ChatProvider', 'sendMessage failed: ${e.runtimeType}');
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
       return false;
     } finally {
       _isSendingMessage = false;
@@ -284,7 +284,7 @@ class ChatProvider with ChangeNotifier {
       }
     } catch (e) {
       _log.warning('ChatProvider', 'updateChatTitle failed: ${e.runtimeType}');
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
       notifyListeners();
     }
   }
@@ -310,13 +310,13 @@ class ChatProvider with ChangeNotifier {
         notifyListeners();
         return true;
       } else {
-        _errorMessage = result['error'] ?? 'Failed to delete chat';
+        _errorMessage = result['error'] ?? 'delete_chat_failed';
         notifyListeners();
         return false;
       }
     } catch (e) {
       _log.warning('ChatProvider', 'deleteChat failed: ${e.runtimeType}');
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
       notifyListeners();
       return false;
     }
@@ -348,7 +348,7 @@ class ChatProvider with ChangeNotifier {
         return true;
       }
 
-      _errorMessage = 'Failed to delete chats';
+      _errorMessage = 'delete_chats_failed';
       notifyListeners();
       return false;
     } catch (e) {
@@ -356,7 +356,7 @@ class ChatProvider with ChangeNotifier {
         'ChatProvider',
         'deleteMultipleChats failed: ${e.runtimeType}',
       );
-      _errorMessage = 'Something went wrong. Please try again.';
+      _errorMessage = 'unexpected_error';
       notifyListeners();
       return false;
     }
@@ -490,7 +490,7 @@ class ChatProvider with ChangeNotifier {
         DateTime.now().difference(_pollingStartTime!) >= _pollingTimeout) {
       _stopPolling();
       _errorMessage =
-          'The assistant took too long to respond. Please try again.';
+          'assistant_timed_out';
       notifyListeners();
     }
   }

@@ -1,6 +1,9 @@
 ---
 en:
   securities:
+    cash:
+      name: Cash
+      name_with_currency: "Cash (%{currency})"
     combobox:
       display: "%{symbol} - %{name} (%{exchange})"
       exchange_label: "%{symbol} (%{exchange})"

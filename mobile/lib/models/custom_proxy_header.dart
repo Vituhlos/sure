@@ -1,4 +1,9 @@
 class CustomProxyHeader {
+  static const nameRequired = 'name_required';
+  static const nameInvalid = 'name_invalid';
+  static const nameManaged = 'name_managed';
+  static const valueRequired = 'value_required';
+  static const valueInvalid = 'value_invalid';
   static final RegExp _headerNamePattern = RegExp(r"^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$");
   // Reject ASCII control bytes in values to block CR/LF header injection.
   static final RegExp _headerValueControlChars = RegExp(r'[\x00-\x1F\x7F]');
@@ -59,20 +64,20 @@ class CustomProxyHeader {
 
   static String? validateName(String value) {
     final trimmed = value.trim();
-    if (trimmed.isEmpty) return 'Header name is required';
+    if (trimmed.isEmpty) return nameRequired;
     if (!_headerNamePattern.hasMatch(trimmed)) {
-      return 'Use a valid HTTP header name';
+      return nameInvalid;
     }
     if (_reservedNames.contains(trimmed.toLowerCase())) {
-      return 'This header is managed by the app';
+      return nameManaged;
     }
     return null;
   }
 
   static String? validateValue(String value) {
-    if (value.trim().isEmpty) return 'Header value is required';
+    if (value.trim().isEmpty) return valueRequired;
     if (_headerValueControlChars.hasMatch(value)) {
-      return 'Header value contains control characters';
+      return valueInvalid;
     }
     return null;
   }

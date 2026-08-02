@@ -1,0 +1,6 @@
+---
+cs:
+  syncs:
+    cancel:
+      cancelled: "Synchronizace byla zrušena. Již synchronizovaná data zůstala zachována a čekající úlohy byly zastaveny."
+      not_cancellable: "Tato synchronizace již skončila."

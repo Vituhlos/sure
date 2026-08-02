@@ -1,0 +1,12 @@
+---
+en:
+  activerecord:
+    attributes:
+      enable_banking_item:
+        psu_type: User type
+    errors:
+      models:
+        enable_banking_item:
+          attributes:
+            psu_type:
+              unsupported: must be one of the types supported by the ASPSP

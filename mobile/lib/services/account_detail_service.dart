@@ -43,12 +43,12 @@ class AccountDetailService {
         };
       }
 
-      return _failureFromStatus(response.statusCode, 'Failed to fetch account');
+      return _failureFromStatus(response.statusCode, 'account_details_failed');
     } catch (e) {
       _logFailure('getAccountDetail', e);
       return {
         'success': false,
-        'error': 'Unable to load account details. Please try again later.',
+        'error': 'account_details_failed',
       };
     }
   }
@@ -83,13 +83,13 @@ class AccountDetailService {
 
       return _failureFromStatus(
         response.statusCode,
-        'Failed to fetch balances',
+        'balance_history_failed',
       );
     } catch (e) {
       _logFailure('getBalances', e);
       return {
         'success': false,
-        'error': 'Unable to load balance history. Please try again later.',
+        'error': 'balance_history_failed',
       };
     }
   }
@@ -111,7 +111,7 @@ class AccountDetailService {
       if (!firstPage.success) {
         return _failureFromStatus(
           firstPage.statusCode,
-          'Failed to fetch holdings',
+          'holdings_failed',
         );
       }
 
@@ -135,7 +135,7 @@ class AccountDetailService {
         if (!holdingsPage.success) {
           return _failureFromStatus(
             holdingsPage.statusCode,
-            'Failed to fetch holdings',
+            'holdings_failed',
           );
         }
 
@@ -159,7 +159,7 @@ class AccountDetailService {
       _logFailure('getHoldings', e);
       return {
         'success': false,
-        'error': 'Unable to load holdings. Please try again later.',
+        'error': 'holdings_failed',
       };
     }
   }

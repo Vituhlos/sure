@@ -45,7 +45,7 @@ class CoinstatsItem < ApplicationRecord
     provider = coinstats_provider
     unless provider
       Rails.logger.error "CoinstatsItem #{id} - Cannot import: CoinStats provider is not configured"
-      raise StandardError.new("CoinStats provider is not configured")
+      raise StandardError.new(I18n.t("coinstats_items.errors.provider_not_configured"))
     end
     CoinstatsItem::Importer.new(self, coinstats_provider: provider).import
   rescue => e

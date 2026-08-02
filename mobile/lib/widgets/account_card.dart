@@ -8,6 +8,7 @@ import '../utils/money_masker.dart';
 import 'money_text.dart';
 import 'sure_card.dart';
 import 'sure_icon.dart';
+import '../l10n/app_localizations.dart';
 
 class AccountCard extends StatelessWidget {
   final Account account;
@@ -59,6 +60,7 @@ class AccountCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
     final colorScheme = Theme.of(context).colorScheme;
     final accountColor = _getAccountColor(context);
     final hideAmounts = context.watch<PrivacyProvider>().hidden;
@@ -99,7 +101,7 @@ class AccountCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  account.displayAccountType,
+                  account.displayAccountType(l),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
@@ -164,7 +166,7 @@ class AccountCard extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Transactions',
+                l.accountCardTransactions,
                 style: TextStyle(color: Colors.white, fontSize: 12),
               ),
             ],

@@ -60,7 +60,7 @@ class Assistant::Function::SearchFamilyFiles < Assistant::Function
       return {
         success: false,
         error: "no_documents",
-        message: "No documents have been uploaded to the family document store yet."
+        message: I18n.t("assistant.functions.search_family_files.no_documents")
       }
     end
 
@@ -71,10 +71,7 @@ class Assistant::Function::SearchFamilyFiles < Assistant::Function
       return {
         success: false,
         error: "provider_not_configured",
-        message: "No vector store is configured. Set VECTOR_STORE_PROVIDER " \
-                 "(openai | pgvector | qdrant), configure OpenAI, or — for " \
-                 "Anthropic-only installs — enable the pgvector adapter and " \
-                 "point EMBEDDING_URI_BASE at an embeddings endpoint."
+        message: I18n.t("assistant.functions.search_family_files.provider_not_configured")
       }
     end
 
@@ -103,7 +100,7 @@ class Assistant::Function::SearchFamilyFiles < Assistant::Function
       return {
         success: false,
         error: "search_failed",
-        message: "Failed to search documents: #{error_msg}"
+        message: I18n.t("assistant.functions.search_family_files.search_failed")
       }
     end
 
@@ -123,7 +120,11 @@ class Assistant::Function::SearchFamilyFiles < Assistant::Function
     end
 
     output = if mapped.empty?
-      { success: true, results: [], message: "No matching documents found for the query." }
+      {
+        success: true,
+        results: [],
+        message: I18n.t("assistant.functions.search_family_files.no_matches")
+      }
     else
       { success: true, query: query, result_count: mapped.size, results: mapped }
     end
@@ -145,7 +146,7 @@ class Assistant::Function::SearchFamilyFiles < Assistant::Function
     {
       success: false,
       error: "search_failed",
-      message: "An error occurred while searching documents: #{e.message.truncate(200)}"
+      message: I18n.t("assistant.functions.search_family_files.search_failed")
     }
   end
 

@@ -1,0 +1,15 @@
+---
+cs:
+  password_resets:
+    disabled: "Obnovení hesla prostřednictvím Sure je vypnuté. Heslo obnovte u svého poskytovatele identity."
+    sso_only_user: "K přihlašování k tomuto účtu se používá jednotné přihlášení. Se správou přihlašovacích údajů vám pomůže správce."
+    edit:
+      title: "Nastavit nové heslo"
+    new:
+      requested: "Odkaz pro nastavení nového hesla byl odeslán e-mailem."
+      submit: "Obnovit heslo"
+      title: "Obnovit heslo"
+      back: "Zpět"
+    update:
+      invalid_token: "Odkaz pro obnovení hesla není platný."
+      success: "Heslo bylo změněno."

@@ -55,7 +55,7 @@ module AccountableResource
     # consumed with delete so a stale value can't leak into a later flow.
     return_path = safe_return_to(account_params[:return_to]) || session.delete(:return_to).presence || @account
     redirect_to return_path,
-                notice: t("accounts.create.success", type: accountable_type.name.underscore.humanize)
+                notice: t("accounts.create.success", type: t("accounts.types.#{accountable_type.name.underscore}"))
   end
 
   def update
@@ -80,7 +80,8 @@ module AccountableResource
     end
 
     @account.lock_saved_attributes!
-    redirect_back_or_to account_path(@account), notice: t("accounts.update.success", type: accountable_type.name.underscore.humanize)
+    redirect_back_or_to account_path(@account),
+                        notice: t("accounts.update.success", type: t("accounts.types.#{accountable_type.name.underscore}"))
   end
 
   private

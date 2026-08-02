@@ -64,12 +64,16 @@ class ApiKey < ApplicationRecord
   end
 
   def revoke!
-    raise ActiveRecord::RecordNotDestroyed, "Cannot revoke demo monitoring API key" if demo_monitoring_key?
+    if demo_monitoring_key?
+      raise ActiveRecord::RecordNotDestroyed, I18n.t("activerecord.errors.models.api_key.cannot_revoke_demo_key")
+    end
     update!(revoked_at: Time.current)
   end
 
   def delete
-    raise ActiveRecord::RecordNotDestroyed, "Cannot destroy demo monitoring API key" if demo_monitoring_key?
+    if demo_monitoring_key?
+      raise ActiveRecord::RecordNotDestroyed, I18n.t("activerecord.errors.models.api_key.cannot_destroy_demo_key")
+    end
     super
   end
 
@@ -99,11 +103,11 @@ class ApiKey < ApplicationRecord
 
     def scopes_not_empty
       if scopes.blank? || (scopes.is_a?(Array) && (scopes.empty? || scopes.all?(&:blank?)))
-        errors.add(:scopes, "must include at least one permission")
+        errors.add(:scopes, :blank_permissions)
       elsif scopes.is_a?(Array) && scopes.length > 1
-        errors.add(:scopes, "can only have one permission level")
+        errors.add(:scopes, :multiple_permissions)
       elsif scopes.is_a?(Array) && !%w[read read_write].include?(scopes.first)
-        errors.add(:scopes, "must be either 'read' or 'read_write'")
+        errors.add(:scopes, :invalid_permission)
       end
     end
 

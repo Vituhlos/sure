@@ -41,25 +41,8 @@ class EnableBankingAccount < ApplicationRecord
   def account_type_display
     return nil unless account_type.present?
 
-    type_mappings = {
-      "CACC" => "Current/Checking Account",
-      "SVGS" => "Savings Account",
-      "CARD" => "Card Account",
-      "CRCD" => "Credit Card",
-      "LOAN" => "Loan Account",
-      "MORT" => "Mortgage Account",
-      "ODFT" => "Overdraft Account",
-      "CASH" => "Cash Account",
-      "TRAN" => "Transacting Account",
-      "SALA" => "Salary Account",
-      "MOMA" => "Money Market Account",
-      "NREX" => "Non-Resident External Account",
-      "TAXE" => "Tax Account",
-      "TRAS" => "Cash Trading Account",
-      "ONDP" => "Overnight Deposit"
-    }
-
-    type_mappings[account_type.upcase] || account_type.titleize
+    code = account_type.upcase
+    I18n.t("enable_banking_accounts.account_types.#{code}", default: account_type)
   end
 
   CASH_ACCOUNT_TYPE_MAP = {
@@ -157,9 +140,9 @@ class EnableBankingAccount < ApplicationRecord
         snapshot[:name]
       elsif iban.present?
         # Use last 4 digits of IBAN for privacy
-        "Account ...#{iban[-4..]}"
+        "Enable Banking ····#{iban[-4..]}"
       else
-        "Enable Banking Account"
+        "Enable Banking"
       end
     end
 

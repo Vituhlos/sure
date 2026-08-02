@@ -37,13 +37,17 @@ class Assistant::Function::CreateTag < Assistant::Function
 
   def call(params = {})
     name = params["name"].to_s.strip
-    return error("name_required", "Please provide a name for the tag.") if name.blank?
+    return error("name_required", I18n.t("assistant.functions.create_tag.name_required")) if name.blank?
 
     color = params["color"].presence || Tag::COLORS.sample
     tag = family.tags.new(name: name, color: color)
 
     if tag.save
-      { success: true, tag: { id: tag.id, name: tag.name, color: tag.color }, message: "Tag '#{tag.name}' created." }
+      {
+        success: true,
+        tag: { id: tag.id, name: tag.name, color: tag.color },
+        message: I18n.t("assistant.functions.create_tag.created", name: tag.name)
+      }
     else
       error("validation_failed", tag.errors.full_messages.join("; "))
     end

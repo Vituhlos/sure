@@ -1,0 +1,8 @@
+---
+cs:
+  exchange_rates:
+    errors:
+      currencies_required: "Je nutné zadat výchozí i cílovou měnu"
+      invalid_date: "Neplatný formát data"
+      fetch_failed: "Směnný kurz se nepodařilo načíst"
+      not_found: "Směnný kurz nebyl nalezen"

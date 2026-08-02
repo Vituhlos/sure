@@ -1,4 +1,10 @@
+import 'dart:math' as math;
+
+import 'package:intl/intl.dart';
+
 import '../utils/json_parsing.dart';
+import '../l10n/app_localizations.dart';
+import '../utils/amount_parser.dart';
 
 class Account {
   final String id;
@@ -68,35 +74,44 @@ class Account {
   bool get isLiability => classification == 'liability';
 
   double get balanceAsDouble {
+    final minorUnits = balanceCents;
+    if (minorUnits != null) {
+      try {
+        final decimalDigits =
+            NumberFormat.currency(name: currency).decimalDigits ?? 2;
+        return minorUnits / math.pow(10, decimalDigits);
+      } catch (_) {
+        // Fall back to parsing the formatted value for unknown currencies.
+      }
+    }
+
     try {
-      // Remove commas and any other non-numeric characters except dots and minus signs
-      final cleanedBalance = balance.replaceAll(RegExp(r'[^\d.-]'), '');
-      return double.parse(cleanedBalance);
-    } catch (e) {
+      return AmountParser.parse(balance).value;
+    } on FormatException {
       return 0.0;
     }
   }
 
-  String get displayAccountType {
+  String displayAccountType(AppLocalizations l) {
     switch (accountType) {
       case 'depository':
-        return 'Bank Account';
+        return l.accountTypeDepository;
       case 'credit_card':
-        return 'Credit Card';
+        return l.accountTypeCreditCard;
       case 'investment':
-        return 'Investment';
+        return l.accountTypeInvestment;
       case 'loan':
-        return 'Loan';
+        return l.accountTypeLoan;
       case 'property':
-        return 'Property';
+        return l.accountTypeProperty;
       case 'vehicle':
-        return 'Vehicle';
+        return l.accountTypeVehicle;
       case 'crypto':
-        return 'Crypto';
+        return l.accountTypeCrypto;
       case 'other_asset':
-        return 'Other Asset';
+        return l.accountTypeOtherAsset;
       case 'other_liability':
-        return 'Other Liability';
+        return l.accountTypeOtherLiability;
       default:
         return accountType;
     }

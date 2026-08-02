@@ -122,8 +122,10 @@
       <%= tag.div id: dom_id(account, "entries_bulk_select"),
                 data: {
                   controller: "bulk-select",
-                  bulk_select_singular_label_value: "entry",
-                  bulk_select_plural_label_value: "entries"
+                  bulk_select_singular_label_value: t("accounts.show.activity.entry"),
+                  bulk_select_plural_label_value: t("accounts.show.activity.entries"),
+                  bulk_select_selected_label_value: t("transactions.selection_bar.selected"),
+                  bulk_select_edit_label_value: t("transactions.selection_bar.edit")
                 } do %>
         <div id="entry-selection-bar" data-bulk-select-target="selectionBar" class="flex justify-center hidden">
           <%= render "entries/selection_bar" %>

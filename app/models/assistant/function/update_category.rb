@@ -44,19 +44,23 @@ class Assistant::Function::UpdateCategory < Assistant::Function
   end
 
   def call(params = {})
-    return error("not_found", "Category with id '#{params["id"]}' not found.") unless valid_uuid?(params["id"])
+    return error("not_found", I18n.t("assistant.functions.update_category.not_found", id: params["id"])) unless valid_uuid?(params["id"])
     category = family.categories.find_by(id: params["id"])
-    return error("not_found", "Category with id '#{params["id"]}' not found.") unless category
+    return error("not_found", I18n.t("assistant.functions.update_category.not_found", id: params["id"])) unless category
 
     attrs = {}
     attrs[:name] = params["name"].to_s.strip if params["name"].present?
     attrs[:color] = params["color"].to_s.strip if params["color"].present?
     attrs[:lucide_icon] = params["icon"].to_s.strip if params["icon"].present?
 
-    return error("no_changes", "Provide at least one of name, color, or icon to update.") if attrs.empty?
+    return error("no_changes", I18n.t("assistant.functions.update_category.no_changes")) if attrs.empty?
 
     if category.update(attrs)
-      { success: true, category: serialize(category), message: "Category '#{category.name_with_parent}' updated." }
+      {
+        success: true,
+        category: serialize(category),
+        message: I18n.t("assistant.functions.update_category.updated", name: category.name_with_parent)
+      }
     else
       error("validation_failed", category.errors.full_messages.join("; "))
     end

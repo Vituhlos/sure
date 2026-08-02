@@ -8,6 +8,23 @@ en:
   ibkr_items:
     defaults:
       name: Interactive Brokers
+    transaction_names:
+      contribution: "Contribution"
+      withdrawal: "Withdrawal"
+      dividend_from: "Dividend from %{ticker}"
+      trade_commission: "Trade commission for %{ticker}"
+    syncer:
+      checking_credentials: Checking IBKR credentials...
+      importing_accounts: Importing IBKR accounts...
+      checking_account_configuration: Checking account configuration...
+      accounts_need_setup:
+        one: 1 IBKR account needs setup...
+        other: "%{count} IBKR accounts need setup..."
+      processing_holdings_and_activity: Processing holdings and activity...
+      calculating_balances: Calculating balances...
+      credentials_missing: IBKR credentials are missing.
+      credentials_invalid: Interactive Brokers credentials are missing or invalid.
+      failed: Interactive Brokers synchronization failed. Please try again.
     ibkr_item:
       deletion_in_progress: Deletion in progress
       flex_web_service: Flex Web Service

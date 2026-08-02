@@ -5,6 +5,7 @@ export default class extends Controller {
   static values = {
     csv: { type: Array, default: [] },
     amountTypeColumnKey: { type: String, default: "" },
+    selectValuePrompt: { type: String, default: "" },
   };
 
   static targets = [
@@ -89,7 +90,7 @@ export default class extends Controller {
 
     // Only add the prompt if there's no current value
     if (!currentValue) {
-      fragment.appendChild(new Option("Select value", ""));
+      fragment.appendChild(new Option(this.selectValuePromptValue, ""));
     }
 
     selectableValues.forEach((value) => {

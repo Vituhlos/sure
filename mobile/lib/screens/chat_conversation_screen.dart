@@ -9,6 +9,7 @@ import '../models/message.dart';
 import '../constants/suggested_questions.dart';
 import '../widgets/typing_indicator.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class _SendMessageIntent extends Intent {
   const _SendMessageIntent();
@@ -163,7 +164,9 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
         _messageController.text = content;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(chatProvider.errorMessage ?? l.chatConversationStartFailed),
+            content: Text(
+              localizedClientError(l, chatProvider.errorMessage),
+            ),
             backgroundColor: Colors.red,
           ),
         );
@@ -205,7 +208,8 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
 
   Future<void> _editTitle() async {
     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
-    final currentTitle = chatProvider.currentChat?.title ?? '';
+    final l = AppLocalizations.of(context);
+    final currentTitle = chatProvider.currentChat?.localizedTitle(l) ?? '';
 
     final newTitle = await showDialog<String>(
       context: context,
@@ -269,7 +273,8 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
       appBar: AppBar(
         title: Consumer<ChatProvider>(
           builder: (context, chatProvider, _) {
-            final title = chatProvider.currentChat?.title ?? AppLocalizations.of(context).chatConversationNewTitle;
+            final title = chatProvider.currentChat?.localizedTitle(l) ??
+                l.chatConversationNewTitle;
             return GestureDetector(
               onTap: _chatId != null ? _editTitle : null,
               child: Row(
@@ -321,7 +326,7 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 8),
                     Text(
-                      chatProvider.errorMessage!,
+                      localizedClientError(l, chatProvider.errorMessage),
                       style: TextStyle(color: colorScheme.onSurfaceVariant),
                       textAlign: TextAlign.center,
                     ),

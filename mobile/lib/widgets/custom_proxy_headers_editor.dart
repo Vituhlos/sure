@@ -102,6 +102,14 @@ class _HeaderRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    String? localizedValidation(String? code) => switch (code) {
+      CustomProxyHeader.nameRequired => l.proxyHeadersNameRequired,
+      CustomProxyHeader.nameInvalid => l.proxyHeadersNameInvalid,
+      CustomProxyHeader.nameManaged => l.proxyHeadersNameManaged,
+      CustomProxyHeader.valueRequired => l.proxyHeadersValueRequired,
+      CustomProxyHeader.valueInvalid => l.proxyHeadersValueInvalid,
+      _ => null,
+    };
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -113,8 +121,9 @@ class _HeaderRow extends StatelessWidget {
                 controller: draft.name,
                 label: l.proxyHeadersNameLabel,
                 hint: l.proxyHeadersNameHint,
-                validator: (value) =>
-                    CustomProxyHeader.validateName(value ?? ''),
+                validator: (value) => localizedValidation(
+                  CustomProxyHeader.validateName(value ?? ''),
+                ),
                 onChanged: (_) => onChanged(),
               ),
               const SizedBox(height: 12),
@@ -122,8 +131,9 @@ class _HeaderRow extends StatelessWidget {
                 controller: draft.value,
                 label: l.proxyHeadersValueLabel,
                 obscureText: true,
-                validator: (value) =>
-                    CustomProxyHeader.validateValue(value ?? ''),
+                validator: (value) => localizedValidation(
+                  CustomProxyHeader.validateValue(value ?? ''),
+                ),
                 onChanged: (_) => onChanged(),
               ),
             ],

@@ -1,0 +1,13 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        api_key:
+          cannot_destroy_demo_key: "Ukázkový monitorovací klíč API nelze odstranit"
+          cannot_revoke_demo_key: "Ukázkový monitorovací klíč API nelze zneplatnit"
+          attributes:
+            scopes:
+              blank_permissions: "musí obsahovat alespoň jedno oprávnění"
+              multiple_permissions: "mohou obsahovat pouze jednu úroveň oprávnění"
+              invalid_permission: "musí být „read“ nebo „read_write“"

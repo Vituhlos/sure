@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class IntroScreenPlatform extends StatelessWidget {
   const IntroScreenPlatform({super.key, this.onStartChat});
@@ -7,25 +8,25 @@ class IntroScreenPlatform extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 560),
-          child: const Card(
+          child: Card(
             child: Padding(
               padding: EdgeInsets.all(24),
               child: Column(
                 children: <Widget>[
                   Text(
-                    'Intro experience coming soon',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                    l.introComingSoon,
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
-                    "We're building a richer onboarding journey to learn about your goals, milestones, and day-to-day needs. "
-                    'For now, head over to the chat sidebar to start a conversation with Sure and let us know where you are in your financial journey.',
+                    l.introComingSoonBody,
                     textAlign: TextAlign.center,
                   ),
                 ],

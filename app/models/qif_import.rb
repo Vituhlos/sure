@@ -383,7 +383,7 @@ class QifImport < Import
 
     def trade_row_name(trn)
       type   = QifParser::BUY_LIKE_ACTIONS.include?(trn.action) ? "buy" : "sell"
-      ticker = trn.security_ticker.presence || trn.security_name || "Unknown"
+      ticker = trn.security_ticker.presence || trn.security_name || I18n.t("imports.qif_import.unknown_security")
       Trade.build_name(type, trn.qty.to_d.abs, ticker)
     end
 
@@ -392,16 +392,21 @@ class QifImport < Import
       payee    = trn.payee.presence
 
       case trn.action
-      when "Div"     then payee || (security ? "Dividend: #{security}" : "Dividend")
-      when "IntInc"  then payee || (security ? "Interest: #{security}" : "Interest")
-      when "XIn"     then payee || "Cash Transfer In"
-      when "XOut"    then payee || "Cash Transfer Out"
-      when "CGLong"  then payee || (security ? "Capital Gain (Long): #{security}" : "Capital Gain (Long)")
-      when "CGShort" then payee || (security ? "Capital Gain (Short): #{security}" : "Capital Gain (Short)")
-      when "MiscInc" then payee || trn.memo.presence || "Miscellaneous Income"
-      when "MiscExp" then payee || trn.memo.presence || "Miscellaneous Expense"
+      when "Div"     then payee || qif_transaction_name(:dividend, security:)
+      when "IntInc"  then payee || qif_transaction_name(:interest, security:)
+      when "XIn"     then payee || qif_transaction_name(:cash_transfer_in)
+      when "XOut"    then payee || qif_transaction_name(:cash_transfer_out)
+      when "CGLong"  then payee || qif_transaction_name(:capital_gain_long, security:)
+      when "CGShort" then payee || qif_transaction_name(:capital_gain_short, security:)
+      when "MiscInc" then payee || trn.memo.presence || qif_transaction_name(:miscellaneous_income)
+      when "MiscExp" then payee || trn.memo.presence || qif_transaction_name(:miscellaneous_expense)
       else                payee || trn.action
       end
+    end
+
+    def qif_transaction_name(key, security: nil)
+      suffix = security.present? ? "_with_security" : ""
+      I18n.t("imports.qif_import.transaction_names.#{key}#{suffix}", security: security)
     end
 
     def find_or_create_security(ticker: nil, exchange_operating_mic: nil)

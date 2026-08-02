@@ -160,7 +160,7 @@ class SureImport < Import
     raise MaxRowCountExceededError if row_count_exceeded?
 
     validate_sure_preflight!
-    raise NotPublishableError, "Import was uploaded but has no publishable records." unless publishable?
+    raise NotPublishableError, I18n.t("imports.sure_import.not_publishable") unless publishable?
 
     previous_status = status
     update! status: :importing

@@ -1,0 +1,42 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            parent:
+              too_deep: "nemůže mít více než dvě úrovně podkategorií"
+  models:
+    category:
+      uncategorized: "Bez kategorie"
+      other_investments: "Ostatní investice"
+      investment_contributions: "Investiční vklady"
+      defaults:
+        income: "Příjem"
+        food_and_drink: "Jídlo a nápoje"
+        groceries: "Potraviny"
+        shopping: "Nákupy"
+        transportation: "Doprava"
+        travel: "Cestování"
+        entertainment: "Zábava"
+        healthcare: "Zdravotní péče"
+        personal_care: "Osobní péče"
+        home_improvement: "Údržba a úpravy domácnosti"
+        mortgage_rent: "Hypotéka / nájem"
+        utilities: "Energie a služby"
+        subscriptions: "Předplatné"
+        insurance: "Pojištění"
+        sports_and_fitness: "Sport a fitness"
+        gifts_and_donations: "Dary a příspěvky"
+        taxes: "Daně"
+        loan_payments: "Splátky úvěrů"
+        services: "Služby"
+        fees: "Poplatky"
+        savings_and_investments: "Úspory a investice"
+      merge:
+        target: "Cílová kategorie"
+        source: "Zdrojová kategorie „%{name}“"
+        not_in_family: "%{category} nepatří do této domácnosti."
+        parent_into_subcategory: "Nadřazenou kategorii nelze sloučit do její vlastní podkategorie."
+        nested_source_into_subcategory: "Kategorii s podkategoriemi nelze sloučit do jiné podkategorie."

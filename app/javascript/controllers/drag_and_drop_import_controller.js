@@ -2,6 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["input", "form", "overlay"]
+  static values = {
+    acceptedExtensions: { type: Array, default: [".csv"] },
+    invalidFileMessage: String,
+  }
 
   dragDepth = 0
 
@@ -53,12 +57,16 @@ export default class extends Controller {
 
     if (event.dataTransfer.files.length > 0) {
       const file = event.dataTransfer.files[0]
-      // Simple validation
-      if (file.type === "text/csv" || file.name.toLowerCase().endsWith(".csv")) {
+      const normalizedName = file.name.toLowerCase()
+      const validExtension = this.acceptedExtensionsValue.some((extension) =>
+        normalizedName.endsWith(extension),
+      )
+
+      if (validExtension) {
         this.inputTarget.files = event.dataTransfer.files
         this.formTarget.requestSubmit()
       } else {
-        alert("Please upload a valid CSV file.")
+        alert(this.invalidFileMessageValue)
       }
     }
   }

@@ -119,6 +119,11 @@ class MoneyTest < ActiveSupport::TestCase
     assert_equal "1 000,12 €", Money.new(1000.12, :eur).format(locale: :pl)
   end
 
+  test "formats correctly for Czech locale" do
+    assert_equal "1\u00A0000,12\u00A0Kč", Money.new(1000.12, :czk).format(locale: :cs)
+    assert_equal "1\u00A0000,12\u00A0€", Money.new(1000.12, :eur).format(locale: :cs)
+  end
+
   test "formats correctly for Turkish locale" do
     # Turkish uses dot as thousands delimiter, comma as decimal separator, symbol after number
     assert_equal "1.000,12 ₺", Money.new(1000.12, :try).format(locale: :tr)

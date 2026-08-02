@@ -40,6 +40,7 @@ en:
       edit:
         title: "Edit SSO Provider"
         description: "Update configuration for %{label}"
+        title_with_label: "Edit %{label}"
       create:
         success: "SSO provider was successfully created."
       update:
@@ -53,6 +54,16 @@ en:
         confirm_enable: "Are you sure you want to enable this provider?"
         confirm_disable: "Are you sure you want to disable this provider?"
       form:
+        provider_configuration: "Provider Configuration"
+        js:
+          copied: "Copied!"
+          copy_failed: "Failed to copy to clipboard"
+          valid_issuer: "Valid OIDC issuer"
+          issuer_mismatch: "Issuer mismatch: discovery returned %{issuer}. Copy the issuer exactly as returned by the provider."
+          issuer_trailing_slash_mismatch: "Issuer mismatch: discovery returned %{issuer}. This is usually a trailing slash mismatch, so copy the issuer exactly as returned."
+          browser_validation_failed: "Could not validate from browser (CORS). Provider can still be saved."
+          testing: "Testing..."
+          request_failed: "Request failed: %{error}"
         basic_information: "Basic Information"
         oauth_configuration: "OAuth/OIDC Configuration"
         strategy_label: "Strategy"
@@ -128,6 +139,7 @@ en:
         manual_saml_help: "Only use these settings if your IdP doesn't provide a metadata URL."
         idp_sso_url: "IdP SSO URL"
         idp_slo_url: "IdP SLO URL (optional)"
+        idp_slo_url_placeholder: "https://idp.example.com/slo (optional)"
         idp_certificate: "IdP Certificate"
         idp_certificate_help: "X.509 certificate in PEM format. Required if not using metadata URL."
         idp_cert_fingerprint: "Certificate Fingerprint (alternative)"

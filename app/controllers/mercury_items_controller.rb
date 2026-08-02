@@ -80,8 +80,7 @@ class MercuryItemsController < ApplicationController
         mercury_provider = @mercury_item.mercury_provider
 
         unless mercury_provider.present?
-          redirect_to settings_providers_path, alert: t(".no_api_token",
-                                                        default: "Mercury API token not found. Please configure it in Provider Settings.")
+          redirect_to settings_providers_path, alert: t(".no_api_token")
           return
         end
 
@@ -114,7 +113,7 @@ class MercuryItemsController < ApplicationController
              layout: false
     rescue StandardError => e
       Rails.logger.error("Unexpected error in select_accounts: #{e.class}: #{e.message}")
-      @error_message = "An unexpected error occurred. Please try again later."
+      @error_message = t("mercury_items.errors.unexpected_error")
       @return_path = safe_return_to_path
       render partial: "mercury_items/api_error",
              locals: { error_message: @error_message, return_path: @return_path },
@@ -137,7 +136,7 @@ class MercuryItemsController < ApplicationController
     mercury_item = account_flow[:mercury_item]
 
     unless mercury_item
-      redirect_to settings_providers_path, alert: t(".select_connection", default: "Choose a Mercury connection before linking accounts.")
+      redirect_to settings_providers_path, alert: t(".select_connection")
       return
     end
 
@@ -274,8 +273,7 @@ class MercuryItemsController < ApplicationController
         mercury_provider = @mercury_item.mercury_provider
 
         unless mercury_provider.present?
-          redirect_to settings_providers_path, alert: t(".no_api_token",
-                                                        default: "Mercury API token not found. Please configure it in Provider Settings.")
+          redirect_to settings_providers_path, alert: t(".no_api_token")
           return
         end
 
@@ -311,7 +309,7 @@ class MercuryItemsController < ApplicationController
              layout: false
     rescue StandardError => e
       Rails.logger.error("Unexpected error in select_existing_account: #{e.class}: #{e.message}")
-      @error_message = "An unexpected error occurred. Please try again later."
+      @error_message = t("mercury_items.errors.unexpected_error")
       render partial: "mercury_items/api_error",
              locals: { error_message: @error_message, return_path: accounts_path },
              layout: false
@@ -341,7 +339,7 @@ class MercuryItemsController < ApplicationController
     end
 
     unless mercury_item
-      redirect_to settings_providers_path, alert: t(".select_connection", default: "Choose a Mercury connection before linking accounts.")
+      redirect_to settings_providers_path, alert: t(".select_connection")
       return
     end
 
@@ -404,7 +402,7 @@ class MercuryItemsController < ApplicationController
 
   def create
     @mercury_item = Current.family.mercury_items.build(mercury_item_params)
-    @mercury_item.name ||= "Mercury Connection"
+    @mercury_item.name ||= t("mercury_items.provider_panel.default_connection_name")
 
     if @mercury_item.save
       # Trigger initial sync to fetch accounts
@@ -533,7 +531,7 @@ class MercuryItemsController < ApplicationController
 
     # Helper to translate subtype options
     translate_subtypes = ->(type_key, subtypes_hash) {
-      subtypes_hash.map { |k, v| [ t(".subtypes.#{type_key}.#{k}", default: v[:long] || k.humanize), k ] }
+      subtypes_hash.map { |key, _value| [ t(".subtypes.#{type_key}.#{key}"), key ] }
     }
 
     # Subtype options for each account type (only include supported types)
@@ -640,7 +638,7 @@ class MercuryItemsController < ApplicationController
     rescue StandardError => e
       Rails.logger.error("Mercury account setup failed unexpectedly: #{e.class} - #{e.message}")
       Rails.logger.error(e.backtrace.first(10).join("\n"))
-      flash[:alert] = t(".creation_failed", error: "An unexpected error occurred")
+      flash[:alert] = t(".creation_failed", error: t(".unexpected_error"))
       redirect_to accounts_path, status: :see_other
       return
     end
@@ -782,7 +780,7 @@ class MercuryItemsController < ApplicationController
         {
           success: false,
           error: "select_connection",
-          error_message: t(".select_connection", default: "Choose a Mercury connection before loading accounts."),
+          error_message: t("mercury_items.mercury_item_selection_error_payload.select_connection"),
           has_accounts: nil
         }
       else
@@ -793,13 +791,11 @@ class MercuryItemsController < ApplicationController
     def render_mercury_item_selection_failure(credentialed_items:)
       if mercury_item_selection_required?(credentialed_items)
         redirect_to settings_providers_path,
-                    alert: t(".select_connection", default: "Choose a Mercury connection in Provider Settings.")
+                    alert: t("mercury_items.render_mercury_item_selection_failure.select_connection")
       elsif turbo_frame_request?
         render partial: "mercury_items/setup_required", layout: false
       else
-        redirect_to settings_providers_path,
-                    alert: t(".no_credentials_configured",
-                             default: "Please configure your Mercury API token first in Provider Settings.")
+        redirect_to settings_providers_path, alert: t("mercury_items.render_mercury_item_selection_failure.no_credentials_configured")
       end
     end
 

@@ -1,0 +1,15 @@
+---
+en:
+  demo_family_refresh_mailer:
+    completed:
+      subject: "Demo family refresh completed"
+      heading: "Demo family refresh has completed."
+      period: "Period (UTC): %{start} to %{end}"
+      old_family: "Old demo family: %{name}"
+      not_found: "not found"
+      sessions_count:
+        one: "Unique login sessions for old demo family in period: %{count}"
+        other: "Unique login sessions for old demo family in period: %{count}"
+      families_count:
+        one: "New family accounts created in period: %{count}"
+        other: "New family accounts created in period: %{count}"

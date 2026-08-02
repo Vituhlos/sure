@@ -1,0 +1,10 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        account_share:
+          attributes:
+            user:
+              already_owner: "is already the owner of this account"
+              different_family: "must be in the same family"

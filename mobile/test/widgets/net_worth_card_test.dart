@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:sure_mobile/l10n/app_localizations.dart';
 import 'package:sure_mobile/providers/privacy_provider.dart';
 import 'package:sure_mobile/theme/sure_theme.dart';
 import 'package:sure_mobile/theme/sure_tokens.dart';
@@ -12,6 +13,8 @@ void main() {
       ChangeNotifierProvider<PrivacyProvider>(
         create: (_) => PrivacyProvider(initialHidden: false),
         child: MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           theme:
               brightness == Brightness.light ? SureTheme.light : SureTheme.dark,
           home: Scaffold(

@@ -395,7 +395,11 @@ class Entry < ApplicationRecord
   def split!(splits)
     total = splits.sum { |s| s[:amount].to_d }
     unless total == amount
-      raise ActiveRecord::RecordInvalid.new(self), "Split amounts must sum to parent amount (expected #{amount}, got #{total})"
+      raise ActiveRecord::RecordInvalid.new(self), I18n.t(
+        "activerecord.errors.models.entry.attributes.base.invalid_split_total",
+        expected: amount,
+        actual: total
+      )
     end
 
     self.class.transaction do
@@ -515,7 +519,7 @@ class Entry < ApplicationRecord
     def cannot_unexclude_split_parent
       return unless excluded_changed?(from: true, to: false) && split_parent?
 
-      errors.add(:excluded, "cannot be toggled off for a split transaction")
+      errors.add(:excluded, :split_transaction_required)
     end
 
     def split_child_date_matches_parent
@@ -523,7 +527,7 @@ class Entry < ApplicationRecord
       return unless parent_entry.present?
       return if date == parent_entry.date
 
-      errors.add(:date, "must match the parent transaction date for split children")
+      errors.add(:date, :split_parent_mismatch)
     end
 
     def prevent_individual_child_deletion

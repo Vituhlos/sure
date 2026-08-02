@@ -75,4 +75,27 @@ class RuleNotificationMailerTest < ActionMailer::TestCase
       RuleNotificationMailer.digest(rule: rule, transactions: [ txn ]).deliver_now
     end
   end
+
+  test "uses the recipient's Czech locale" do
+    rule = rules(:one)
+    family = rule.family
+    admin = family.users.find_by!(role: %w[admin super_admin])
+    admin.update_column(:locale, "cs")
+    account = family.accounts.create!(name: "Mailer test", balance: 100, currency: "USD", accountable: Depository.new)
+    transaction = create_transaction(
+      date: Date.current,
+      account: account,
+      amount: 100,
+      name: "Coffee"
+    ).transaction
+
+    mail = RuleNotificationMailer.digest(rule: rule, transactions: [ transaction ])
+
+    assert_equal I18n.t(
+      "rule_notification_mailer.digest.subject",
+      locale: :cs,
+      count: 1,
+      product_name: Rails.configuration.x.product_name
+    ), mail.subject
+  end
 end

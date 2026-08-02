@@ -40,12 +40,19 @@ class Rule::ActionExecutor::SetAsTransferOrPayment < Rule::ActionExecutor
 
   private
     def build_transfer(target_account, entry)
+      transfer_type = target_account.liability? ? "payment" : "transfer"
+      direction = entry.amount.negative? ? "to" : "from"
+      account_name = entry.amount.negative? ? target_account.name : entry.account.name
+
       missing_transaction = Transaction.new(
         entry: target_account.entries.build(
           amount: entry.amount * -1,
           currency: entry.currency,
           date: entry.date,
-          name: "#{target_account.liability? ? "Payment" : "Transfer"} #{entry.amount.negative? ? "to #{target_account.name}" : "from #{entry.account.name}"}",
+          name: I18n.t(
+            "rules.generated_transfer_names.#{transfer_type}.#{direction}",
+            account: account_name
+          ),
           user_modified: true,
         )
       )

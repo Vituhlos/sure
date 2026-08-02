@@ -74,15 +74,42 @@ en:
       tfsa:
         short: TFSA
         long: Tax-Free Savings Account
+      non-registered:
+        short: Non-Registered
+        long: Non-Registered Investment Account
+      fhsa:
+        short: FHSA
+        long: First Home Savings Account
+      rdsp:
+        short: RDSP
+        long: Registered Disability Savings Plan
       resp:
         short: RESP
         long: Registered Education Savings Plan
+      dpsp:
+        short: DPSP
+        long: Deferred Profit Sharing Plan
+      prpp:
+        short: PRPP
+        long: Pooled Registered Pension Plan
       lira:
         short: LIRA
         long: Locked-In Retirement Account
       rrif:
         short: RRIF
         long: Registered Retirement Income Fund
+      lif:
+        short: LIF
+        long: Life Income Fund
+      lrif:
+        short: LRIF
+        long: Locked-In Retirement Income Fund
+      prif:
+        short: PRIF
+        long: Prescribed Registered Retirement Income Fund
+      rlif:
+        short: RLIF
+        long: Restricted Life Income Fund
       # Australia
       super:
         short: Super
@@ -91,6 +118,9 @@ en:
         short: SMSF
         long: Self-Managed Super Fund
       # Europe
+      assurance_vie:
+        short: AV
+        long: Assurance Vie
       pea:
         short: PEA
         long: Plan d'Épargne en Actions

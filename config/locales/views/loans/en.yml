@@ -35,3 +35,35 @@ en:
         type: Type
         unknown: Unknown
         edit_loan_details: "Edit loan details"
+        months:
+          one: "%{count} month"
+          other: "%{count} months"
+        years:
+          one: "%{count} year"
+          other: "%{count} years"
+    rate_types:
+      fixed: Fixed
+      variable: Variable
+      adjustable: Adjustable
+    subtypes:
+      mortgage:
+        long: Mortgage
+        short: Mortgage
+      student:
+        long: Student Loan
+        short: Student Loan
+      auto:
+        long: Auto Loan
+        short: Auto Loan
+      home_equity:
+        long: Home Equity Loan
+        short: Home Equity
+      line_of_credit:
+        long: Line of Credit
+        short: Line of Credit
+      business:
+        long: Business Loan
+        short: Business Loan
+      other:
+        long: Other Loan
+        short: Other Loan

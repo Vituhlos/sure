@@ -1,0 +1,10 @@
+---
+cs:
+  passwords:
+    edit:
+      password: "Nové heslo"
+      password_challenge: "Současné heslo"
+      submit: "Nastavit nové heslo"
+      title: "Změnit heslo"
+    update:
+      success: "Heslo bylo změněno."

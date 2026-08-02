@@ -124,13 +124,13 @@ class SessionsController < ApplicationController
     configured_providers = Rails.configuration.x.auth.sso_providers.map { |p| p[:name].to_s }
 
     unless configured_providers.include?(provider)
-      mobile_sso_redirect(error: "invalid_provider", message: "SSO provider not configured")
+      mobile_sso_redirect(error: "invalid_provider", message: t("sessions.mobile_sso.errors.invalid_provider"))
       return
     end
 
     device_params = params.permit(:device_id, :device_name, :device_type, :os_version, :app_version)
     unless device_params[:device_id].present? && device_params[:device_name].present? && device_params[:device_type].present?
-      mobile_sso_redirect(error: "missing_device_info", message: "Device information is required")
+      mobile_sso_redirect(error: "missing_device_info", message: t("sessions.mobile_sso.errors.missing_device_info"))
       return
     end
 
@@ -241,7 +241,7 @@ class SessionsController < ApplicationController
       if session[:mobile_sso].present?
         if user.otp_required?
           session.delete(:mobile_sso)
-          mobile_sso_redirect(error: "mfa_not_supported", message: "MFA users should sign in with email and password")
+          mobile_sso_redirect(error: "mfa_not_supported", message: t("sessions.mobile_sso.errors.mfa_not_supported"))
         else
           handle_mobile_sso_callback(user)
         end
@@ -315,7 +315,7 @@ class SessionsController < ApplicationController
     # Mobile SSO: redirect back to the app with error instead of web login page
     if session[:mobile_sso].present?
       session.delete(:mobile_sso)
-      mobile_sso_redirect(error: sanitized_reason, message: "SSO authentication failed")
+      mobile_sso_redirect(error: sanitized_reason, message: t("sessions.mobile_sso.errors.authentication_failed"))
       return
     end
 
@@ -344,7 +344,7 @@ class SessionsController < ApplicationController
       device_info = session.delete(:mobile_sso)
 
       unless device_info.present?
-        mobile_sso_redirect(error: "missing_session", message: "Mobile SSO session expired")
+        mobile_sso_redirect(error: "missing_session", message: t("sessions.mobile_sso.errors.session_expired"))
         return
       end
 
@@ -369,7 +369,7 @@ class SessionsController < ApplicationController
       mobile_sso_redirect(code: authorization_code)
     rescue ActiveRecord::RecordInvalid => e
       Rails.logger.warn("[Mobile SSO] Device save failed: #{e.record.errors.full_messages.join(', ')}")
-      mobile_sso_redirect(error: "device_error", message: "Unable to register device")
+      mobile_sso_redirect(error: "device_error", message: t("sessions.mobile_sso.errors.device_registration_failed"))
     end
 
     def handle_desktop_sso_callback(user)

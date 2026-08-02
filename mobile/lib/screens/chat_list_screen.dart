@@ -5,6 +5,7 @@ import '../providers/auth_provider.dart';
 import '../providers/chat_provider.dart';
 import 'chat_conversation_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class ChatListScreen extends StatefulWidget {
   const ChatListScreen({super.key});
@@ -230,7 +231,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      chatProvider.errorMessage!,
+                      localizedClientError(l, chatProvider.errorMessage),
                       style: TextStyle(color: colorScheme.onSurfaceVariant),
                       textAlign: TextAlign.center,
                     ),
@@ -304,7 +305,11 @@ class _ChatListScreenState extends State<ChatListScreen> {
                         final l = AppLocalizations.of(context);
                         return AlertDialog(
                           title: Text(l.chatListDeleteTitle),
-                          content: Text(l.chatListDeleteSingleContent(chat.title)),
+                          content: Text(
+                            l.chatListDeleteSingleContent(
+                              chat.localizedTitle(l),
+                            ),
+                          ),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(context, false),
@@ -343,7 +348,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                             ),
                           ),
                     title: Text(
-                      chat.title,
+                      chat.localizedTitle(l),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

@@ -7,6 +7,12 @@ class LocalizeTest < ActionDispatch::IntegrationTest
     assert_select "button", text: /Se connecter/i
   end
 
+  test "uses Czech for a Czech regional Accept-Language header" do
+    get new_session_url, headers: { "Accept-Language" => "cs-CZ,cs;q=0.9" }
+    assert_response :success
+    assert_select "button", text: /Přihlásit se/i
+  end
+
   test "falls back to English when Accept-Language is unsupported" do
     get new_session_url, headers: { "Accept-Language" => "ru-RU,ru;q=0.9" }
     assert_response :success
@@ -45,6 +51,14 @@ class LocalizeTest < ActionDispatch::IntegrationTest
     get preferences_onboarding_url(locale: "fr")
     assert_response :success
     assert_select "h1", text: /Configurez vos préférences/i
+  end
+
+  test "switches to Czech when the locale param is provided" do
+    sign_in users(:family_admin)
+
+    get preferences_onboarding_url(locale: "cs")
+    assert_response :success
+    assert_select "h1", text: /Nastavte předvolby/i
   end
 
   test "ignores invalid locale param and uses family locale" do

@@ -3,6 +3,17 @@ en:
   sophtron_items:
     defaults:
       name: Sophtron Connection
+    sync_status:
+      no_accounts: No accounts found
+      synced:
+        one: "%{count} account synced"
+        other: "%{count} accounts synced"
+      synced_with_setup: "%{linked} synced, %{unlinked} need setup"
+    institution_summary:
+      none: No institutions connected
+      count:
+        one: "%{count} institution"
+        other: "%{count} institutions"
     new:
       title: Connect Sophtron
       user_id: User ID
@@ -192,6 +203,7 @@ en:
       subtype_messages:
         credit_card: "Credit cards will be automatically set up as credit card accounts."
         other_asset: "No additional options needed for Other Assets."
+        crypto: "Crypto accounts track cryptocurrency holdings."
       balance: Balance
       cancel: Cancel
       choose_account_type: "Choose the correct account type for each Sophtron account:"
@@ -229,31 +241,31 @@ en:
       message: >
         To complete the setup of your Sophtron connection, please go to the Provider Settings page and follow the instructions to authorize and configure your Sophtron connection.
       go_to_provider_settings: Go to Provider Settings
-      heading: "User ID and Access Key Not Configured"  
-      description: "Before you can link Sophtron accounts, you need to configure your Sophtron User ID and Access key."  
-      setup_steps_title: "Setup Steps:"  
-      step_1_html: "Go to <strong>Settings → Bank Sync Providers</strong>"  
-      step_2_html: "Find the <strong>Sophtron</strong> section"  
-      step_3_html: "Enter your Sophtron User ID and Access key"  
-      step_4: "Return here to link your accounts"  
-    api_error:  
-      title: "Sophtron Connection Error"  
-      unable_to_connect: "Unable to connect to Sophtron"  
+      heading: "User ID and Access Key Not Configured"
+      description: "Before you can link Sophtron accounts, you need to configure your Sophtron User ID and Access key."
+      setup_steps_title: "Setup Steps:"
+      step_1_html: "Go to <strong>Settings → Bank Sync Providers</strong>"
+      step_2_html: "Find the <strong>Sophtron</strong> section"
+      step_3_html: "Enter your Sophtron User ID and Access key"
+      step_4: "Return here to link your accounts"
+    api_error:
+      title: "Sophtron Connection Error"
+      unable_to_connect: "Unable to connect to Sophtron"
       institution_unable_to_connect: "Unable to connect to the institution"
-      common_issues_title: "Common Issues:"  
-      incorrect_user_id: "Incorrect User ID: Verify your User ID in Provider Settings"  
-      invalid_access_key: "Invalid Access Key: Check your Access Key in Provider Settings"  
-      expired_credentials: "Expired Credentials: Generate a new User ID and Access Key from Sophtron"  
-      network_issue: "Network Issue: Check your internet connection"  
-      service_down: "Service Down: Sophtron API may be temporarily unavailable"  
+      common_issues_title: "Common Issues:"
+      incorrect_user_id: "Incorrect User ID: Verify your User ID in Provider Settings"
+      invalid_access_key: "Invalid Access Key: Check your Access Key in Provider Settings"
+      expired_credentials: "Expired Credentials: Generate a new User ID and Access Key from Sophtron"
+      network_issue: "Network Issue: Check your internet connection"
+      service_down: "Service Down: Sophtron API may be temporarily unavailable"
       bad_credentials: "Bank credentials: Check the username and password are correct"
       verification_code: "Verification code: Make sure the latest code was entered before it expired"
       institution_timeout: "Institution timeout: The bank login page did not finish in time"
       unsupported_mfa: "MFA support: Sophtron may not support this institution's current verification flow"
-      check_provider_settings: "Check Provider Settings"  
+      check_provider_settings: "Check Provider Settings"
       try_again: "Try connecting again"
-    select_option: "Select %{type}"  
-    subtype: "subtype"  
+    select_option: "Select %{type}"
+    subtype: "subtype"
     type: "type"
     sophtron_panel:
       setup_instructions_title: "Setup instructions:"
@@ -287,27 +299,15 @@ en:
       accounts_need_setup: "%{count} account(s) need setup"
       processing_transactions: "Processing transactions for linked accounts..."
       calculating_balances: "Calculating balances for linked accounts..."
+    importer:
+      fetch_accounts_failed: Failed to fetch accounts data
+      invalid_response_format: Invalid response format
+      missing_transactions: Missing transactions array
+      store_transactions_failed: "Failed to store transactions: %{message}"
+      parse_response_failed: Failed to parse response
+      unexpected_error: "Unexpected error: %{message}"
+      refresh_requires_mfa: Sophtron refresh requires MFA
+      refresh_failed: Sophtron refresh failed
     sophtron_entry:
       processor:
         unknown_transaction: "Unknown transaction"
-    render_connection_timeout:
-      timeout: "Connection timed out. Please try again."
-    redirect_after_account_link:
-      invalid_account_names:
-        one: "Cannot link %{count} account with blank name"
-        other: "Cannot link %{count} accounts with blank names"
-      partial_invalid: "Linked %{created_count} account(s). %{already_linked_count} already linked, %{invalid_count} had invalid names."
-      partial_success: "Linked %{created_count} account(s). %{already_linked_count} account(s) were already linked."
-      success:
-        one: "Successfully linked %{count} account."
-        other: "Successfully linked %{count} accounts."
-      all_already_linked:
-        one: "The selected account is already linked"
-        other: "All %{count} selected accounts are already linked"
-      link_failed: "Failed to link accounts"
-    start_manual_sync:
-      already_running: "A sync is already in progress."
-      no_linked_accounts: "No linked accounts available to sync."
-      api_error: "API error: %{message}"
-    start_manual_sync_for_account:
-      failed: "Failed to sync account"

@@ -1,0 +1,323 @@
+---
+cs:
+  sophtron_items:
+    defaults:
+      name: Připojení Sophtron
+    sync_status:
+      no_accounts: Nebyly nalezeny žádné účty
+      synced:
+        one: "Synchronizován %{count} účet"
+        few: "Synchronizovány %{count} účty"
+        many: "Synchronizováno %{count} účtu"
+        other: "Synchronizováno %{count} účtů"
+      synced_with_setup: "Synchronizováno: %{linked}, nastavení vyžaduje: %{unlinked}"
+    institution_summary:
+      none: Nejsou připojeny žádné instituce
+      count:
+        one: "%{count} instituce"
+        few: "%{count} instituce"
+        many: "%{count} instituce"
+        other: "%{count} institucí"
+    new:
+      title: Připojit Sophtron
+      user_id: ID uživatele
+      user_id_placeholder: vložte své ID uživatele Sophtron
+      access_key: Přístupový klíč
+      access_key_placeholder: vložte svůj přístupový klíč Sophtron
+      connect: Připojit
+      cancel: Zrušit
+    create:
+      success: Připojení Sophtron bylo úspěšně vytvořeno
+    destroy:
+      success: Připojení Sophtron bylo odebráno
+    update:
+      success: Připojení Sophtron bylo úspěšně aktualizováno. Vaše účty se znovu připojují.
+      errors:
+        blank_user_id: Zadejte ID uživatele Sophtron.
+        invalid_user_id: ID uživatele není platné. Zkontrolujte, zda jste ze služby Sophtron zkopírovali celé ID uživatele.
+        user_id_compromised: ID uživatele mohlo být prozrazeno, vypršela jeho platnost nebo už bylo použito. Vytvořte nové.
+        blank_access_key: Zadejte přístupový klíč Sophtron.
+        invalid_access_key: Přístupový klíč není platný. Zkontrolujte, zda jste ze služby Sophtron zkopírovali celý přístupový klíč.
+        access_key_compromised: Přístupový klíč mohl být prozrazen, vypršela jeho platnost nebo už byl použit. Vytvořte nový.
+        update_failed: "Aktualizace připojení se nezdařila: %{message}"
+        unexpected: Došlo k neočekávané chybě. Zkuste to znovu nebo se obraťte na podporu.
+    edit:
+      user_id:
+        label: "ID uživatele Sophtron:"
+        placeholder: "Sem vložte své ID uživatele Sophtron…"
+        help_text: "ID uživatele by mělo být dlouhý řetězec začínající písmeny a číslicemi"
+      access_key:
+        label: "Přístupový klíč Sophtron:"
+        placeholder: "Sem vložte svůj přístupový klíč Sophtron…"
+        help_text: "Přístupový klíč by měl být dlouhý řetězec začínající písmeny a číslicemi"
+    index:
+      title: Připojení Sophtron
+    loading:
+      loading_message: Načítání účtů Sophtron…
+      loading_title: Načítání
+    link_accounts:
+      all_already_linked:
+        one: "Vybraný účet (%{names}) je již propojen"
+        few: "Všechny %{count} vybrané účty jsou již propojeny: %{names}"
+        many: "Všech %{count} vybraných účtů je již propojeno: %{names}"
+        other: "Všech %{count} vybraných účtů je již propojeno: %{names}"
+      api_error: "Chyba připojení k API"
+      invalid_account_names:
+        one: "Účet bez názvu nelze propojit"
+        few: "%{count} účty bez názvu nelze propojit"
+        many: "%{count} účtu bez názvu nelze propojit"
+        other: "%{count} účtů bez názvu nelze propojit"
+      link_failed: Propojení účtů se nezdařilo
+      no_accounts_selected: Vyberte alespoň jeden účet
+      partial_invalid: "Úspěšně propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}"
+      partial_success: "Úspěšně propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})"
+      success:
+        one: "Úspěšně propojen %{count} účet"
+        few: "Úspěšně propojeny %{count} účty"
+        many: "Úspěšně propojeno %{count} účtu"
+        other: "Úspěšně propojeno %{count} účtů"
+      no_credentials_configured: "Nejprve nastavte ID uživatele a přístupový klíč API Sophtron v nastavení poskytovatelů."
+      no_accounts_found: Nebyly nalezeny žádné účty. Zkontrolujte nastavení klíče API.
+      no_access_key: Přístupový klíč Sophtron není nastaven. Nastavte jej v Nastavení.
+      no_user_id: ID uživatele Sophtron není nastaveno. Nastavte je v Nastavení.
+      no_institution_connected: Nejprve prostřednictvím Sophtron připojte bankovní instituci.
+    connect:
+      cancel: Zrušit
+      captcha: CAPTCHA
+      connect: Připojit
+      institution_search_label: Instituce
+      institution_search_placeholder: Hledat podle názvu banky
+      no_institutions: Nebyly nalezeny žádné odpovídající instituce.
+      password: Heslo
+      search: Hledat
+      search_too_short: Pro vyhledávání zadejte alespoň dva znaky.
+      title: Připojit instituci přes Sophtron
+      username: Uživatelské jméno
+    connect_institution:
+      api_error: "Připojení přes Sophtron se nezdařilo: %{message}"
+      missing_parameters: Vyberte instituci a zadejte přihlašovací údaje do banky.
+    connection_status:
+      api_error: "Chyba připojení k API: %{message}"
+      attempt: "Pokus %{attempt} z %{max}"
+      check_again: Zkontrolovat znovu
+      failed: Sophtron nemohl dokončit připojení k této instituci.
+      failed_timeout: Během přihlašování k instituci vypršel časový limit služby Sophtron.
+      timeout: Sophtron nedokončil připojení v očekávaném čase. Můžete stav zkontrolovat znovu nebo se pokusit o připojení později.
+      title: Připojování přes Sophtron
+      waiting: Sophtron se stále připojuje k vaší instituci.
+    mfa:
+      captcha: Text CAPTCHA
+      captcha_alt: CAPTCHA služby Sophtron
+      phone_confirmed: Potvrdil(a) jsem ověření telefonem
+      submit: Odeslat
+      title: Ověření Sophtron
+      token: Ověřovací kód
+    submit_mfa:
+      api_error: "Ověření se nezdařilo: %{message}"
+      invalid_security_answers: Bezpečnostní odpovědi chybějí nebo jsou příliš dlouhé.
+      unknown_challenge: Neznámý krok ověření Sophtron.
+    sophtron_item:
+      accounts_need_setup: Účty je třeba nastavit
+      automatic_sync: Použít automatickou synchronizaci
+      delete: Smazat připojení
+      deletion_in_progress: probíhá mazání…
+      error: Chyba
+      no_accounts_description: Toto připojení zatím nemá žádné propojené účty.
+      no_accounts_title: Žádné účty
+      manual_sync: Ruční synchronizace
+      manual_sync_action: Vyžadovat ruční synchronizaci
+      manual_sync_action_for: "Vyžadovat ruční synchronizaci instituce %{institution}"
+      automatic_sync_for: "Použít automatickou synchronizaci instituce %{institution}"
+      setup_action: Nastavit nové účty
+      setup_description: "Propojeno %{linked} z %{total} účtů. Vyberte typy nově importovaných účtů Sophtron."
+      setup_needed: Nové účty jsou připraveny k nastavení
+      status: "Synchronizováno před %{timestamp}"
+      status_never: Zatím nesynchronizováno
+      status_with_summary: "Poslední synchronizace před %{timestamp} • %{summary}"
+      sync_now: Synchronizovat
+      syncing: Synchronizace…
+      total: Celkem
+      unlinked: Nepropojené
+    preload_accounts:
+      preload_accounts: předběžně načíst účty
+      api_error: "Chyba připojení k API"
+      unexpected_error: "Došlo k neočekávané chybě"
+      no_credentials_configured: "Nejprve nastavte ID uživatele a přístupový klíč API Sophtron v nastavení poskytovatelů."
+      no_accounts_found: Nebyly nalezeny žádné účty. Zkontrolujte nastavení klíče API.
+      no_access_key: Přístupový klíč Sophtron není nastaven. Nastavte jej v Nastavení.
+      no_user_id: ID uživatele Sophtron není nastaveno. Nastavte je v Nastavení.
+    select_accounts:
+      accounts_selected: vybraných účtů
+      api_error: "Chyba připojení k API"
+      unexpected_error: "Došlo k neočekávané chybě"
+      cancel: Zrušit
+      configure_name_in_sophtron: Nelze importovat — nastavte název účtu ve službě Sophtron
+      description: Vyberte účty, které chcete propojit se svým účtem v aplikaci %{product_name}.
+      link_accounts: Propojit vybrané účty
+      no_accounts_found: Nebyly nalezeny žádné účty. Zkontrolujte nastavení klíče API.
+      no_access_key: Přístupový klíč Sophtron není nastaven. Nastavte jej v Nastavení.
+      no_user_id: ID uživatele Sophtron není nastaveno. Nastavte je v Nastavení.
+      no_credentials_configured: "Nejprve nastavte ID uživatele a přístupový klíč API Sophtron v nastavení poskytovatelů."
+      no_institution_connected: Nejprve prostřednictvím Sophtron připojte bankovní instituci.
+      no_name_placeholder: "(Bez názvu)"
+      title: Výběr účtů Sophtron
+    select_existing_account:
+      account_already_linked: Tento účet je již propojen s poskytovatelem
+      all_accounts_already_linked: Všechny účty Sophtron jsou již propojeny
+      api_error: "Chyba připojení k API"
+      cancel: Zrušit
+      configure_name_in_sophtron: Nelze importovat — nastavte název účtu ve službě Sophtron
+      description: Vyberte účet Sophtron, který chcete propojit s tímto účtem. Transakce se budou automaticky synchronizovat a slučovat.
+      link_account: Propojit účet
+      no_account_specified: Nebyl určen žádný účet
+      no_accounts_found: Nebyly nalezeny žádné účty Sophtron. Zkontrolujte nastavení klíče API.
+      no_access_key: Přístupový klíč Sophtron není nastaven. Nastavte jej v Nastavení.
+      no_user_id: ID uživatele Sophtron není nastaveno. Nastavte je v Nastavení.
+      no_institution_connected: Nejprve prostřednictvím Sophtron připojte bankovní instituci.
+      no_name_placeholder: "(Bez názvu)"
+      title: "Propojit účet %{account_name} se službou Sophtron"
+      unexpected_error: "Došlo k neočekávané chybě"
+    link_existing_account:
+      account_already_linked: Tento účet je již propojen s poskytovatelem
+      api_error: "Chyba připojení k API"
+      unexpected_error: "Došlo k neočekávané chybě"
+      invalid_account_name: Účet bez názvu nelze propojit
+      sophtron_account_already_linked: Tento účet Sophtron je již propojen s jiným účtem
+      sophtron_account_not_found: Účet Sophtron nebyl nalezen
+      missing_parameters: Chybí povinné parametry
+      no_institution_connected: Nejprve prostřednictvím Sophtron připojte bankovní instituci.
+      success: "Účet %{account_name} byl úspěšně propojen se službou Sophtron"
+    setup_accounts:
+      account_type_label: "Typ účtu:"
+      all_accounts_linked: "Všechny vaše účty Sophtron již byly nastaveny."
+      api_error: "Chyba připojení k API"
+      unexpected_error: "Došlo k neočekávané chybě"
+      fetch_failed: "Účty se nepodařilo načíst"
+      no_accounts_to_setup: "Žádné účty k nastavení"
+      no_access_key: "Přístupový klíč Sophtron není nastaven. Zkontrolujte nastavení připojení."
+      no_user_id: "ID uživatele Sophtron není nastaveno. Zkontrolujte nastavení připojení."
+      no_institution_connected: "Instituce Sophtron zatím není připojena."
+      account_types:
+        skip: Přeskočit tento účet
+        depository: Běžný nebo spořicí účet
+        credit_card: Kreditní karta
+        investment: Investiční účet
+        loan: Úvěr nebo hypotéka
+        other_asset: Jiné aktivum
+      subtype_labels:
+        depository: "Podtyp účtu:"
+        credit_card: ""
+        investment: "Typ investice:"
+        loan: "Typ úvěru:"
+        other_asset: ""
+      subtype_messages:
+        credit_card: "Kreditní karty budou automaticky nastaveny jako účty kreditních karet."
+        other_asset: "U jiných aktiv nejsou potřeba žádné další možnosti."
+        crypto: "Kryptoměnové účty slouží ke sledování držených kryptoměn."
+      balance: Zůstatek
+      cancel: Zrušit
+      choose_account_type: "Pro každý účet Sophtron vyberte správný typ účtu:"
+      create_accounts: Vytvořit účty
+      creating_accounts: Vytváření účtů…
+      historical_data_range: "Rozsah historických údajů:"
+      subtitle: Vyberte správné typy importovaných účtů
+      sync_start_date_help: Vyberte, jak daleko do minulosti chcete synchronizovat historii transakcí. K dispozici jsou nejvýše 3 roky historie.
+      sync_start_date_label: "Zahájit synchronizaci transakcí od:"
+      title: Nastavení účtů Sophtron
+    complete_account_setup:
+      all_skipped: "Všechny účty byly přeskočeny. Nebyl vytvořen žádný účet."
+      creation_failed: "Účty se nepodařilo vytvořit"
+      api_error: "Chyba připojení k API"
+      unexpected_error: "Došlo k neočekávané chybě"
+      no_accounts: "Nejsou zde žádné účty k nastavení."
+      success: "Počet úspěšně vytvořených účtů: %{count}."
+    sync:
+      already_running: Ruční synchronizace Sophtron již probíhá.
+      api_error: "Ruční synchronizace Sophtron se nezdařila: %{message}"
+      failed: Ruční synchronizace Sophtron se nezdařila
+      no_linked_accounts: Tato instituce Sophtron nemá žádné propojené účty k synchronizaci.
+      processing_failed: Ruční synchronizace Sophtron nemohla zpracovat aktualizované transakce.
+      success: Synchronizace byla zahájena
+    toggle_manual_sync:
+      success_disabled: Instituce Sophtron se bude synchronizovat automaticky.
+      success_enabled: Instituce Sophtron nyní vyžaduje ruční synchronizaci.
+    manual_sync_complete:
+      close: Zavřít
+      description: Aktualizace zůstatků účtů se dokončí na pozadí.
+      message: Po ověření Sophtron byly staženy transakce.
+      title: Synchronizace Sophtron byla zahájena
+    sophtron_setup_required:
+      title: Je nutné nastavit Sophtron
+      message: >
+        Chcete-li dokončit nastavení připojení Sophtron, přejděte na stránku Nastavení poskytovatelů a podle uvedených pokynů připojení Sophtron autorizujte a nastavte.
+      go_to_provider_settings: Přejít do nastavení poskytovatelů
+      heading: "ID uživatele a přístupový klíč nejsou nastaveny"
+      description: "Před propojením účtů Sophtron musíte nastavit ID uživatele a přístupový klíč Sophtron."
+      setup_steps_title: "Postup nastavení:"
+      step_1_html: "Přejděte do části <strong>Nastavení → Poskytovatelé bankovní synchronizace</strong>"
+      step_2_html: "Vyhledejte oddíl <strong>Sophtron</strong>"
+      step_3_html: "Zadejte ID uživatele a přístupový klíč Sophtron"
+      step_4: "Vraťte se sem a propojte své účty"
+    api_error:
+      title: "Chyba připojení Sophtron"
+      unable_to_connect: "Ke Sophtron se nelze připojit"
+      institution_unable_to_connect: "K instituci se nelze připojit"
+      common_issues_title: "Časté potíže:"
+      incorrect_user_id: "Nesprávné ID uživatele: ověřte své ID uživatele v nastavení poskytovatelů"
+      invalid_access_key: "Neplatný přístupový klíč: zkontrolujte svůj přístupový klíč v nastavení poskytovatelů"
+      expired_credentials: "Přihlašovací údaje s ukončenou platností: vygenerujte ve službě Sophtron nové ID uživatele a přístupový klíč"
+      network_issue: "Potíže se sítí: zkontrolujte připojení k internetu"
+      service_down: "Nedostupná služba: rozhraní API Sophtron může být dočasně nedostupné"
+      bad_credentials: "Přihlašovací údaje do banky: zkontrolujte správnost uživatelského jména a hesla"
+      verification_code: "Ověřovací kód: ujistěte se, že jste zadali nejnovější kód před vypršením jeho platnosti"
+      institution_timeout: "Časový limit instituce: přihlašovací stránka banky nedokončila načítání včas"
+      unsupported_mfa: "Podpora vícefaktorového ověření: Sophtron nemusí podporovat aktuální postup ověření této instituce"
+      check_provider_settings: "Zkontrolovat nastavení poskytovatelů"
+      try_again: "Zkusit připojení znovu"
+    select_option: "Vyberte %{type}"
+    subtype: "podtyp"
+    type: "typ"
+    sophtron_panel:
+      setup_instructions_title: "Pokyny k nastavení:"
+      setup_instructions:
+        step_1_html: 'Přihlašovací údaje k API získáte na webu <a href="%{url}" target="_blank" rel="noopener noreferrer" class="link">Sophtron</a>'
+        step_2: "Zkopírujte ID uživatele a přístupový klíč z nastavení svého účtu Sophtron"
+        step_3: "Vložte přihlašovací údaje níže a klikněte na Uložit; Sure automaticky vytvoří nebo znovu použije vaše ID zákazníka Sophtron"
+      field_descriptions_title: "Popis polí:"
+      field_descriptions:
+        user_id_html: "<strong>ID uživatele:</strong> vaše ID uživatele Sophtron"
+        access_key_html: "<strong>Přístupový klíč:</strong> váš přístupový klíč Sophtron"
+        base_url_html: "<strong>Základní adresa URL:</strong> adresa koncového bodu API Sophtron, obvykle https://api.sophtron.com/api"
+      fields:
+        user_id:
+          label: "ID uživatele"
+          placeholder_new: "Vložte své ID uživatele Sophtron"
+          placeholder_edit: "••••••••"
+        access_key:
+          label: "Přístupový klíč"
+          placeholder_new: "Vložte svůj přístupový klíč Sophtron"
+          placeholder_edit: "••••••••"
+        base_url:
+          label: "Základní adresa URL"
+          placeholder: "https://api.sophtron.com/api"
+      save: "Uložit nastavení"
+      update: "Aktualizovat nastavení"
+    syncer:
+      manual_sync_required: "Tato instituce vyžaduje ruční synchronizaci Sophtron; její účty budou při automatické synchronizaci přeskočeny."
+      importing_accounts: "Import účtů ze služby Sophtron…"
+      checking_account_configuration: "Kontrola nastavení účtů…"
+      accounts_need_setup: "Počet účtů vyžadujících nastavení: %{count}"
+      processing_transactions: "Zpracování transakcí propojených účtů…"
+      calculating_balances: "Výpočet zůstatků propojených účtů…"
+    importer:
+      fetch_accounts_failed: Údaje o účtech se nepodařilo načíst
+      invalid_response_format: Neplatný formát odpovědi
+      missing_transactions: V odpovědi chybí seznam transakcí
+      store_transactions_failed: "Transakce se nepodařilo uložit: %{message}"
+      parse_response_failed: Odpověď se nepodařilo zpracovat
+      unexpected_error: "Neočekávaná chyba: %{message}"
+      refresh_requires_mfa: Aktualizace Sophtron vyžaduje vícefaktorové ověření
+      refresh_failed: Aktualizace Sophtron se nezdařila
+    sophtron_entry:
+      processor:
+        unknown_transaction: "Neznámá transakce"

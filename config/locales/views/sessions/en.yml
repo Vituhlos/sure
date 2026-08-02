@@ -18,6 +18,14 @@ en:
       sso_failed: "Single sign-on authentication failed. Please try again."
     mobile_sso_start:
       redirecting_html: "Redirecting to sign in... <a href=\"%{url}\">Click here</a> if not redirected."
+    mobile_sso:
+      errors:
+        invalid_provider: "SSO provider not configured"
+        missing_device_info: "Device information is required"
+        mfa_not_supported: "MFA users should sign in with email and password"
+        authentication_failed: "SSO authentication failed"
+        session_expired: "Mobile SSO session expired"
+        device_registration_failed: "Unable to register device"
     new:
       email: Email address
       email_placeholder: you@example.com

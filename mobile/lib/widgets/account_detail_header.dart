@@ -176,7 +176,7 @@ class _AccountDetailHeaderState extends State<AccountDetailHeader> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _account.displayAccountType,
+                        _account.displayAccountType(l),
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: colorScheme.onSurfaceVariant,
                             ),

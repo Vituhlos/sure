@@ -1,11 +1,16 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { S } from "./strings";
+import { locale, localizeDocument, S } from "./strings";
 import { serverErrorMessage } from "./status";
 
 interface ServerEntry { url: string; label: string; }
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+localizeDocument(S.documentTitle);
+void invoke("set_app_locale", { locale }).catch(() => {
+  // The shell remains localized even if persisting the native-menu locale fails.
+});
 
 // Navigate to a server's login page exactly once. connect() and the
 // active-server-changed listener(s) can all request navigation for the same

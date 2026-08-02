@@ -3,6 +3,13 @@ import 'package:sure_mobile/utils/amount_parser.dart';
 
 void main() {
   group('AmountParser', () {
+    test('parses Czech decimal comma when locale data needs a fallback', () {
+      final amount = AmountParser.parse('1\u00a0234,56 Kč', locale: 'cs_CZ');
+
+      expect(amount.value, 1234.56);
+      expect(amount.canonicalValue, '1234.56');
+    });
+
     test('parses decimal-comma currency values', () {
       final amount = AmountParser.parse('Rp1.234,56', locale: 'id_ID');
 

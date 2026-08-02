@@ -1,0 +1,97 @@
+---
+cs:
+  family_merchants:
+    create:
+      error: "Při vytváření obchodníka došlo k chybě: %{error}"
+      success: "Nový obchodník byl vytvořen."
+    destroy:
+      success: "Obchodník byl odstraněn."
+      unlinked_success: "Obchodník byl odebrán z vašich transakcí."
+    edit:
+      title: "Upravit obchodníka"
+    form:
+      name_placeholder: "Název obchodníka"
+      website_placeholder: "Web, například starbucks.com"
+      website_hint: "Zadejte web obchodníka, aby bylo možné automaticky zobrazit jeho logo"
+    index:
+      empty: "Zatím žádní obchodníci"
+      new: "Nový obchodník"
+      import: "Importovat obchodníky"
+      merge: "Sloučit obchodníky"
+      title: "Obchodníci"
+      family_title: "Obchodníci – %{moniker}"
+      family_empty: "Zatím žádní obchodníci (%{moniker})"
+      provider_title: "Obchodníci od poskytovatelů"
+      provider_empty: "Pro %{moniker} zatím nejsou propojeni žádní obchodníci od poskytovatelů"
+      provider_read_only: "Obchodníci od poskytovatelů se synchronizují z připojených institucí a zde je nelze upravovat."
+      provider_info: "Tito obchodníci byli automaticky rozpoznáni z bankovních připojení nebo pomocí AI. Úpravou vytvoříte vlastní kopii; odebráním pouze zrušíte jejich přiřazení k transakcím."
+      enhance_info:
+        one: "%{count} obchodníkovi od poskytovatele chybí web. AI může web dohledat, zobrazit logo a sloučit duplicity."
+        few: "%{count} obchodníkům od poskytovatelů chybí web. AI může weby dohledat, zobrazit loga a sloučit duplicity."
+        many: "%{count} obchodníka od poskytovatele postrádá údaje o webu. AI je může doplnit, zobrazit loga a sloučit duplicity."
+        other: "%{count} obchodníkům od poskytovatelů chybí web. AI může weby dohledat, zobrazit loga a sloučit duplicity."
+      enhance_button: "Doplnit pomocí AI"
+      search_family_merchants: "Hledat vlastní obchodníky…"
+      search_provider_merchants: "Hledat obchodníky od poskytovatelů…"
+      no_family_merchants_found: "Nebyli nalezeni žádní odpovídající vlastní obchodníci"
+      no_provider_merchants_found: "Nebyli nalezeni žádní odpovídající obchodníci od poskytovatelů"
+      per_page: "na stránku"
+      unlinked_title: "Nedávno odebraní"
+      unlinked_info: "Tito obchodníci byli nedávno odebráni z transakcí. Pokud je do 30 dnů znovu nepřiřadíte, ze seznamu zmizí."
+      table:
+        merchant: "Obchodník"
+        actions: "Akce"
+        source: "Zdroj"
+    family_merchant:
+      edit: "Upravit"
+      delete: "Odstranit"
+      confirm_title: "Odstranit obchodníka?"
+      confirm_body: "Opravdu chcete obchodníka %{name} odstranit? Zruší se jeho přiřazení ke všem souvisejícím transakcím a akci nelze vrátit zpět."
+      confirm_button: "Odstranit obchodníka"
+    merchant:
+      confirm_accept: "Odstranit obchodníka"
+      confirm_body: "Opravdu chcete tohoto obchodníka odstranit? Zruší se jeho přiřazení ke všem souvisejícím transakcím a může se změnit obsah přehledů."
+      confirm_title: "Odstranit obchodníka?"
+      delete: "Odstranit obchodníka"
+      edit: "Upravit obchodníka"
+    merge:
+      title: "Sloučit obchodníky"
+      description: "Vyberte cílového obchodníka a obchodníky, které do něj chcete sloučit. Všechny jejich transakce se přeřadí k cílovému obchodníkovi."
+      target_label: "Sloučit do cílového obchodníka"
+      select_target: "Vyberte cílového obchodníka…"
+      sources_label: "Obchodníci ke sloučení"
+      sources_search_placeholder: "Hledat obchodníky…"
+      no_merchants_found: "Nebyli nalezeni žádní odpovídající obchodníci"
+      sources_hint: "Vybraní obchodníci se sloučí do cílového. Vlastní obchodníci se odstraní, u obchodníků od poskytovatelů se pouze zruší propojení."
+      submit: "Sloučit vybrané"
+    new:
+      title: "Nový obchodník"
+    perform_merge:
+      success:
+        one: "Úspěšně sloučen %{count} obchodník"
+        few: "Úspěšně sloučeni %{count} obchodníci"
+        many: "Úspěšně sloučeno %{count} obchodníka"
+        other: "Úspěšně sloučeno %{count} obchodníků"
+      no_merchants_selected: "Nebyli vybráni žádní obchodníci ke sloučení."
+      target_not_found: "Cílový obchodník nebyl nalezen."
+      invalid_merchants: "Byli vybráni neplatní obchodníci."
+    merge_errors:
+      target: "Cílový obchodník"
+      source: "Zdrojový obchodník „%{name}“"
+      not_in_family: "%{merchant} nepatří do této domácnosti."
+    provider_merchant:
+      edit: "Upravit"
+      remove: "Odebrat"
+      remove_confirm_title: "Odebrat obchodníka?"
+      remove_confirm_body: "Opravdu chcete odebrat obchodníka %{name}? Zruší se jeho přiřazení ke všem souvisejícím transakcím, samotný obchodník se však neodstraní."
+    provider_sources:
+      ai: "AI"
+      lunchflow: "Lunch Flow"
+      plaid: "Plaid"
+      simplefin: "SimpleFIN"
+    enhance:
+      success: "Doplňování obchodníků od poskytovatelů bylo zahájeno. Údaje se brzy doplní a duplicity se sloučí."
+      already_running: "Doplňování již probíhá. Počkejte na jeho dokončení."
+    update:
+      success: "Obchodník byl aktualizován."
+      converted_success: "Obchodník byl převeden na vlastní záznam a aktualizován."

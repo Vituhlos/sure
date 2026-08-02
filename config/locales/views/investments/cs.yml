@@ -1,0 +1,219 @@
+---
+cs:
+  investments:
+    edit:
+      edit: "Upravit: %{account}"
+    form:
+      none: "Bez podtypu"
+      subtype_prompt: "Vyberte typ investice"
+    new:
+      title: "Zadat zůstatek účtu"
+    show:
+      chart_title: "Celková hodnota"
+    subtypes:
+      brokerage:
+        short: "Brokerský účet"
+        long: "Účet u obchodníka s cennými papíry"
+      401k:
+        short: "401(k)"
+        long: "401(k)"
+      roth_401k:
+        short: "Roth 401(k)"
+        long: "Roth 401(k)"
+      403b:
+        short: "403(b)"
+        long: "403(b)"
+      457b:
+        short: "457(b)"
+        long: "457(b)"
+      tsp:
+        short: "TSP"
+        long: "Federální spořicí plán (TSP)"
+      ira:
+        short: "IRA"
+        long: "Tradiční IRA"
+      roth_ira:
+        short: "Roth IRA"
+        long: "Roth IRA"
+      sep_ira:
+        short: "SEP IRA"
+        long: "SEP IRA"
+      simple_ira:
+        short: "SIMPLE IRA"
+        long: "SIMPLE IRA"
+      529_plan:
+        short: "Plán 529"
+        long: "Spořicí plán na vzdělávání 529"
+      hsa:
+        short: "HSA"
+        long: "Zdravotní spořicí účet (HSA)"
+      ugma:
+        short: "UGMA"
+        long: "Správcovský účet UGMA"
+      utma:
+        short: "UTMA"
+        long: "Správcovský účet UTMA"
+      isa:
+        short: "ISA"
+        long: "Individuální spořicí účet (ISA)"
+      lisa:
+        short: "LISA"
+        long: "Doživotní ISA (LISA)"
+      sipp:
+        short: "SIPP"
+        long: "Individuálně spravované penzijní spoření (SIPP)"
+      workplace_pension_uk:
+        short: "Penzijní spoření"
+        long: "Zaměstnanecké penzijní spoření"
+      rrsp:
+        short: "RRSP"
+        long: "Registrovaný penzijní spořicí plán (RRSP)"
+      tfsa:
+        short: "TFSA"
+        long: "Spořicí účet osvobozený od daně (TFSA)"
+      non-registered:
+        short: "Neregistrovaný účet"
+        long: "Neregistrovaný investiční účet"
+      fhsa:
+        short: "FHSA"
+        long: "Spořicí účet na první bydlení (FHSA)"
+      rdsp:
+        short: "RDSP"
+        long: "Registrovaný spořicí plán pro osoby se zdravotním postižením (RDSP)"
+      resp:
+        short: "RESP"
+        long: "Registrovaný spořicí plán na vzdělávání (RESP)"
+      dpsp:
+        short: "DPSP"
+        long: "Odložený podíl na zisku (DPSP)"
+      prpp:
+        short: "PRPP"
+        long: "Sdružený registrovaný penzijní plán (PRPP)"
+      lira:
+        short: "LIRA"
+        long: "Vázaný penzijní účet (LIRA)"
+      rrif:
+        short: "RRIF"
+        long: "Registrovaný fond penzijních příjmů (RRIF)"
+      lif:
+        short: "LIF"
+        long: "Fond doživotních příjmů (LIF)"
+      lrif:
+        short: "LRIF"
+        long: "Vázaný fond penzijních příjmů (LRIF)"
+      prif:
+        short: "PRIF"
+        long: "Předepsaný registrovaný fond penzijních příjmů (PRIF)"
+      rlif:
+        short: "RLIF"
+        long: "Omezený fond doživotních příjmů (RLIF)"
+      super:
+        short: "Super"
+        long: "Australské penzijní spoření (Superannuation)"
+      smsf:
+        short: "SMSF"
+        long: "Samosprávný penzijní fond (SMSF)"
+      assurance_vie:
+        short: "AV"
+        long: "Assurance Vie"
+      pea:
+        short: "PEA"
+        long: "Plan d’Épargne en Actions (PEA)"
+      pillar_3a:
+        short: "Pilíř 3a"
+        long: "Soukromé penzijní spoření (pilíř 3a)"
+      riester:
+        short: "Riester"
+        long: "Riester-Rente"
+      nps:
+        short: "NPS"
+        long: "Národní penzijní systém (NPS)"
+      apy:
+        short: "APY"
+        long: "Atal Pension Yojana (APY)"
+      indian_stocks:
+        short: "Indické akcie"
+        long: "Indické akcie (účet Demat)"
+      indian_equity:
+        short: "Indické akciové investice"
+        long: "Indické akciové investice"
+      indian_etf:
+        short: "Indické ETF"
+        long: "Indické ETF"
+      life_insurance:
+        short: "Životní pojištění"
+        long: "Životní pojištění"
+      ppf:
+        short: "PPF"
+        long: "Veřejný spořicí fond (PPF)"
+      ssy:
+        short: "SSY"
+        long: "Sukanya Samriddhi Yojana (SSY)"
+      nsc:
+        short: "NSC"
+        long: "Národní spořicí certifikát (NSC)"
+      scss:
+        short: "SCSS"
+        long: "Spořicí program pro seniory (SCSS)"
+      fd:
+        short: "Termínovaný vklad"
+        long: "Termínovaný vklad (FD)"
+      rd:
+        short: "Pravidelný vklad"
+        long: "Pravidelný vklad (RD)"
+      pomis:
+        short: "POMIS"
+        long: "Měsíční výnosový program pošty (POMIS)"
+      kvp:
+        short: "KVP"
+        long: "Kisan Vikas Patra (KVP)"
+      gold_etf:
+        short: "Zlaté ETF"
+        long: "ETF zaměřené na zlato"
+      gold_mf:
+        short: "Zlatý podílový fond"
+        long: "Podílový fond zaměřený na zlato"
+      sgb:
+        short: "SGB"
+        long: "Státní zlatý dluhopis (SGB)"
+      g_sec:
+        short: "G-Sec"
+        long: "Indické státní cenné papíry (G-Sec)"
+      sdl:
+        short: "SDL"
+        long: "Úvěry na rozvoj svazových států (SDL)"
+      corporate_bond:
+        short: "Podnikový dluhopis"
+        long: "Podnikový dluhopis"
+      infrastructure_bond:
+        short: "Infrastrukturní dluhopis"
+        long: "Infrastrukturní dluhopis"
+      tax_free_bond:
+        short: "Dluhopis osvobozený od daně"
+        long: "Dluhopis osvobozený od daně"
+      pension:
+        short: "Penzijní spoření"
+        long: "Penzijní spoření"
+      retirement:
+        short: "Penzijní účet"
+        long: "Penzijní účet"
+      mutual_fund:
+        short: "Podílový fond"
+        long: "Podílový fond"
+      gold:
+        short: "Zlato"
+        long: "Zlato (fyzické nebo digitální)"
+      angel:
+        short: "Andělská investice"
+        long: "Andělská investice"
+      trust:
+        short: "Svěřenský fond"
+        long: "Svěřenský fond"
+      other:
+        short: "Jiná investice"
+        long: "Jiná investice"
+    value_tooltip:
+      cash: "Hotovost"
+      holdings: "Pozice"
+      total: "Zůstatek portfolia"
+      total_value_tooltip: "Celkový zůstatek portfolia tvoří volná hotovost dostupná k obchodování a aktuální tržní hodnota pozic."

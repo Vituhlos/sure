@@ -4,6 +4,8 @@ en:
     destroy:
       success: Your account has been deleted.
     update:
+      ai_enabled: AI Assistant has been enabled successfully.
+      ai_disabled: AI Assistant has been disabled.
       email_change_failed: Failed to change email address.
       email_change_initiated: Please check your new email address for confirmation
         instructions.

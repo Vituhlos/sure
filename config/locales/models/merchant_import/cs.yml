@@ -1,0 +1,13 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        merchant_import:
+          missing_columns: "Chybějí povinné sloupce: %{columns}"
+          duplicate_columns: "Názvy sloupců jsou po normalizaci duplicitní: %{columns}"
+  merchant_import:
+    samples:
+      coffee_shop: "Kavárna"
+      pizza_palace: "Pizzerie"
+      bookstore: "Knihkupectví"

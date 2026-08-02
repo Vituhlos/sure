@@ -5,7 +5,7 @@
 
   setup_steps_data =
     if %w[plaid plaid_eu].include?(provider_key)
-      plaid_link = link_to("Plaid Dashboard", "https://dashboard.plaid.com/team/keys", target: "_blank", rel: "noopener noreferrer", class: "text-primary font-medium underline")
+      plaid_link = link_to(t(".plaid_dashboard"), "https://dashboard.plaid.com/team/keys", target: "_blank", rel: "noopener noreferrer", class: "text-primary font-medium underline")
       step_1_key = "settings.providers.#{provider_key}_panel.step_1_html"
       [
         t(step_1_key, link: plaid_link),
@@ -27,7 +27,7 @@
   <% env_configured = configuration.fields.any? { |f| f.env_key && ENV[f.env_key].present? } %>
   <% if env_configured %>
     <p class="text-sm text-secondary">
-      Configuration can be set via environment variables or overridden below.
+      <%= t(".environment_configuration_notice") %>
     </p>
   <% end %>
 
@@ -52,12 +52,12 @@
 
         <div class="space-y-1">
           <%= form.text_field field.setting_key,
-                              label: field.label,
+                              label: t(".fields.#{provider_key}.#{field.name}.label"),
                               type: input_type,
-                              placeholder: field.default || (field.required ? "" : "Optional"),
+                              placeholder: field.default || (field.required ? "" : t(".optional")),
                               value: display_value %>
           <% if field.description.present? %>
-            <p class="text-xs text-secondary px-1"><%= field.description %></p>
+            <p class="text-xs text-secondary px-1"><%= t(".fields.#{provider_key}.#{field.name}.description") %></p>
           <% end %>
         </div>
       <% end %>

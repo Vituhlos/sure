@@ -1,0 +1,25 @@
+---
+cs:
+  activerecord:
+    attributes:
+      goal:
+        name: Název
+        target_amount: Cílová částka
+        currency: Měna
+        target_date: Termín
+        color: Barva
+        notes: Poznámky
+        state: Stav
+        linked_accounts: Propojené účty
+    errors:
+      models:
+        goal:
+          attributes:
+            base:
+              at_least_one_linked_account_required: Vyberte alespoň jeden účet pro financování cíle.
+            linked_accounts:
+              must_be_fundable: musí být peněžní nebo investiční
+              currency_mismatch: musí používat stejnou měnu
+              must_belong_to_family: musí patřit do stejné domácnosti jako cíl
+            currency:
+              locked_after_linked: po propojení cíle s účty již nelze změnit

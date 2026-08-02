@@ -1,0 +1,17 @@
+---
+cs:
+  pdf_import_mailer:
+    next_steps:
+      greeting: "Dobrý den, %{name},"
+      intro: "Dokončili jsme analýzu dokumentu PDF, který jste nahráli do aplikace %{product}."
+      document_type_label: "Typ dokumentu"
+      summary_label: "Souhrn vytvořený pomocí AI"
+      transactions_note: "Dokument pravděpodobně obsahuje transakce. Nyní je můžete získat, zkontrolovat a importovat."
+      document_stored_note: "Dokument jsme uložili pro pozdější použití. Může sloužit jako kontext v budoucích konverzacích s AI."
+      next_steps_label: "Další možnosti"
+      next_steps_intro: "Můžete provést některou z následujících akcí:"
+      option_extract_transactions: "Získat transakce z tohoto výpisu"
+      option_keep_reference: "Ponechat dokument jako podklad pro budoucí konverzace s AI"
+      option_delete: "Odstranit import, pokud jej už nepotřebujete"
+      view_import_button: "Zobrazit podrobnosti importu"
+      footer_note: "Toto je automatická zpráva. Neodpovídejte na ni."

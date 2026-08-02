@@ -25,8 +25,10 @@ export default class extends Controller {
 
   static values = {
     currency: { type: String, default: "USD" },
-    suggestedWithDate: { type: String, default: "Save {monthly}/mo across {accounts} to hit it on time." },
-    suggestedNoDate: { type: String, default: "Set a target date to project a finish line." },
+    locale: String,
+    suggestedWithDate: String,
+    suggestedNoDate: String,
+    accountCountLabels: Object,
     // Only the create form must pick an account. On edit the checkboxes are
     // populated from visible accounts only, so a goal backed by a now-hidden
     // account renders none — and the controller preserves existing links when
@@ -170,7 +172,7 @@ export default class extends Controller {
         return;
       }
       const perMonth = Math.ceil(amount / months);
-      const accountLabel = `${checkedCount} ${checkedCount === 1 ? "account" : "accounts"}`;
+      const accountLabel = this.#accountCountLabel(checkedCount);
       text = this.suggestedWithDateValue
         .replace("{monthly}", this.#money(perMonth))
         .replace("{accounts}", accountLabel);
@@ -194,14 +196,20 @@ export default class extends Controller {
 
   #money(value) {
     try {
-      return new Intl.NumberFormat(undefined, {
+      return new Intl.NumberFormat(this.localeValue || undefined, {
         style: "currency",
         currency: this.currencyValue || "USD",
         maximumFractionDigits: 0,
       }).format(value);
     } catch {
-      return `${this.currencyValue || "$"}${Math.round(value).toLocaleString()}`;
+      return `${this.currencyValue || "$"}${Math.round(value).toLocaleString(this.localeValue || undefined)}`;
     }
+  }
+
+  #accountCountLabel(count) {
+    const key = count === 1 ? "one" : count >= 2 && count <= 4 ? "few" : "other";
+    const labels = this.accountCountLabelsValue || {};
+    return (labels[key] || labels.other || String(count)).replace("{count}", String(count));
   }
 
   #monthsBetween(from, to) {

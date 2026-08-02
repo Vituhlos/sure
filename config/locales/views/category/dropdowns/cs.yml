@@ -1,0 +1,11 @@
+---
+cs:
+  category:
+    dropdowns:
+      row:
+        delete: "Odstranit kategorii"
+        edit: "Upravit kategorii"
+      show:
+        clear: "Odebrat kategorii"
+        no_categories: "Nebyly nalezeny žádné kategorie"
+        search_placeholder: "Hledat"

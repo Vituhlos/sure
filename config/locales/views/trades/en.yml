@@ -1,6 +1,16 @@
 ---
 en:
+  activerecord:
+    errors:
+      models:
+        trade:
+          attributes:
+            exchange_rate:
+              not_a_number: must be a number
   trades:
+    names:
+      buy: "Buy %{qty} shares of %{ticker}"
+      sell: "Sell %{qty} shares of %{ticker}"
     form:
       account: Transfer account (optional)
       account_prompt: Search account
@@ -56,3 +66,4 @@ en:
       sell: Sell
       settings: Settings
       type_label: Type
+      unknown: Unknown

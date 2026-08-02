@@ -1,0 +1,17 @@
+---
+cs:
+  providers:
+    property_valuation:
+      not_configured: Poskytovatel údajů o nemovitostech není nastaven.
+      missing_fields: Zadejte název a úplnou adresu v USA (ulici, město, stát a PSČ).
+      preview_expired: Platnost náhledu nemovitosti vypršela – vyhledejte adresu znovu.
+    rentcast:
+      errors:
+        no_valuation: RentCast pro tuto adresu nevrátil odhad hodnoty.
+        not_found: RentCast nenašel nemovitost odpovídající této adrese.
+    realie:
+      errors:
+        no_property: Realie pro tuto adresu nevrátil žádnou nemovitost.
+        no_valuation: Realie pro tuto nemovitost nevrátil odhad hodnoty.
+        not_found: Realie nenašel nemovitost odpovídající této adrese.
+        location_mismatch: Realie našel nemovitost v jiném městě nebo s jiným PSČ. Adresu pečlivě zkontrolujte.

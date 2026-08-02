@@ -1,0 +1,9 @@
+---
+cs:
+  other_assets:
+    edit:
+      edit: "Upravit: %{account}"
+      balance_tracking_info: "Ostatní majetek se sleduje pomocí ručně zadávaných ocenění přes volbu „Nový zůstatek“, nikoli pomocí transakcí. Peněžní toky zůstatek účtu neovlivní."
+    new:
+      title: "Zadat údaje o majetku"
+      balance_tracking_info: "Ostatní majetek se sleduje pomocí ručně zadávaných ocenění přes volbu „Nový zůstatek“, nikoli pomocí transakcí. Peněžní toky zůstatek účtu neovlivní."

@@ -1,0 +1,43 @@
+---
+cs:
+  oidc_accounts:
+    link:
+      no_pending_oidc: "Nebyl nalezen žádný rozpracovaný požadavek na ověření OIDC."
+      title_link: "Propojit účet přes OIDC"
+      title_create: "Vytvořit účet"
+      verify_heading: "Ověřte svou totožnost"
+      verify_description_html: "Chcete-li propojit účet služby %{provider}%{email_suffix}, ověřte svou totožnost zadáním hesla."
+      email_suffix_html: " (<strong>%{email}</strong>)"
+      email_label: "E-mail"
+      email_placeholder: "Zadejte e-mailovou adresu"
+      password_label: "Heslo"
+      password_placeholder: "Zadejte heslo"
+      verify_hint: "Tím se zajistí, že externí účty můžete se svým profilem propojovat pouze vy."
+      submit_link: "Propojit účet"
+      create_heading: "Vytvořit nový účet"
+      create_description_html: "Pro e-mailovou adresu <strong>%{email}</strong> nebyl nalezen žádný účet. Níže můžete vytvořit nový účet s použitím identity služby %{provider}."
+      info_email: "E-mail:"
+      info_name: "Jméno:"
+      submit_create: "Vytvořit účet"
+      submit_accept_invitation: "Přijmout pozvánku"
+      account_creation_disabled: "Vytváření účtů pomocí jednotného přihlášení je vypnuté. O vytvoření účtu požádejte správce."
+      cancel: "Zrušit"
+    create_link:
+      invalid_credentials: "Nesprávná e-mailová adresa nebo heslo"
+      no_pending_oidc: "Nebyl nalezen žádný rozpracovaný požadavek na ověření OIDC."
+    new_user:
+      no_pending_oidc: "Nebyl nalezen žádný rozpracovaný požadavek na ověření OIDC."
+      title: "Dokončit nastavení účtu"
+      heading: "Vytvořit účet"
+      description: "Potvrďte své údaje a dokončete vytvoření účtu pomocí identity služby %{provider}."
+      email_label: "E-mail od poskytovatele SSO"
+      first_name_label: "Jméno"
+      first_name_placeholder: "Zadejte jméno"
+      last_name_label: "Příjmení"
+      last_name_placeholder: "Zadejte příjmení"
+      submit: "Vytvořit účet"
+      cancel: "Zrušit"
+    create_user:
+      no_pending_oidc: "Nebyl nalezen žádný rozpracovaný požadavek na ověření OIDC."
+      account_creation_disabled: "Vytváření účtů pomocí SSO je vypnuté. Obraťte se na správce."
+      account_created: "Vítejte! Účet byl vytvořen."

@@ -1,0 +1,81 @@
+---
+cs:
+  valuations:
+    confirmation_contents:
+      investment_set_intro: "Hodnota účtu k datu %{date} se nastaví následovně:"
+      investment_update_intro: "Hodnota účtu k datu %{date} se aktualizuje následovně:"
+      value_set_sentence: "%{value_name} k datu %{date} se nastaví na %{amount}."
+      value_update_sentence: "%{value_name} k datu %{date} se aktualizuje na %{amount}."
+      total_account_value: "Celková hodnota účtu"
+      holdings_value: "Hodnota pozic"
+      brokerage_cash: "Volná hotovost"
+      account_balance: "Zůstatek účtu"
+      credit_card_balance: "Zůstatek kreditní karty"
+      loan_balance: "Zůstatek úvěru"
+      property_value: "Hodnota nemovitosti"
+      vehicle_value: "Hodnota vozidla"
+      crypto_balance: "Hodnota kryptoaktiv"
+      asset_value: "Hodnota majetku"
+      liability_balance: "Výše závazku"
+      balance: "Zůstatek"
+      recalculate_notice: "Všechny pozdější transakce a zůstatky se podle této změny přepočítají."
+    confirm_create:
+      title: "Potvrdit nový zůstatek"
+      submit: "Potvrdit"
+    confirm_update:
+      title: "Aktualizovat zůstatek"
+      submit: "Aktualizovat"
+    create:
+      account_updated: "Účet byl aktualizován."
+    update:
+      account_updated: "Účet byl aktualizován."
+      entry_updated: "Záznam byl aktualizován."
+    errors:
+      amount_required: "Je nutné zadat částku."
+    form:
+      amount: "Částka"
+      submit: "Přidat změnu zůstatku"
+    header:
+      balance: "Zůstatek"
+    index:
+      change: "Změna"
+      date: "Datum"
+      new_entry: "Nový záznam"
+      no_valuations: "Pro tento účet zatím nejsou zaznamenána žádná ocenění."
+      valuations: "Hodnota"
+      value: "Hodnota"
+    new:
+      title: "Nový zůstatek"
+      amount: "Částka"
+      submit: "Uložit zůstatek"
+    show:
+      amount: "Částka"
+      amount_label: "Hodnota účtu k datu"
+      date_label: "Datum"
+      delete: "Odstranit"
+      delete_subtitle: "Tuto akci nelze vrátit zpět."
+      delete_title: "Odstranit záznam"
+      details: "Podrobnosti"
+      name_label: "Název"
+      name_placeholder: "Zadejte název záznamu"
+      note_label: "Poznámky"
+      note_placeholder: "Přidejte další podrobnosti k tomuto záznamu"
+      overview: "Přehled"
+      settings: "Nastavení"
+      opening_balance: "Počáteční zůstatek"
+      update_value: "Aktualizovat hodnotu"
+    names:
+      opening_anchor:
+        property_or_vehicle: "Původní pořizovací cena"
+        loan: "Původní jistina"
+        account_value: "Počáteční hodnota účtu"
+        balance: "Počáteční zůstatek"
+      current_anchor:
+        property_or_vehicle: "Aktuální tržní hodnota"
+        loan: "Aktuální zůstatek úvěru"
+        account_value: "Aktuální hodnota účtu"
+        balance: "Aktuální zůstatek"
+      reconciliation:
+        value: "Ruční aktualizace hodnoty"
+        principal: "Ruční aktualizace jistiny"
+        balance: "Ruční aktualizace zůstatku"

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,20 +18,30 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta id="app-description" name="description" content="Your personal finances, your way.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="sure_mobile">
+  <meta name="apple-mobile-web-app-title" content="Sure Finances">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>sure_mobile</title>
-  <link rel="manifest" href="manifest.json">
+  <title>Sure Finances</title>
+  <link id="app-manifest" rel="manifest" href="manifest.json">
+  <script>
+    const supportedLanguage =
+      navigator.language.toLowerCase().startsWith('cs') ? 'cs' : 'en';
+    document.documentElement.lang = supportedLanguage;
+    if (supportedLanguage === 'cs') {
+      document.getElementById('app-description').content =
+        'Vaše osobní finance podle vašich představ.';
+      document.getElementById('app-manifest').href = 'manifest_cs.json';
+    }
+  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>

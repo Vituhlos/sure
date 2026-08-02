@@ -55,7 +55,7 @@ class EnableBankingItem < ApplicationRecord
   def psu_type_in_aspsp_types
     return if psu_type.blank? || aspsp_psu_types.blank?
     unless aspsp_psu_types.include?(psu_type)
-      errors.add(:psu_type, "must be one of the ASPSP supported types")
+      errors.add(:psu_type, :unsupported)
     end
   end
 
@@ -70,7 +70,7 @@ class EnableBankingItem < ApplicationRecord
   def start_authorization(aspsp_name:, redirect_url:, state: nil, psu_type: "personal",
                           aspsp_data: nil, language: nil)
     provider = enable_banking_provider
-    raise StandardError.new("Enable Banking provider is not configured") unless provider
+    raise StandardError.new(I18n.t("enable_banking_items.errors.provider_not_configured")) unless provider
 
     validated_psu_type = psu_type
     selected_method = nil
@@ -130,7 +130,7 @@ class EnableBankingItem < ApplicationRecord
   # @return [String] Redirect URL for the user
   def begin_authorization!(redirect_url:, state:, language: nil, psu_type: nil, aspsp_name: nil)
     name = aspsp_name.presence || self.aspsp_name
-    raise StandardError.new("No bank selected for this connection") if name.blank?
+    raise StandardError.new(I18n.t("enable_banking_items.errors.bank_not_selected")) if name.blank?
 
     start_authorization(
       aspsp_name: name,
@@ -145,7 +145,7 @@ class EnableBankingItem < ApplicationRecord
   # Complete the authorization flow with the code from callback
   def complete_authorization(code:)
     provider = enable_banking_provider
-    raise StandardError.new("Enable Banking provider is not configured") unless provider
+    raise StandardError.new(I18n.t("enable_banking_items.errors.provider_not_configured")) unless provider
 
     result = provider.create_session(code: code)
 
@@ -188,13 +188,13 @@ class EnableBankingItem < ApplicationRecord
     provider = enable_banking_provider
     unless provider
       Rails.logger.error "EnableBankingItem #{id} - Cannot import: Enable Banking provider is not configured"
-      raise StandardError.new("Enable Banking provider is not configured")
+      raise StandardError.new(I18n.t("enable_banking_items.errors.provider_not_configured"))
     end
 
     unless session_valid?
       Rails.logger.error "EnableBankingItem #{id} - Cannot import: Session is not valid"
       update!(status: :requires_update)
-      raise StandardError.new("Enable Banking session is not valid or has expired")
+      raise StandardError.new(I18n.t("enable_banking_items.errors.session_invalid"))
     end
 
     EnableBankingItem::Importer.new(self, enable_banking_provider: provider).import
@@ -276,11 +276,11 @@ class EnableBankingItem < ApplicationRecord
       unlinked = stats["unlinked_accounts"] || 0
 
       if total == 0
-        "No accounts found"
+        I18n.t("enable_banking_items.sync_status.no_accounts")
       elsif unlinked == 0
-        "#{linked} #{'account'.pluralize(linked)} synced"
+        I18n.t("enable_banking_items.sync_status.all_synced", count: linked)
       else
-        "#{linked} synced, #{unlinked} need setup"
+        I18n.t("enable_banking_items.sync_status.partial", linked: linked, unlinked: unlinked)
       end
     else
       total_accounts = enable_banking_accounts.count
@@ -288,11 +288,11 @@ class EnableBankingItem < ApplicationRecord
       unlinked_count = total_accounts - linked_count
 
       if total_accounts == 0
-        "No accounts found"
+        I18n.t("enable_banking_items.sync_status.no_accounts")
       elsif unlinked_count == 0
-        "#{linked_count} #{'account'.pluralize(linked_count)} synced"
+        I18n.t("enable_banking_items.sync_status.all_synced", count: linked_count)
       else
-        "#{linked_count} synced, #{unlinked_count} need setup"
+        I18n.t("enable_banking_items.sync_status.partial", linked: linked_count, unlinked: unlinked_count)
       end
     end
   end
@@ -312,11 +312,11 @@ class EnableBankingItem < ApplicationRecord
     institutions = connected_institutions
     case institutions.count
     when 0
-      aspsp_name.presence || "No institutions connected"
+      aspsp_name.presence || I18n.t("enable_banking_items.institution_summary.none")
     when 1
-      institutions.first["name"] || institutions.first["institution_name"] || "1 institution"
+      institutions.first["name"] || institutions.first["institution_name"] || I18n.t("enable_banking_items.institution_summary.count", count: 1)
     else
-      "#{institutions.count} institutions"
+      I18n.t("enable_banking_items.institution_summary.count", count: institutions.count)
     end
   end
 

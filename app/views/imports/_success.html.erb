@@ -17,7 +17,7 @@
       <div class="bg-container border border-primary rounded-lg p-4 space-y-3 text-left">
         <div class="flex items-center justify-between gap-3">
           <h2 class="text-sm font-medium text-primary"><%= t(".verification.title") %></h2>
-          <span class="text-xs font-medium text-secondary"><%= t(".verification.status.#{verification.status}", default: verification.status.humanize) %></span>
+          <span class="text-xs font-medium text-secondary"><%= t(".verification.status.#{verification.status}") %></span>
         </div>
 
         <div class="grid grid-cols-2 gap-3 text-sm">
@@ -35,7 +35,7 @@
           <div class="space-y-2">
             <% verification.mismatches_preview.each do |key, counts| %>
               <div class="flex items-center justify-between gap-3 text-xs">
-                <span class="text-secondary"><%= key.humanize %></span>
+                <span class="text-secondary"><%= dry_run_resource(key.to_sym)&.label || key %></span>
                 <span class="font-medium text-primary"><%= number_with_delimiter(counts["actual"]) %> / <%= number_with_delimiter(counts["expected"]) %></span>
               </div>
             <% end %>

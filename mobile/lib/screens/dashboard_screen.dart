@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../models/account.dart';
 import '../providers/auth_provider.dart';
@@ -20,6 +21,7 @@ import '../theme/sure_typography.dart';
 import 'transaction_form_screen.dart';
 import 'transactions_list_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -227,19 +229,12 @@ class DashboardScreenState extends State<DashboardScreen> {
   }
 
   String _formatAmount(String currency, double amount) {
-    final symbol = _getCurrencySymbol(currency);
     final isSmallAmount = amount.abs() < 1 && amount != 0;
-    final formattedAmount = amount.toStringAsFixed(isSmallAmount ? 4 : 0);
-
-    // Split into integer and decimal parts
-    final parts = formattedAmount.split('.');
-    final integerPart = parts[0].replaceAllMapped(
-      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-      (Match m) => '${m[1]},',
-    );
-
-    final finalAmount = parts.length > 1 ? '$integerPart.${parts[1]}' : integerPart;
-    return '$symbol$finalAmount $currency';
+    return NumberFormat.currency(
+      locale: Localizations.localeOf(context).toString(),
+      name: currency,
+      decimalDigits: isSmallAmount ? 4 : 0,
+    ).format(amount);
   }
 
   Set<String> _getAllCurrencies(AccountsProvider accountsProvider) {
@@ -273,29 +268,6 @@ class DashboardScreenState extends State<DashboardScreen> {
     }
 
     return accounts;
-  }
-
-  String _getCurrencySymbol(String currency) {
-    switch (currency.toUpperCase()) {
-      case 'USD':
-        return '\$';
-      case 'TWD':
-        return '\$';
-      case 'BTC':
-        return '₿';
-      case 'ETH':
-        return 'Ξ';
-      case 'EUR':
-        return '€';
-      case 'GBP':
-        return '£';
-      case 'JPY':
-        return '¥';
-      case 'CNY':
-        return '¥';
-      default:
-        return ' ';
-    }
   }
 
   Future<void> _handleAccountTap(Account account) async {
@@ -440,7 +412,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                     ),
                     const SizedBox(height: SureSpacing.md),
                     Text(
-                      accountsProvider.errorMessage!,
+                      localizedClientError(l, accountsProvider.errorMessage),
                       style: TextStyle(color: palette.textSecondary),
                       textAlign: TextAlign.center,
                     ),
@@ -596,7 +568,7 @@ class DashboardScreenState extends State<DashboardScreen> {
     });
 
     if (_groupByType) {
-      return _buildGroupedAccountsList(filteredAccounts);
+      return _buildGroupedAccountsList(filteredAccounts, l);
     }
 
     return _buildFlatAccountsList(filteredAccounts);
@@ -623,7 +595,10 @@ class DashboardScreenState extends State<DashboardScreen> {
     ];
   }
 
-  List<Widget> _buildGroupedAccountsList(List<Account> accounts) {
+  List<Widget> _buildGroupedAccountsList(
+    List<Account> accounts,
+    AppLocalizations l,
+  ) {
     // Group accounts by accountType
     final groups = <String, List<Account>>{};
     for (final account in accounts) {
@@ -637,7 +612,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       final isCollapsed = _collapsedGroups.contains(accountType);
 
       // Use first account to get display name and icon
-      final displayName = groupAccounts.first.displayAccountType;
+      final displayName = groupAccounts.first.displayAccountType(l);
 
       slivers.add(
         SliverToBoxAdapter(

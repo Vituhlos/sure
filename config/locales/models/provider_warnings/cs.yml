@@ -1,0 +1,4 @@
+---
+cs:
+  provider_warnings:
+    limited_investment_data: "Údaje o investicích od tohoto poskytovatele jsou omezené. Nejsou dostupné štítky aktivit (Nákup, Prodej, Dividenda), což může ovlivnit přesnost rozpočtu. Zvažte vytvoření pravidel, která investiční transakce vyloučí nebo zařadí do kategorií."

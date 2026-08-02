@@ -1,0 +1,8 @@
+---
+cs:
+  password_mailer:
+    password_reset:
+      cta: "Nastavit nové heslo"
+      ignore_if_not_requested: "Pokud tato žádost nepochází od vás, e-mail ignorujte."
+      request_made: "Někdo požádal o změnu hesla k vašemu účtu v aplikaci %{product_name}. Nové heslo nastavíte prostřednictvím odkazu."
+      subject: "%{product_name}: Obnovení hesla"

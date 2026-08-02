@@ -62,7 +62,7 @@ class BinanceItem::Syncer
       end
     rescue StandardError => e
       Rails.logger.error "BinanceItem::Syncer - unexpected error during sync: #{e.message}\n#{e.backtrace&.first(5)&.join("\n")}"
-      mark_failed(sync, e.message)
+      mark_failed(sync, I18n.t("binance_item.syncer.failed"))
       raise
     end
   end

@@ -6,8 +6,11 @@ en:
       subtitle: Comprehensive insights into your financial health
       export: Export CSV
       print_report: Print Report
+      period_aria: Report period
       drag_to_reorder: "Drag to reorder section"
       toggle_section: "Toggle section visibility"
+      sections_aria: Report sections
+      section_reorder_aria: "%{section} section. Press Enter or Space to grab it for reordering, then use the arrow keys to move it."
       periods:
         monthly: Monthly
         quarterly: Quarterly
@@ -50,7 +53,9 @@ en:
       remaining: Remaining
       over_by: Over by
       shared: shared
-      suggested_daily: "%{amount} suggested per day for %{days} remaining days"
+      suggested_daily:
+        one: "%{amount} suggested per day for 1 remaining day"
+        other: "%{amount} suggested per day for %{count} remaining days"
       no_budgets: No budget categories set up for this month
       status:
         good: On Track
@@ -166,7 +171,9 @@ en:
         other: "%{count} sells"
       holdings: Holdings
       sell_trades: Sell Trades
-      and_more: "+%{count} more"
+      and_more:
+        one: "+1 more"
+        other: "+%{count} more"
     investment_flows:
       title: Investment Flows
       description: Track money flowing into and out of your investment accounts through contributions and withdrawals.
@@ -246,4 +253,24 @@ en:
         category: Category
         amount: Amount
         percent: "%"
-        more_categories: "+ %{count} more categories"
+        more_categories:
+          one: "+ 1 more category"
+          other: "+ %{count} more categories"
+    exports:
+      breakdown: Breakdown
+      category: Category
+      total: Total
+      income: Income
+      expenses: Expenses
+      total_income: Total income
+      total_expenses: Total expenses
+      pdf_title: Transaction Breakdown Report
+      period: "Period: %{start} to %{end_date}"
+      no_transactions: No transactions found for this period.
+    api_errors:
+      key_required: API key is required
+      key_invalid: Invalid or expired API key
+      read_permission_required: API key does not have read permission
+      user_not_found: User not found for API key
+      context_failed: Failed to establish user context
+      family_missing: User does not have an associated family

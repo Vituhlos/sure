@@ -34,7 +34,7 @@ class IbkrItem < ApplicationRecord
 
   def import_latest_ibkr_data
     provider = ibkr_provider
-    raise StandardError, "IBKR provider is not configured" unless provider
+    raise StandardError, I18n.t("ibkr_items.syncer.credentials_invalid") unless provider
 
     IbkrItem::Importer.new(self, ibkr_provider: provider).import
   rescue => e

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth_provider.dart';
 import 'providers/accounts_provider.dart';
@@ -104,6 +105,12 @@ class SureApp extends StatelessWidget {
           onGenerateTitle: (ctx) => AppLocalizations.of(ctx).appTitle,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
+          builder: (context, child) {
+            final locale = Localizations.localeOf(context).toLanguageTag();
+            Intl.defaultLocale = locale;
+            ApiConfig.setLocale(locale);
+            return child ?? const SizedBox.shrink();
+          },
           debugShowCheckedModeBanner: false,
           navigatorObservers: TelemetryService.instance.navigatorObservers,
           theme: SureTheme.light,
@@ -137,8 +144,6 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
 
   final _upgrader = Upgrader(
     durationUntilAlertAgain: const Duration(days: 7),
-    countryCode: 'us',
-    messages: _SureUpgraderMessages(),
   );
 
   @override
@@ -327,24 +332,4 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
       },
     );
   }
-}
-
-class _SureUpgraderMessages extends UpgraderMessages {
-  @override
-  String get title => 'Update available';
-
-  @override
-  String get body =>
-      '{{appName}} {{currentAppStoreVersion}} is now available — '
-      'you have {{currentInstalledVersion}}.\n\n'
-      "What's new? Check the store for release notes.";
-
-  @override
-  String get buttonTitleUpdate => 'Update now';
-
-  @override
-  String get buttonTitleLater => 'Later';
-
-  @override
-  String get releaseNotes => '';
 }

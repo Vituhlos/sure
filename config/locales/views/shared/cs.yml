@@ -1,0 +1,52 @@
+---
+cs:
+  concerns:
+    self_hostable:
+      redis_configured: "Redis je nyní správně nakonfigurovaný. Můžete pokračovat nastavením aplikace Sure."
+  shared:
+    app_version: "Verze: %{version}"
+    preview: "Náhled"
+    sync_toast:
+      message: "K dispozici jsou nová data"
+      refresh: "Aktualizovat"
+    confirm_modal:
+      accept: "Potvrdit"
+      body_html: "<p>Toto rozhodnutí nebude možné vrátit zpět.</p>"
+      cancel: "Zrušit"
+      title: "Opravdu chcete pokračovat?"
+    money_field:
+      label: "Částka"
+    exchange_rate_tabs:
+      calculate_rate_tab: "Vypočítat směnný kurz"
+      convert_tab: "Převést podle směnného kurzu"
+      destination_amount: "Cílová částka"
+      exchange_rate: "Směnný kurz"
+      exchange_rate_help: "Zvolte způsob zadání částky."
+    syncing_notice:
+      syncing: "Probíhá synchronizace účtů…"
+    require_admin: "Tuto akci mohou provést pouze správci."
+    custom_confirm:
+      default_title: "Opravdu chcete pokračovat?"
+      default_body: "Tuto akci nebude možné vrátit zpět."
+      default_btn_text: "Potvrdit"
+      delete_title: "Odstranit „%{name}“?"
+      delete_body: "Opravdu chcete tuto položku odstranit? Akci nelze vrátit zpět."
+      delete_btn_text: "Odstranit"
+      resources:
+        account: "účet"
+        chat: "chat"
+        import: "import"
+        your_account: "váš účet"
+    family_moniker:
+      group_plural: "Skupiny"
+      group_singular: "Skupina"
+      plural: "Domácnosti"
+      singular: "Domácnost"
+    trend_change:
+      no_change: "beze změny"
+    cancel: "Zrušit"
+    transaction_tabs:
+      aria: "Typ transakce"
+      expense: "Výdaj"
+      income: "Příjem"
+      transfer: "Převod"

@@ -36,9 +36,9 @@ class BrexAccount < ApplicationRecord
     kind = kind_for(data)
 
     if kind == "card"
-      data[:name].presence || I18n.t("brex_items.default_card_name", default: "Brex Card")
+      data[:name].presence || I18n.t("brex_items.default_card_name")
     else
-      data[:name].presence || data[:display_name].presence || I18n.t("brex_items.default_cash_name", id: data[:id], default: "Brex Cash #{data[:id]}")
+      data[:name].presence || data[:display_name].presence || I18n.t("brex_items.default_cash_name", id: data[:id])
     end
   end
 

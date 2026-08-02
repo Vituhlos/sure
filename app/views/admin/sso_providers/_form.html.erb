@@ -18,7 +18,20 @@
   </div>
 <% end %>
 
-<%= styled_form_with model: [:admin, sso_provider], class: "space-y-6", data: { controller: "admin-sso-form" } do |form| %>
+<%= styled_form_with model: [:admin, sso_provider],
+                     class: "space-y-6",
+                     data: {
+                       controller: "admin-sso-form",
+                       admin_sso_form_copied_value: t("admin.sso_providers.form.js.copied"),
+                       admin_sso_form_copy_failed_value: t("admin.sso_providers.form.js.copy_failed"),
+                       admin_sso_form_valid_issuer_value: t("admin.sso_providers.form.js.valid_issuer"),
+                       admin_sso_form_issuer_mismatch_value: t("admin.sso_providers.form.js.issuer_mismatch"),
+                       admin_sso_form_issuer_trailing_slash_mismatch_value: t("admin.sso_providers.form.js.issuer_trailing_slash_mismatch"),
+                       admin_sso_form_browser_validation_failed_value: t("admin.sso_providers.form.js.browser_validation_failed"),
+                       admin_sso_form_testing_value: t("admin.sso_providers.form.js.testing"),
+                       admin_sso_form_test_connection_value: t("admin.sso_providers.form.test_connection"),
+                       admin_sso_form_request_failed_value: t("admin.sso_providers.form.js.request_failed")
+                     } do |form| %>
   <div class="space-y-4">
     <h3 class="font-medium text-primary"><%= t("admin.sso_providers.form.basic_information") %></h3>
 
@@ -138,7 +151,7 @@
           <input type="text" name="sso_provider[settings][idp_slo_url]"
                  value="<%= sso_provider.settings&.dig("idp_slo_url") %>"
                  class="w-full px-3 py-2 border border-primary rounded-lg text-sm"
-                 placeholder="https://idp.example.com/slo (optional)"
+                 placeholder="<%= t("admin.sso_providers.form.idp_slo_url_placeholder") %>"
                  autocomplete="off">
         </div>
 

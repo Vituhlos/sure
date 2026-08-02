@@ -342,7 +342,7 @@ class ReportsController < ApplicationController
         expenses = income_statement.expense_totals(period: period).total
 
         trends << {
-          month: month_start.strftime("%b %Y"),
+          month: I18n.l(month_start, format: :short_month_year),
           is_current_month: (month_start.month == Date.current.month && month_start.year == Date.current.year),
           income: income,
           expenses: expenses,
@@ -403,7 +403,7 @@ class ReportsController < ApplicationController
 
       # Helper to initialize a subcategory hash
       init_subcategory = ->(category) do
-        { category_id: category.id, category_name: category.name, category_color: category.color, category_icon: category.lucide_icon, total: 0, count: 0 }
+        { category_id: category.id, category_name: category.display_name, category_color: category.color, category_icon: category.lucide_icon, total: 0, count: 0 }
       end
 
       # Helper to process an entry (transaction or trade)
@@ -419,16 +419,16 @@ class ReportsController < ApplicationController
           # Uncategorized or Other Investments (for trades)
           if is_trade
             parent_key = [ :other_investments, type ]
-            grouped_data[parent_key] ||= init_category_group.call(:other_investments, Category.other_investments.name, Category.other_investments.color, Category.other_investments.lucide_icon, type)
+            grouped_data[parent_key] ||= init_category_group.call(:other_investments, Category.other_investments.display_name, Category.other_investments.color, Category.other_investments.lucide_icon, type)
           else
             parent_key = [ :uncategorized, type ]
-            grouped_data[parent_key] ||= init_category_group.call(:uncategorized, Category.uncategorized.name, Category.uncategorized.color, Category.uncategorized.lucide_icon, type)
+            grouped_data[parent_key] ||= init_category_group.call(:uncategorized, Category.uncategorized.display_name, Category.uncategorized.color, Category.uncategorized.lucide_icon, type)
           end
         elsif category.parent_id.present?
           # This is a subcategory - group under parent
           parent = category.parent
           parent_key = [ parent.id, type ]
-          grouped_data[parent_key] ||= init_category_group.call(parent.id, parent.name, parent.color || Category::UNCATEGORIZED_COLOR, parent.lucide_icon, type)
+          grouped_data[parent_key] ||= init_category_group.call(parent.id, parent.display_name, parent.color || Category::UNCATEGORIZED_COLOR, parent.lucide_icon, type)
 
           # Add to subcategory
           grouped_data[parent_key][:subcategories][category.id] ||= init_subcategory.call(category)
@@ -437,7 +437,7 @@ class ReportsController < ApplicationController
         else
           # This is a root category (no parent)
           parent_key = [ category.id, type ]
-          grouped_data[parent_key] ||= init_category_group.call(category.id, category.name, category.color || Category::UNCATEGORIZED_COLOR, category.lucide_icon, type)
+          grouped_data[parent_key] ||= init_category_group.call(category.id, category.display_name, category.color || Category::UNCATEGORIZED_COLOR, category.lucide_icon, type)
         end
 
         grouped_data[parent_key][:count] += 1
@@ -740,7 +740,7 @@ class ReportsController < ApplicationController
         entry = transaction.entry
         is_expense = entry.amount > 0
         type = is_expense ? "expense" : "income"
-        category_name = transaction.category&.name || "Uncategorized"
+        category_name = transaction.category&.display_name || t("reports.transactions_breakdown.table.uncategorized")
         month_key = entry.date.beginning_of_month
 
         # Convert to family currency
@@ -783,13 +783,13 @@ class ReportsController < ApplicationController
 
       CSV.generate do |csv|
         # Build header row: Category + Month columns + Total
-        month_headers = @export_data[:months].map { |m| m.strftime("%b %Y") }
-        header_row = [ "Category" ] + month_headers + [ "Total" ]
+        month_headers = export_month_headers
+        header_row = [ t("reports.exports.category") ] + month_headers + [ t("reports.exports.total") ]
         csv << header_row
 
         # Income section
         if @export_data[:income].any?
-          csv << [ "INCOME" ] + Array.new(month_headers.length + 1, "")
+          csv << [ t("reports.exports.income") ] + Array.new(month_headers.length + 1, "")
 
           @export_data[:income].each do |category_data|
             row = [ category_data[:category] ]
@@ -806,7 +806,7 @@ class ReportsController < ApplicationController
           end
 
           # Income totals row
-          totals_row = [ "TOTAL INCOME" ]
+          totals_row = [ t("reports.exports.total_income") ]
           @export_data[:months].each do |month|
             month_total = @export_data[:income].sum { |c| c[:months][month] || 0 }
             totals_row << Money.new(month_total, Current.family.currency).format
@@ -821,7 +821,7 @@ class ReportsController < ApplicationController
 
         # Expenses section
         if @export_data[:expenses].any?
-          csv << [ "EXPENSES" ] + Array.new(month_headers.length + 1, "")
+          csv << [ t("reports.exports.expenses") ] + Array.new(month_headers.length + 1, "")
 
           @export_data[:expenses].each do |category_data|
             row = [ category_data[:category] ]
@@ -838,7 +838,7 @@ class ReportsController < ApplicationController
           end
 
           # Expenses totals row
-          totals_row = [ "TOTAL EXPENSES" ]
+          totals_row = [ t("reports.exports.total_expenses") ]
           @export_data[:months].each do |month|
             month_total = @export_data[:expenses].sum { |c| c[:months][month] || 0 }
             totals_row << Money.new(month_total, Current.family.currency).format
@@ -857,15 +857,15 @@ class ReportsController < ApplicationController
       workbook = package.workbook
       bold_style = workbook.styles.add_style(b: true)
 
-      workbook.add_worksheet(name: "Breakdown") do |sheet|
+      workbook.add_worksheet(name: t("reports.exports.breakdown")) do |sheet|
         # Build header row: Category + Month columns + Total
-        month_headers = @export_data[:months].map { |m| m.strftime("%b %Y") }
-        header_row = [ "Category" ] + month_headers + [ "Total" ]
+        month_headers = export_month_headers
+        header_row = [ t("reports.exports.category") ] + month_headers + [ t("reports.exports.total") ]
         sheet.add_row header_row, style: bold_style
 
         # Income section
         if @export_data[:income].any?
-          sheet.add_row [ "INCOME" ] + Array.new(month_headers.length + 1, ""), style: bold_style
+          sheet.add_row [ t("reports.exports.income") ] + Array.new(month_headers.length + 1, ""), style: bold_style
 
           @export_data[:income].each do |category_data|
             row = [ category_data[:category] ]
@@ -882,7 +882,7 @@ class ReportsController < ApplicationController
           end
 
           # Income totals row
-          totals_row = [ "TOTAL INCOME" ]
+          totals_row = [ t("reports.exports.total_income") ]
           @export_data[:months].each do |month|
             month_total = @export_data[:income].sum { |c| c[:months][month] || 0 }
             totals_row << Money.new(month_total, Current.family.currency).format
@@ -897,7 +897,7 @@ class ReportsController < ApplicationController
 
         # Expenses section
         if @export_data[:expenses].any?
-          sheet.add_row [ "EXPENSES" ] + Array.new(month_headers.length + 1, ""), style: bold_style
+          sheet.add_row [ t("reports.exports.expenses") ] + Array.new(month_headers.length + 1, ""), style: bold_style
 
           @export_data[:expenses].each do |category_data|
             row = [ category_data[:category] ]
@@ -914,7 +914,7 @@ class ReportsController < ApplicationController
           end
 
           # Expenses totals row
-          totals_row = [ "TOTAL EXPENSES" ]
+          totals_row = [ t("reports.exports.total_expenses") ]
           @export_data[:months].each do |month|
             month_total = @export_data[:expenses].sum { |c| c[:months][month] || 0 }
             totals_row << Money.new(month_total, Current.family.currency).format
@@ -932,18 +932,22 @@ class ReportsController < ApplicationController
       require "prawn"
 
       Prawn::Document.new(page_layout: :landscape) do |pdf|
-        pdf.text "Transaction Breakdown Report", size: 20, style: :bold
-        pdf.text "Period: #{@start_date.strftime('%b %-d, %Y')} to #{@end_date.strftime('%b %-d, %Y')}", size: 12
+        pdf.text t("reports.exports.pdf_title"), size: 20, style: :bold
+        pdf.text t(
+          "reports.exports.period",
+          start: I18n.l(@start_date, format: :long),
+          end_date: I18n.l(@end_date, format: :long)
+        ), size: 12
         pdf.move_down 20
 
         if @export_data[:income].any? || @export_data[:expenses].any?
           # Build header row
-          month_headers = @export_data[:months].map { |m| m.strftime("%b %Y") }
-          header_row = [ "Category" ] + month_headers + [ "Total" ]
+          month_headers = export_month_headers
+          header_row = [ t("reports.exports.category") ] + month_headers + [ t("reports.exports.total") ]
 
           # Income section
           if @export_data[:income].any?
-            pdf.text "INCOME", size: 14, style: :bold
+            pdf.text t("reports.exports.income"), size: 14, style: :bold
             pdf.move_down 10
 
             income_table_data = [ header_row ]
@@ -961,7 +965,7 @@ class ReportsController < ApplicationController
             end
 
             # Income totals row
-            totals_row = [ "TOTAL INCOME" ]
+            totals_row = [ t("reports.exports.total_income") ]
             @export_data[:months].each do |month|
               month_total = @export_data[:income].sum { |c| c[:months][month] || 0 }
               totals_row << Money.new(month_total, Current.family.currency).format
@@ -985,7 +989,7 @@ class ReportsController < ApplicationController
 
           # Expenses section
           if @export_data[:expenses].any?
-            pdf.text "EXPENSES", size: 14, style: :bold
+            pdf.text t("reports.exports.expenses"), size: 14, style: :bold
             pdf.move_down 10
 
             expenses_table_data = [ header_row ]
@@ -1003,7 +1007,7 @@ class ReportsController < ApplicationController
             end
 
             # Expenses totals row
-            totals_row = [ "TOTAL EXPENSES" ]
+            totals_row = [ t("reports.exports.total_expenses") ]
             @export_data[:months].each do |month|
               month_total = @export_data[:expenses].sum { |c| c[:months][month] || 0 }
               totals_row << Money.new(month_total, Current.family.currency).format
@@ -1023,7 +1027,7 @@ class ReportsController < ApplicationController
             end
           end
         else
-          pdf.text "No transactions found for this period.", size: 12
+          pdf.text t("reports.exports.no_transactions"), size: 12
         end
       end.render
     end
@@ -1048,20 +1052,20 @@ class ReportsController < ApplicationController
       api_key_value = params[:api_key] || request.headers["X-Api-Key"]
 
       unless api_key_value
-        render plain: "API key is required", status: :unauthorized
+        render plain: t("reports.api_errors.key_required"), status: :unauthorized
         return false
       end
 
       @api_key = ApiKey.find_by_value(api_key_value)
 
       unless @api_key && @api_key.active?
-        render plain: "Invalid or expired API key", status: :unauthorized
+        render plain: t("reports.api_errors.key_invalid"), status: :unauthorized
         return false
       end
 
       # Check if API key has read permissions
       unless @api_key.scopes&.include?("read") || @api_key.scopes&.include?("read_write")
-        render plain: "API key does not have read permission", status: :forbidden
+        render plain: t("reports.api_errors.read_permission_required"), status: :forbidden
         return false
       end
 
@@ -1078,12 +1082,12 @@ class ReportsController < ApplicationController
 
     def setup_current_context_for_api_key
       unless @current_user
-        render plain: "User not found for API key", status: :internal_server_error
+        render plain: t("reports.api_errors.user_not_found"), status: :internal_server_error
         return false
       end
 
       unless @current_user.active?
-        render plain: "Invalid or expired API key", status: :unauthorized
+        render plain: t("reports.api_errors.key_invalid"), status: :unauthorized
         return false
       end
 
@@ -1097,17 +1101,24 @@ class ReportsController < ApplicationController
 
       # Verify the delegation chain works
       unless Current.user
-        render plain: "Failed to establish user context", status: :internal_server_error
+        render plain: t("reports.api_errors.context_failed"), status: :internal_server_error
         return false
       end
 
       # Ensure we have a valid family context
       unless Current.family
-        render plain: "User does not have an associated family", status: :internal_server_error
+        render plain: t("reports.api_errors.family_missing"), status: :internal_server_error
         return false
       end
 
+      requested_locale = Current.user.locale.presence || Current.family.locale.presence
+      I18n.locale = requested_locale if requested_locale && I18n.available_locales.include?(requested_locale.to_sym)
+
       true
+    end
+
+    def export_month_headers
+      @export_data[:months].map { |month| I18n.l(month, format: :short_month_year) }
     end
 
     def build_period_navigation

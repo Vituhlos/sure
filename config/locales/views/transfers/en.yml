@@ -1,6 +1,10 @@
 ---
 en:
   transfers:
+    fee_name: "Transfer fee — %{transfer}"
+    account_links:
+      missing_account: "Data error: Missing account"
+      transfer_id: "Transfer ID: %{id}"
     create:
       success: Transfer created
     destroy:

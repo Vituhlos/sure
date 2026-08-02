@@ -1,0 +1,93 @@
+---
+cs:
+  binance_items:
+    transaction_names:
+      buy: "Nákup %{quantity} %{symbol}"
+      sell: "Prodej %{quantity} %{symbol}"
+      p2p_payment: "P2P platba (%{currency})"
+      p2p_buy: "P2P nákup %{quantity} %{symbol}"
+      p2p_sell: "P2P prodej %{quantity} %{symbol}"
+      p2p_receipt: "P2P příjem (%{currency})"
+    create:
+      default_name: "Binance"
+      success: "Připojení k Binance bylo úspěšné. Účet se nyní synchronizuje."
+    update:
+      success: "Nastavení Binance bylo úspěšně aktualizováno."
+    destroy:
+      success: "Připojení k Binance bylo zařazeno k odstranění."
+    setup_accounts:
+      title: "Import účtu Binance"
+      subtitle: "Vyberte portfolia, která chcete sledovat"
+      instructions: "Vyberte portfolia Binance, která chcete importovat. Zobrazují se pouze portfolia s nenulovým zůstatkem."
+      no_accounts: "Všechny účty už byly importovány."
+      accounts_count:
+        one: "K dispozici je %{count} účet"
+        few: "K dispozici jsou %{count} účty"
+        many: "K dispozici je %{count} účtu"
+        other: "K dispozici je %{count} účtů"
+      select_all: "Vybrat vše"
+      import_selected: "Importovat vybrané"
+      cancel: "Zrušit"
+      creating: "Probíhá import…"
+      historical_import: "Import historických dat"
+    complete_account_setup:
+      invalid_sync_start_date: "Počáteční datum synchronizace musí být platné datum v minulosti."
+      success:
+        one: "Importován %{count} účet"
+        few: "Importovány %{count} účty"
+        many: "Importováno %{count} účtu"
+        other: "Importováno %{count} účtů"
+      none_selected: "Nebyly vybrány žádné účty"
+      no_accounts: "Nejsou k dispozici žádné účty k importu"
+    binance_item:
+      provider_name: "Binance"
+      syncing: "Synchronizace…"
+      reconnect: "Přihlašovací údaje je třeba aktualizovat"
+      deletion_in_progress: "Probíhá odstraňování…"
+      sync_status:
+        no_accounts: "Nebyly nalezeny žádné účty"
+        all_synced:
+          one: "Synchronizován %{count} účet"
+          few: "Synchronizovány %{count} účty"
+          many: "Synchronizováno %{count} účtu"
+          other: "Synchronizováno %{count} účtů"
+        partial_sync: "Synchronizováno: %{linked_count}; nastavení vyžaduje: %{unlinked_count}"
+      status: "Poslední synchronizace před %{timestamp}"
+      status_with_summary: "Poslední synchronizace před %{timestamp} – %{summary}"
+      status_never: "Dosud nesynchronizováno"
+      update_credentials: "Aktualizovat přihlašovací údaje"
+      delete: "Odstranit"
+      no_accounts_title: "Nebyly nalezeny žádné účty"
+      no_accounts_message: "Portfolio Binance se zde zobrazí po synchronizaci."
+      setup_needed: "Účet je připraven k importu"
+      setup_description: "Vyberte portfolia Binance, která chcete sledovat."
+      setup_action: "Importovat účet"
+      import_accounts_menu: "Importovat účet"
+      stale_rate_warning: "Zůstatek je přibližný, protože přesný směnný kurz pro datum %{date} nebyl k dispozici. Při příští synchronizaci se aktualizuje."
+    select_existing_account:
+      title: "Propojení účtu Binance"
+      no_accounts_found: "Nebyly nalezeny žádné účty Binance."
+      wait_for_sync: "Počkejte na dokončení synchronizace Binance"
+      check_provider_health: "Ověřte platnost klíče a tajného klíče API Binance"
+      currently_linked_to: "Aktuálně propojeno s účtem: %{account_name}"
+      link: "Propojit"
+      cancel: "Zrušit"
+    link_existing_account:
+      success: "Účet byl úspěšně propojen s účtem Binance"
+      errors:
+        only_manual: "S Binance lze propojit pouze ručně vedené účty"
+        invalid_binance_account: "Neplatný účet Binance"
+  binance_item:
+    syncer:
+      checking_credentials: "Kontrola přihlašovacích údajů…"
+      credentials_invalid: "Neplatné přihlašovací údaje API. Zkontrolujte klíč a tajný klíč API."
+      importing_accounts: "Import účtů z Binance…"
+      checking_configuration: "Kontrola nastavení účtů…"
+      accounts_need_setup:
+        one: "%{count} účet vyžaduje nastavení"
+        few: "%{count} účty vyžadují nastavení"
+        many: "%{count} účtu vyžaduje nastavení"
+        other: "%{count} účtů vyžaduje nastavení"
+      processing_accounts: "Zpracování dat účtů…"
+      calculating_balances: "Výpočet zůstatků…"
+      failed: "Synchronizace Binance se nezdařila. Zkuste to znovu."

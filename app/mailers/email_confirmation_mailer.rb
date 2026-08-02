@@ -6,10 +6,13 @@ class EmailConfirmationMailer < ApplicationMailer
   #
   def confirmation_email
     @user = params[:user]
-    @subject = t(".subject", product_name: product_name)
-    @cta = t(".cta")
-    @confirmation_url = new_email_confirmation_url(token: @user.generate_token_for(:email_confirmation))
 
-    mail to: @user.unconfirmed_email, subject: @subject
+    I18n.with_locale(locale_for(@user)) do
+      @subject = t(".subject", product_name: product_name)
+      @cta = t(".cta")
+      @confirmation_url = new_email_confirmation_url(token: @user.generate_token_for(:email_confirmation))
+
+      mail to: @user.unconfirmed_email, subject: @subject
+    end
   end
 end

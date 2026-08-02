@@ -1,0 +1,115 @@
+---
+cs:
+  providers:
+    ibkr:
+      name: "Interactive Brokers"
+      connection_description: "Připojení výkazu Interactive Brokers Flex Web Service"
+      institution_name: "Interactive Brokers"
+  ibkr_items:
+    defaults:
+      name: "Interactive Brokers"
+    transaction_names:
+      contribution: "Vklad"
+      withdrawal: "Výběr"
+      dividend_from: "Dividenda z %{ticker}"
+      trade_commission: "Poplatek za obchod %{ticker}"
+    syncer:
+      checking_credentials: "Kontrola přihlašovacích údajů IBKR…"
+      importing_accounts: "Import účtů IBKR…"
+      checking_account_configuration: "Kontrola nastavení účtů…"
+      accounts_need_setup:
+        one: "1 účet IBKR vyžaduje nastavení…"
+        few: "%{count} účty IBKR vyžadují nastavení…"
+        many: "%{count} účtu IBKR vyžaduje nastavení…"
+        other: "%{count} účtů IBKR vyžaduje nastavení…"
+      processing_holdings_and_activity: "Zpracování pozic a aktivit…"
+      calculating_balances: "Výpočet zůstatků…"
+      credentials_missing: "Přihlašovací údaje IBKR nejsou nastaveny."
+      credentials_invalid: "Přihlašovací údaje Interactive Brokers chybějí nebo jsou neplatné."
+      failed: "Synchronizace Interactive Brokers se nezdařila. Zkuste to znovu."
+    ibkr_item:
+      deletion_in_progress: "Probíhá odstraňování"
+      flex_web_service: "Flex Web Service"
+      syncing: "Synchronizace"
+      requires_update: "Přihlašovací údaje vyžadují pozornost"
+      error: "Chyba"
+      synced: "Synchronizováno před %{time}. %{summary}."
+      never_synced: "Dosud nesynchronizováno."
+      setup_accounts: "Nastavit účty"
+      delete: "Odstranit"
+      accounts_need_setup: "Účty vyžadují nastavení"
+      accounts_need_setup_description: "Některé účty IBKR je třeba propojit s účty v aplikaci Sure."
+      no_accounts_discovered: "Dosud nebyly nalezeny žádné účty IBKR."
+      no_accounts_discovered_description: "Po nastavení dotazu Flex spusťte synchronizaci, aby se účty načetly."
+    setup_accounts:
+      page_title: "Nastavení účtů Interactive Brokers"
+      dialog_title: "Nastavení účtů Interactive Brokers"
+      subtitle: "Vyberte makléřské účty IBKR, které chcete propojit."
+      info_box:
+        title: "Import dotazu IBKR Flex"
+        items:
+          item_1: "Pozice s aktuálními cenami a množstvím"
+          item_2: "Nákladová báze jednotlivých pozic"
+          item_3: "Obchody, dividendy, poplatky a vklady či výběry hotovosti"
+        warning: "Historická aktivita je omezena časovým rozsahem výkazu dotazu Flex"
+      status:
+        fetching_accounts: "Načítání účtů z Interactive Brokers…"
+        no_accounts_found_title: "Nebyly nalezeny žádné účty."
+        no_accounts_found_description: "Aplikace Sure v posledním výkazu Flex nenašla žádné účty IBKR."
+      available_accounts:
+        title: "Dostupné účty"
+        account_type_investment: "Investice"
+        account_summary: "%{account_type} • Zůstatek: %{balance}"
+        account_id: "ID účtu: %{account_id}"
+      link_existing:
+        description: "Případně propojte nalezený účet IBKR se stávajícím ručně vedeným investičním účtem."
+        manual_account_option: "%{name} (%{balance})"
+        select_prompt: "Vyberte účet…"
+      linked_accounts:
+        title: "Již propojené"
+        linked_to_html: "Propojeno s účtem: %{account}"
+      buttons:
+        refresh: "Aktualizovat"
+        cancel: "Zrušit"
+        back_to_settings: "Zpět do nastavení"
+        create_selected_accounts: "Vytvořit vybrané účty"
+        link: "Propojit"
+        done: "Hotovo"
+    sync_status:
+      no_accounts: "Dosud nebyly nalezeny žádné účty IBKR"
+      all_linked:
+        one: "Propojen 1 účet"
+        few: "Propojeny %{count} účty"
+        many: "Propojeno %{count} účtu"
+        other: "Propojeno %{count} účtů"
+      partial: "Propojeno: %{linked}; nastavení vyžaduje: %{unlinked}"
+    select_existing_account:
+      title: "Propojení účtu Interactive Brokers"
+      no_accounts_available: "Dosud nejsou k dispozici žádné nepropojené účty Interactive Brokers."
+      run_sync_hint: "Po aktualizaci dotazu Flex spusťte synchronizaci v Nastavení > Poskytovatelé."
+      wait_for_sync: "Počkejte na dokončení synchronizace pro vyhledání účtů."
+      balance: "Zůstatek"
+      link: "Propojit"
+      cancel: "Zrušit"
+    create:
+      success: "Interactive Brokers bylo úspěšně nastaveno."
+    update:
+      success: "Nastavení Interactive Brokers bylo úspěšně aktualizováno."
+    destroy:
+      success: "Připojení k Interactive Brokers bylo zařazeno k odstranění."
+    select_accounts:
+      not_configured: "Interactive Brokers není nastaveno."
+    link_existing_account:
+      not_found: "Účet nebo nastavení Interactive Brokers nebyly nalezeny."
+      only_manual_investment: "S Interactive Brokers lze propojit pouze ručně vedené investiční účty."
+      already_linked: "Tento účet Interactive Brokers už je propojen."
+      success: "Účet byl úspěšně propojen s účtem Interactive Brokers."
+      failed: "Propojení s účtem Interactive Brokers se nezdařilo."
+    complete_account_setup:
+      success:
+        one: "Úspěšně vytvořen %{count} účet Interactive Brokers."
+        few: "Úspěšně vytvořeny %{count} účty Interactive Brokers."
+        many: "Úspěšně vytvořeno %{count} účtu Interactive Brokers."
+        other: "Úspěšně vytvořeno %{count} účtů Interactive Brokers."
+      none_selected: "Nebyly vybrány žádné účty."
+      none_created: "Nebyly vytvořeny žádné účty."

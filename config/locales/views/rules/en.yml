@@ -3,11 +3,21 @@ en:
   rules:
     no_action: No Action
     no_condition: No condition
+    resources:
+      transaction:
+        one: transaction
+        other: transactions
+    primary_condition_title: "Condition: %{label} %{operator} %{value}"
     rule:
       edit: Edit
       re_apply_rule: Re-apply rule
       delete: Delete
+      if: IF
       then: THEN
+      for: FOR
+      delete_title: Delete rule?
+      delete_body: Are you sure you want to delete this rule? This cannot be undone.
+      delete_button: Delete rule
       and_more_conditions:
         one: and 1 more condition
         other: and %{count} more conditions
@@ -25,10 +35,15 @@ en:
       add_action: Add action
       all_past_and_future: All past and future %{resource}
       starting_from: Starting from
+      if: IF
+      for: FOR
       then: THEN
     index:
       page_title: Rules
       delete_all_rules: Delete all rules
+      delete_all_title: Delete all rules?
+      delete_all_body: Are you sure you want to delete all rules? This cannot be undone.
+      delete_all_button: Delete all rules
       new_rule: New rule
       ai_cost_warning: AI-enabled rule actions will cost money.  Be sure to filter as narrowly as possible to avoid unnecessary costs.
       rules_heading: Rules
@@ -52,6 +67,72 @@ en:
       confirm_changes: Confirm changes
     actions:
       value_placeholder: Enter a value
+      to: to
+      none: (none)
+    operators:
+      contains: Contains
+      equal_to: Equal to
+      is_empty: Is empty
+      greater_than: Greater than
+      greater_or_equal_to: Greater or equal to
+      less_than: Less than
+      less_or_equal_to: Less than or equal to
+      is_equal_to: Is equal to
+    condition_filters:
+      labels:
+        transaction_name: Transaction name
+        transaction_amount: Transaction amount
+        transaction_type: Transaction type
+        transaction_merchant: Transaction merchant
+        transaction_category: Transaction category
+        transaction_details: Transaction details
+        transaction_notes: Transaction notes
+        transaction_account: Transaction account
+      transaction_type:
+        income: Income
+        expense: Expense
+        transfer: Transfer
+        equal_to: Equal to
+    action_executors:
+      labels:
+        set_transaction_category: Set transaction category
+        set_transaction_tags: Add transaction tag
+        set_transaction_merchant: Set transaction merchant
+        set_transaction_name: Set transaction name
+        set_investment_activity_label: Set investment activity type
+        exclude_transaction: Exclude from budgeting and reports
+        set_as_transfer_or_payment: Set as transfer or payment
+        send_email_notification: Send email notification
+        auto_categorize: Auto-categorize transactions with AI
+        auto_detect_merchants: Auto-detect merchants
+      auto_categorize:
+        cost_unavailable_suffix: " (cost: N/A)"
+        estimated_cost_suffix: " (~$%{cost} per 20 transactions)"
+        no_provider_suffix: " (no LLM provider configured)"
+      auto_detect_merchants:
+        self_hosted_suffix: " ($$)"
+    generated_transfer_names:
+      payment:
+        to: "Payment to %{account}"
+        from: "Payment from %{account}"
+      transfer:
+        to: "Transfer to %{account}"
+        from: "Transfer from %{account}"
+    apply:
+      success: "%{resource} rule activated"
+    new:
+      back: Back to rules
+      title: "New rule for %{resource}"
+    edit:
+      back: Back to rules
+      title: "Edit rule for %{resource}"
+      title_with_name: "Edit rule \"%{name}\" for %{resource}"
+    category_rule_cta:
+      message: "Updated to %{category}"
+      description: You can create a rule to automatically categorize transactions like this one
+      dont_show_again: Don't show this again
+      dismiss: Dismiss
+      create_rule: Create rule
     update:
       success: Rule updated
     destroy:
@@ -98,14 +179,11 @@ en:
       confirm_body: Are you sure you want to reset the AI cache? This will allow AI rules to re-process all transactions. This may incur additional API costs.
       confirm_button: Reset Cache
       success: AI cache is being cleared. This may take a few moments.
-    condition_filters:
-      transaction_type:
-        income: Income
-        expense: Expense
-        transfer: Transfer
-        equal_to: Equal to
   rule:
     conditions:
+      condition:
+        and_prefix: and
+        value_placeholder: Enter a value
       condition_group:
         and_prefix: and
         match: match

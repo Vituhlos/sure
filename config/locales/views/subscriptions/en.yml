@@ -1,6 +1,15 @@
 en:
   subscriptions:
     self_hosted_alert: "%{product_name} is not available in self-hosted mode."
+    plans:
+      annual:
+        title: "Annual"
+        price: "%{price}/year"
+        billing: "Charged annually"
+      monthly:
+        title: "Monthly"
+        price: "%{price}/month"
+        billing: "Charged monthly"
     upgrade:
       already_contributing: You are already contributing. Thank you!
       page_title: "Upgrade"
@@ -13,7 +22,9 @@ en:
         sure: "Sure"
         today: "today"
       redirect_to_stripe: "In the next step, you'll be redirected to Stripe which handles credit cards for us."
-      trialing: "Your data will be deleted in %{days} days"
+      trialing:
+        one: "Your data will be deleted in 1 day"
+        other: "Your data will be deleted in %{count} days"
       trial_over: "Your trial is over"
     create:
       welcome: "Welcome to Sure!"

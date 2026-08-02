@@ -13,8 +13,8 @@ class CoinstatsItem::ExchangeLinker
   end
 
   def link
-    return Result.new(success?: false, created_count: 0, errors: [ "Exchange is required" ]) if connection_id.blank?
-    return Result.new(success?: false, created_count: 0, errors: [ "Exchange credentials are required" ]) if connection_fields.blank?
+    return Result.new(success?: false, created_count: 0, errors: [ I18n.t("coinstats_items.errors.exchange_required") ]) if connection_id.blank?
+    return Result.new(success?: false, created_count: 0, errors: [ I18n.t("coinstats_items.errors.exchange_credentials_required") ]) if connection_fields.blank?
 
     created_count = 0
     exchange = fetch_exchange_definition
@@ -26,11 +26,14 @@ class CoinstatsItem::ExchangeLinker
       name: name.presence || default_portfolio_name(exchange)
     )
 
-    return Result.new(success?: false, created_count: 0, errors: [ response.error.message ]) unless response.success?
+    unless response.success?
+      Rails.logger.warn("CoinStats exchange linking failed: #{response.error.message}")
+      return Result.new(success?: false, created_count: 0, errors: [ I18n.t("coinstats_items.errors.exchange_link_failed") ])
+    end
 
     payload = response.data.with_indifferent_access
     portfolio_id = payload[:portfolioId]
-    raise Provider::Coinstats::Error, "CoinStats did not return a portfolioId" if portfolio_id.blank?
+    raise Provider::Coinstats::Error, I18n.t("coinstats_items.errors.portfolio_missing") if portfolio_id.blank?
 
     coins = provider.list_portfolio_coins(portfolio_id: portfolio_id)
 
@@ -62,7 +65,8 @@ class CoinstatsItem::ExchangeLinker
 
     Result.new(success?: true, created_count: created_count, errors: [])
   rescue Provider::Coinstats::Error, ArgumentError => e
-    Result.new(success?: false, created_count: 0, errors: [ e.message ])
+    Rails.logger.warn("CoinStats exchange linking failed: #{e.class} - #{e.message}")
+    Result.new(success?: false, created_count: 0, errors: [ I18n.t("coinstats_items.errors.exchange_link_failed") ])
   end
 
   private
@@ -76,7 +80,7 @@ class CoinstatsItem::ExchangeLinker
 
     def fetch_exchange_definition
       exchange = provider.exchange_options.find { |option| option[:connection_id] == connection_id }
-      raise ArgumentError, "Unsupported exchange connection: #{connection_id}" unless exchange
+      raise ArgumentError, I18n.t("coinstats_items.errors.unsupported_exchange", connection: connection_id) unless exchange
 
       exchange
     end
@@ -89,7 +93,7 @@ class CoinstatsItem::ExchangeLinker
 
       return if missing_fields.empty?
 
-      raise ArgumentError, "Missing required exchange fields: #{missing_fields.join(', ')}"
+      raise ArgumentError, I18n.t("coinstats_items.errors.missing_exchange_fields", fields: missing_fields.join(", "))
     end
 
     def default_portfolio_name(exchange)

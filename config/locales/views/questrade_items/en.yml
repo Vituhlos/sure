@@ -129,6 +129,13 @@ en:
 
     # Select existing account view
     select_existing_account:
+      page_title: "Link a Questrade account"
+      dialog_title: "Link to a Questrade account"
+      linking_label: "Linking"
+      none_available: "No unlinked Questrade accounts available."
+      buttons:
+        link: "Link"
+        cancel: "Cancel"
       account_already_linked: "This account is already linked to a provider"
       all_accounts_already_linked: "All Questrade accounts are already linked"
       api_error: "API error: %{message}"
@@ -165,6 +172,18 @@ en:
 
     # Setup accounts wizard
     setup_accounts:
+      page_title: "Set up Questrade accounts"
+      dialog_title: "Set up your Questrade accounts"
+      all_linked: "All Questrade accounts are already linked."
+      import_as: "Import as"
+      types:
+        investment: "Investment"
+        depository: "Cash / Depository"
+        skip: "Skip this account"
+      buttons:
+        done: "Done"
+        create: "Create accounts"
+        cancel: "Cancel"
       account_type_label: "Account Type:"
       accounts_count:
         one: "%{count} account available"
@@ -244,6 +263,7 @@ en:
     complete_account_setup:
       all_skipped: "All accounts were skipped. No accounts were created."
       creation_failed: "Failed to create accounts: %{error}"
+      unknown_error: Unknown error
       no_accounts: "No accounts to set up."
       success: "Successfully created %{count} account(s)."
 

@@ -139,44 +139,44 @@ class AuthService {
       } else {
         return {
           'success': false,
-          'error': _responseErrorMessage(responseData, 'Login failed'),
+          'error': _responseErrorMessage(responseData, 'login_failed'),
         };
       }
     } on SocketException catch (e) {
       _logAuthException('Login', e);
       return {
         'success': false,
-        'error': 'Network unavailable',
+        'error': 'network_unavailable',
       };
     } on TimeoutException catch (e) {
       _logAuthException('Login', e);
       return {
         'success': false,
-        'error': 'Request timed out',
+        'error': 'request_timed_out',
       };
     } on HttpException catch (e) {
       _logAuthException('Login', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } on FormatException catch (e) {
       _logAuthException('Login', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } on TypeError catch (e) {
       _logAuthException('Login', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } catch (e) {
       _logAuthException('Login', e);
       return {
         'success': false,
-        'error': 'An unexpected error occurred',
+        'error': 'unexpected_error',
       };
     }
   }
@@ -230,44 +230,47 @@ class AuthService {
       } else {
         return {
           'success': false,
-          'error': _responseErrorMessage(responseData, 'Signup failed'),
+          'error': _responseErrorMessage(
+            responseData,
+            'account_creation_failed',
+          ),
         };
       }
     } on SocketException catch (e) {
       _logAuthException('Signup', e);
       return {
         'success': false,
-        'error': 'Network unavailable',
+        'error': 'network_unavailable',
       };
     } on TimeoutException catch (e) {
       _logAuthException('Signup', e);
       return {
         'success': false,
-        'error': 'Request timed out',
+        'error': 'request_timed_out',
       };
     } on HttpException catch (e) {
       _logAuthException('Signup', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } on FormatException catch (e) {
       _logAuthException('Signup', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } on TypeError catch (e) {
       _logAuthException('Signup', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } catch (e) {
       _logAuthException('Signup', e);
       return {
         'success': false,
-        'error': 'An unexpected error occurred',
+        'error': 'unexpected_error',
       };
     }
   }
@@ -303,44 +306,44 @@ class AuthService {
       } else {
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Token refresh failed',
+          'error': responseData['error'] ?? 'session_expired',
         };
       }
     } on SocketException catch (e) {
       _logAuthException('RefreshToken', e);
       return {
         'success': false,
-        'error': 'Network unavailable',
+        'error': 'network_unavailable',
       };
     } on TimeoutException catch (e) {
       _logAuthException('RefreshToken', e);
       return {
         'success': false,
-        'error': 'Request timed out',
+        'error': 'request_timed_out',
       };
     } on HttpException catch (e) {
       _logAuthException('RefreshToken', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } on FormatException catch (e) {
       _logAuthException('RefreshToken', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } on TypeError catch (e) {
       _logAuthException('RefreshToken', e);
       return {
         'success': false,
-        'error': 'Invalid response from server',
+        'error': 'invalid_server_response',
       };
     } catch (e) {
       _logAuthException('RefreshToken', e);
       return {
         'success': false,
-        'error': 'An unexpected error occurred',
+        'error': 'unexpected_error',
       };
     }
   }
@@ -354,9 +357,8 @@ class AuthService {
       final response = await http.get(
         url,
         headers: {
-          ...ApiConfig.customProxyHeaderMap,
+          ...ApiConfig.jsonHeaders(),
           'X-Api-Key': apiKey,
-          'Accept': 'application/json',
         },
       ).timeout(const Duration(seconds: 30));
 
@@ -371,31 +373,31 @@ class AuthService {
       } else if (response.statusCode == 401) {
         return {
           'success': false,
-          'error': 'Invalid API key',
+          'error': 'invalid_api_key',
         };
       } else {
         return {
           'success': false,
-          'error': 'Login failed (status ${response.statusCode})',
+          'error': 'login_failed',
         };
       }
     } on SocketException catch (e) {
       _logAuthException('API key login', e);
       return {
         'success': false,
-        'error': 'Network unavailable',
+        'error': 'network_unavailable',
       };
     } on TimeoutException catch (e) {
       _logAuthException('API key login', e);
       return {
         'success': false,
-        'error': 'Request timed out',
+        'error': 'request_timed_out',
       };
     } catch (e) {
       _logAuthException('API key login', e);
       return {
         'success': false,
-        'error': 'An unexpected error occurred',
+        'error': 'unexpected_error',
       };
     }
   }
@@ -436,7 +438,7 @@ class AuthService {
     if (params.containsKey('error')) {
       return {
         'success': false,
-        'error': params['message'] ?? params['error'] ?? 'SSO login failed',
+        'error': params['message'] ?? params['error'] ?? 'sign_in_failed',
       };
     }
 
@@ -444,7 +446,7 @@ class AuthService {
     if (code == null || code.isEmpty) {
       return {
         'success': false,
-        'error': 'Invalid SSO callback response',
+        'error': 'invalid_sso_response',
       };
     }
 
@@ -463,7 +465,7 @@ class AuthService {
         final errorData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': errorData['message'] ?? 'Token exchange failed',
+          'error': errorData['message'] ?? 'authorization_exchange_failed',
         };
       }
 
@@ -493,19 +495,19 @@ class AuthService {
       _logAuthException('SSO exchange', e);
       return {
         'success': false,
-        'error': 'Network unavailable',
+        'error': 'network_unavailable',
       };
     } on TimeoutException catch (e) {
       _logAuthException('SSO exchange', e);
       return {
         'success': false,
-        'error': 'Request timed out',
+        'error': 'request_timed_out',
       };
     } catch (e) {
       _logAuthException('SSO exchange', e);
       return {
         'success': false,
-        'error': 'Failed to exchange authorization code',
+        'error': 'authorization_exchange_failed',
       };
     }
   }
@@ -551,13 +553,13 @@ class AuthService {
       }
     } on SocketException catch (e) {
       _logAuthException('SSO link', e);
-      return {'success': false, 'error': 'Network unavailable'};
+      return {'success': false, 'error': 'network_unavailable'};
     } on TimeoutException catch (e) {
       _logAuthException('SSO link', e);
-      return {'success': false, 'error': 'Request timed out'};
+      return {'success': false, 'error': 'request_timed_out'};
     } catch (e) {
       _logAuthException('SSO link', e);
-      return {'success': false, 'error': 'Failed to link account'};
+      return {'success': false, 'error': 'account_link_failed'};
     }
   }
 
@@ -605,13 +607,13 @@ class AuthService {
       }
     } on SocketException catch (e) {
       _logAuthException('SSO create account', e);
-      return {'success': false, 'error': 'Network unavailable'};
+      return {'success': false, 'error': 'network_unavailable'};
     } on TimeoutException catch (e) {
       _logAuthException('SSO create account', e);
-      return {'success': false, 'error': 'Request timed out'};
+      return {'success': false, 'error': 'request_timed_out'};
     } catch (e) {
       _logAuthException('SSO create account', e);
-      return {'success': false, 'error': 'Failed to create account'};
+      return {'success': false, 'error': 'account_creation_failed'};
     }
   }
 
@@ -642,13 +644,13 @@ class AuthService {
 
       return {
         'success': false,
-        'error': _responseErrorMessage(responseData, 'Failed to enable AI'),
+        'error': _responseErrorMessage(responseData, 'enable_ai_failed'),
       };
     } catch (e) {
       _logAuthException('Enable AI', e);
       return {
         'success': false,
-        'error': 'Network error',
+        'error': 'network_unavailable',
       };
     }
   }

@@ -38,13 +38,13 @@ class BalanceSheetService {
       } else {
         return {
           'success': false,
-          'error': 'Failed to fetch balance sheet',
+          'error': 'balance_sheet_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Unable to load balance sheet. Please try again later.',
+        'error': 'balance_sheet_failed',
       };
     }
   }

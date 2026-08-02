@@ -70,14 +70,14 @@ class Assistant::Function::CreateGoal < Assistant::Function
     linked_account_names = Array(params["linked_account_names"]).map { |n| n.to_s.strip }.reject(&:blank?)
     notes = params["notes"].to_s.strip
 
-    return error("name_required", "Please provide a name for the goal.") if name.blank?
+    return error("name_required", I18n.t("assistant.functions.create_goal.name_required")) if name.blank?
 
-    return error("target_amount_invalid", "Target amount must be greater than zero.") unless target_amount && target_amount > 0
+    return error("target_amount_invalid", I18n.t("assistant.functions.create_goal.target_amount_invalid")) unless target_amount && target_amount > 0
 
     if linked_account_names.empty?
       return error(
         "no_linked_accounts",
-        "Please specify at least one Depository account to link to this goal.",
+        I18n.t("assistant.functions.create_goal.no_linked_accounts"),
         available_accounts: depository_account_payload
       )
     end
@@ -87,7 +87,7 @@ class Assistant::Function::CreateGoal < Assistant::Function
     if missing.any?
       return error(
         "unknown_accounts",
-        "Some account names didn't match the user's Depository accounts.",
+        I18n.t("assistant.functions.create_goal.unknown_accounts"),
         unknown_names: missing,
         available_accounts: depository_account_payload
       )
@@ -101,7 +101,7 @@ class Assistant::Function::CreateGoal < Assistant::Function
     if ambiguous_names.any?
       return error(
         "ambiguous_accounts",
-        "Multiple accounts share a name. Ask the user which one to use.",
+        I18n.t("assistant.functions.create_goal.ambiguous_accounts"),
         ambiguous_names: ambiguous_names,
         available_accounts: depository_account_payload
       )
@@ -113,7 +113,7 @@ class Assistant::Function::CreateGoal < Assistant::Function
     if currencies.size > 1
       return error(
         "currency_mismatch",
-        "All linked accounts must share the same currency. Found: #{currencies.join(', ')}."
+        I18n.t("assistant.functions.create_goal.currency_mismatch", currencies: currencies.join(", "))
       )
     end
 
@@ -140,7 +140,12 @@ class Assistant::Function::CreateGoal < Assistant::Function
       target_date: goal.target_date&.iso8601,
       url: absolute_url_for(goal),
       linked_account_names: matched.map(&:name),
-      message: "Created goal '#{goal.name}' (target #{goal.target_amount_money.format}). View it at #{absolute_url_for(goal)}."
+      message: I18n.t(
+        "assistant.functions.create_goal.created",
+        name: goal.name,
+        target: goal.target_amount_money.format,
+        url: absolute_url_for(goal)
+      )
     }
   rescue ActiveRecord::RecordInvalid => e
     error("validation_failed", e.record.errors.full_messages.join("; "))

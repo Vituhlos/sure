@@ -3,9 +3,16 @@ use tauri::Manager;
 
 pub fn build(app: &tauri::AppHandle) -> tauri::Result<Menu<tauri::Wry>> {
     let pkg = app.package_info().clone();
+    let strings = crate::locale::strings(crate::locale::load());
 
-    let prefs = MenuItem::with_id(app, "preferences", "Preferences…", true, Some("Cmd+,"))?;
-    let switch = MenuItem::with_id(app, "switch_server", "Switch Server…", true, Some("Cmd+Shift+O"))?;
+    let prefs = MenuItem::with_id(app, "preferences", strings.preferences, true, Some("Cmd+,"))?;
+    let switch = MenuItem::with_id(
+        app,
+        "switch_server",
+        strings.switch_server,
+        true,
+        Some("Cmd+Shift+O"),
+    )?;
     let app_menu = Submenu::with_items(
         app,
         &pkg.name,
@@ -25,14 +32,14 @@ pub fn build(app: &tauri::AppHandle) -> tauri::Result<Menu<tauri::Wry>> {
 
     let file_menu = Submenu::with_items(
         app,
-        "File",
+        strings.file,
         true,
         &[&PredefinedMenuItem::close_window(app, None)?],
     )?;
 
     let edit_menu = Submenu::with_items(
         app,
-        "Edit",
+        strings.edit,
         true,
         &[
             &PredefinedMenuItem::undo(app, None)?,
@@ -45,12 +52,12 @@ pub fn build(app: &tauri::AppHandle) -> tauri::Result<Menu<tauri::Wry>> {
         ],
     )?;
 
-    let reload = MenuItem::with_id(app, "reload", "Reload", true, Some("Cmd+R"))?;
-    let view_menu = Submenu::with_items(app, "View", true, &[&reload])?;
+    let reload = MenuItem::with_id(app, "reload", strings.reload, true, Some("Cmd+R"))?;
+    let view_menu = Submenu::with_items(app, strings.view, true, &[&reload])?;
 
     let window_menu = Submenu::with_items(
         app,
-        "Window",
+        strings.window,
         true,
         &[
             &PredefinedMenuItem::minimize(app, None)?,

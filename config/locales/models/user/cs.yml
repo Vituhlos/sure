@@ -1,0 +1,25 @@
+---
+cs:
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail"
+        family: "%{moniker}"
+        family_id: "%{moniker}"
+        first_name: "Jméno"
+        last_name: "Příjmení"
+        password: "Heslo"
+        password_confirmation: "Potvrzení hesla"
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              cannot_deactivate_admin_with_other_users: "Účet správce nelze odstranit, dokud existují další uživatelé. Nejprve odeberte všechny členy."
+            profile_image:
+              invalid_file_size: "musí mít méně než %{max_megabytes} MB"
+              invalid_format: "musí být ve formátu JPEG nebo PNG"
+            password:
+              mixed_case_required: "musí obsahovat malé i velké písmeno"
+              number_required: "musí obsahovat alespoň jednu číslici"
+              special_character_required: "musí obsahovat alespoň jeden speciální znak"

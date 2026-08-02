@@ -1,0 +1,24 @@
+---
+cs:
+  transfer_matches:
+    create:
+      success: "Převod byl vytvořen."
+    new:
+      header:
+        title: "Spárovat převod nebo platbu"
+        subtitle: "Vyberte odpovídající transakci na jiném účtu, nebo ji vytvořte, pokud ještě neexistuje."
+      from_account: "Ze zdrojového účtu"
+      from_account_named: "Ze zdrojového účtu: %{name}"
+      to_account: "Na cílový účet"
+      to_account_named: "Na cílový účet: %{name}"
+      outflow_transaction: "Odchozí transakce"
+      inflow_transaction: "Příchozí transakce"
+      create_transfer_match: "Vytvořit spárování převodu"
+    matching_fields:
+      select_method: "Vyberte způsob spárování transakcí."
+      match_existing_recommended: "Spárovat s existující transakcí (doporučeno)"
+      create_new_transaction: "Vytvořit novou transakci"
+      matching_method: "Způsob spárování"
+      matching_transaction: "Odpovídající transakce"
+      target_account: "Cílový účet"
+      no_matching_transactions: "Na ostatních účtech jsme nenašli žádnou odpovídající transakci. Vyberte účet a vytvoříme na něm novou příchozí transakci."

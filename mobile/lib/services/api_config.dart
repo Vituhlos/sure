@@ -11,9 +11,15 @@ class ApiConfig {
   static const String _defaultBaseUrl = 'https://demo.sure.am';
   static const String _backendUrlKey = 'backend_url';
   static String _baseUrl = _defaultBaseUrl;
+  static String _locale = 'en';
 
   static String get baseUrl => _baseUrl;
   static String get defaultBaseUrl => _defaultBaseUrl;
+
+  static void setLocale(String locale) {
+    final normalized = locale.trim().replaceAll('_', '-');
+    _locale = normalized.isEmpty ? 'en' : normalized;
+  }
 
   static void setBaseUrl(String url) {
     _baseUrl = url;
@@ -56,6 +62,7 @@ class ApiConfig {
       ...customProxyHeaderMap,
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Accept-Language': _locale,
     };
   }
 
@@ -63,6 +70,7 @@ class ApiConfig {
     return {
       ...customProxyHeaderMap,
       'Accept': 'text/html',
+      'Accept-Language': _locale,
     };
   }
 
@@ -75,12 +83,14 @@ class ApiConfig {
         ...customProxyHeaderMap,
         'X-Api-Key': _apiKeyValue!,
         'Accept': 'application/json',
+        'Accept-Language': _locale,
       };
     }
     return {
       ...customProxyHeaderMap,
       'Authorization': 'Bearer $token',
       'Accept': 'application/json',
+      'Accept-Language': _locale,
     };
   }
 

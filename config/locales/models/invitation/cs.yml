@@ -1,0 +1,10 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        invitation:
+          attributes:
+            email:
+              pending_invitation_from_another_family: "už má nevyřízenou pozvánku z jiné domácnosti"
+              already_invited_to_family: "už byl pozván do této domácnosti"

@@ -18,12 +18,15 @@ import {
 export default class extends Controller {
   static values = {
     data: Object,
+    locale: String,
     ariaLabel: String,
     ariaDescription: String,
-    todayLabel: { type: String, default: "Today" },
-    projectedTemplate: { type: String, default: "Projected: {amount}" },
-    savedTemplate: { type: String, default: "Saved: {amount}" },
-    targetRelationTemplate: { type: String, default: "{percent}% of {target} target" },
+    todayLabel: String,
+    projectedTemplate: String,
+    savedTemplate: String,
+    targetRelationTemplate: String,
+    targetLabel: String,
+    shortfallTemplate: String,
   };
 
   connect() {
@@ -175,7 +178,7 @@ export default class extends Controller {
     // that fights with our own crosshair tooltip. aria-label gives the same
     // SR accessible name without the tooltip side-effect.
     const descId = `chart-desc-${this._id()}`;
-    svg.attr("role", "img").attr("aria-label", this.ariaLabelValue || "Goal projection");
+    svg.attr("role", "img").attr("aria-label", this.ariaLabelValue || "");
     svg.append("desc").attr("id", descId).text(this.ariaDescriptionValue || "");
     svg.attr("aria-describedby", descId);
 
@@ -239,7 +242,7 @@ export default class extends Controller {
           .attr("text-anchor", "end")
           .attr("font-size", 12)
           .attr("fill", textPrimary)
-          .text(`Target · ${data.target_amount_short_label}`);
+          .text(`${this.targetLabelValue} · ${this._fmtMoneyShort(targetAmount, data.currency)}`);
       } else {
         // Plenty of room: keep the right-side full-format label.
         svg
@@ -249,7 +252,7 @@ export default class extends Controller {
           .attr("text-anchor", "end")
           .attr("font-size", 12)
           .attr("fill", textPrimary)
-          .text(`Target · ${data.target_amount_label}`);
+          .text(`${this.targetLabelValue} · ${data.target_amount_label}`);
       }
     }
 
@@ -334,7 +337,9 @@ export default class extends Controller {
         // is the "$X short" string when we fall short.
         const labelText = willHit
           ? data.projection_end_label
-          : (data.projection_shortfall_label ? `${data.projection_shortfall_label} short` : "");
+          : (data.projection_shortfall_label
+              ? this.shortfallTemplateValue.replace("{amount}", data.projection_shortfall_label)
+              : "");
         if (labelText) {
           svg
             .append("text")
@@ -385,7 +390,10 @@ export default class extends Controller {
     // Full 4-digit year so the terminal "Jan 2027" reads as the year, not
     // as "Jan 27" (which scans as January 27th). Slightly wider per tick;
     // the de-dupe logic below keeps the count sane.
-    const tickFmt = d3.timeFormat("%b %Y");
+    const tickFmt = new Intl.DateTimeFormat(this.localeValue || undefined, {
+      month: "short",
+      year: "numeric",
+    });
     const tickCount = Math.min(5, Math.max(2, Math.round(innerWidth / 80)));
     const ticks = x.ticks(tickCount);
     const tickGroup = svg.append("g");
@@ -399,7 +407,7 @@ export default class extends Controller {
       .attr("text-anchor", "middle")
       .attr("font-size", 12)
       .attr("fill", textSecondary)
-      .text((d) => tickFmt(d));
+      .text((d) => tickFmt.format(d));
     // De-dupe adjacent equal tick labels (e.g. multiple "May '26" on a
     // short window where d3.ticks oversamples).
     const tickNodes = tickGroup.selectAll("text").nodes();
@@ -467,14 +475,14 @@ export default class extends Controller {
     const setRelation = (amount) => {
       // `targetAmount` is _draw()'s outer const (data.target_amount) — no
       // local copy, which previously shadowed the `target` date const.
-      if (targetAmount <= 0 || !data.target_amount_short_label) {
+      if (targetAmount <= 0) {
         tooltipRelation.style.display = "none";
         return;
       }
       const percent = Math.round((amount / targetAmount) * 100);
       tooltipRelation.textContent = this.targetRelationTemplateValue
         .replace("{percent}", percent)
-        .replace("{target}", data.target_amount_short_label);
+        .replace("{target}", this._fmtMoneyShort(targetAmount, data.currency));
       tooltipRelation.style.display = "";
     };
 
@@ -488,7 +496,11 @@ export default class extends Controller {
       .style("cursor", "crosshair");
 
     const bisectDate = d3.bisector((d) => d.date).left;
-    const dateFmt = d3.timeFormat("%b %d, %Y");
+    const dateFmt = new Intl.DateTimeFormat(this.localeValue || undefined, {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
     const todayTs = today.getTime();
     const targetTs = target ? target.getTime() : null;
     const MS_PER_WEEK = 7 * 24 * 60 * 60 * 1000;
@@ -519,7 +531,7 @@ export default class extends Controller {
       const hoverX = x(hoverDate);
       crosshair.attr("x1", hoverX).attr("x2", hoverX).style("display", null);
 
-      tooltipDate.textContent = dateFmt(hoverDate);
+      tooltipDate.textContent = dateFmt.format(hoverDate);
 
       if (future) {
         // Projection segment: interpolate along the dashed line; saved dot
@@ -569,7 +581,7 @@ export default class extends Controller {
 
   _fmtMoney(amount, currency) {
     try {
-      return new Intl.NumberFormat(undefined, {
+      return new Intl.NumberFormat(this.localeValue || undefined, {
         style: "currency",
         currency: currency || "USD",
         maximumFractionDigits: 0,
@@ -577,24 +589,21 @@ export default class extends Controller {
     } catch {
       // Same server-shipped symbol path as `_fmtMoneyShort`.
       const symbol = this.dataValue?.currency_symbol || "$";
-      return `${symbol}${Math.round(amount).toLocaleString()}`;
+      return `${symbol}${Math.round(amount).toLocaleString(this.localeValue || undefined)}`;
     }
   }
 
-  _fmtMoneyShort(amount, _currency) {
-    // The server ships `currency_symbol` via projection_payload (resolved
-    // through Money.new(0, code).currency.symbol so EUR/GBP/JPY/etc. render
-    // with the family-locale-correct glyph). Fall back to "$" if a stale
-    // payload reaches us mid-deploy.
-    const symbol = this.dataValue?.currency_symbol || "$";
-    const abs = Math.abs(amount);
-    if (abs >= 1_000_000) {
-      return `${symbol}${(amount / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  _fmtMoneyShort(amount, currency) {
+    try {
+      return new Intl.NumberFormat(this.localeValue || undefined, {
+        style: "currency",
+        currency: currency || "USD",
+        notation: "compact",
+        maximumFractionDigits: 1,
+      }).format(amount);
+    } catch {
+      return this._fmtMoney(amount, currency);
     }
-    if (abs >= 1_000) {
-      return `${symbol}${(amount / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
-    }
-    return `${symbol}${Math.round(amount).toLocaleString()}`;
   }
 
   _id() {

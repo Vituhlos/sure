@@ -1,0 +1,10 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        account_share:
+          attributes:
+            user:
+              already_owner: "už tento účet vlastní"
+              different_family: "musí patřit do stejné domácnosti"

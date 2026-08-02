@@ -11,7 +11,7 @@ class ImportsController < ApplicationController
     if account_id.present?
       account = accessible_accounts.find_by(id: account_id)
       unless account
-        redirect_back_or_to import_path(@import), alert: t("imports.update.invalid_account", default: "Account not found.")
+        redirect_back_or_to import_path(@import), alert: t("imports.update.invalid_account")
         return
       end
       return if @import.account_statement.present? && !require_account_permission!(account)
@@ -19,7 +19,7 @@ class ImportsController < ApplicationController
       @import.is_a?(PdfImport) ? @import.assign_account!(account) : @import.update!(account: account)
     end
 
-    redirect_to import_path(@import), notice: t("imports.update.account_saved", default: "Account saved.")
+    redirect_to import_path(@import), notice: t("imports.update.account_saved")
   end
 
   def publish

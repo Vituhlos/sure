@@ -1,0 +1,44 @@
+---
+cs:
+  account:
+    opening_balance:
+      errors:
+        date_before_oldest_entry: "Datum počátečního zůstatku musí předcházet nejstarší položce"
+  account_order:
+    balance_asc:
+      label: "Zůstatek (od nejnižšího)"
+      label_short: "Zůstatek ↑"
+    balance_desc:
+      label: "Zůstatek (od nejvyššího)"
+      label_short: "Zůstatek ↓"
+    name_asc:
+      label: "Název (A–Z)"
+      label_short: "Název ↑"
+    name_desc:
+      label: "Název (Z–A)"
+      label_short: "Název ↓"
+  activerecord:
+    attributes:
+      account:
+        balance: "Zůstatek"
+        currency: "Měna"
+        family: "%{moniker}"
+        family_id: "%{moniker}"
+        name: "Název"
+        subtype: "Podtyp"
+    errors:
+      models:
+        account:
+          attributes:
+            owner:
+              different_family: "musí patřit do stejné domácnosti jako účet"
+    models:
+      account: "Účet"
+      account/credit: "Kreditní karta"
+      account/depository: "Bankovní účet"
+      account/investment: "Investice"
+      account/loan: "Úvěr"
+      account/other_asset: "Ostatní majetek"
+      account/other_liability: "Ostatní závazek"
+      account/property: "Nemovitost"
+      account/vehicle: "Vozidlo"

@@ -1,0 +1,31 @@
+---
+cs:
+  helpers:
+    label:
+      user:
+        invite_code: "Zvací kód"
+    submit:
+      user:
+        create: "Pokračovat"
+  registrations:
+    closed: "Registrace jsou momentálně uzavřené."
+    create:
+      failure: "Účet se nepodařilo vytvořit."
+      invalid_invite_code: "Zvací kód není platný. Zkuste to znovu."
+      success: "Účet byl úspěšně vytvořen."
+    new:
+      invitation_message: "%{inviter} vám posílá pozvánku s rolí %{role}."
+      join_family_title: "Připojit se: %{family} – %{moniker}"
+      role_admin: "správce"
+      role_guest: "host"
+      role_member: "člen"
+      submit: "Vytvořit účet"
+      title: "Vytvořit účet"
+      welcome_body: "Nejprve si vytvořte nový účet. Další nastavení pak můžete upravit přímo v aplikaci."
+      welcome_title: "Vítejte ve vlastní instalaci aplikace %{product_name}!"
+      password_placeholder: "Zadejte heslo"
+      password_requirements:
+        length: "Minimálně 8 znaků"
+        case: "Velká i malá písmena"
+        number: "Číslice (0–9)"
+        special: "Speciální znak (!, @, #, $, % apod.)"

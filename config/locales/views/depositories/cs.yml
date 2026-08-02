@@ -1,0 +1,26 @@
+---
+cs:
+  depositories:
+    edit:
+      edit: "Upravit: %{account}"
+    form:
+      none: "Bez podtypu"
+      subtype_prompt: "Vyberte typ účtu"
+    new:
+      title: "Zadat zůstatek účtu"
+    subtypes:
+      cd:
+        long: "Termínovaný vklad"
+        short: "Termínovaný vklad"
+      checking:
+        long: "Běžný účet"
+        short: "Běžný účet"
+      hsa:
+        long: "Zdravotní spořicí účet (HSA)"
+        short: "HSA"
+      money_market:
+        long: "Účet peněžního trhu"
+        short: "Účet peněžního trhu"
+      savings:
+        long: "Spořicí účet"
+        short: "Spořicí účet"

@@ -1,0 +1,66 @@
+---
+cs:
+  recurring_transactions:
+    title: "Opakující se transakce"
+    upcoming: "Nadcházející opakující se transakce"
+    projected: "Očekáváno"
+    recurring: "Opakující se"
+    expected_today: "Očekáváno dnes"
+    expected_in:
+      one: "Očekáváno za %{count} den"
+      few: "Očekáváno za %{count} dny"
+      many: "Očekáváno za %{count} dní"
+      other: "Očekáváno za %{count} dne"
+    day_of_month: "%{day}. den v měsíci"
+    identify_patterns: "Vyhledat opakující se transakce"
+    cleanup_stale: "Odstranit neaktuální"
+    settings:
+      enable_label: "Povolit opakující se transakce"
+      enable_description: "Automaticky rozpoznávat opakující se transakce a zobrazovat jejich očekávané budoucí výskyty."
+    settings_updated: "Nastavení opakujících se transakcí bylo aktualizováno."
+    info:
+      title: "Automatické rozpoznávání opakování"
+      manual_description: "Pomocí tlačítek výše můžete opakující se transakce vyhledat ručně nebo odstranit neaktuální záznamy."
+      automatic_description: "Automatické rozpoznávání se spustí také po:"
+      triggers:
+        - "dokončení importu CSV (transakce, obchody, účty apod.);"
+        - "dokončení synchronizace s libovolným poskytovatelem (Plaid, SimpleFIN apod.)."
+    identified:
+      one: "Nalezeno %{count} opakování transakce"
+      few: "Nalezena %{count} opakování transakcí"
+      many: "Nalezeno %{count} opakování transakcí"
+      other: "Nalezeno %{count} opakování transakcí"
+    cleaned_up:
+      one: "Odstraněna %{count} neaktuální opakující se transakce"
+      few: "Odstraněny %{count} neaktuální opakující se transakce"
+      many: "Odstraněno %{count} neaktuálních opakujících se transakcí"
+      other: "Odstraněno %{count} neaktuálních opakujících se transakcí"
+    marked_inactive: "Opakující se transakce byla označena jako neaktivní."
+    marked_active: "Opakující se transakce byla označena jako aktivní."
+    deleted: "Opakující se transakce byla odstraněna."
+    confirm_delete: "Opravdu chcete tuto opakující se transakci odstranit?"
+    marked_as_recurring: "Transakce byla označena jako opakující se."
+    already_exists: "Pro tento vzorec již existuje ručně vytvořená opakující se transakce."
+    creation_failed: "Opakující se transakci se nepodařilo vytvořit. Zkontrolujte údaje transakce a zkuste to znovu."
+    unexpected_error: "Při vytváření opakující se transakce došlo k neočekávané chybě."
+    amount_range: "Rozpětí: %{min} až %{max}"
+    empty:
+      title: "Nebyly nalezeny žádné opakující se transakce"
+      description: "Kliknutím na „Vyhledat opakující se transakce“ je automaticky rozpoznáte v historii transakcí."
+    table:
+      merchant: "Název"
+      amount: "Částka"
+      expected_day: "Očekávaný den"
+      next_date: "Příští datum"
+      last_occurrence: "Poslední výskyt"
+      status: "Stav"
+      actions: "Akce"
+    status:
+      active: "Aktivní"
+      inactive: "Neaktivní"
+    badges:
+      manual: "Ručně"
+    transfer_marked_as_recurring: "Převod byl označen jako opakující se."
+    transfer_already_exists: "Pro tuto dvojici účtů již existuje opakující se převod."
+    transfer_creation_failed: "Opakující se převod se nepodařilo vytvořit. Zkontrolujte jeho údaje a zkuste to znovu."
+    transfer_feature_disabled: "Opakující se transakce jsou pro tuto domácnost vypnuté."

@@ -19,19 +19,19 @@ class UserService {
       } else if (response.statusCode == 401) {
         return {
           'success': false,
-          'error': 'Session expired. Please login again.',
+          'error': 'session_expired',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to reset account',
+          'error': responseData['error'] ?? 'reset_account_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -52,19 +52,19 @@ class UserService {
       } else if (response.statusCode == 401) {
         return {
           'success': false,
-          'error': 'Session expired. Please login again.',
+          'error': 'session_expired',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to delete account',
+          'error': responseData['error'] ?? 'delete_account_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }

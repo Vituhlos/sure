@@ -8,6 +8,8 @@ en:
             base:
               inflow_cannot_be_in_multiple_transfers: Inflow transaction cannot be
                 part of multiple transfers
+              exchange_rate_unavailable: Exchange rate unavailable for selected
+                currencies and date
               must_be_from_different_accounts: Transfer must have different accounts
               must_be_from_same_family: Transfer must be from the same family
               must_be_within_date_range: Transfer transaction dates must be within
@@ -20,7 +22,11 @@ en:
           different_accounts: "Must be from different accounts"
           same_family: "Must be from same family"
           opposite_amounts: "Must have opposite amounts"
-          within_days: "Must be within %{count} days"
+          within_days:
+            one: "Must be within %{count} day"
+            other: "Must be within %{count} days"
   transfer:
     name: Transfer to %{to_account}
     payment_name: Payment to %{to_account}
+    unnamed: Transfer
+    unnamed_payment: Payment

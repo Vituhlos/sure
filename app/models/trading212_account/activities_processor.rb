@@ -171,7 +171,7 @@ class Trading212Account::ActivitiesProcessor
         amount: signed_amount,
         currency: currency,
         date: date,
-        name: label,
+        name: I18n.t("trading212_items.transaction_names.#{label.downcase}"),
         source: "trading212",
         investment_activity_label: label,
         extra: {
@@ -211,11 +211,15 @@ class Trading212Account::ActivitiesProcessor
     end
 
     def build_order_name(ticker, signed_quantity)
-      action = signed_quantity.negative? ? "Sell" : "Buy"
-      "#{action} #{signed_quantity.abs} shares of #{ticker}"
+      action = signed_quantity.negative? ? "sell" : "buy"
+      I18n.t("trading212_items.transaction_names.#{action}", quantity: signed_quantity.abs, ticker: ticker)
     end
 
     def build_dividend_name(security)
-      security ? "Dividend from #{security.ticker}" : "Dividend"
+      if security
+        I18n.t("trading212_items.transaction_names.dividend_from", ticker: security.ticker)
+      else
+        I18n.t("trading212_items.transaction_names.dividend")
+      end
     end
 end

@@ -151,7 +151,7 @@
                 <p class="text-sm text-secondary"><%= identity.info&.dig("email") || t(".sso_no_email") %></p>
                 <p class="text-xs text-secondary">
                   <%= t(".sso_last_used") %>:
-                  <%= identity.last_authenticated_at&.to_fs(:short) || t(".sso_never") %>
+                  <%= identity.last_authenticated_at ? l(identity.last_authenticated_at, format: :short) : t(".sso_never") %>
                 </p>
               </div>
             </div>

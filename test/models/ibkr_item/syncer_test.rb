@@ -16,11 +16,11 @@ class IbkrItem::SyncerTest < ActiveSupport::TestCase
       syncer.perform_sync(sync)
     end
 
-    assert_equal "IBKR credentials are missing.", error.message
+    assert_equal I18n.t("ibkr_items.syncer.credentials_missing"), error.message
     assert_equal "requires_update", @ibkr_item.reload.status
 
     stats = sync.reload.sync_stats
     assert_equal 1, stats["total_errors"]
-    assert_equal [ { "message" => "IBKR credentials are missing.", "category" => "auth_error" } ], stats["errors"]
+    assert_equal [ { "message" => I18n.t("ibkr_items.syncer.credentials_missing"), "category" => "auth_error" } ], stats["errors"]
   end
 end

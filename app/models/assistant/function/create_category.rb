@@ -48,23 +48,27 @@ class Assistant::Function::CreateCategory < Assistant::Function
 
   def call(params = {})
     name = params["name"].to_s.strip
-    return error("name_required", "Please provide a name for the category.") if name.blank?
+    return error("name_required", I18n.t("assistant.functions.create_category.name_required")) if name.blank?
 
     color = params["color"].presence || Category::COLORS.sample
     icon = params["icon"].presence || Category.suggested_icon(name)
     attrs = { name: name, color: color, lucide_icon: icon }
 
     if params["parent_id"].present?
-      return error("parent_not_found", "Parent category with id '#{params["parent_id"]}' not found.") unless valid_uuid?(params["parent_id"])
+      return error("parent_not_found", I18n.t("assistant.functions.create_category.parent_not_found", id: params["parent_id"])) unless valid_uuid?(params["parent_id"])
       parent = family.categories.find_by(id: params["parent_id"])
-      return error("parent_not_found", "Parent category with id '#{params["parent_id"]}' not found.") unless parent
+      return error("parent_not_found", I18n.t("assistant.functions.create_category.parent_not_found", id: params["parent_id"])) unless parent
       attrs[:parent] = parent
     end
 
     category = family.categories.new(attrs)
 
     if category.save
-      { success: true, category: serialize(category), message: "Category '#{category.name_with_parent}' created." }
+      {
+        success: true,
+        category: serialize(category),
+        message: I18n.t("assistant.functions.create_category.created", name: category.name_with_parent)
+      }
     else
       error("validation_failed", category.errors.full_messages.join("; "))
     end

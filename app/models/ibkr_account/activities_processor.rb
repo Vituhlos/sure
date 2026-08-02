@@ -123,7 +123,7 @@ class IbkrAccount::ActivitiesProcessor
         amount: commission.abs,
         currency: currency,
         date: date,
-        name: "Trade Commission for #{ticker}",
+        name: I18n.t("ibkr_items.transaction_names.trade_commission", ticker: ticker),
         source: "ibkr",
         investment_activity_label: "Fee",
         extra: {
@@ -183,10 +183,10 @@ class IbkrAccount::ActivitiesProcessor
     end
 
     def build_cash_transaction_name(row, label, security = nil)
-      return label unless label == "Dividend"
+      return I18n.t("ibkr_items.transaction_names.#{label.downcase}") unless label == "Dividend"
 
       ticker = security&.ticker || security_symbol_for_conid(row[:conid]) || row[:conid]
-      "Dividend from #{ticker}"
+      I18n.t("ibkr_items.transaction_names.dividend_from", ticker: ticker)
     end
 
     def resolve_security_for_cash_transaction(row)

@@ -5,3 +5,9 @@ en:
       models:
         api_key:
           cannot_destroy_demo_key: "Cannot destroy demo monitoring API key"
+          cannot_revoke_demo_key: "Cannot revoke demo monitoring API key"
+          attributes:
+            scopes:
+              blank_permissions: "must include at least one permission"
+              multiple_permissions: "can only have one permission level"
+              invalid_permission: "must be either 'read' or 'read_write'"

@@ -505,31 +505,31 @@ class SophtronItemsController < ApplicationController
     @account_type_options = [ [ t(".account_types.skip"), "skip" ] ] + all_account_type_options
     @subtype_options = {
       "Depository" => {
-        label: "Account Subtype:",
-        options: Depository::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.depository"),
+        options: Depository::SUBTYPES.map { |k, v| [ t("depositories.subtypes.#{k}.long", default: v[:long]), k ] }
       },
       "CreditCard" => {
         label: "",
         options: [],
-        message: "Credit cards will be automatically set up as credit card accounts."
+        message: t(".subtype_messages.credit_card")
       },
       "Investment" => {
-        label: "Investment Type:",
-        options: Investment::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.investment"),
+        options: Investment::SUBTYPES.map { |k, v| [ t("investments.subtypes.#{k}.long", default: v[:long]), k ] }
       },
       "Loan" => {
-        label: "Loan Type:",
-        options: Loan::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.loan"),
+        options: Loan::SUBTYPES.map { |k, v| [ t("loans.subtypes.#{k}.long", default: v[:long]), k ] }
       },
       "Crypto" => {
         label: nil,
         options: [],
-        message: "Crypto accounts track cryptocurrency holdings."
+        message: t(".subtype_messages.crypto")
       },
       "OtherAsset" => {
         label: nil,
         options: [],
-        message: "No additional options needed for Other Assets."
+        message: t(".subtype_messages.other_asset")
       }
     }
   end

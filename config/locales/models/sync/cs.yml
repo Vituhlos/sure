@@ -1,0 +1,9 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        sync:
+          attributes:
+            window_end_date:
+              after_start: "musí být pozdější než počáteční datum období"

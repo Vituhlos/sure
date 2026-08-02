@@ -256,7 +256,7 @@ class BinanceAccount::Processor
       if is_buyer
         account.entries.create!(
           date:        date,
-          name:        "Buy #{qty.round(8)} #{base_symbol}",
+          name:        I18n.t("binance_items.transaction_names.buy", quantity: qty.round(8), symbol: base_symbol),
           amount:      -amount_usd,
           currency:    "USD",
           external_id: external_id,
@@ -273,7 +273,7 @@ class BinanceAccount::Processor
       else
         account.entries.create!(
           date:        date,
-          name:        "Sell #{qty.round(8)} #{base_symbol}",
+          name:        I18n.t("binance_items.transaction_names.sell", quantity: qty.round(8), symbol: base_symbol),
           amount:      amount_usd,
           currency:    "USD",
           external_id: external_id,
@@ -376,7 +376,7 @@ class BinanceAccount::Processor
               # BUY LOGIC: User sent Fiat from their bank, received Crypto
               account.entries.create!(
                 date:        date,
-                name:        "P2P Payment (#{fiat_currency})",
+                name:        I18n.t("binance_items.transaction_names.p2p_payment", currency: fiat_currency),
                 amount:      -fiat_amount, # Fiat leaving the system
                 currency:    fiat_currency,
                 external_id: funding_external_id,
@@ -386,7 +386,7 @@ class BinanceAccount::Processor
 
               account.entries.create!(
                 date:        date,
-                name:        "P2P Buy #{gross_crypto.round(8)} #{crypto_asset}",
+                name:        I18n.t("binance_items.transaction_names.p2p_buy", quantity: gross_crypto.round(8), symbol: crypto_asset),
                 amount:      fiat_amount, # Fiat value entering as Crypto (Cost Basis)
                 currency:    fiat_currency,
                 external_id: external_id,
@@ -404,7 +404,7 @@ class BinanceAccount::Processor
               # SELL LOGIC: User liquidated Crypto, received Fiat to their bank
               account.entries.create!(
                 date:        date,
-                name:        "P2P Sell #{gross_crypto.round(8)} #{crypto_asset}",
+                name:        I18n.t("binance_items.transaction_names.p2p_sell", quantity: gross_crypto.round(8), symbol: crypto_asset),
                 amount:      -fiat_amount, # Fiat value of Crypto leaving
                 currency:    fiat_currency,
                 external_id: external_id,
@@ -421,7 +421,7 @@ class BinanceAccount::Processor
 
               account.entries.create!(
                 date:        date,
-                name:        "P2P Receipt (#{fiat_currency})",
+                name:        I18n.t("binance_items.transaction_names.p2p_receipt", currency: fiat_currency),
                 amount:      fiat_amount, # Fiat entering the system
                 currency:    fiat_currency,
                 external_id: funding_external_id,

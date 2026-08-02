@@ -1,0 +1,9 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        tag:
+          attributes:
+            base:
+              replacement_must_differ: "Replacement tag cannot be the same as the tag being destroyed"

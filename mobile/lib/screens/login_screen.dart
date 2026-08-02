@@ -9,6 +9,7 @@ import '../widgets/sure_button.dart';
 import '../widgets/sure_logo.dart';
 import 'backend_config_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback? onGoToSettings;
@@ -104,8 +105,12 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            authProvider.errorMessage ??
-                AppLocalizations.of(context).loginApiKeyInvalid,
+            authProvider.errorMessage == null
+                ? AppLocalizations.of(context).loginApiKeyInvalid
+                : localizedClientError(
+                    AppLocalizations.of(context),
+                    authProvider.errorMessage,
+                  ),
           ),
           backgroundColor: Theme.of(context).colorScheme.error,
         ),
@@ -198,7 +203,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: Text(
-                                    authProvider.errorMessage!,
+                                    localizedClientError(
+                                      l,
+                                      authProvider.errorMessage,
+                                    ),
                                     style: TextStyle(
                                         color: colorScheme.onErrorContainer),
                                   ),

@@ -28,12 +28,12 @@
 <% end %>
 
 <% unless Current.user.ui_layout_intro? %>
-  <%= settings_section title: Current.family&.moniker == "Group" ? t(".group_title", default: "Group") : t(".household_title"), subtitle: t(".household_subtitle", moniker_plural: family_moniker_plural_downcase, moniker: family_moniker_downcase) do %>
+  <%= settings_section title: Current.family&.moniker == "Group" ? t(".group_title") : t(".household_title"), subtitle: t(".household_subtitle", moniker_plural: family_moniker_plural_downcase, moniker: family_moniker_downcase) do %>
     <div class="space-y-4">
       <%= styled_form_with model: Current.user, class: "space-y-4", data: { controller: "auto-submit-form" } do |form| %>
         <%= form.fields_for :family do |family_fields| %>
-          <% name_label = Current.family&.moniker == "Group" ? t(".group_form_label", default: "Group name") : t(".household_form_label") %>
-          <% name_placeholder = Current.family&.moniker == "Group" ? t(".group_form_input_placeholder", default: "Enter group name") : t(".household_form_input_placeholder") %>
+          <% name_label = Current.family&.moniker == "Group" ? t(".group_form_label") : t(".household_form_label") %>
+          <% name_placeholder = Current.family&.moniker == "Group" ? t(".group_form_input_placeholder") : t(".household_form_input_placeholder") %>
           <%= family_fields.text_field :name,
                 placeholder: name_placeholder,
                 label: name_label,
@@ -48,15 +48,16 @@
         <% @users.each do |user| %>
           <div class="flex gap-2 mt-2 items-center bg-container p-4 shadow-border-xs rounded-lg">
             <div class="w-9 h-9 shrink-0">
-              <%= render "settings/user_avatar", avatar_url: user.profile_image&.variant(:small)&.url, initials: user.initials %>
+              <%= render "settings/user_avatar", avatar_url: user.profile_image&.variant(:small)&.url, initials: user.initials, alt: t(".member_avatar_alt", name: user.display_name) %>
             </div>
             <p class="text-primary font-medium text-sm"><%= user.display_name %></p>
-            <%= render DS::Pill.new(label: t("users.roles.#{user.role}", default: user.role.humanize), tone: :gray, marker: false, size: :sm) %>
+            <%= render DS::Pill.new(label: t("users.roles.#{user.role}"), tone: :gray, marker: false, size: :sm) %>
             <% if Current.user.admin? && user != Current.user %>
               <div class="ml-auto">
                 <%= render DS::Button.new(
                   variant: "icon",
                   icon: "x",
+                  aria_label: t(".remove_member"),
                   href: settings_profile_path(user_id: user),
                   method: :delete,
                   confirm: CustomConfirm.for_resource_deletion(user.display_name, high_severity: true)
@@ -85,9 +86,10 @@
                     <input type="text"
                                readonly
                                autocomplete="off"
+                               aria-label="<%= t(".invitation_link") %>"
                                value="<%= accept_invitation_url(invitation.token) %>"
                                class="text-sm bg-surface-inset px-2 py-1 rounded border border-secondary w-72">
-                    <button data-action="clipboard#copy" class="text-secondary hover:text-primary">
+                    <button type="button" aria-label="<%= t(".copy_invitation_link") %>" data-action="clipboard#copy" class="text-secondary hover:text-primary">
                       <span data-clipboard-target="iconDefault">
                         <%= icon "copy" %>
                       </span>
@@ -102,6 +104,7 @@
                   <%= render DS::Button.new(
                     variant: "icon",
                     icon: "x",
+                    aria_label: t(".remove_invitation"),
                     href: invitation_path(invitation),
                     method: :delete,
                     confirm: CustomConfirm.for_resource_deletion(invitation.email, high_severity: true)

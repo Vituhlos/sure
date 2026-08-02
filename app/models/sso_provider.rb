@@ -15,17 +15,17 @@ class SsoProvider < ApplicationRecord
   # Validations
   validates :strategy, presence: true, inclusion: {
     in: %w[openid_connect google_oauth2 github saml],
-    message: "%{value} is not a supported strategy"
+    message: :unsupported_strategy
   }
   validates :name, presence: true, uniqueness: true, format: {
     with: /\A[a-z0-9_]+\z/,
-    message: "must contain only lowercase letters, numbers, and underscores"
+    message: :invalid_identifier
   }
   validates :label, presence: true
   validates :enabled, inclusion: { in: [ true, false ] }
   validates :icon, format: {
     with: /\A\S+\z/,
-    message: "cannot be blank or contain only whitespace"
+    message: :whitespace_only
   }, allow_nil: true
 
   before_validation :normalize_icon
@@ -66,22 +66,22 @@ class SsoProvider < ApplicationRecord
 
     def validate_oidc_fields
       if issuer.blank?
-        errors.add(:issuer, "is required for OpenID Connect providers")
+        errors.add(:issuer, :required_for_oidc)
       elsif issuer.present? && !valid_url?(issuer)
-        errors.add(:issuer, "must be a valid URL")
+        errors.add(:issuer, :invalid_url)
       end
 
-      errors.add(:client_id, "is required for OpenID Connect providers") if client_id.blank?
-      errors.add(:client_secret, "is required for OpenID Connect providers") if client_secret.blank?
+      errors.add(:client_id, :required_for_oidc) if client_id.blank?
+      errors.add(:client_secret, :required_for_oidc) if client_secret.blank?
 
       if redirect_uri.present? && !valid_url?(redirect_uri)
-        errors.add(:redirect_uri, "must be a valid URL")
+        errors.add(:redirect_uri, :invalid_url)
       end
     end
 
     def validate_oauth_fields
-      errors.add(:client_id, "is required for OAuth providers") if client_id.blank?
-      errors.add(:client_secret, "is required for OAuth providers") if client_secret.blank?
+      errors.add(:client_id, :required_for_oauth) if client_id.blank?
+      errors.add(:client_secret, :required_for_oauth) if client_secret.blank?
     end
 
     def validate_saml_fields
@@ -119,7 +119,7 @@ class SsoProvider < ApplicationRecord
       return if default_role.blank?
 
       unless User.roles.key?(default_role)
-        errors.add(:settings, "default_role must be guest, member, admin, or super_admin")
+        errors.add(:settings, :invalid_default_role)
       end
     end
 
@@ -134,20 +134,20 @@ class SsoProvider < ApplicationRecord
         end
 
         unless response.success?
-          errors.add(:issuer, "discovery endpoint returned #{response.status}")
+          errors.add(:issuer, :discovery_http_error, status: response.status)
           return
         end
 
         discovery_data = JSON.parse(response.body)
         unless discovery_data["issuer"].present?
-          errors.add(:issuer, "discovery endpoint did not return valid issuer")
+          errors.add(:issuer, :discovery_missing_issuer)
         end
       rescue Faraday::Error => e
-        errors.add(:issuer, "could not connect to discovery endpoint: #{e.message}")
+        errors.add(:issuer, :discovery_connection_failed, error: e.message)
       rescue JSON::ParserError
-        errors.add(:issuer, "discovery endpoint returned invalid JSON")
+        errors.add(:issuer, :discovery_invalid_json)
       rescue StandardError => e
-        errors.add(:issuer, "discovery validation failed: #{e.message}")
+        errors.add(:issuer, :discovery_validation_failed, error: e.message)
       end
     end
 

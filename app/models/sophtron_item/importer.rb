@@ -75,7 +75,7 @@ class SophtronItem::Importer
     accounts_data = fetch_accounts_data
     unless accounts_data
       Rails.logger.error "SophtronItem::Importer - Failed to fetch accounts data for item #{sophtron_item.id}"
-      return { success: false, error: "Failed to fetch accounts data", accounts_imported: 0, transactions_imported: 0 }
+      return { success: false, error: I18n.t("sophtron_items.importer.fetch_accounts_failed"), accounts_imported: 0, transactions_imported: 0 }
     end
 
     # Store raw payload
@@ -290,13 +290,13 @@ class SophtronItem::Importer
         # Validate response structure
         unless transactions_data.is_a?(Hash)
           Rails.logger.error "SophtronItem::Importer - Invalid transactions_data format for account #{sophtron_account.account_id}"
-          return { success: false, transactions_count: 0, error: "Invalid response format" }
+          return { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.invalid_response_format") }
         end
 
         transactions = transactions_data[:transactions]
         unless transactions.is_a?(Array)
           Rails.logger.error "SophtronItem::Importer - Missing transactions array for account #{sophtron_account.account_id}"
-          return { success: false, transactions_count: 0, error: "Missing transactions array" }
+          return { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.missing_transactions") }
         end
 
         transactions_count = transactions.count
@@ -330,7 +330,7 @@ class SophtronItem::Importer
             end
           rescue => e
             Rails.logger.error "SophtronItem::Importer - Failed to store transactions for account #{sophtron_account.account_id}: #{e.message}"
-            return { success: false, transactions_count: 0, error: "Failed to store transactions: #{e.message}" }
+            return { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.store_transactions_failed", message: e.message) }
           end
         else
           Rails.logger.info "SophtronItem::Importer - No transactions to store for account #{sophtron_account.account_id}"
@@ -345,11 +345,11 @@ class SophtronItem::Importer
         { success: false, transactions_count: 0, error: e.message, requires_update: requires_update }
       rescue JSON::ParserError => e
         Rails.logger.error "SophtronItem::Importer - Failed to parse transaction response for account #{sophtron_account.id}: #{e.message}"
-        { success: false, transactions_count: 0, error: "Failed to parse response" }
+        { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.parse_response_failed") }
       rescue => e
         Rails.logger.error "SophtronItem::Importer - Unexpected error fetching transactions for account #{sophtron_account.id}: #{e.class} - #{e.message}"
         Rails.logger.error e.backtrace.join("\n")
-        { success: false, transactions_count: 0, error: "Unexpected error: #{e.message}" }
+        { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.unexpected_error", message: e.message) }
       end
     end
 
@@ -365,13 +365,13 @@ class SophtronItem::Importer
         sophtron_item.update!(
           status: :requires_update,
           current_job_id: job_id,
-          last_connection_error: "Sophtron refresh requires MFA"
+          last_connection_error: I18n.t("sophtron_items.importer.refresh_requires_mfa")
         )
-        return { success: false, transactions_count: 0, error: "Sophtron refresh requires MFA", requires_update: true }
+        return { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.refresh_requires_mfa"), requires_update: true }
       end
 
       if Provider::Sophtron.job_failed?(job)
-        return { success: false, transactions_count: 0, error: "Sophtron refresh failed" }
+        return { success: false, transactions_count: 0, error: I18n.t("sophtron_items.importer.refresh_failed") }
       end
 
       unless Provider::Sophtron.job_success?(job) || Provider::Sophtron.job_completed?(job)

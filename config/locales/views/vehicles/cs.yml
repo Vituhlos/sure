@@ -1,0 +1,38 @@
+---
+cs:
+  vehicles:
+    edit:
+      edit: "Upravit: %{account}"
+    form:
+      make: "Značka"
+      make_placeholder: "Škoda"
+      mileage: "Nájezd"
+      mileage_placeholder: "15 000"
+      mileage_unit: "Jednotka"
+      model: "Model"
+      model_placeholder: "Octavia"
+      year: "Rok výroby"
+      year_placeholder: "2023"
+      mileage_units:
+        miles: "Míle"
+        kilometers: "Kilometry"
+    new:
+      title: "Zadat údaje o vozidle"
+    overview:
+      current_price: "Aktuální hodnota"
+      make_model: "Značka a model"
+      mileage: "Nájezd"
+      purchase_price: "Pořizovací cena"
+      trend: "Vývoj"
+      unknown: "Neuvedeno"
+      year: "Rok výroby"
+    tabs:
+      overview:
+        current_price: "Aktuální hodnota"
+        make_model: "Značka a model"
+        mileage: "Nájezd"
+        purchase_price: "Pořizovací cena"
+        trend: "Vývoj"
+        unknown: "Neuvedeno"
+        year: "Rok výroby"
+        edit_account_details: "Upravit údaje o účtu"

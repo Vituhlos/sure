@@ -1,0 +1,19 @@
+---
+cs:
+  demo_family_refresh_mailer:
+    completed:
+      subject: "Obnovení ukázkové domácnosti bylo dokončeno"
+      heading: "Obnovení ukázkové domácnosti bylo dokončeno."
+      period: "Období (UTC): %{start} až %{end}"
+      old_family: "Původní ukázková domácnost: %{name}"
+      not_found: "nenalezena"
+      sessions_count:
+        one: "Počet jedinečných přihlášení do původní ukázkové domácnosti za dané období: %{count}"
+        few: "Počet jedinečných přihlášení do původní ukázkové domácnosti za dané období: %{count}"
+        many: "Počet jedinečných přihlášení do původní ukázkové domácnosti za dané období: %{count}"
+        other: "Počet jedinečných přihlášení do původní ukázkové domácnosti za dané období: %{count}"
+      families_count:
+        one: "Počet nových domácností vytvořených za dané období: %{count}"
+        few: "Počet nových domácností vytvořených za dané období: %{count}"
+        many: "Počet nových domácností vytvořených za dané období: %{count}"
+        other: "Počet nových domácností vytvořených za dané období: %{count}"

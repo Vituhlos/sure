@@ -40,9 +40,9 @@ class MerchantImport < Import
   def csv_template
     template = <<-CSV
       name*,color,website_url
-      Coffee Shop,#e99537,https://coffeeshop.com
-      Pizza Palace,#4da568,https://pizzapalace.com
-      Bookstore,,
+      #{I18n.t("merchant_import.samples.coffee_shop")},#e99537,https://coffeeshop.com
+      #{I18n.t("merchant_import.samples.pizza_palace")},#4da568,https://pizzapalace.com
+      #{I18n.t("merchant_import.samples.bookstore")},,
     CSV
 
     CSV.parse(template, headers: true)

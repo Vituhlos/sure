@@ -4,6 +4,7 @@ en:
     self_hostable:
       redis_configured: "Redis is now configured properly! You can now setup your Sure application."
   shared:
+    app_version: "Version: %{version}"
     preview: Preview
     sync_toast:
       message: "New data available"
@@ -28,6 +29,14 @@ en:
       default_title: "Are you sure?"
       default_body: "This is not reversible."
       default_btn_text: "Confirm"
+      delete_title: "Delete %{name}?"
+      delete_body: "Are you sure you want to delete this item? This cannot be undone."
+      delete_btn_text: "Delete"
+      resources:
+        account: "account"
+        chat: "chat"
+        import: "import"
+        your_account: "your account"
     family_moniker:
       group_plural: Groups
       group_singular: Group
@@ -37,6 +46,7 @@ en:
       no_change: "no change"
     cancel: Cancel
     transaction_tabs:
+      aria: Transaction type
       expense: Expense
       income: Income
       transfer: Transfer

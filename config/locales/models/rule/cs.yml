@@ -1,0 +1,9 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        rule:
+          min_actions: "musí obsahovat alespoň jednu akci"
+          duplicate_actions: "Pravidlo nemůže obsahovat duplicitní akce %{types}"
+          nested_conditions: "Složené podmínky nelze vnořovat"

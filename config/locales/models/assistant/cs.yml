@@ -1,0 +1,67 @@
+---
+cs:
+  assistant:
+    external:
+      not_configured: "Externí asistent není nakonfigurován. Nastavte adresu URL a token v Nastavení → Vlastní hostování nebo pomocí proměnných prostředí."
+      not_authorized: "Váš účet nemá oprávnění používat externího asistenta."
+      empty_response: "Externí asistent vrátil prázdnou odpověď."
+      unexpected_error: "Při komunikaci s externím asistentem došlo k chybě. Podrobnosti najdete v protokolech serveru."
+      connection_interrupted: "Spojení s externím asistentem bylo přerušeno."
+      temporarily_unavailable: "Externí asistent je dočasně nedostupný."
+      http_error: "Externí asistent vrátil stav HTTP %{code}."
+      buffer_exceeded: "Datový proud externího asistenta překročil nejvyšší povolenou velikost vyrovnávací paměti."
+    functions:
+      create_category:
+        name_required: "Zadejte název kategorie."
+        parent_not_found: "Nadřazená kategorie s ID „%{id}“ nebyla nalezena."
+        created: "Kategorie „%{name}“ byla vytvořena."
+      create_tag:
+        name_required: "Zadejte název štítku."
+        created: "Štítek „%{name}“ byl vytvořen."
+      update_category:
+        not_found: "Kategorie s ID „%{id}“ nebyla nalezena."
+        no_changes: "Zadejte alespoň nový název, barvu nebo ikonu."
+        updated: "Kategorie „%{name}“ byla aktualizována."
+      update_tag:
+        not_found: "Štítek „%{name}“ nebyl nalezen."
+        no_changes: "Zadejte nový název nebo barvu."
+        updated: "Štítek byl aktualizován."
+      update_transaction:
+        not_found: "Transakce s ID „%{id}“ nebyla nalezena."
+        split_child: "Dílčí transakce vzniklé rozdělením nelze upravovat přímo. Použijte editor rozdělení."
+        not_authorized: "K aktualizaci této transakce nemáte oprávnění."
+        invalid_tags: "Jeden nebo více vybraných štítků nepatří do domácnosti uživatele."
+        no_changes: "Zadejte alespoň jedno pole, které chcete aktualizovat."
+        updated: "Transakce „%{name}“ byla aktualizována."
+        invalid_category: "Vybraná kategorie nepatří do domácnosti uživatele."
+        invalid_merchant: "Vybraný obchodník není v domácnosti uživatele k dispozici."
+        invalid_uuid: "Očekáván platný identifikátor UUID."
+      create_goal:
+        name_required: "Zadejte název cíle."
+        target_amount_invalid: "Cílová částka musí být větší než nula."
+        no_linked_accounts: "Vyberte alespoň jeden vkladový účet, který chcete s tímto cílem propojit."
+        unknown_accounts: "Některé názvy neodpovídají žádnému vkladovému účtu uživatele."
+        ambiguous_accounts: "Stejný název má více účtů. Požádejte uživatele, aby upřesnil, který z nich chce použít."
+        currency_mismatch: "Všechny propojené účty musí používat stejnou měnu. Nalezené měny: %{currencies}."
+        created: "Cíl „%{name}“ s cílovou částkou %{target} byl vytvořen. Zobrazíte jej na adrese %{url}."
+      get_budget:
+        invalid_month: "Neplatný měsíc: %{value}. Použijte formát RRRR-MM nebo MMM-RRRR."
+      import_bank_statement:
+        not_found: "Import PDF s ID %{id} nebyl nalezen."
+        not_bank_statement: "Tento soubor PDF není bankovní výpis. Zjištěný typ dokumentu: %{type}"
+        use_different_pdf: "Použít jiný soubor PDF, který obsahuje bankovní výpis"
+        account_required: "Vyberte účet, do kterého se mají transakce importovat."
+        account_not_found: "Účet nebyl nalezen."
+        provider_not_configured: "Poskytovatel AI není nakonfigurován."
+        extraction_failed: "Transakce se z bankovního výpisu nepodařilo získat."
+        no_transactions: "V bankovním výpisu se nepodařilo najít žádné transakce."
+        created:
+          one: "Byla získána 1 transakce a vytvořen import s ID %{id}. Zkontrolujte jej a poté zveřejněte."
+          few: "Byly získány %{count} transakce a vytvořen import s ID %{id}. Zkontrolujte je a poté zveřejněte."
+          many: "Bylo získáno %{count} transakce a vytvořen import s ID %{id}. Zkontrolujte je a poté zveřejněte."
+          other: "Bylo získáno %{count} transakcí a vytvořen import s ID %{id}. Zkontrolujte je a poté zveřejněte."
+      search_family_files:
+        no_documents: "Do úložiště dokumentů domácnosti zatím nebyly nahrány žádné dokumenty."
+        provider_not_configured: "Není nakonfigurováno žádné vektorové úložiště. Nastavte VECTOR_STORE_PROVIDER (openai | pgvector | qdrant) a nakonfigurujte OpenAI. Používáte-li pouze Anthropic, zapněte adaptér pgvector a v EMBEDDING_URI_BASE nastavte adresu služby pro vektorové reprezentace."
+        search_failed: "Dokumenty se nepodařilo prohledat."
+        no_matches: "Pro zadaný dotaz nebyly nalezeny žádné odpovídající dokumenty."

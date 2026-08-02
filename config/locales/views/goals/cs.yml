@@ -1,0 +1,305 @@
+---
+cs:
+  goals:
+    color_picker:
+      trigger_label: Vybrat barvu a ikonu
+      color_heading: Barva
+      icon_heading: Ikona
+      poor_contrast: Barva nemá dostatečný kontrast. Zvolte tmavší odstín nebo použijte
+      auto_adjust: automatickou úpravu.
+    index:
+      title: Cíle
+      subtitle: Spořte na to, na čem vám záleží.
+      new_goal: Nový cíl
+      empty_filtered: Zadaným podmínkám neodpovídá žádný cíl.
+      pending_pledges_callout: Máte příspěvky čekající na potvrzení. Sure je potvrdí při příští synchronizaci.
+      kpi:
+        contributed_label: Příspěvky · posledních 30 dní
+        velocity_delta_up: "↑ %{percent} %% oproti předchozím 30 dnům"
+        velocity_delta_down: "↓ %{percent} %% oproti předchozím 30 dnům"
+        velocity_delta_flat: beze změny oproti předchozím 30 dnům
+        velocity_delta_zero_base: Prvních 30 dní aktivity
+        needs_this_month_label: Tento měsíc je potřeba
+        needs_this_month_sub:
+          one: 1 cíl je ve skluzu
+          few: "%{count} cíle jsou ve skluzu"
+          many: "%{count} cíle je ve skluzu"
+          other: "%{count} cílů je ve skluzu"
+        needs_this_month_zero_sub: Žádný cíl není ve skluzu
+        on_track_label: Cíle podle plánu
+        on_track_value: "%{on_track} z %{total}"
+        on_track_sub_parts:
+          reached:
+            one: 1 cíl splněn
+            few: "%{count} cíle splněny"
+            many: "%{count} cíle splněno"
+            other: "%{count} cílů splněno"
+          behind:
+            one: 1 cíl ve skluzu
+            few: "%{count} cíle ve skluzu"
+            many: "%{count} cíle ve skluzu"
+            other: "%{count} cílů ve skluzu"
+          no_date:
+            one: 1 cíl bez termínu
+            few: "%{count} cíle bez termínu"
+            many: "%{count} cíle bez termínu"
+            other: "%{count} cílů bez termínu"
+          paused:
+            one: 1 cíl pozastaven
+            few: "%{count} cíle pozastaveny"
+            many: "%{count} cíle pozastaveno"
+            other: "%{count} cílů pozastaveno"
+        on_track_sub_all_good: Všechny aktivní cíle postupují podle plánu
+        on_track_all_caught_up: Všechny cíle jsou splněné
+      goals_section:
+        heading: Cíle
+        subtitle: Spořte na to, na čem vám záleží.
+      ongoing_section:
+        heading: Cíle
+      archived_section:
+        heading: Archivované
+      search:
+        placeholder: Hledat cíle…
+        aria_label: Hledat v cílech
+        empty: Zadaným podmínkám neodpovídá žádný cíl.
+        empty_with_query: "Výrazu „%{query}“ neodpovídá žádný cíl."
+        empty_with_filter: Tomuto filtru neodpovídá žádný cíl.
+        empty_with_both: "Výrazu „%{query}“ s tímto filtrem neodpovídá žádný cíl."
+        clear_search: Vymazat hledání
+        show_all: Zobrazit vše
+      chips_aria: Filtrovat cíle podle stavu
+      chips:
+        all: Vše
+        on_track: Podle plánu
+        behind: Ve skluzu
+        no_target_date: Bez termínu
+        paused: Pozastavené
+        completed: Dokončené
+    new:
+      heading: Nový cíl
+      subtitle: Spořte na něco konkrétního.
+    edit:
+      heading: Upravit cíl
+      save: Uložit změny
+    create:
+      success: Cíl byl vytvořen.
+    update:
+      success: Cíl byl aktualizován.
+    destroy:
+      success: Cíl byl odstraněn.
+      archive_first: Před odstraněním cíl archivujte.
+    pause:
+      success: Cíl byl pozastaven.
+      invalid_transition: Cíl v aktuálním stavu nelze pozastavit.
+    resume:
+      success: Sledování cíle bylo obnoveno.
+      invalid_transition: Sledování cíle v aktuálním stavu nelze obnovit.
+    complete:
+      success: Cíl byl označen jako dokončený.
+      invalid_transition: Cíl v aktuálním stavu nelze dokončit.
+    archive:
+      success: Cíl byl archivován.
+      invalid_transition: Cíl v aktuálním stavu nelze archivovat.
+    unarchive:
+      success: Cíl byl obnoven z archivu.
+      invalid_transition: Cíl v aktuálním stavu nelze obnovit z archivu.
+    reopen:
+      success: Cíl byl znovu otevřen.
+      invalid_transition: Cíl v aktuálním stavu nelze znovu otevřít.
+    show:
+      edit: Upravit
+      pause: Pozastavit
+      resume: Pokračovat
+      complete: Označit jako dokončený
+      archive: Archivovat
+      unarchive: Obnovit z archivu
+      reopen: Znovu otevřít cíl
+      delete: Trvale odstranit
+      record_pledge_cta: Zaznamenat příspěvek
+      pledge_just_transferred: Zaznamenat provedený převod
+      pledge_just_saved: Zaznamenat odložené peníze
+      funding_accounts_heading: Účty započítané do cíle
+      funding_accounts:
+        earmarked_of: "Započítáno %{earmarked} z %{balance}"
+        empty:
+          heading: Zatím není propojen žádný účet
+          body: Upravte cíl a propojte jej s účty, na kterých spoříte.
+      notes: Poznámky
+      funding_last_30d: posledních 30 dní
+      funding_last_90d: posledních 90 dní
+      status_callout:
+        behind: "pro návrat k plánu spořte o %{amount} měsíčně více"
+        behind_covered: "čekající příspěvky pokryjí chybějící částku"
+        on_track: "cíle dosáhnete přibližně v %{date}"
+        no_target_date: "nastavte termín a zobrazí se odhad dokončení"
+      pending_pledge:
+        title:
+          zero: "Čeká na potvrzení: %{amount} na účet %{account} · platnost končí dnes"
+          one: "Čeká na potvrzení: %{amount} na účet %{account} · zbývá 1 den"
+          few: "Čeká na potvrzení: %{amount} na účet %{account} · zbývají %{count} dny"
+          many: "Čeká na potvrzení: %{amount} na účet %{account} · zbývá %{count} dne"
+          other: "Čeká na potvrzení: %{amount} na účet %{account} · zbývá %{count} dní"
+        body_transfer: Sure příspěvek automaticky potvrdí, jakmile při příští synchronizaci rozpozná odpovídající vklad.
+        body_manual: Příspěvek se potvrdí při příští ruční úpravě zůstatku.
+        pledged_at: "Zaznamenáno před %{time_ago}"
+        extend: Prodloužit o 7 dní
+        cancel: Zrušit
+        confirm_cancel_title: Zrušit tento příspěvek?
+        confirm_cancel_body: "Příspěvek ve výši %{amount} bude odstraněn. Kdykoli můžete zaznamenat nový."
+        confirm_cancel_cta: Zrušit příspěvek
+      header:
+        target: "Cílová částka %{amount}"
+        target_by: "Cílová částka %{amount} do %{date}"
+        target_by_past: "Cílová částka %{amount} · termín uplynul %{date}"
+      ring:
+        saved: Naspořeno
+        of: "z %{target}"
+        to_go: "Zbývá %{amount}"
+        of_target: z cílové částky
+        market_value: "Tržní hodnota %{amount}"
+        aria_label: "Cíl je splněn z %{percent} %. Naspořeno %{amount} z %{target}."
+      projection:
+        heading: Výhled
+        legend_saved: Naspořeno
+        legend_projection: Odhad
+        legend_required: Potřebný vývoj
+        reached: Cílové částky jste dosáhli. Další odhad není potřeba.
+        no_target_date: Cíl nemá stanovený termín. Nastavte jej a zobrazí se odhad dokončení.
+        no_pace: Zatím nebyl zaznamenán žádný vklad. Vložte peníze na propojený účet a zobrazí se odhad.
+        behind: Při současném tempu cílové částky nedosáhnete.
+        on_track_html: Při současném tempu dosáhnete cíle přibližně v <strong class="text-primary whitespace-nowrap">%{date}</strong>.
+        aria_label: "Graf odhadovaného vývoje cíle %{name}"
+        today_marker: Dnes
+        tooltip_projected: "Odhad: %{amount}"
+        tooltip_saved: "Naspořeno: %{amount}"
+        tooltip_target_relation: "%{percent} % z cílové částky %{target}"
+        target_label: Cíl
+        shortfall_template: "Chybí %{amount}"
+      catch_up:
+        title: "Pro návrat k plánu spořte o %{amount} měsíčně více"
+        body: "Současné tempo %{avg} měsíčně · k dosažení cíle je potřeba %{required} měsíčně."
+        adjust_target_cta: Místo toho upravit cíl
+      confirm_complete_title: Označit tento cíl jako dokončený?
+      confirm_complete_body: Cíl se přestane zobrazovat mezi aktivními. Později jej můžete archivovat nebo obnovit.
+      confirm_complete_body_short: "Cíl je splněn z %{progress} %: naspořeno %{saved} z %{target}. Dokončením zaznamenáte jako dosažený výsledek současnou částku namísto původní cílové částky. Chcete pokračovat, nebo dialog zavřít a upravit cíl?"
+      confirm_complete_cta: Označit jako dokončený
+      confirm_archive_title: Archivovat tento cíl?
+      confirm_archive_body: Archivované cíle se v hlavním seznamu nezobrazují. Později je můžete obnovit.
+      confirm_archive_cta: Archivovat
+      paused_banner:
+        title: Tento cíl je pozastaven
+        body: Obnovte jeho sledování, chcete-li dále zaznamenávat pokrok.
+        resume_cta: Pokračovat v cíli
+      archived_banner:
+        title: Tento cíl je archivován
+        body: Obnovte jej, chcete-li pokračovat ve spoření, nebo jej ponechte jako záznam.
+        restore_cta: Obnovit cíl
+      celebration:
+        heading: Cíl je splněn. Skvělá práce.
+        body: "Při dokončení bylo naspořeno %{saved} z %{target}. Cíl můžete ponechat jako záznam, nebo jej nyní archivovat."
+        archive_cta: Archivovat cíl
+      inactive:
+        heading_paused: Tento cíl je pozastaven
+        heading_archived: Tento cíl je archivován
+        body: "Zatím jste naspořili %{saved} z %{target}."
+      no_target_date:
+        heading: Přidat termín
+        body: Nastavte termín, aby bylo možné odhadnout dokončení a potřebné tempo spoření.
+        cta: Nastavit termín
+      empty:
+        heading: Zatím žádné vklady
+        body: Převeďte peníze na propojený účet. Sure převod rozpozná při příští synchronizaci. U ručního účtu můžete také upravit zůstatek.
+    errors:
+      not_found: Cíl se nepodařilo najít. Je možné, že byl odstraněn.
+    states:
+      active: Aktivní
+      paused: Pozastavený
+      completed: Dokončený
+      archived: Archivovaný
+    status:
+      on_track: Podle plánu
+      behind: Ve skluzu
+      reached: Splněný
+      completed: Dokončený
+      no_target_date: Bez termínu
+      paused: Pozastavený
+      archived: Archivovaný
+    empty_state:
+      heading: Zatím nemáte žádné cíle
+      body: Stanovte cílovou částku, propojte účty, na kterých spoříte, a sledujte svůj pokrok.
+      subtitle: Stanovte si cíl a začněte na něj spořit.
+      new_goal: Vytvořit první cíl
+      no_depository_accounts: Před vytvořením cíle potřebujete alespoň jeden účet s peněžními prostředky, například běžný či spořicí účet, HSA, termínovaný vklad nebo účet peněžního trhu.
+      add_account: Přidat účet
+    goal_card:
+      no_accounts: Žádné propojené účty
+      n_accounts: "%{first} +%{count}"
+      left: zbývá
+      aria_progress: "%{percent} % z cílové částky %{target}"
+      accounts:
+        one: 1 účet
+        few: "%{count} účty"
+        many: "%{count} účtu"
+        other: "%{count} účtů"
+      no_target_date: Bez termínu
+      completed: Dokončený
+      past_due: Po termínu
+      days_left:
+        one: Zbývá 1 den
+        few: "Zbývají %{count} dny"
+        many: "Zbývá %{count} dne"
+        other: "Zbývá %{count} dní"
+      pace_with_target: "%{avg} měsíčně · potřeba %{target} měsíčně"
+      pace_no_target: "průměrně %{avg} měsíčně"
+      footer_paused: Pozastavený
+      footer_archived: Archivovaný
+      footer_reached: Cíl splněn
+      footer_catch_up: "Pro návrat k plánu spořte %{amount} měsíčně"
+      footer_no_deadline: Bez termínu
+      pending_pledge: Čekající příspěvek
+      pending_count:
+        one: 1 příspěvek čeká na potvrzení
+        few: "%{count} příspěvky čekají na potvrzení"
+        many: "%{count} příspěvku čeká na potvrzení"
+        other: "%{count} příspěvků čeká na potvrzení"
+      footer_no_pledges: Zatím žádné potvrzené příspěvky
+      footer_last_today: Poslední příspěvek potvrzen dnes
+      footer_last_days:
+        one: Poslední příspěvek potvrzen před 1 dnem
+        few: "Poslední příspěvek potvrzen před %{count} dny"
+        many: "Poslední příspěvek potvrzen před %{count} dne"
+        other: "Poslední příspěvek potvrzen před %{count} dny"
+    form:
+      create: Vytvořit cíl
+      save: Uložit změny
+      suggested_with_date: "Pro včasné dosažení cíle spořte {monthly} měsíčně na {accounts}."
+      suggested_no_date: Nastavte termín a zobrazí se odhad dokončení.
+      account_count:
+        one: "{count} účet"
+        few: "{count} účty"
+        many: "{count} účtu"
+        other: "{count} účtů"
+      errors:
+        name_required: Zadejte název cíle.
+        amount_required: Zadejte cílovou částku vyšší než nula.
+        accounts_required: Vyberte alespoň jeden účet pro tento cíl.
+      fields:
+        name: Název
+        name_placeholder: Finanční rezerva, vlastní bydlení…
+        target_amount: Cílová částka
+        target_date: Termín
+        color: Barva
+        notes: Poznámky (nepovinné)
+        notes_placeholder: Připomínka pro vaše budoucí já…
+        funding_accounts: Účty započítané do cíle
+        funding_accounts_hint: Stav cíle odpovídá zůstatku nebo vyhrazené části zůstatku na těchto účtech.
+        whole_balance: Celý zůstatek
+        earmark_for: Započítat částku z účtu %{account}
+        earmark_hint: Necháte-li částku prázdnou, započítá se celý zůstatek daného účtu.
+      subtypes:
+        checking: Běžné účty
+        savings: Spořicí účty
+        hsa: Účty HSA
+        cd: Termínované vklady
+        money_market: Účty peněžního trhu
+        other: Ostatní

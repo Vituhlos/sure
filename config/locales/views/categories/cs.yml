@@ -1,0 +1,75 @@
+---
+cs:
+  categories:
+    bootstrap:
+      success: "Výchozí kategorie byly vytvořeny."
+    category:
+      delete: "Odstranit kategorii"
+      edit: "Upravit kategorii"
+    create:
+      success: "Kategorie byla vytvořena."
+    destroy:
+      success: "Kategorie byla odstraněna."
+    edit:
+      edit: "Upravit kategorii"
+    form:
+      placeholder: "Název kategorie"
+      name_label: "Název"
+      unassigned: "(bez nadřazené kategorie)"
+      parent_category_label: "Nadřazená kategorie (nepovinné)"
+      trigger_label: "Vybrat barvu a ikonu"
+      color: "Barva"
+      icon: "Ikona"
+      auto_adjust: "automatickou úpravu."
+      poor_contrast: "Nedostatečný kontrast. Vyberte tmavší barvu, nebo použijte"
+    destroy_all:
+      success: "Všechny kategorie byly odstraněny."
+    index:
+      bootstrap: "Použít výchozí (doporučeno)"
+      categories: "Kategorie"
+      categories_expenses: "Kategorie výdajů"
+      categories_incomes: "Kategorie příjmů"
+      delete_all: "Odstranit vše"
+      delete_all_title: "Odstranit všechny kategorie?"
+      delete_all_subtitle: "Opravdu chcete odstranit všechny kategorie? Akci nelze vrátit zpět."
+      delete_all_button: "Odstranit všechny kategorie"
+      empty: "Nebyly nalezeny žádné kategorie"
+      merge: "Sloučit kategorie"
+      new: "Nová kategorie"
+    merge:
+      title: "Sloučit kategorie"
+      description: "Vyberte cílovou kategorii a kategorie, které do ní chcete sloučit. Odpovídající transakce a rozpočtové položky se přesunou do cílové kategorie."
+      target_label: "Sloučit do cílové kategorie"
+      select_target: "Vyberte cílovou kategorii…"
+      sources_label: "Kategorie ke sloučení"
+      sources_hint: "Vybrané kategorie se odstraní poté, co se jejich transakce a rozpočtové položky přesunou do cílové kategorie. Cílovou kategorii nevybírejte jako zdrojovou."
+      submit: "Sloučit vybrané"
+    menu:
+      loading: "Načítání…"
+    new:
+      new_category: "Nová kategorie"
+    perform_merge:
+      success:
+        one: "Úspěšně sloučena %{count} kategorie"
+        few: "Úspěšně sloučeny %{count} kategorie"
+        many: "Úspěšně sloučeno %{count} kategorií"
+        other: "Úspěšně sloučeno %{count} kategorií"
+      no_categories_selected: "Nebyly vybrány žádné kategorie ke sloučení."
+      target_not_found: "Cílová kategorie nebyla nalezena."
+      invalid_categories: "Byly vybrány neplatné kategorie."
+      target_selected_as_source: "Jako cílovou a zdrojovou vyberte různé kategorie."
+    update:
+      success: "Kategorie byla aktualizována."
+    virtual:
+      transfer: "Převod"
+      payment: "Platba"
+      trade: "Obchod"
+  category:
+    dropdowns:
+      show:
+        bootstrap: "Vytvořit výchozí kategorie"
+        empty: "Nebyly nalezeny žádné kategorie"
+        match_transfer: "Spárovat převod nebo platbu"
+        one_time: "Jednorázová transakce: %{type}"
+        income: "příjem"
+        expense: "výdaj"

@@ -1,5 +1,12 @@
 ---
 en:
+  activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            parent:
+              too_deep: "can't have more than 2 levels of subcategories"
   models:
     category:
       uncategorized: Uncategorized
@@ -27,3 +34,9 @@ en:
         services: Services
         fees: Fees
         savings_and_investments: Savings & Investments
+      merge:
+        target: "Target category"
+        source: "Source category '%{name}'"
+        not_in_family: "%{category} does not belong to this family"
+        parent_into_subcategory: "A parent category cannot be merged into its own subcategory"
+        nested_source_into_subcategory: "Cannot merge a category with subcategories into a subcategory"

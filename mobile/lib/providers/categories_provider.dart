@@ -39,7 +39,7 @@ class CategoriesProvider with ChangeNotifier {
         _log.error('CategoriesProvider', 'Failed to fetch categories: $_error');
       }
     } catch (e) {
-      _error = 'Failed to load categories';
+      _error = 'fetch_categories_failed';
       _log.error('CategoriesProvider', 'Exception fetching categories: $e');
     } finally {
       _isLoading = false;

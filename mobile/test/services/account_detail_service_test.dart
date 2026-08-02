@@ -93,7 +93,7 @@ void main() {
       );
 
       expect(result['success'], false);
-      expect(result['error'], 'Failed to fetch account');
+      expect(result['error'], 'account_details_failed');
     });
 
     test('returns fallback error for account detail server failures', () async {
@@ -111,7 +111,7 @@ void main() {
       );
 
       expect(result['success'], false);
-      expect(result['error'], 'Failed to fetch account');
+      expect(result['error'], 'account_details_failed');
     });
 
     test('returns generic error for account detail network failures', () async {
@@ -129,7 +129,7 @@ void main() {
       expect(result['success'], false);
       expect(
         result['error'],
-        'Unable to load account details. Please try again later.',
+        'account_details_failed',
       );
     });
 
@@ -150,7 +150,7 @@ void main() {
       expect(result['success'], false);
       expect(
         result['error'],
-        'Unable to load account details. Please try again later.',
+        'account_details_failed',
       );
     });
 
@@ -201,7 +201,7 @@ void main() {
       expect(result['success'], false);
       expect(
         result['error'],
-        'Unable to load balance history. Please try again later.',
+        'balance_history_failed',
       );
     });
 
@@ -388,7 +388,7 @@ void main() {
 
       expect(result['success'], false);
       expect(
-          result['error'], 'Unable to load holdings. Please try again later.');
+          result['error'], 'holdings_failed');
     });
   });
 }

@@ -7,6 +7,7 @@ import '../theme/sure_tokens.dart';
 import '../utils/money_masker.dart';
 import 'money_text.dart';
 import 'sure_icon.dart';
+import '../l10n/app_localizations.dart';
 
 enum AccountFilter { all, assets, liabilities }
 
@@ -32,6 +33,7 @@ class NetWorthCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
     final palette = SureColors.of(context).palette;
     final hideAmounts = context.watch<PrivacyProvider>().hidden;
     final maskedNetWorth = netWorthFormatted == null
@@ -65,7 +67,7 @@ class NetWorthCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Net Worth',
+                      l.netWorthTitle,
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             color: palette.textSecondary,
                           ),
@@ -79,7 +81,7 @@ class NetWorthCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
-                          'Outdated',
+                          l.netWorthOutdated,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                 color: palette.textSubdued,
                                 fontWeight: SureTokens.weightMedium,
@@ -130,7 +132,8 @@ class NetWorthCard extends StatelessWidget {
                     },
                     onLongPress: () => _showCurrencyBreakdown(
                       context,
-                      'Assets',
+                      l.calendarSegmentAssets,
+                      true,
                       assetTotalsByCurrency,
                       palette.success,
                       maskedFormat,
@@ -160,7 +163,8 @@ class NetWorthCard extends StatelessWidget {
                     },
                     onLongPress: () => _showCurrencyBreakdown(
                       context,
-                      'Liabilities',
+                      l.calendarSegmentLiabilities,
+                      false,
                       liabilityTotalsByCurrency,
                       palette.destructive,
                       maskedFormat,
@@ -179,6 +183,7 @@ class NetWorthCard extends StatelessWidget {
   void _showCurrencyBreakdown(
     BuildContext context,
     String title,
+    bool isAsset,
     Map<String, double> totals,
     Color color,
     String Function(String currency, double amount) formatAmount,
@@ -218,7 +223,7 @@ class NetWorthCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SureIcon(
-                    title == 'Assets'
+                    isAsset
                         ? SureIcons.trendingUp
                         : SureIcons.trendingDown,
                     color: color,

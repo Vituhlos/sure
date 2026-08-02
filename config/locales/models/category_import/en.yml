@@ -6,3 +6,8 @@ en:
         category_import:
           own_parent: "Category '%{name}' cannot be its own parent"
           missing_columns: "Missing required columns: %{columns}"
+  category_import:
+    samples:
+      food_and_drink: "Food & Drink"
+      groceries: "Groceries"
+      salary: "Salary"

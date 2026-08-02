@@ -137,12 +137,12 @@ class AccountsProvider with ChangeNotifier {
           // If server fetch failed but we have cached data, that's OK
           if (_accounts.isEmpty) {
             _errorMessage =
-                result['error'] as String? ?? 'Failed to fetch accounts';
+                result['error'] as String? ?? 'fetch_accounts_failed';
           }
         }
       } else if (!isOnline && _accounts.isEmpty) {
         _errorMessage =
-            'You are offline. Please connect to the internet to load accounts.';
+            'offline_accounts';
       }
 
       // Fetch balance sheet independently — works even with cached accounts
@@ -164,12 +164,12 @@ class AccountsProvider with ChangeNotifier {
         // Provide more specific error messages based on exception type
         if (e is SocketException) {
           _errorMessage =
-              'Network error. Please check your internet connection and try again.';
+              'network_unavailable';
         } else if (e is TimeoutException) {
           _errorMessage =
-              'Request timed out. Please check your connection and try again.';
+              'request_timed_out';
         } else if (e is FormatException) {
-          _errorMessage = 'Server response error. Please try again later.';
+          _errorMessage = 'invalid_server_response';
         } else if (e.toString().contains('401') ||
             e.toString().contains('unauthorized')) {
           _errorMessage = 'unauthorized';
@@ -177,9 +177,9 @@ class AccountsProvider with ChangeNotifier {
             e.toString().contains('certificate') ||
             e.toString().contains('SSL')) {
           _errorMessage =
-              'Secure connection error. Please check your internet connection and try again.';
+              'secure_connection_failed';
         } else {
-          _errorMessage = 'Something went wrong. Please try again.';
+          _errorMessage = 'unexpected_error';
         }
       }
       _isLoading = false;

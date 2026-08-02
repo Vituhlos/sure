@@ -128,7 +128,7 @@ class SyncService with ChangeNotifier {
         success: false,
         syncedCount: successCount,
         failedCount: failureCount,
-        error: e.toString(),
+        error: 'unexpected_error',
       );
     }
   }
@@ -245,7 +245,7 @@ class SyncService with ChangeNotifier {
         success: false,
         syncedCount: successCount,
         failedCount: failureCount,
-        error: e.toString(),
+        error: 'unexpected_error',
       );
     }
   }
@@ -253,7 +253,7 @@ class SyncService with ChangeNotifier {
   /// Sync pending transactions to server
   Future<SyncResult> syncPendingTransactions(String accessToken) async {
     if (_isSyncing) {
-      return SyncResult(success: false, error: 'Sync already in progress');
+      return SyncResult(success: false, error: 'sync_in_progress');
     }
 
     _log.info('SyncService', 'syncPendingTransactions started');
@@ -276,7 +276,7 @@ class SyncService with ChangeNotifier {
         'syncPendingTransactions failed with ${e.runtimeType}',
       );
       _isSyncing = false;
-      _syncError = e.toString();
+      _syncError = 'unexpected_error';
       notifyListeners();
 
       return SyncResult(
@@ -410,7 +410,7 @@ class SyncService with ChangeNotifier {
           );
           return SyncResult(
             success: false,
-            error: result['error'] as String? ?? 'Failed to sync from server',
+            error: result['error'] as String? ?? 'sync_failed',
           );
         }
       }
@@ -480,7 +480,7 @@ class SyncService with ChangeNotifier {
       );
       return SyncResult(
         success: false,
-        error: e.toString(),
+        error: 'unexpected_error',
       );
     } finally {
       await finishTelemetrySpan(
@@ -516,13 +516,13 @@ class SyncService with ChangeNotifier {
       } else {
         return SyncResult(
           success: false,
-          error: result['error'] as String? ?? 'Failed to sync accounts',
+          error: result['error'] as String? ?? 'sync_failed',
         );
       }
     } catch (e) {
       return SyncResult(
         success: false,
-        error: e.toString(),
+        error: 'unexpected_error',
       );
     }
   }
@@ -530,7 +530,7 @@ class SyncService with ChangeNotifier {
   /// Full sync - upload pending transactions, process pending deletes, and download from server
   Future<SyncResult> performFullSync(String accessToken) async {
     if (_isSyncing) {
-      return SyncResult(success: false, error: 'Sync already in progress');
+      return SyncResult(success: false, error: 'sync_in_progress');
     }
 
     _log.info('SyncService', '==== Full Sync Started ====');
@@ -609,7 +609,7 @@ class SyncService with ChangeNotifier {
         operation: 'sync.full',
       );
       _isSyncing = false;
-      _syncError = e.toString();
+      _syncError = 'unexpected_error';
       notifyListeners();
 
       return SyncResult(

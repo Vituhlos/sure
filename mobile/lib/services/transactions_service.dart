@@ -78,14 +78,14 @@ class TransactionsService {
           'success': false,
           'error': errorMessageFromResponseBody(
             response.body,
-            fallback: 'Failed to create transaction',
+            fallback: 'transaction_create_failed',
           ),
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -158,13 +158,13 @@ class TransactionsService {
       } else {
         return {
           'success': false,
-          'error': 'Failed to fetch transactions',
+          'error': 'fetch_transactions_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -201,14 +201,14 @@ class TransactionsService {
           'success': false,
           'error': errorMessageFromResponseBody(
             response.body,
-            fallback: 'Failed to fetch transaction',
+            fallback: 'fetch_transaction_failed',
           ),
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -244,7 +244,7 @@ class TransactionsService {
     if (transaction.isEmpty) {
       return {
         'success': false,
-        'error': 'No fields to update',
+        'error': 'transaction_update_failed',
       };
     }
 
@@ -283,14 +283,14 @@ class TransactionsService {
           'success': false,
           'error': errorMessageFromResponseBody(
             response.body,
-            fallback: 'Failed to update transaction',
+            fallback: 'transaction_update_failed',
           ),
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -325,19 +325,19 @@ class TransactionsService {
           final responseData = jsonDecode(response.body);
           return {
             'success': false,
-            'error': responseData['error'] ?? 'Failed to delete transaction',
+            'error': responseData['error'] ?? 'transaction_delete_failed',
           };
         } catch (e) {
           return {
             'success': false,
-            'error': 'Failed to delete transaction: ${response.body}',
+            'error': 'transaction_delete_failed',
           };
         }
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -365,13 +365,13 @@ class TransactionsService {
         final failedCount = results.where((r) => r['success'] != true).length;
         return {
           'success': false,
-          'error': 'Failed to delete $failedCount transactions',
+          'error': 'transactions_delete_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }

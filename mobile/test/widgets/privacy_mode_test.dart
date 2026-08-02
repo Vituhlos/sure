@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sure_mobile/providers/privacy_provider.dart';
+import 'package:sure_mobile/l10n/app_localizations.dart';
 import 'package:sure_mobile/services/preferences_service.dart';
 import 'package:sure_mobile/widgets/net_worth_card.dart';
 
@@ -19,6 +20,8 @@ void main() {
     return ChangeNotifierProvider<PrivacyProvider>.value(
       value: privacy,
       child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         home: Scaffold(
           body: NetWorthCard(
             assetTotalsByCurrency: const {'USD': 29669.71},

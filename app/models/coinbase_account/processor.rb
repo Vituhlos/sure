@@ -208,7 +208,7 @@ class CoinbaseAccount::Processor
         # Buy: positive qty, money going out (negative amount)
         account.entries.create!(
           date: date,
-          name: "Buy #{qty.round(8)} #{security.ticker}",
+          name: I18n.t("coinbase_items.transaction_names.buy", quantity: qty.round(8), symbol: security.ticker),
           amount: -native_amount,
           currency: txn_currency,
           external_id: external_id,
@@ -227,7 +227,7 @@ class CoinbaseAccount::Processor
         # Sell: negative qty, money coming in (positive amount)
         account.entries.create!(
           date: date,
-          name: "Sell #{qty.round(8)} #{security.ticker}",
+          name: I18n.t("coinbase_items.transaction_names.sell", quantity: qty.round(8), symbol: security.ticker),
           amount: native_amount,
           currency: txn_currency,
           external_id: external_id,
@@ -275,7 +275,7 @@ class CoinbaseAccount::Processor
 
       account.entries.create!(
         date: date,
-        name: "Buy #{security.ticker}",
+        name: I18n.t("coinbase_items.transaction_names.buy_without_quantity", symbol: security.ticker),
         amount: -total,
         currency: currency,
         external_id: external_id,
@@ -320,7 +320,7 @@ class CoinbaseAccount::Processor
 
       account.entries.create!(
         date: date,
-        name: "Sell #{security.ticker}",
+        name: I18n.t("coinbase_items.transaction_names.sell_without_quantity", symbol: security.ticker),
         amount: total,
         currency: currency,
         external_id: external_id,

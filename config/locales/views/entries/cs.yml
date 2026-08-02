@@ -1,0 +1,23 @@
+---
+cs:
+  entries:
+    create:
+      success: "Záznam byl vytvořen."
+    destroy:
+      success: "Záznam byl odstraněn."
+    empty:
+      description: "Zkuste přidat záznam, upravit filtry nebo zpřesnit hledání"
+      title: "Nebyly nalezeny žádné záznamy"
+    loading:
+      loading: "Načítání záznamů…"
+    update:
+      success: "Záznam byl aktualizován."
+    unlock:
+      success: "Záznam byl odemknut. Při příští synchronizaci se může aktualizovat."
+    protection:
+      tooltip: "Chráněno před synchronizací"
+      title: "Ochrana před synchronizací"
+      description: "Změny tohoto záznamu nebudou při synchronizaci s poskytovatelem přepsány."
+      locked_fields_label: "Chráněná pole:"
+      unlock_button: "Povolit aktualizaci při synchronizaci"
+      unlock_confirm: "Povolit aktualizaci tohoto záznamu při synchronizaci? Při příští synchronizaci mohou být provedené změny přepsány."

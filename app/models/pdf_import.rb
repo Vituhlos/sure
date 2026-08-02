@@ -101,7 +101,7 @@ class PdfImport < Import
   end
 
   def import!
-    raise "Account required for PDF import" unless account.present?
+    raise I18n.t("imports.pdf_import.account_required") unless account.present?
 
     transaction do
       mappings.each(&:create_mappable!)
@@ -163,8 +163,8 @@ class PdfImport < Import
     # Honors Setting.llm_provider (issue #2113) — Provider::Anthropic implements
     # process_pdf (PR #1985).
     provider = Provider::Registry.preferred_llm_provider
-    raise "AI provider not configured" unless provider
-    raise "AI provider does not support PDF processing" unless provider.supports_pdf_processing?
+    raise I18n.t("imports.pdf_import.provider_not_configured") unless provider
+    raise I18n.t("imports.pdf_import.provider_pdf_unsupported") unless provider.supports_pdf_processing?
 
     response = provider.process_pdf(
       pdf_content: pdf_file_content,
@@ -172,7 +172,7 @@ class PdfImport < Import
     )
 
     unless response.success?
-      error_message = response.error&.message || "Unknown PDF processing error"
+      error_message = response.error&.message || I18n.t("imports.pdf_import.unknown_processing_error")
       raise error_message
     end
 
@@ -191,7 +191,7 @@ class PdfImport < Import
     # Honors Setting.llm_provider (issue #2113) — Provider::Anthropic implements
     # extract_bank_statement (PR #1985).
     provider = Provider::Registry.preferred_llm_provider
-    raise "AI provider not configured" unless provider
+    raise I18n.t("imports.pdf_import.provider_not_configured") unless provider
 
     response = provider.extract_bank_statement(
       pdf_content: pdf_file_content,
@@ -199,7 +199,7 @@ class PdfImport < Import
     )
 
     unless response.success?
-      error_message = response.error&.message || "Unknown extraction error"
+      error_message = response.error&.message || I18n.t("imports.pdf_import.unknown_extraction_error")
       raise error_message
     end
 

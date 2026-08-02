@@ -1,0 +1,100 @@
+---
+cs:
+  coinbase_items:
+    transaction_names:
+      buy: "Nákup %{quantity} %{symbol}"
+      sell: "Prodej %{quantity} %{symbol}"
+      buy_without_quantity: "Nákup %{symbol}"
+      sell_without_quantity: "Prodej %{symbol}"
+    institution_summary:
+      none: "Nejsou připojeny žádné instituce"
+      count:
+        one: "1 instituce"
+        few: "%{count} instituce"
+        many: "%{count} instituce"
+        other: "%{count} institucí"
+    create:
+      default_name: "Coinbase"
+      success: "Připojení ke Coinbase bylo úspěšné. Účty se nyní synchronizují."
+    update:
+      success: "Nastavení Coinbase bylo úspěšně aktualizováno."
+    destroy:
+      success: "Připojení ke Coinbase bylo zařazeno k odstranění."
+    setup_accounts:
+      title: "Import peněženek Coinbase"
+      subtitle: "Vyberte peněženky, které chcete sledovat"
+      instructions: "Vyberte peněženky, které chcete importovat. Nevybrané peněženky zůstanou k dispozici pro pozdější přidání."
+      no_accounts: "Všechny peněženky už byly importovány."
+      accounts_count:
+        one: "K dispozici je %{count} peněženka"
+        few: "K dispozici jsou %{count} peněženky"
+        many: "K dispozici je %{count} peněženky"
+        other: "K dispozici je %{count} peněženek"
+      select_all: "Vybrat vše"
+      import_selected: "Importovat vybrané"
+      cancel: "Zrušit"
+      creating: "Probíhá import…"
+    complete_account_setup:
+      success:
+        one: "Importována %{count} peněženka"
+        few: "Importovány %{count} peněženky"
+        many: "Importováno %{count} peněženky"
+        other: "Importováno %{count} peněženek"
+      none_selected: "Nebyly vybrány žádné peněženky"
+      no_accounts: "Nejsou k dispozici žádné peněženky k importu"
+    coinbase_item:
+      provider_name: "Coinbase"
+      syncing: "Synchronizace…"
+      reconnect: "Přihlašovací údaje je třeba aktualizovat"
+      deletion_in_progress: "Probíhá odstraňování…"
+      sync_status:
+        no_accounts: "Nebyly nalezeny žádné účty"
+        all_synced:
+          one: "Synchronizován %{count} účet"
+          few: "Synchronizovány %{count} účty"
+          many: "Synchronizováno %{count} účtu"
+          other: "Synchronizováno %{count} účtů"
+        partial_sync: "Synchronizováno: %{linked_count}; nastavení vyžaduje: %{unlinked_count}"
+      status: "Poslední synchronizace před %{timestamp}"
+      status_with_summary: "Poslední synchronizace před %{timestamp} – %{summary}"
+      status_never: "Dosud nesynchronizováno"
+      update_credentials: "Aktualizovat přihlašovací údaje"
+      delete: "Odstranit"
+      no_accounts_title: "Nebyly nalezeny žádné účty"
+      no_accounts_message: "Peněženky Coinbase se zde zobrazí po synchronizaci."
+      setup_needed: "Peněženky jsou připraveny k importu"
+      setup_description: "Vyberte peněženky Coinbase, které chcete sledovat."
+      setup_action: "Importovat peněženky"
+      import_wallets_menu: "Importovat peněženky"
+      more_wallets_available:
+        one: "K importu je k dispozici ještě %{count} peněženka"
+        few: "K importu jsou k dispozici ještě %{count} peněženky"
+        many: "K importu je k dispozici ještě %{count} peněženky"
+        other: "K importu je k dispozici ještě %{count} peněženek"
+    select_existing_account:
+      title: "Propojení účtu Coinbase"
+      no_accounts_found: "Nebyly nalezeny žádné účty Coinbase."
+      wait_for_sync: "Počkejte na dokončení synchronizace Coinbase"
+      check_provider_health: "Ověřte platnost klíče a tajného klíče API Coinbase"
+      balance: "Zůstatek"
+      currently_linked_to: "Aktuálně propojeno s účtem: %{account_name}"
+      link: "Propojit"
+      cancel: "Zrušit"
+    link_existing_account:
+      success: "Účet byl úspěšně propojen s účtem Coinbase"
+      errors:
+        only_manual: "S Coinbase lze propojit pouze ručně vedené účty"
+        invalid_coinbase_account: "Neplatný účet Coinbase"
+  coinbase_item:
+    syncer:
+      checking_credentials: "Kontrola přihlašovacích údajů…"
+      credentials_invalid: "Neplatné přihlašovací údaje API. Zkontrolujte klíč a tajný klíč API."
+      importing_accounts: "Import účtů z Coinbase…"
+      checking_configuration: "Kontrola nastavení účtů…"
+      accounts_need_setup:
+        one: "%{count} účet vyžaduje nastavení"
+        few: "%{count} účty vyžadují nastavení"
+        many: "%{count} účtu vyžaduje nastavení"
+        other: "%{count} účtů vyžaduje nastavení"
+      processing_accounts: "Zpracování dat účtů…"
+      calculating_balances: "Výpočet zůstatků…"

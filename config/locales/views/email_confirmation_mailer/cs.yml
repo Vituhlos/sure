@@ -1,0 +1,9 @@
+---
+cs:
+  email_confirmation_mailer:
+    confirmation_email:
+      body: "Pro váš účet byla nedávno vyžádána změna e-mailové adresy. Změnu potvrďte pomocí tlačítka níže."
+      cta: "Potvrdit změnu e-mailu"
+      expiry_notice: "Platnost odkazu vyprší za %{hours} hodin."
+      greeting: "Dobrý den"
+      subject: "%{product_name}: Potvrzení změny e-mailu"

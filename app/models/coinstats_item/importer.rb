@@ -261,7 +261,7 @@ class CoinstatsItem::Importer
 
       unless address.present? && blockchain.present?
         Rails.logger.warn "CoinstatsItem::Importer - Missing address or blockchain for account #{coinstats_account.id}. Address: #{address.inspect}, Blockchain: #{blockchain.inspect}"
-        return { success: false, error: "Missing address or blockchain" }
+        return { success: false, error: I18n.t("coinstats_items.errors.missing_wallet_fields") }
       end
 
       if bulk_balance_data.nil?
@@ -634,7 +634,7 @@ class CoinstatsItem::Importer
     end
 
     def exchange_display_name
-      coinstats_item.institution_name.presence || coinstats_item.exchange_connection_id.to_s.titleize
+      coinstats_item.institution_name.presence || coinstats_item.exchange_connection_id.to_s
     end
 
     def exchange_portfolio_account_manager

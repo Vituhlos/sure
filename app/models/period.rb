@@ -199,9 +199,9 @@ class Period
 
   def comparison_label
     if key
-      I18n.t("period.#{key}.comparison_label", default: key_metadata&.fetch(:comparison_label) || "#{start_date.strftime(@date_format)} to #{end_date.strftime(@date_format)}")
+      I18n.t("period.#{key}.comparison_label", default: key_metadata&.fetch(:comparison_label) || custom_comparison_label)
     else
-      "#{start_date.strftime(@date_format)} to #{end_date.strftime(@date_format)}"
+      custom_comparison_label
     end
   end
 
@@ -213,11 +213,19 @@ class Period
     def must_be_valid_date_range
       return if start_date.nil? || end_date.nil?
       unless start_date.is_a?(Date) && end_date.is_a?(Date)
-        errors.add(:start_date, "must be a valid date, got #{start_date.inspect}")
-        errors.add(:end_date, "must be a valid date, got #{end_date.inspect}")
+        errors.add(:start_date, I18n.t("period.errors.invalid_date", value: start_date.inspect))
+        errors.add(:end_date, I18n.t("period.errors.invalid_date", value: end_date.inspect))
         return
       end
 
-      errors.add(:start_date, "must be before end date") if start_date > end_date
+      errors.add(:start_date, I18n.t("period.errors.start_after_end")) if start_date > end_date
+    end
+
+    def custom_comparison_label
+      I18n.t(
+        "period.custom.comparison_label",
+        start: I18n.l(start_date, format: @date_format),
+        end_date: I18n.l(end_date, format: @date_format)
+      )
     end
 end

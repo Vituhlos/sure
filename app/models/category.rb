@@ -350,7 +350,7 @@ class Category < ApplicationRecord
   private
     def category_level_limit
       if (subcategory? && parent&.subcategory?) || (parent? && subcategory?)
-        errors.add(:parent, "can't have more than 2 levels of subcategories")
+        errors.add(:parent, :too_deep)
       end
     end
 

@@ -15,6 +15,24 @@ class CoinstatsItem::ExchangeLinkerTest < ActiveSupport::TestCase
     Provider::Response.new(success?: true, data: data, error: nil)
   end
 
+  test "returns localized validation errors" do
+    I18n.with_locale(:cs) do
+      missing_exchange = CoinstatsItem::ExchangeLinker.new(
+        @coinstats_item,
+        connection_id: "",
+        connection_fields: {}
+      ).link
+      missing_credentials = CoinstatsItem::ExchangeLinker.new(
+        @coinstats_item,
+        connection_id: "bitvavo",
+        connection_fields: {}
+      ).link
+
+      assert_equal [ "Vyberte burzu." ], missing_exchange.errors
+      assert_equal [ "Zadejte přihlašovací údaje k burze." ], missing_credentials.errors
+    end
+  end
+
   test "link creates one exchange portfolio account with embedded coins" do
     Provider::Coinstats.any_instance.expects(:exchange_options).returns([
       {

@@ -41,16 +41,20 @@ class Assistant::Function::UpdateTag < Assistant::Function
 
   def call(params = {})
     tag = family.tags.find_by(name: params["name"].to_s.strip)
-    return error("not_found", "Tag '#{params["name"]}' not found.") unless tag
+    return error("not_found", I18n.t("assistant.functions.update_tag.not_found", name: params["name"])) unless tag
 
     attrs = {}
     attrs[:name] = params["new_name"].strip if params["new_name"].present?
     attrs[:color] = params["color"].strip if params["color"].present?
 
-    return error("no_changes", "Provide at least one of new_name or color to update.") if attrs.empty?
+    return error("no_changes", I18n.t("assistant.functions.update_tag.no_changes")) if attrs.empty?
 
     if tag.update(attrs)
-      { success: true, tag: { id: tag.id, name: tag.name, color: tag.color }, message: "Tag updated." }
+      {
+        success: true,
+        tag: { id: tag.id, name: tag.name, color: tag.color },
+        message: I18n.t("assistant.functions.update_tag.updated")
+      }
     else
       error("validation_failed", tag.errors.full_messages.join("; "))
     end

@@ -25,7 +25,12 @@
           href: tag_path(tag),
           icon: "trash-2",
           method: :delete,
-          confirm: CustomConfirm.for_resource_deletion(tag.name)
+          confirm: CustomConfirm.new(
+            title: t(".delete_title"),
+            body: t(".delete_body", name: tag.name),
+            btn_text: t(".delete_button"),
+            destructive: true
+          )
         ) %>
       <% end %>
     <% end %>

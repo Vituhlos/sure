@@ -1,0 +1,127 @@
+---
+cs:
+  providers:
+    up:
+      name: Up
+      description: Připojte australské bankovní účty Up pomocí osobního přístupového tokenu.
+  family:
+    up:
+      create_up_item:
+        default_name: Připojení Up
+  up_account:
+    fallback: Účet Up
+  up_item:
+    errors:
+      account_processing_failed: Účet Up se nepodařilo synchronizovat.
+      account_sync_schedule_failed: Synchronizaci účtu Up se nepodařilo naplánovat.
+      transactions_failed: Transakce Up se nepodařilo načíst.
+      sync_failed: Připojení Up se nepodařilo synchronizovat.
+    sync_status:
+      no_accounts: Nebyly nalezeny žádné účty
+      all_synced:
+        one: Synchronizován 1 účet
+        few: "Synchronizovány %{count} účty"
+        many: "Synchronizováno %{count} účtu"
+        other: "Synchronizováno %{count} účtů"
+      partial: "Synchronizováno: %{linked}, nastavení vyžaduje: %{unlinked}"
+    institution_summary:
+      none: Nejsou připojeny žádné instituce
+      one: 1 instituce
+      count:
+        one: 1 instituce
+        few: "%{count} instituce"
+        many: "%{count} instituce"
+        other: "%{count} institucí"
+  up_items:
+    importer:
+      fetch_accounts_failed: Údaje o účtech se nepodařilo načíst
+      parse_response_failed: Odpověď se nepodařilo zpracovat
+    provider_panel:
+      default_connection_name: Připojení Up
+      add_connection: Přidat připojení Up
+      update_connection: Aktualizovat připojení
+      connection_name_label: Název připojení
+      connection_name_placeholder: Hlavní účet Up
+      access_token_label: Osobní přístupový token
+      access_token_placeholder: Vložte osobní přístupový token Up
+      keep_access_token_placeholder: Chcete-li zachovat stávající token, ponechte prázdné
+      setup_accounts: Nastavit účty
+      syncing: Synchronizace…
+      sync: Synchronizovat
+      disconnect: Odpojit
+      disconnect_confirm: "Opravdu chcete odpojit připojení %{name}?"
+    create:
+      success: Připojení Up bylo uloženo.
+    update:
+      success: Připojení Up bylo aktualizováno.
+    destroy:
+      success: Připojení Up bylo zařazeno k odstranění.
+      unlink_failed: Připojení Up se nepodařilo odpojit.
+    select_accounts:
+      title: Propojit účty Up
+      description: Vyberte účty Up, které chcete přidat.
+      no_accounts_found: Nebyly nalezeny žádné nepropojené účty Up.
+      no_credentials_configured: Nejprve nastavte Up v nastavení poskytovatelů.
+      cancel: Zrušit
+      link_accounts: Propojit účty
+    link_accounts:
+      success:
+        one: Byl propojen 1 účet Up.
+        few: "Byly propojeny %{count} účty Up."
+        many: "Bylo propojeno %{count} účtu Up."
+        other: "Bylo propojeno %{count} účtů Up."
+      no_accounts_selected: Vyberte alespoň jeden účet.
+      no_credentials_configured: Nejprve nastavte Up v nastavení poskytovatelů.
+      unsupported_account_type: Up tento typ účtu nepodporuje.
+      link_failed: Nebyly propojeny žádné účty.
+    select_existing_account:
+      title: "Propojit účet Up s účtem %{account_name}"
+      description: Vyberte nepropojený účet Up, který chcete připojit k tomuto účtu.
+      no_accounts_found: Nebyly nalezeny žádné nepropojené účty Up.
+      no_credentials_configured: Nejprve nastavte Up v nastavení poskytovatelů.
+      account_already_linked: Tento účet je již propojen s poskytovatelem.
+      cancel: Zrušit
+      link_account: Propojit účet
+    link_existing_account:
+      success: "Účet Up byl propojen s účtem %{account_name}."
+      account_already_linked: Tento účet je již propojen s poskytovatelem.
+      up_account_already_linked: Tento účet Up je již propojen.
+      no_account_selected: Vyberte účet Up, který chcete propojit.
+    setup_accounts:
+      title: Propojení účtů Up
+      subtitle: Zvolte, jak se mají jednotlivé účty Up zobrazovat v aplikaci Sure.
+      no_credentials: Nejprve nastavte přihlašovací údaje Up.
+      api_error: Účty Up se nepodařilo načíst.
+      fetch_failed: Účty se nepodařilo načíst
+      no_accounts_to_setup: Nejsou k dispozici žádné účty k nastavení
+      all_accounts_linked: Všechny účty Up jsou již propojeny.
+      choose_account_type: Zvolte typ účtu
+      choose_account_type_description: Účty, které nechcete sledovat, přeskočte.
+      account_type_label: Typ účtu
+      account_types:
+        skip: Přeskočit
+        depository: Běžný nebo spořicí účet
+        loan: Úvěr
+      create_accounts: Vytvořit účty
+      cancel: Zrušit
+    complete_account_setup:
+      success:
+        one: Byl vytvořen 1 účet Up.
+        few: "Byly vytvořeny %{count} účty Up."
+        many: "Bylo vytvořeno %{count} účtu Up."
+        other: "Bylo vytvořeno %{count} účtů Up."
+      all_skipped: Nebyly vytvořeny žádné účty Up.
+      no_accounts: Nebyly vybrány žádné účty Up.
+      creation_failed: Účty Up se nepodařilo vytvořit.
+    up_item:
+      deletion_in_progress: Probíhá odstraňování
+      syncing: Synchronizace
+      error: Chyba
+      status_with_summary: "Synchronizováno před %{timestamp} · %{summary}"
+      status_never: Dosud nesynchronizováno
+      delete: Odstranit
+      setup_needed: Účet vyžaduje nastavení
+      setup_description: "Propojeno %{linked} z %{total} účtů."
+      setup_action: Nastavit účty
+      no_accounts_title: Zatím nebyly importovány žádné účty
+      no_accounts_description: Načtěte účty Up a zvolte, které chcete propojit.

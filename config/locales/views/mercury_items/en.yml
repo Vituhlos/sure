@@ -1,6 +1,32 @@
 ---
 en:
   mercury_items:
+    sync_status:
+      no_accounts: No accounts found
+      all_synced:
+        one: 1 account synced
+        other: "%{count} accounts synced"
+      partial: "%{linked} synced, %{unlinked} need setup"
+    institution_summary:
+      none: No institutions connected
+      count:
+        one: 1 institution
+        other: "%{count} institutions"
+    syncer:
+      importing_accounts: Importing accounts from Mercury...
+      checking_account_configuration: Checking account configuration...
+      accounts_need_setup:
+        one: 1 account needs setup...
+        other: "%{count} accounts need setup..."
+      processing_transactions: Processing transactions...
+      calculating_balances: Calculating balances...
+      failed: Mercury synchronization failed. Please try again.
+    errors:
+      provider_not_configured: Mercury is not configured.
+      unexpected_error: An unexpected error occurred. Please try again later.
+    account_kind_labels:
+      checking: Checking
+      savings: Savings
     api_error:
       title: Mercury Connection Error
       unable_to_connect: Unable to connect to Mercury
@@ -197,6 +223,7 @@ en:
       creation_failed: "Failed to create accounts: %{error}"
       no_accounts: "No accounts to set up."
       success: "Successfully created %{count} account(s)."
+      unexpected_error: An unexpected error occurred
     sync:
       success: Sync started
     update:

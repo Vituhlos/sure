@@ -39,11 +39,11 @@ class Assistant::External < Assistant::Base
 
     unless self.class.configured?
       raise Assistant::Error,
-        "External assistant is not configured. Set the URL and token in Settings > Self-Hosting or via environment variables."
+        I18n.t("assistant.external.not_configured")
     end
 
     unless self.class.allowed_user?(chat.user)
-      raise Assistant::Error, "Your account is not authorized to use the external assistant."
+      raise Assistant::Error, I18n.t("assistant.external.not_authorized")
     end
 
     client = build_client
@@ -57,7 +57,7 @@ class Assistant::External < Assistant::Base
     end
 
     if assistant_message.content.blank?
-      raise Assistant::Error, "External assistant returned an empty response."
+      raise Assistant::Error, I18n.t("assistant.external.empty_response")
     end
 
     response_completed = true
@@ -68,7 +68,7 @@ class Assistant::External < Assistant::Base
   rescue => e
     Rails.logger.error("[Assistant::External] Unexpected error: #{e.class} - #{e.message}")
     cleanup_partial_response(assistant_message) unless response_completed
-    chat.add_error(Assistant::Error.new("Something went wrong with the external assistant. Check server logs for details."))
+    chat.add_error(Assistant::Error.new(I18n.t("assistant.external.unexpected_error")))
   end
 
   private

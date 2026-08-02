@@ -1,8 +1,20 @@
 ---
 en:
   properties:
+    update:
+      success: "Property details updated successfully."
+      failure: "Unable to update property details."
+    update_balances:
+      success: "Balance updated successfully."
+    update_address:
+      success: "Address updated successfully."
+      failure: "Unable to update address. Please check the required fields."
     edit:
       edit: Edit %{account}
+    form_tabs:
+      overview: Overview
+      value: Value
+      address: Address
     form:
       address_line1: Street address
       address_line1_placeholder: 123 Main St
@@ -85,6 +97,24 @@ en:
         year_built: Year Built
         edit_account_details: "Edit account details"
     subtypes:
+      single_family_home:
+        short: Single Family Home
+        long: Single Family Home
+      multi_family_home:
+        short: Multi-Family Home
+        long: Multi-Family Home
+      condominium:
+        short: Condo
+        long: Condominium
+      townhouse:
+        short: Townhouse
+        long: Townhouse
+      investment_property:
+        short: Investment Property
+        long: Investment Property
+      second_home:
+        short: Second Home
+        long: Second Home
       apartment:
         short: Apartment
         long: Apartment

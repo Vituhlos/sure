@@ -1,4 +1,5 @@
 import 'message.dart';
+import '../l10n/app_localizations.dart';
 
 class Chat {
   final String id;
@@ -63,6 +64,10 @@ class Chat {
   }
 
   bool get hasDefaultTitle => title == defaultTitle;
+
+  String localizedTitle(AppLocalizations l) {
+    return hasDefaultTitle ? l.chatListNewChat : title;
+  }
 
   Chat copyWith({
     String? id,

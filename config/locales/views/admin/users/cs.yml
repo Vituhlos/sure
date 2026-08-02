@@ -1,0 +1,62 @@
+---
+cs:
+  admin:
+    users:
+      index:
+        title: "Správa uživatelů"
+        description: "Správa rolí uživatelů této instance. Hlavní správci mají přístup k nastavení poskytovatelů SSO a správě uživatelů."
+        section_title: "Domácnosti a skupiny"
+        you: "(vy)"
+        trial_ends_at: "Konec zkušebního období"
+        not_available: "není k dispozici"
+        no_users: "Nebyli nalezeni žádní uživatelé."
+        unnamed_family: "Domácnost či skupina bez názvu"
+        no_subscription: "Bez předplatného"
+        subscription_statuses:
+          incomplete: "Nedokončeno"
+          incomplete_expired: "Nedokončeno, platnost vypršela"
+          trialing: "Zkušební období"
+          active: "Aktivní"
+          past_due: "Po splatnosti"
+          canceled: "Zrušeno"
+          unpaid: "Neuhrazeno"
+          paused: "Pozastaveno"
+        family_summary: "Členové: %{members} · účty: %{accounts} · transakce: %{transactions}"
+        filters:
+          role: "Role"
+          role_all: "Všechny role"
+          trial_status: "Stav zkušebního období"
+          trial_all: "Vše"
+          trial_expiring_soon: "Končí do 7 dnů"
+          trial_trialing: "Ve zkušebním období"
+          submit: "Filtrovat"
+        summary:
+          trials_expiring_7_days: "Zkušební období končící během příštích 7 dnů"
+        table:
+          user: "Uživatel"
+          trial_ends_at: "Konec zkušebního období"
+          family_accounts: "Účty domácnosti"
+          family_transactions: "Transakce domácnosti"
+          last_login: "Poslední přihlášení"
+          session_count: "Počet relací"
+          never: "Nikdy"
+          role: "Role"
+        role_descriptions_title: "Popisy rolí"
+        roles:
+          guest: "Host"
+          member: "Člen"
+          admin: "Správce"
+          super_admin: "Hlavní správce"
+        role_descriptions:
+          guest: "Prostředí zaměřené na asistenta se záměrně omezenými oprávněními pro úvodní postupy."
+          member: "Základní uživatelský přístup. Může spravovat vlastní účty, transakce a nastavení."
+          admin: "Správce domácnosti. Má přístup k pokročilým nastavením, například klíčům API, importům a pokynům pro AI."
+          super_admin: "Správce instance. Může spravovat poskytovatele SSO a role uživatelů a kvůli podpoře se vydávat za uživatele."
+        invitations:
+          pending_label: "Pozvánka čeká na přijetí"
+          expires: "Platnost do %{date}"
+          delete: "Odstranit"
+          delete_all: "Odstranit vše"
+      update:
+        success: "Role uživatele byla aktualizována."
+        failure: "Roli uživatele se nepodařilo aktualizovat."

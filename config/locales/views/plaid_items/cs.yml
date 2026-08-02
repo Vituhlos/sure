@@ -1,0 +1,37 @@
+---
+cs:
+  plaid_items:
+    create:
+      success: Účet byl úspěšně propojen. Vyčkejte, než se účty synchronizují.
+    destroy:
+      success: Účty byly zařazeny k odstranění.
+    errors:
+      link_token_generic: Plaid se nyní nepodařilo otevřít. Zkuste to znovu. Pokud problém přetrvá, vyhledejte podrobnosti v protokolech serveru.
+      link_token_with_message: "Plaid nemohl připojení otevřít: %{message}"
+    plaid_item:
+      add_new: Přidat nové připojení
+      confirm_accept: Odstranit instituci
+      confirm_body: Trvale se odstraní všechny účty v této skupině a všechna související data.
+      confirm_title: Odstranit instituci?
+      connection_lost: Připojení bylo přerušeno
+      connection_lost_description: Toto připojení již není platné. Chcete-li pokračovat v synchronizaci dat, odstraňte je a znovu přidejte.
+      delete: Odstranit
+      deletion_in_progress: (probíhá odstraňování…)
+      error: Při synchronizaci dat došlo k chybě
+      no_accounts_description: Z této finanční instituce se nepodařilo načíst žádné účty.
+      no_accounts_title: Nebyly nalezeny žádné účty
+      requires_update: Znovu připojit
+      status: "Naposledy synchronizováno před %{timestamp}"
+      status_never: Je vyžadována synchronizace dat
+      syncing: Synchronizace…
+      update: Aktualizovat
+    select_existing_account:
+      no_available_accounts: Nejsou dostupné žádné účty Plaid k propojení. Nejprve připojte nový účet Plaid.
+      title: "Propojit účet %{account_name} s Plaid"
+      description: Vyberte účet Plaid, který chcete propojit se stávajícím účtem.
+      cancel: Zrušit
+      link_account: Propojit účet
+    link_existing_account:
+      invalid_account: Byl vybrán neplatný účet Plaid.
+      already_linked: Tento účet Plaid je již propojen.
+      success: Účet byl úspěšně propojen s Plaid.

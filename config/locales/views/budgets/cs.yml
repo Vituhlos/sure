@@ -1,0 +1,98 @@
+---
+cs:
+  budgets:
+    budget_donut:
+      spent: "Utraceno"
+      new_budget: "Nový rozpočet"
+      of_budget: "z rozpočtu %{amount}"
+      unused: "Nevyužito"
+    budget_header:
+      today: "Dnes"
+    budget_nav:
+      categories: "Kategorie"
+      setup: "Nastavení"
+    over_allocation_warning:
+      over_allocated_message: "Součet přidělených částek překračuje rozpočet. Upravte přidělení."
+      fix_allocations: "Upravit přidělení"
+    actuals_summary:
+      income: "Příjmy"
+      expenses: "Výdaje"
+    budgeted_summary:
+      expected_income: "Očekávané příjmy"
+      budgeted: "Rozpočtováno"
+      earned: "Přijato %{amount}"
+      over: "%{amount} navíc"
+      left: "Zbývá %{amount}"
+      spent: "Utraceno %{amount}"
+    edit:
+      setup_title: "Nastavit rozpočet"
+      setup_description: "Níže zadejte očekávané měsíční příjmy a plánované výdaje."
+      budgeted_spending: "Plánované výdaje"
+      expected_income: "Očekávané příjmy"
+      autosuggest_title: "Automaticky navrhnout příjmy a výdaje"
+      autosuggest_description: "Návrh vychází z historie transakcí. AI se může mýlit, proto údaje před pokračováním zkontrolujte."
+      continue: "Pokračovat"
+    name:
+      custom_range: "%{start}–%{end_date}"
+      month_year: "%{month}"
+    show:
+      categories:
+        amount: "Částka"
+        edit: "Upravit"
+        title: "Kategorie"
+      on_track_categories:
+        short_title: "V limitu"
+        title: "Kategorie v limitu"
+      over_budget_categories:
+        short_title: "Nad rozpočet"
+        title: "Kategorie nad rozpočet"
+      filter:
+        all: "Vše"
+        aria_label: "Filtrovat kategorie rozpočtu"
+        on_track: "V limitu"
+        over_budget: "Nad rozpočet"
+      tabs:
+        actual: "Skutečnost"
+        budgeted: "Rozpočet"
+    copy_previous_prompt:
+      title: "Nastavit rozpočet"
+      description: "Můžete zkopírovat rozpočet z období %{source_name}, nebo začít od začátku."
+      copy_button: "Zkopírovat z období %{source_name}"
+      fresh_button: "Začít od začátku"
+    copy_previous:
+      success: "Rozpočet byl zkopírován z období %{source_name}."
+      no_source: "Nebyl nalezen žádný předchozí rozpočet ke zkopírování."
+      already_initialized: "Tento rozpočet je již nastavený."
+  budget_categories:
+    allocation_progress:
+      budget_exceeded_html: 'Rozpočet překročen o <span class="text-red-500 privacy-sensitive">%{amount}</span>'
+      left_to_allocate: "zbývá rozdělit"
+      over_set: "> 100 % rozděleno"
+      percent_set: "%{percent} rozděleno"
+    budget_category_form:
+      monthly_average: "měsíční průměr %{amount}"
+      shared_placeholder: "Společný"
+      shared_title: "Ponechte prázdné, chcete-li použít rozpočet nadřazené kategorie"
+    confirm_button:
+      confirm: "Potvrdit"
+    no_categories:
+      oops: "Ještě tu nic není"
+      no_categories_message: "Zatím jste nevytvořili žádné výdajové kategorie ani je nepřiřadili k transakcím."
+      use_defaults: "Použít výchozí kategorie (doporučeno)"
+      new_category: "Nová kategorie"
+    index:
+      title: "Upravit rozpočty kategorií"
+      description: "Nastavte limity výdajů pro jednotlivé kategorie. Nepřidělené prostředky se automaticky zahrnou do položky Bez kategorie."
+    show:
+      category: "Kategorie"
+      overview: "Přehled"
+      spending: "Výdaje za %{date}"
+      status: "Stav"
+      overspent: "nad rozpočet"
+      left: "zbývá"
+      budgeted: "Rozpočtováno"
+      monthly_average_spending: "Průměrné měsíční výdaje"
+      monthly_median_spending: "Medián měsíčních výdajů"
+      recent_transactions: "Nedávné transakce"
+      view_all_transactions: "Zobrazit všechny transakce v kategorii"
+      no_transactions: "V tomto rozpočtovém období nebyly nalezeny žádné transakce."

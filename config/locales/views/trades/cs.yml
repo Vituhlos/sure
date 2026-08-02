@@ -1,0 +1,69 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        trade:
+          attributes:
+            exchange_rate:
+              not_a_number: "musí být číslo"
+  trades:
+    names:
+      buy: "Nákup: %{qty} × %{ticker}"
+      sell: "Prodej: %{qty} × %{ticker}"
+    form:
+      account: "Protiúčet převodu (nepovinné)"
+      account_prompt: "Vyhledat účet"
+      amount: "Částka"
+      fee: "Poplatek za transakci"
+      holding: "Ticker"
+      holding_optional: "Ticker (nepovinné)"
+      price: "Cena za jednotku"
+      qty: "Počet jednotek"
+      submit: "Přidat transakci"
+      ticker_placeholder: "AAPL"
+      type: "Typ"
+      type_buy: "Nákup"
+      type_sell: "Prodej"
+      type_deposit: "Vklad"
+      type_withdrawal: "Výběr"
+      type_dividend: "Dividenda"
+      type_interest: "Úrok"
+      dividend_requires_security: "U dividendy je nutné vybrat investiční nástroj."
+      trade_requires_security: "U nákupu a prodeje je nutné vybrat investiční nástroj (ticker)."
+    header:
+      buy: "Nákup"
+      sell: "Prodej"
+      dividend: "Dividenda"
+      interest: "Úrok"
+      current_market_price_label: "Aktuální tržní cena"
+      overview: "Přehled"
+      purchase_price_label: "Nákupní cena"
+      purchase_qty_label: "Nakoupené množství"
+      symbol_label: "Symbol"
+      total_return_label: "Nerealizovaný zisk nebo ztráta"
+    new:
+      title: "Nová transakce"
+    show:
+      additional: "Další údaje"
+      amount_label: "Částka"
+      buy: "Nákup"
+      category_label: "Kategorie"
+      cost_per_share_label: "Cena za jednotku"
+      date_label: "Datum"
+      delete: "Odstranit"
+      fee_label: "Poplatek za transakci"
+      delete_subtitle: "Tuto akci nelze vrátit zpět."
+      delete_title: "Odstranit obchod"
+      details: "Podrobnosti"
+      provider_disabled_warning: "Aktualizace cen jsou pozastaveny, protože poskytovatel %{provider} je vypnutý. Znovu ho zapněte v nastavení nebo pozici převeďte k jinému poskytovateli."
+      exclude_subtitle: "Tento obchod nebude zahrnut do přehledů ani výpočtů."
+      exclude_title: "Vyloučit z analýz"
+      no_category: "Bez kategorie"
+      note_label: "Poznámka"
+      note_placeholder: "Přidejte další poznámky…"
+      quantity_label: "Počet jednotek"
+      sell: "Prodej"
+      settings: "Nastavení"
+      type_label: "Typ"
+      unknown: "Neuvedeno"

@@ -1,0 +1,29 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        transfer:
+          attributes:
+            base:
+              inflow_cannot_be_in_multiple_transfers: "Příchozí transakce nemůže být součástí více převodů."
+              exchange_rate_unavailable: "Pro vybrané měny a datum není dostupný směnný kurz."
+              must_be_from_different_accounts: "Převod musí probíhat mezi různými účty."
+              must_be_from_same_family: "Účty převodu musí patřit do stejné domácnosti nebo skupiny."
+              must_be_within_date_range: "Data transakcí převodu od sebe nesmějí být vzdálena více než 4 dny."
+              must_have_opposite_amounts: "Transakce převodu musí mít částky s opačnými znaménky."
+              must_have_single_currency: "Převod musí používat jedinou měnu."
+              outflow_cannot_be_in_multiple_transfers: "Odchozí transakce nemůže být součástí více převodů."
+          different_accounts: "Účty musí být různé."
+          same_family: "Účty musí patřit do stejné domácnosti nebo skupiny."
+          opposite_amounts: "Částky musí mít opačná znaménka."
+          within_days:
+            one: "Časový rozdíl nesmí překročit %{count} den."
+            few: "Časový rozdíl nesmí překročit %{count} dny."
+            many: "Časový rozdíl nesmí překročit %{count} dne."
+            other: "Časový rozdíl nesmí překročit %{count} dní."
+  transfer:
+    name: "Převod na účet %{to_account}"
+    payment_name: "Platba na účet %{to_account}"
+    unnamed: "Převod"
+    unnamed_payment: "Platba"

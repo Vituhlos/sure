@@ -1,0 +1,9 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        tag:
+          attributes:
+            base:
+              replacement_must_differ: "Náhradní štítek se musí lišit od odstraňovaného štítku"

@@ -1,0 +1,169 @@
+---
+cs:
+  wise_items:
+    importer:
+      fetch_balances_failed: Zůstatky se nepodařilo načíst
+    profile_display_name:
+      fallback: "Wise – %{type}"
+    profile_types:
+      personal: Osobní
+      business: Firemní
+    entries:
+      default_name: Transakce Wise
+      fee_name: Poplatek Wise
+    activities:
+      jar_deposit: Převod do Jar
+      jar_withdrawal: Převod z Jar
+      transfer_to_jar: "Převod do %{jar}"
+      transfer_from_jar: "Převod z %{jar}"
+      interest: Úrok Wise
+      asset_fee: Poplatek Wise Assets
+      default_name: Aktivita Wise
+    sync_status:
+      no_accounts: Nebyly nalezeny žádné účty
+      all_synced:
+        one: "Synchronizován %{count} účet"
+        few: "Synchronizovány %{count} účty"
+        many: "Synchronizováno %{count} účtu"
+        other: "Synchronizováno %{count} účtů"
+      partial_setup: "Synchronizováno: %{synced}, nastavení vyžaduje: %{pending}"
+    create:
+      no_profiles_found: Nebyly nalezeny žádné profily Wise. Zkontrolujte token API.
+      invalid_token: Neplatný token API. Zkontrolujte jej a zkuste to znovu.
+      connection_failed: K Wise se nepodařilo připojit. Zkuste to znovu později.
+    destroy:
+      success: Připojení Wise bylo odstraněno
+    update:
+      success: Připojení Wise bylo aktualizováno
+    sync:
+      success: Synchronizace byla zahájena
+    syncer:
+      importing_accounts: Import účtů z Wise…
+      checking_account_configuration: Kontrola nastavení účtů…
+      accounts_need_setup:
+        one: "%{count} účet vyžaduje nastavení…"
+        few: "%{count} účty vyžadují nastavení…"
+        many: "%{count} účtu vyžaduje nastavení…"
+        other: "%{count} účtů vyžaduje nastavení…"
+      processing_transactions: Zpracování transakcí…
+      calculating_balances: Výpočet zůstatků…
+      credentials_invalid: Neplatný token API Wise nebo nedostatečná oprávnění
+      failed: Synchronizace se nezdařila. Zkuste to znovu nebo se obraťte na podporu.
+      import_failed: Import z Wise se nezdařil.
+      accounts_failed:
+        one: "%{count} zůstatek se nepodařilo importovat."
+        few: "%{count} zůstatky se nepodařilo importovat."
+        many: "%{count} zůstatku se nepodařilo importovat."
+        other: "%{count} zůstatků se nepodařilo importovat."
+      transactions_failed:
+        one: "U %{count} zůstatku se nepodařilo importovat některé transakce."
+        few: "U %{count} zůstatků se nepodařilo importovat některé transakce."
+        many: "U %{count} zůstatku se nepodařilo importovat některé transakce."
+        other: "U %{count} zůstatků se nepodařilo importovat některé transakce."
+      account_processing_failed:
+        one: "Při zpracování selhal %{count} účet Wise."
+        few: "Při zpracování selhaly %{count} účty Wise."
+        many: "Při zpracování selhalo %{count} účtu Wise."
+        other: "Při zpracování selhalo %{count} účtů Wise."
+      account_sync_failed:
+        one: "Synchronizaci %{count} účtu Wise se nepodařilo naplánovat."
+        few: "Synchronizaci %{count} účtů Wise se nepodařilo naplánovat."
+        many: "Synchronizaci %{count} účtu Wise se nepodařilo naplánovat."
+        other: "Synchronizaci %{count} účtů Wise se nepodařilo naplánovat."
+    provider_panel:
+      setup_title: "Pokyny k nastavení:"
+      add_connection: Přidat připojení Wise
+      token_label: Token API
+      token_placeholder: Vložte osobní token API Wise
+      keep_token_placeholder: Chcete-li zachovat stávající token, ponechte prázdné
+      connection_name_label: Název připojení
+      connection_name_placeholder: Osobní Wise
+      connect: Připojit Wise
+      update_connection: Aktualizovat připojení
+      setup_accounts: Nastavit účty
+      sync: Synchronizovat
+      disconnect: Odpojit
+      disconnect_label: "Odpojit připojení %{name}"
+      disconnect_confirm: "Opravdu chcete odpojit připojení %{name}? Odstraní se všechna data synchronizovaných účtů."
+      accounts_link: Účty
+      configured_html: "Připojeno a synchronizováno. Účty můžete spravovat na kartě %{accounts_link}."
+      not_configured: Nenastaveno
+      sandbox_note_html: "K testování použijte základní adresu URL prostředí <strong>sandbox</strong> (<code>https://api.sandbox.transferwise.tech</code>). V prostředí nastavte proměnnou <code>WISE_BASE_URL</code>."
+      encryption_warning:
+        title: Šifrování databáze není nastaveno
+        message: Před přidáním tokenů Wise v produkčním prostředí nastavte šifrovací klíče Active Record. Bez šifrování se tokeny ukládají jako prostý text.
+      instructions:
+        sign_in_html: "Přejděte na %{link} a přihlaste se ke svému účtu."
+        open_tokens: "Přejděte do Settings → API tokens."
+        create_token: Vytvořte nový osobní token API s přístupem pouze pro čtení.
+        copy_token_html: Zkopírujte token a vložte jej níže. Sure jej používá pouze k synchronizaci zůstatků a transakcí.
+    provider_connection:
+      default_name: Wise
+      default_description: Připojte svůj víceměnový účet Wise
+      name: "Wise – %{name}"
+      description: "Připojení prostřednictvím profilu %{name}"
+    link_profiles:
+      session_expired: Platnost relace vypršela. Zkuste se připojit znovu.
+      no_profiles_selected: Vyberte alespoň jeden profil.
+      already_connected: Všechny vybrané profily jsou již připojeny.
+      success:
+        one: "Úspěšně připojen %{count} profil Wise"
+        few: "Úspěšně připojeny %{count} profily Wise"
+        many: "Úspěšně připojeno %{count} profilu Wise"
+        other: "Úspěšně připojeno %{count} profilů Wise"
+    select_profiles:
+      session_expired: Platnost relace vypršela. Zkuste se připojit znovu.
+      title: Vyberte profily Wise
+      subtitle: Zvolte profily, které chcete připojit
+      description: Váš účet Wise obsahuje několik profilů. Vyberte profily, které chcete synchronizovat se Sure.
+      unnamed_profile: (profil bez názvu)
+      already_connected_label: Již připojeno
+      connect: Připojit vybrané profily
+      cancel: Zrušit
+    wise_item:
+      deletion_in_progress: probíhá odstraňování…
+      syncing: Synchronizace…
+      error: Chyba synchronizace
+      status: "Synchronizováno před %{timestamp}"
+      status_never: Dosud nesynchronizováno
+      status_with_summary: "Naposledy synchronizováno před %{timestamp} – %{summary}"
+      delete: Odpojit
+      setup_needed: Nové účty jsou připraveny k nastavení
+      setup_description: "Propojeno %{linked} z %{total} účtů. Vytvořte v aplikaci Sure účty pro jednotlivé měnové zůstatky Wise."
+      setup_action: Nastavit účty
+      no_accounts_title: Zatím nejsou propojeny žádné účty
+      no_accounts_description: Spusťte synchronizaci, vyhledejte zůstatky Wise a poté je propojte s účty v aplikaci Sure.
+    setup_accounts:
+      title: Nastavení účtů Wise
+      subtitle: Propojte své měnové zůstatky Wise
+      description: Pro každý měnový zůstatek Wise, který chcete sledovat, vytvořte účet v aplikaci Sure. Každá měna bude mít vlastní účet.
+      no_accounts_to_setup: Všechny účty jsou nastaveny
+      all_accounts_linked: Všechny měnové zůstatky Wise jsou již propojeny s účty v aplikaci Sure.
+      create_account: Vytvořit účet
+      done: Hotovo
+    select_accounts:
+      title: Vybrat zůstatek Wise
+      description: "Vyberte měnový zůstatek Wise, který chcete propojit se svým účtem v aplikaci %{product_name}."
+      no_accounts_found: Všechny zůstatky Wise jsou již propojeny s účty v aplikaci Sure.
+      no_connection: Nebylo nalezeno žádné připojení Wise. Nejprve připojte Wise v nastavení poskytovatelů.
+      link_account: Propojit zůstatek
+      cancel: Zrušit
+    select_existing_account:
+      title: "Propojit účet %{account_name} se službou Wise"
+      description: Vyberte měnový zůstatek Wise, který chcete propojit s tímto účtem. Transakce se budou synchronizovat automaticky.
+      no_accounts_found: Nebyly nalezeny žádné nepropojené zůstatky Wise.
+      not_found: Účet nebo připojení Wise nebyly nalezeny.
+      link_account: Propojit zůstatek
+      cancel: Zrušit
+    link_accounts:
+      not_found: Zůstatek Wise nebyl nalezen.
+      success: Zůstatek Wise byl úspěšně propojen s účtem.
+      failed: Zůstatek Wise se nepodařilo propojit. Zkuste to znovu.
+    link_existing_account:
+      not_found: Účet nebo zůstatek Wise nebyl nalezen.
+      success: "Účet %{account_name} byl úspěšně propojen se službou Wise."
+      failed: Účet se nepodařilo propojit. Zkuste to znovu.
+    complete_account_setup:
+      not_found: Zůstatek Wise nebyl nalezen.
+      success: Účet byl úspěšně vytvořen a propojen.
+      failed: Účet se nepodařilo vytvořit. Zkuste to znovu.

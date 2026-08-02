@@ -1,0 +1,199 @@
+---
+cs:
+  rules:
+    no_action: "Žádná akce"
+    no_condition: "Žádná podmínka"
+    resources:
+      transaction:
+        one: "transakci"
+        few: "transakce"
+        many: "transakce"
+        other: "transakcí"
+    primary_condition_title: "Podmínka: %{label} %{operator} %{value}"
+    rule:
+      edit: "Upravit"
+      re_apply_rule: "Použít pravidlo znovu"
+      delete: "Odstranit"
+      if: "KDYŽ"
+      then: "PAK"
+      for: "PRO"
+      delete_title: "Odstranit pravidlo?"
+      delete_body: "Opravdu chcete toto pravidlo odstranit? Akci nelze vrátit zpět."
+      delete_button: "Odstranit pravidlo"
+      and_more_conditions:
+        one: "a 1 další podmínka"
+        few: "a %{count} další podmínky"
+        many: "a %{count} další podmínky"
+        other: "a %{count} dalších podmínek"
+      and_more_actions:
+        one: "a 1 další akce"
+        few: "a %{count} další akce"
+        many: "a %{count} další akce"
+        other: "a %{count} dalších akcí"
+      action_label_to: "%{label}: %{value}"
+      all_past_and_future: "Všechny minulé i budoucí %{resource}"
+      on_or_after: "%{resource} od %{date} včetně"
+    form:
+      rule_name_label: "Název pravidla (nepovinné)"
+      rule_name_placeholder: "Zadejte název pravidla"
+      add_condition: "Přidat podmínku"
+      add_condition_group: "Přidat skupinu podmínek"
+      add_action: "Přidat akci"
+      all_past_and_future: "Všechny minulé i budoucí %{resource}"
+      starting_from: "Počínaje datem"
+      if: "KDYŽ"
+      for: "PRO"
+      then: "PAK"
+    index:
+      page_title: "Pravidla"
+      delete_all_rules: "Odstranit všechna pravidla"
+      delete_all_title: "Odstranit všechna pravidla?"
+      delete_all_body: "Opravdu chcete odstranit všechna pravidla? Akci nelze vrátit zpět."
+      delete_all_button: "Odstranit všechna pravidla"
+      new_rule: "Nové pravidlo"
+      ai_cost_warning: "Akce pravidel využívající AI mohou být zpoplatněné. Nastavte co nejužší podmínky, abyste předešli zbytečným nákladům."
+      rules_heading: "Pravidla"
+      sort_by: "Řadit podle:"
+      sort_name: "Název"
+      sort_updated_at: "Poslední úprava"
+      toggle_sort_direction: "Změnit směr řazení"
+      no_rules_title: "Zatím žádná pravidla"
+      no_rules_description: "Pravidla mohou při každé synchronizaci automaticky upravovat transakce a další data."
+    confirm:
+      title: "Potvrdit změny"
+      title_with_name: "Potvrdit změny pravidla „%{name}“"
+      apply_notice_html: "Pravidlo se použije na <span class=\"text-primary font-medium\">%{count} %{resource}</span>, které splňují zadané podmínky. Potvrďte, že chcete pokračovat."
+      ai_cost_title: "Odhad nákladů na AI"
+      ai_cost_with_estimate_html: "AI kategorizuje až %{count} transakcí. Odhadované náklady: <span class=\"font-semibold\">~$%{cost}</span>"
+      ai_cost_no_estimate_html: "AI kategorizuje až %{count} transakcí."
+      cost_unavailable_model: "Odhad nákladů není pro model „%{model}“ dostupný."
+      cost_unavailable_no_provider: "Odhad nákladů není dostupný, protože není nastaven poskytovatel LLM."
+      cost_warning: "Mohou vám vzniknout náklady. Aktuální ceny ověřte u poskytovatele modelu."
+      view_usage_history: "Zobrazit historii využití"
+      confirm_changes: "Potvrdit změny"
+    actions:
+      value_placeholder: "Zadejte hodnotu"
+      to: ":"
+      none: "(žádná možnost)"
+    operators:
+      contains: "obsahuje"
+      equal_to: "rovná se"
+      is_empty: "nemá hodnotu"
+      greater_than: "je větší než"
+      greater_or_equal_to: "je nejméně"
+      less_than: "je menší než"
+      less_or_equal_to: "je nejvýše"
+      is_equal_to: "rovná se"
+    condition_filters:
+      labels:
+        transaction_name: "Název transakce"
+        transaction_amount: "Částka transakce"
+        transaction_type: "Typ transakce"
+        transaction_merchant: "Obchodník u transakce"
+        transaction_category: "Kategorie transakce"
+        transaction_details: "Text v podrobnostech transakce"
+        transaction_notes: "Text v poznámkách k transakci"
+        transaction_account: "Účet transakce"
+      transaction_type:
+        income: "Příjem"
+        expense: "Výdaj"
+        transfer: "Převod"
+        equal_to: "Rovná se"
+    action_executors:
+      labels:
+        set_transaction_category: "Nastavit kategorii transakce"
+        set_transaction_tags: "Přidat štítek k transakci"
+        set_transaction_merchant: "Nastavit obchodníka transakce"
+        set_transaction_name: "Nastavit název transakce"
+        set_investment_activity_label: "Nastavit druh investičního pohybu"
+        exclude_transaction: "Vyloučit z rozpočtů a přehledů"
+        set_as_transfer_or_payment: "Nastavit jako převod nebo platbu"
+        send_email_notification: "Odeslat e-mailové upozornění"
+        auto_categorize: "Automaticky kategorizovat transakce pomocí AI"
+        auto_detect_merchants: "Automaticky rozpoznat obchodníky"
+      auto_categorize:
+        cost_unavailable_suffix: " (náklady: nelze určit)"
+        estimated_cost_suffix: " (~$%{cost} za 20 transakcí)"
+        no_provider_suffix: " (není nastaven poskytovatel LLM)"
+      auto_detect_merchants:
+        self_hosted_suffix: " ($$)"
+    generated_transfer_names:
+      payment:
+        to: "Platba na účet %{account}"
+        from: "Platba z účtu %{account}"
+      transfer:
+        to: "Převod na účet %{account}"
+        from: "Převod z účtu %{account}"
+    apply:
+      success: "Pravidlo pro %{resource} bylo aktivováno."
+    new:
+      back: "Zpět na pravidla"
+      title: "Nové pravidlo pro %{resource}"
+    edit:
+      back: "Zpět na pravidla"
+      title: "Upravit pravidlo pro %{resource}"
+      title_with_name: "Upravit pravidlo „%{name}“ pro %{resource}"
+    category_rule_cta:
+      message: "Kategorie změněna na %{category}"
+      description: "Pro automatickou kategorizaci podobných transakcí můžete vytvořit pravidlo"
+      dont_show_again: "Příště nezobrazovat"
+      dismiss: "Skrýt"
+      create_rule: "Vytvořit pravidlo"
+    update:
+      success: "Pravidlo bylo aktualizováno."
+    destroy:
+      success: "Pravidlo bylo odstraněno."
+    destroy_all:
+      success: "Všechna pravidla byla odstraněna."
+    apply_all:
+      button: "Použít všechna"
+      confirm_title: "Použít všechna pravidla"
+      confirm_message: "Použije se %{count} pravidel, která ovlivní %{transactions} jedinečných transakcí. Potvrďte, že chcete pokračovat."
+      confirm_button: "Potvrdit a použít všechna"
+      success: "Všechna pravidla byla zařazena ke spuštění."
+      ai_cost_title: "Odhad nákladů na AI"
+      ai_cost_message: "AI kategorizuje až %{transactions} transakcí."
+      estimated_cost: "Odhadované náklady: ~$%{cost}"
+      cost_unavailable_model: "Odhad nákladů není pro model „%{model}“ dostupný."
+      cost_unavailable_no_provider: "Odhad nákladů není dostupný, protože není nastaven poskytovatel LLM."
+      cost_warning: "Mohou vám vzniknout náklady. Aktuální ceny ověřte u poskytovatele modelu."
+      view_usage: "Zobrazit historii využití"
+    recent_runs:
+      title: "Nedávná spuštění"
+      description: "Historie spuštění pravidel včetně stavu a počtu zpracovaných transakcí."
+      unnamed_rule: "Pravidlo bez názvu"
+      columns:
+        date_time: "Datum a čas"
+        execution_type: "Typ"
+        status: "Stav"
+        rule_name: "Název pravidla"
+        transactions_counts:
+          queued: "Ve frontě"
+          processed: "Zpracováno"
+          modified: "Změněno"
+          blocked: "Blokováno"
+      execution_types:
+        manual: "Ručně"
+        scheduled: "Plánovaně"
+      statuses:
+        pending: "Čeká"
+        success: "Úspěšné"
+        failed: "Neúspěšné"
+    clear_ai_cache:
+      button: "Vymazat mezipaměť AI"
+      confirm_title: "Vymazat mezipaměť AI?"
+      confirm_body: "Opravdu chcete vymazat mezipaměť AI? Pravidla využívající AI budou moci znovu zpracovat všechny transakce, což může způsobit další náklady na API."
+      confirm_button: "Vymazat mezipaměť"
+      success: "Mezipaměť AI se maže. Dokončení může chvíli trvat."
+  rule:
+    conditions:
+      condition:
+        and_prefix: "a"
+        value_placeholder: "Zadejte hodnotu"
+      condition_group:
+        and_prefix: "a"
+        match: "musí odpovídat"
+        all: "všechny"
+        any: "alespoň jedna"
+        of_the_following_conditions: "z následujících podmínek"
+        add_condition: "Přidat podmínku"

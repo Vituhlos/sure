@@ -124,6 +124,7 @@ class IbkrAccountProcessorTest < ActiveSupport::TestCase
 
     dividend = @account.entries.find_by(external_id: "ibkr_cash_4002")
     assert_not_nil dividend
+    assert_equal "Dividend from AAPL", dividend.name
     assert_equal "Dividend", dividend.entryable.investment_activity_label
     assert_equal BigDecimal("-2.5"), dividend.amount
     assert_equal securities(:aapl).id, dividend.entryable.extra["security_id"]
@@ -142,11 +143,26 @@ class IbkrAccountProcessorTest < ActiveSupport::TestCase
     deposit = @account.entries.find_by(external_id: "ibkr_cash_4001")
 
     assert_not_nil deposit
+    assert_equal "Contribution", deposit.name
     assert_equal "Contribution", deposit.entryable.investment_activity_label
     assert_equal BigDecimal("-500"), deposit.amount
     assert_equal "CHF", deposit.currency
 
     assert_equal "USD", dividend.currency
+  end
+
+  test "localizes imported cash transaction names without changing stable labels" do
+    I18n.with_locale(:cs) do
+      IbkrAccount::Processor.new(@ibkr_account).process
+    end
+
+    deposit = @account.entries.find_by!(external_id: "ibkr_cash_4001")
+    dividend = @account.entries.find_by!(external_id: "ibkr_cash_4002")
+
+    assert_equal "Vklad", deposit.name
+    assert_equal "Contribution", deposit.entryable.investment_activity_label
+    assert_equal "Dividenda z AAPL", dividend.name
+    assert_equal "Dividend", dividend.entryable.investment_activity_label
   end
 
   test "processor computes weighted provider cost basis for grouped lots" do

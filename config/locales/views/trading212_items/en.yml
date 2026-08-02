@@ -8,6 +8,15 @@ en:
   trading212_items:
     defaults:
       name: Trading 212
+    transaction_names:
+      contribution: Contribution
+      withdrawal: Withdrawal
+      interest: Interest
+      fee: Fee
+      buy: "Buy %{quantity} shares of %{ticker}"
+      sell: "Sell %{quantity} shares of %{ticker}"
+      dividend: Dividend
+      dividend_from: "Dividend from %{ticker}"
     trading212_item:
       deletion_in_progress: Deletion in progress
       environment_label_live: Live account

@@ -68,7 +68,7 @@ class SimplefinItemsController < ApplicationController
     begin
       @simplefin_item = Current.family.create_simplefin_item!(
         setup_token: setup_token,
-        item_name: "SimpleFIN Connection"
+        item_name: t("simplefin_items.defaults.name")
       )
 
       if turbo_frame_request?
@@ -163,13 +163,13 @@ class SimplefinItemsController < ApplicationController
       .left_joins(:account, :account_provider)
       .where(accounts: { id: nil }, account_providers: { id: nil })
     @account_type_options = [
-      [ "Skip this account", "skip" ],
-      [ "Checking or Savings Account", "Depository" ],
-      [ "Credit Card", "CreditCard" ],
-      [ "Investment Account", "Investment" ],
-      [ "Crypto Account", "Crypto" ],
-      [ "Loan or Mortgage", "Loan" ],
-      [ "Other Asset", "OtherAsset" ]
+      [ t(".account_types.skip"), "skip" ],
+      [ t(".account_types.depository"), "Depository" ],
+      [ t(".account_types.credit_card"), "CreditCard" ],
+      [ t(".account_types.investment"), "Investment" ],
+      [ t(".account_types.crypto"), "Crypto" ],
+      [ t(".account_types.loan"), "Loan" ],
+      [ t(".account_types.other_asset"), "OtherAsset" ]
     ]
 
     # Compute UI-only suggestions (preselect only when high confidence)
@@ -197,31 +197,31 @@ class SimplefinItemsController < ApplicationController
     # Subtype options for each account type
     @subtype_options = {
       "Depository" => {
-        label: "Account Subtype:",
-        options: Depository::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.depository"),
+        options: Depository::SUBTYPES.map { |k, v| [ t("depositories.subtypes.#{k}.long", default: v[:long]), k ] }
       },
       "CreditCard" => {
         label: "",
         options: [],
-        message: "Credit cards will be automatically set up as credit card accounts."
+        message: t(".subtype_messages.credit_card")
       },
       "Investment" => {
-        label: "Investment Type:",
-        options: Investment::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.investment"),
+        options: Investment::SUBTYPES.map { |k, v| [ t("investments.subtypes.#{k}.long", default: v[:long]), k ] }
       },
       "Loan" => {
-        label: "Loan Type:",
-        options: Loan::SUBTYPES.map { |k, v| [ v[:long], k ] }
+        label: t(".subtype_labels.loan"),
+        options: Loan::SUBTYPES.map { |k, v| [ t("loans.subtypes.#{k}.long", default: v[:long]), k ] }
       },
       "Crypto" => {
         label: nil,
         options: [],
-        message: "Crypto accounts track cryptocurrency holdings."
+        message: t(".subtype_messages.crypto")
       },
       "OtherAsset" => {
         label: nil,
         options: [],
-        message: "No additional options needed for Other Assets."
+        message: t(".subtype_messages.other_asset")
       }
     }
 

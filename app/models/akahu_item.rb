@@ -32,7 +32,7 @@ class AkahuItem < ApplicationRecord
     provider = akahu_provider
     unless provider
       Rails.logger.error "AkahuItem #{id} - Cannot import: Akahu provider is not configured"
-      raise StandardError.new("Akahu provider is not configured")
+      raise StandardError.new(I18n.t("akahu_item.errors.provider_not_configured"))
     end
 
     AkahuItem::Importer.new(self, akahu_provider: provider).import

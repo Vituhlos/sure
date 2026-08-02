@@ -44,7 +44,7 @@ class MercuryItem < ApplicationRecord
     provider = mercury_provider
     unless provider
       Rails.logger.error "MercuryItem #{id} - Cannot import: provider is not configured"
-      raise StandardError.new("Mercury provider is not configured")
+      raise StandardError.new(I18n.t("mercury_items.errors.provider_not_configured"))
     end
 
     # TODO: Add any provider-specific validation here (e.g., session checks)
@@ -119,11 +119,11 @@ class MercuryItem < ApplicationRecord
     unlinked_count = unlinked_accounts_count
 
     if total_accounts == 0
-      "No accounts found"
+      I18n.t("mercury_items.sync_status.no_accounts")
     elsif unlinked_count == 0
-      "#{linked_count} #{'account'.pluralize(linked_count)} synced"
+      I18n.t("mercury_items.sync_status.all_synced", count: linked_count)
     else
-      "#{linked_count} synced, #{unlinked_count} need setup"
+      I18n.t("mercury_items.sync_status.partial", linked: linked_count, unlinked: unlinked_count)
     end
   end
 
@@ -159,11 +159,11 @@ class MercuryItem < ApplicationRecord
     institutions = connected_institutions
     case institutions.count
     when 0
-      "No institutions connected"
+      I18n.t("mercury_items.institution_summary.none")
     when 1
-      institutions.first["name"] || institutions.first["institution_name"] || "1 institution"
+      institutions.first["name"] || institutions.first["institution_name"] || I18n.t("mercury_items.institution_summary.count", count: 1)
     else
-      "#{institutions.count} institutions"
+      I18n.t("mercury_items.institution_summary.count", count: institutions.count)
     end
   end
 

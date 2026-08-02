@@ -33,17 +33,25 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
   String _nature = 'expense';
   bool _showMoreFields = false;
   bool _isSubmitting = false;
+  bool _dateInitialized = false;
   models.Category? _selectedCategory;
 
   @override
   void initState() {
     super.initState();
-    // Set default values
-    final now = DateTime.now();
-    final formattedDate = DateFormat('yyyy/MM/dd').format(now);
-    _dateController.text = formattedDate;
     _nameController.text = 'SureApp';
     _fetchCategories();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_dateInitialized) {
+      _dateController.text = DateFormat.yMd(
+        Localizations.localeOf(context).toString(),
+      ).format(DateTime.now());
+      _dateInitialized = true;
+    }
   }
 
   Future<void> _fetchCategories() async {
@@ -101,7 +109,9 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
 
     if (picked != null && mounted) {
       setState(() {
-        _dateController.text = DateFormat('yyyy/MM/dd').format(picked);
+        _dateController.text = DateFormat.yMd(
+          Localizations.localeOf(context).toString(),
+        ).format(picked);
       });
     }
   }
@@ -144,8 +154,9 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
         return;
       }
 
-      // Convert date format from yyyy/MM/dd to yyyy-MM-dd
-      final parsedDate = DateFormat('yyyy/MM/dd').parse(_dateController.text);
+      final parsedDate = DateFormat.yMd(
+        Localizations.localeOf(context).toString(),
+      ).parse(_dateController.text);
       final apiDate = DateFormat('yyyy-MM-dd').format(parsedDate);
       final canonicalAmount = AmountParser.canonicalize(
         _amountController.text,
@@ -166,7 +177,7 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
         amount: canonicalAmount,
         currency: widget.account.currency,
         nature: _nature,
-        notes: 'This transaction via mobile app.',
+        notes: l.transactionFormDefaultNote,
         categoryId: _selectedCategory?.id,
         categoryName: _selectedCategory?.name,
       );
@@ -468,7 +479,7 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
                                   ...categories.map((category) {
                                     return DropdownMenuItem<String?>(
                                       value: category.id,
-                                      child: Text(category.displayName),
+                                      child: Text(category.localizedDisplayName(l)),
                                     );
                                   }),
                                 ],

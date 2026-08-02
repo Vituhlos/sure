@@ -122,13 +122,13 @@ class Import::Row < ApplicationRecord
           value * (inflow_treatment == "inflows_positive" ? 1 : -1)
         end
       else
-        raise "Unknown amount type strategy for import: #{import.amount_type_strategy}"
+        raise I18n.t("activerecord.errors.models.import/row.attributes.base.unknown_amount_type_strategy", strategy: import.amount_type_strategy)
       end
     end
 
     def required_columns
       import.required_column_keys.each do |required_key|
-        errors.add(required_key, "is required") if self[required_key].blank?
+        errors.add(required_key, :blank) if self[required_key].blank?
       end
     end
 
@@ -138,7 +138,7 @@ class Import::Row < ApplicationRecord
       parsed_date = Date.strptime(date, import.date_format) rescue nil
 
       if parsed_date.nil?
-        errors.add(:date, "must exactly match the format: #{import.date_format}")
+        errors.add(:date, :invalid_format, expected_format: import.date_format)
         return
       end
 
@@ -146,7 +146,7 @@ class Import::Row < ApplicationRecord
       max_date = Date.current
 
       if parsed_date < min_date || parsed_date > max_date
-        errors.add(:date, "must be between #{min_date} and #{max_date}")
+        errors.add(:date, :outside_supported_range, min_date: I18n.l(min_date), max_date: I18n.l(max_date))
       end
     end
 
@@ -156,7 +156,7 @@ class Import::Row < ApplicationRecord
       begin
         Money::Currency.new(currency)
       rescue Money::Currency::UnknownCurrencyError
-        errors.add(:currency, "is not a valid currency code")
+        errors.add(:currency, :invalid_code)
       end
     end
 end

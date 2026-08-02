@@ -4,7 +4,14 @@ export default class AttachmentUploadController extends Controller {
   static targets = ["fileInput", "submitButton", "fileName", "uploadText"]
   static values = {
     maxFiles: Number,
-    maxSize: Number
+    maxSize: Number,
+    upload: String,
+    uploadOne: String,
+    uploadFew: String,
+    uploadMany: String,
+    uploadOther: String,
+    tooManyFiles: String,
+    fileTooLarge: String
   }
 
   connect() {
@@ -35,14 +42,17 @@ export default class AttachmentUploadController extends Controller {
       // Check file count
       if (files.length > this.maxFilesValue) {
         isValid = false
-        errorMessage = `Too many files (max ${this.maxFilesValue})`
+        errorMessage = this.tooManyFilesValue.replace("__COUNT__", this.maxFilesValue)
       }
 
       // Check file sizes
       const oversizedFiles = files.filter(file => file.size > this.maxSizeValue)
       if (oversizedFiles.length > 0) {
         isValid = false
-        errorMessage = `File too large (max ${Math.round(this.maxSizeValue / 1024 / 1024)}MB)`
+        errorMessage = this.fileTooLargeValue.replace(
+          "__SIZE__",
+          Math.round(this.maxSizeValue / 1024 / 1024)
+        )
       }
     } else {
       if (this.hasUploadTextTarget) this.uploadTextTarget.classList.remove("hidden")
@@ -53,11 +63,14 @@ export default class AttachmentUploadController extends Controller {
 
     if (hasFiles && isValid) {
       const count = files.length
-      this.submitButtonTarget.textContent = count === 1 ? "Upload 1 file" : `Upload ${count} files`
+      const pluralForm = new Intl.PluralRules(document.documentElement.lang || "en").select(count)
+      const valueName = `upload${pluralForm[0].toUpperCase()}${pluralForm.slice(1)}Value`
+      const template = this[valueName] || this.uploadOtherValue
+      this.submitButtonTarget.textContent = template.replace("__COUNT__", count)
     } else if (errorMessage) {
       this.submitButtonTarget.textContent = errorMessage
     } else {
-      this.submitButtonTarget.textContent = "Upload"
+      this.submitButtonTarget.textContent = this.uploadValue
     }
   }
 }

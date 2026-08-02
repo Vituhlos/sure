@@ -1,0 +1,54 @@
+---
+cs:
+  transfers:
+    create:
+      success: "Převod byl vytvořen."
+    destroy:
+      success: "Spárování převodu bylo zrušeno."
+    fee_name: "Poplatek za převod – %{transfer}"
+    form:
+      amount: "Částka"
+      bank_charges: "Bankovní poplatky"
+      outgoing_fee: "Poplatek za odchozí převod"
+      incoming_fee: "Poplatek za příchozí převod"
+      date: "Datum"
+      destination_amount: "Cílová částka"
+      destination_amount_display: "Cílová částka: %{amount}"
+      exchange_rate_display: "Směnný kurz: %{rate}"
+      expense: "Výdaj"
+      from: "Z účtu"
+      income: "Příjem"
+      select_account: "Vyberte účet"
+      source_amount: "Zdrojová částka"
+      submit: "Vytvořit převod"
+      to: "Na účet"
+      transfer: "Převod"
+    new:
+      title: "Nový převod"
+    show:
+      delete: "Zrušit spárování"
+      delete_subtitle: "Zruší se pouze spárování převodu. Původní transakce zůstanou zachovány."
+      delete_title: "Zrušit spárování převodu?"
+      details: "Podrobnosti"
+      mark_recurring: "Označit jako opakovaný"
+      mark_recurring_subtitle: "Sledovat tento převod jako opakovaný vzor v přehledu nadcházejících a opakovaných transakcí."
+      mark_recurring_title: "Označit převod jako opakovaný"
+      note_label: "Poznámky"
+      note_placeholder: "Přidejte k převodu poznámku"
+      overview: "Přehled"
+      settings: "Nastavení"
+      from: "Z účtu"
+      to: "Na účet"
+      date: "Datum"
+      transfer_amount: "Převáděná částka"
+      total: "Celkem"
+      bank_charges: "Bankovní poplatky"
+      source_fee: "Poplatek na zdrojovém účtu"
+      destination_fee: "Poplatek na cílovém účtu"
+      category: "Kategorie"
+      uncategorized: "Bez kategorie"
+    account_links:
+      missing_account: "Chyba dat: chybí účet"
+      transfer_id: "ID převodu: %{id}"
+    update:
+      success: "Převod byl aktualizován."

@@ -1,0 +1,10 @@
+---
+cs:
+  invite_codes:
+    create:
+      success: "Kód byl vytvořen."
+    destroy:
+      success: "Kód byl odstraněn."
+    index:
+      invite_code_description: "Vytvořte nový kód a zobrazí se zde. Použité kódy už nebudou uvedeny."
+      no_invite_codes: "Nejsou k dispozici žádné kódy."

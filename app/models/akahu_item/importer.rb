@@ -155,7 +155,7 @@ class AkahuItem::Importer
       { success: false, transactions_count: 0, error: I18n.t("akahu_item.errors.transactions_failed") }
     rescue JSON::ParserError => e
       Rails.logger.error "AkahuItem::Importer - Failed to parse transaction response for account #{akahu_account.id}: #{e.class}"
-      { success: false, transactions_count: 0, error: "Failed to parse response" }
+      { success: false, transactions_count: 0, error: I18n.t("akahu_item.errors.response_parse_failed") }
     rescue => e
       Rails.logger.error "AkahuItem::Importer - Unexpected error fetching transactions for account #{akahu_account.id}: #{e.class}"
       Rails.logger.error e.backtrace.join("\n")

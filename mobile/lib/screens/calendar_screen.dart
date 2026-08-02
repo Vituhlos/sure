@@ -111,6 +111,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void _calculateDailyChanges(List<Transaction> transactions) {
     final changes = <String, double>{};
+    final locale = Localizations.localeOf(context).toLanguageTag();
 
     _log.debug('CalendarScreen',
         'Starting to calculate daily changes for ${transactions.length} transactions');
@@ -120,7 +121,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         final date = DateTime.parse(transaction.date);
         final dateKey = DateFormat('yyyy-MM-dd').format(date);
 
-        var amount = AmountParser.parse(transaction.amount).value;
+        var amount =
+            AmountParser.parse(transaction.amount, locale: locale).value;
 
         // For asset accounts, flip the sign to match accounting conventions
         // For liability accounts, also flip the sign
@@ -247,7 +249,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
     // Parse amount to determine if positive or negative
     var isNegative = false;
     try {
-      isNegative = AmountParser.parse(transaction.amount).value < 0;
+      isNegative = AmountParser.parse(
+            transaction.amount,
+            locale: Localizations.localeOf(context).toLanguageTag(),
+          ).value <
+          0;
     } on FormatException {
       // Keep the dialog renderable if the server returns a malformed amount.
     }
@@ -667,7 +673,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   String _formatAmount(double amount) {
     // Support up to 8 decimal places, but omit unnecessary trailing zeros
-    final formatter = NumberFormat('#,##0.########');
+    final formatter = NumberFormat(
+      '#,##0.########',
+      Localizations.localeOf(context).toString(),
+    );
     final sign = amount >= 0 ? '+' : '';
     return '$sign${formatter.format(amount)}';
   }
@@ -675,8 +684,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
   String _formatCurrency(double amount) {
     final currencySymbol = _selectedAccount?.currency ?? '';
     // Support up to 8 decimal places for monthly total
-    final formatter = NumberFormat('#,##0.########');
+    final locale = Localizations.localeOf(context);
+    final formatter = NumberFormat(
+      '#,##0.########',
+      locale.toString(),
+    );
     final sign = amount >= 0 ? '+' : '';
-    return '$sign$currencySymbol${formatter.format(amount.abs())}';
+    final formatted = formatter.format(amount.abs());
+    return locale.languageCode == 'cs'
+        ? '$sign$formatted\u00a0$currencySymbol'
+        : '$sign$currencySymbol $formatted';
   }
 }

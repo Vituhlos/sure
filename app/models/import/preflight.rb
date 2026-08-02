@@ -75,7 +75,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "invalid_import_type",
-          message: "type must be one of: #{IMPORT_TYPES.join(', ')}"
+          message: I18n.t("imports.preflight.invalid_import_type", types: IMPORT_TYPES.join(", "))
         }
       )
     end
@@ -134,19 +134,19 @@ class Import::Preflight
       if missing_required_headers.any?
         errors << {
           code: "missing_required_headers",
-          message: "Missing required columns: #{missing_required_headers.join(', ')}"
+          message: I18n.t("imports.preflight.missing_required_headers", columns: missing_required_headers.join(", "))
         }
       end
 
       if parsed_rows_count.zero?
         errors << {
           code: "no_data_rows",
-          message: "No data rows were found."
+          message: I18n.t("imports.preflight.no_data_rows")
         }
       end
 
       warnings = []
-      warnings << "Row count exceeds this import type's publish limit." if parsed_rows_count > import.max_row_count
+      warnings << I18n.t("imports.preflight.row_limit_warning") if parsed_rows_count > import.max_row_count
 
       Response.new(
         status: :ok,
@@ -238,8 +238,8 @@ class Import::Preflight
       ).call
       stats = result.stats
       warnings = result.warnings.dup
-      warnings << "No importable records were found." if stats[:rows_count].positive? && (stats[:entity_counts] || {}).values.sum.zero?
-      warnings << "Row count exceeds this import type's publish limit." if stats[:rows_count] > SureImport.max_row_count
+      warnings << I18n.t("imports.preflight.no_importable_records_warning") if stats[:rows_count].positive? && (stats[:entity_counts] || {}).values.sum.zero?
+      warnings << I18n.t("imports.preflight.row_limit_warning") if stats[:rows_count] > SureImport.max_row_count
 
       {
         type: "SureImport",
@@ -316,7 +316,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "missing_content",
-          message: "Provide a CSV file or raw_file_content."
+          message: I18n.t("imports.preflight.missing_csv_content")
         }
       )
     end
@@ -326,7 +326,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "missing_content",
-          message: "Provide a Sure NDJSON file or raw_file_content."
+          message: I18n.t("imports.preflight.missing_sure_content")
         }
       )
     end
@@ -336,7 +336,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "file_too_large",
-          message: "File is too large. Maximum size is #{Import.max_csv_size / 1.megabyte}MB."
+          message: I18n.t("imports.preflight.file_too_large", max_size: Import.max_csv_size / 1.megabyte)
         }
       )
     end
@@ -346,7 +346,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "content_too_large",
-          message: "Content is too large. Maximum size is #{Import.max_csv_size / 1.megabyte}MB."
+          message: I18n.t("imports.preflight.content_too_large", max_size: Import.max_csv_size / 1.megabyte)
         }
       )
     end
@@ -356,7 +356,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "invalid_file_type",
-          message: "Invalid file type. Please upload a CSV file."
+          message: I18n.t("imports.preflight.invalid_csv_file_type")
         }
       )
     end
@@ -366,7 +366,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "file_too_large",
-          message: "File is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB."
+          message: I18n.t("imports.preflight.file_too_large", max_size: SureImport.max_ndjson_size / 1.megabyte)
         }
       )
     end
@@ -376,7 +376,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "content_too_large",
-          message: "Content is too large. Maximum size is #{SureImport.max_ndjson_size / 1.megabyte}MB."
+          message: I18n.t("imports.preflight.content_too_large", max_size: SureImport.max_ndjson_size / 1.megabyte)
         }
       )
     end
@@ -386,7 +386,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "invalid_file_type",
-          message: "Invalid file type. Please upload a Sure NDJSON file."
+          message: I18n.t("imports.preflight.invalid_sure_file_type")
         }
       )
     end
@@ -400,7 +400,7 @@ class Import::Preflight
         status: :unprocessable_entity,
         payload: {
           error: "unsupported_import_type",
-          message: "Preflight supports CSV import types and SureImport."
+          message: I18n.t("imports.preflight.unsupported_import_type")
         }
       )
     end

@@ -1,0 +1,12 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        impersonation_session:
+          attributes:
+            impersonator:
+              super_admin_required: "must be a super admin to impersonate"
+              must_differ: "cannot be the same as the impersonated user"
+            impersonated:
+              super_admin_forbidden: "cannot be a super admin"

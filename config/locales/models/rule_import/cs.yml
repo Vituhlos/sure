@@ -1,0 +1,17 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        rule_import:
+          unsupported_resource_type: "Nepodporovaný typ prostředku: %{resource_type}"
+          invalid_json: "Podmínky nebo akce obsahují neplatný formát JSON: %{message}"
+          min_actions: "Pravidlo musí obsahovat alespoň jednu akci."
+  rule_import:
+    errors:
+      invalid_json_detail: "Syntaxe JSON je neplatná."
+    samples:
+      categorize_groceries: "Kategorizovat nákupy potravin"
+      groceries_match: "potraviny"
+      groceries_category: "Potraviny"
+      auto_categorize_transactions: "Automaticky kategorizovat transakce"

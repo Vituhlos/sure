@@ -51,6 +51,7 @@ en:
       settings_link: Check Provider Settings
       title: Brex Connection Error
     errors:
+      provider_not_configured: Brex is not configured.
       unexpected_error: An unexpected error occurred. Please try again later.
     entries:
       default_name: Brex transaction

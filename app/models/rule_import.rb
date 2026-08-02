@@ -35,16 +35,16 @@ class RuleImport < Import
       csv << %w[name resource_type* active effective_date conditions* actions*]
 
       csv << [
-        "Categorize groceries",
+        I18n.t("rule_import.samples.categorize_groceries"),
         "transaction",
         "true",
         "2024-01-01",
-        '[{"condition_type":"transaction_name","operator":"like","value":"grocery"}]',
-        '[{"action_type":"set_transaction_category","value":"Groceries"}]'
+        [ { condition_type: "transaction_name", operator: "like", value: I18n.t("rule_import.samples.groceries_match") } ].to_json,
+        [ { action_type: "set_transaction_category", value: I18n.t("rule_import.samples.groceries_category") } ].to_json
       ]
 
       csv << [
-        "Auto-categorize transactions",
+        I18n.t("rule_import.samples.auto_categorize_transactions"),
         "transaction",
         "true",
         "",
@@ -130,8 +130,8 @@ class RuleImport < Import
       begin
         conditions_data = parse_json_safely(row.conditions, "conditions")
         actions_data = parse_json_safely(row.actions, "actions")
-      rescue JSON::ParserError => e
-        errors.add(:base, :invalid_json, message: e.message)
+      rescue JSON::ParserError
+        errors.add(:base, :invalid_json, message: I18n.t("rule_import.errors.invalid_json_detail"))
         raise ActiveRecord::RecordInvalid.new(self)
       end
 

@@ -1,0 +1,22 @@
+---
+cs:
+  activerecord:
+    attributes:
+      recurring_transaction:
+        expected_amount_min: "Nejnižší očekávaná částka"
+        account: "Zdrojový účet"
+        destination_account: "Cílový účet"
+    errors:
+      models:
+        recurring_transaction:
+          merchant_or_name_required: "Je nutné uvést obchodníka nebo název."
+          attributes:
+            expected_amount_min:
+              greater_than_max: "nemůže být vyšší než nejvyšší očekávaná částka"
+            account:
+              required_for_transfer: "musí být u opakujícího se převodu uveden"
+              missing: "neexistuje"
+            destination_account:
+              missing: "neexistuje"
+              same_as_source: "nemůže být stejný jako zdrojový účet"
+              different_family: "musí patřit do stejné domácnosti jako zdrojový účet"

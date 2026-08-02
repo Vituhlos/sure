@@ -4,7 +4,7 @@
       <div>
         <h2 class="text-lg font-semibold text-primary"><%= @entry.name %></h2>
         <p class="text-sm text-secondary flex items-center gap-1.5">
-          <span><%= @entry.date.strftime("%b %d, %Y") %></span>
+          <span><%= l(@entry.date, format: :short) %></span>
           <% if (category = @entry.entryable.try(:category)) %>
             <span class="text-secondary">&middot;</span>
             <span style="color: <%= category.color %>"><%= icon category.lucide_icon, size: "xs", color: "current" %></span>
@@ -28,6 +28,11 @@
             controller: "split-transaction",
             split_transaction_total_value: (-@entry.amount).to_f,
             split_transaction_currency_value: @entry.currency,
+            split_transaction_name_label_value: t("splits.new.name_label"),
+            split_transaction_name_placeholder_value: t("splits.new.name_placeholder"),
+            split_transaction_amount_label_value: t("splits.new.amount_label"),
+            split_transaction_uncategorized_value: t("splits.new.uncategorized"),
+            split_transaction_remove_label_value: t("splits.new.remove_row"),
             turbo_frame: :_top
           }
         ) do %>

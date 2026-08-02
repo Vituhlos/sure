@@ -1,0 +1,35 @@
+---
+cs:
+  layouts:
+    application:
+      insights: "Postřehy"
+      privacy_mode: "Přepne režim soukromí"
+      resize_left_sidebar: "Změní šířku panelu účtů"
+      resize_right_sidebar: "Změní šířku panelu asistenta"
+      skip_to_main: "Přejít k hlavnímu obsahu"
+      nav:
+        assistant: "Asistent"
+        budgets: "Rozpočty"
+        home: "Přehled"
+        plan: "Plán"
+        reports: "Přehledy"
+        goals: "Cíle"
+        transactions: "Transakce"
+    auth:
+      existing_account: "Už máte účet?"
+      no_account: "Ještě nemáte účet v aplikaci %{product_name}?"
+      sign_in: "Přihlásit se"
+      sign_up: "Vytvořit účet"
+    shared:
+      footer:
+        attribution: "%{brand_name} %{product_name} (komunitní odnož projektu Maybe Finance)"
+        privacy_policy: "Ochrana soukromí"
+        terms_of_service: "Podmínky služby"
+      confirm_dialog:
+        are_you_sure: "Opravdu chcete pokračovat?"
+        cannot_be_undone: "Tuto akci nebude možné vrátit zpět."
+        confirm: "Potvrdit"
+    trial:
+      open_demo: "Otevřít ukázku"
+      data_deleted_in_days: "Data budou smazána za %{days} dní"
+      contribute: "Přispět"

@@ -37,26 +37,26 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 403) {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
           'error': 'feature_disabled',
-          'message': responseData['message'] ?? 'AI features not enabled',
+          'message': responseData['message'] ?? 'feature_disabled',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to fetch chats',
+          'error': responseData['error'] ?? 'fetch_chats_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -90,25 +90,25 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 404) {
         return {
           'success': false,
           'error': 'not_found',
-          'message': 'Chat not found',
+          'message': 'not_found',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to fetch chat',
+          'error': responseData['error'] ?? 'fetch_chat_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -153,26 +153,26 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 403) {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
           'error': 'feature_disabled',
-          'message': responseData['message'] ?? 'AI features not enabled',
+          'message': responseData['message'] ?? 'feature_disabled',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to create chat',
+          'error': responseData['error'] ?? 'create_chat_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -209,25 +209,25 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 404) {
         return {
           'success': false,
           'error': 'not_found',
-          'message': 'Chat not found',
+          'message': 'not_found',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to send message',
+          'error': responseData['error'] ?? 'send_message_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -264,25 +264,25 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 404) {
         return {
           'success': false,
           'error': 'not_found',
-          'message': 'Chat not found',
+          'message': 'not_found',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to update chat',
+          'error': responseData['error'] ?? 'unexpected_error',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -308,25 +308,25 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 404) {
         return {
           'success': false,
           'error': 'not_found',
-          'message': 'Chat not found',
+          'message': 'not_found',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to delete chat',
+          'error': responseData['error'] ?? 'delete_chat_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }
@@ -380,25 +380,25 @@ class ChatService {
         return {
           'success': false,
           'error': 'unauthorized',
-          'message': 'Session expired. Please login again.',
+          'message': 'session_expired',
         };
       } else if (response.statusCode == 404) {
         return {
           'success': false,
           'error': 'not_found',
-          'message': 'Chat not found',
+          'message': 'not_found',
         };
       } else {
         final responseData = jsonDecode(response.body);
         return {
           'success': false,
-          'error': responseData['error'] ?? 'Failed to retry message',
+          'error': responseData['error'] ?? 'send_message_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }

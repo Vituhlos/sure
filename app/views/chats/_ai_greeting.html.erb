@@ -2,7 +2,11 @@
   <%= render "chats/ai_avatar" %>
 
   <div class="max-w-[85%] text-sm space-y-4 text-primary">
-    <p><%= t(".greeting", name: Current.user&.first_name || t(".there")) %></p>
+    <% if Current.user&.first_name.present? %>
+      <p><%= t(".greeting_with_name", name: Current.user.first_name) %></p>
+    <% else %>
+      <p><%= t(".greeting") %></p>
+    <% end %>
 
     <p>
       <%= t(".commands_hint_html") %>

@@ -52,3 +52,7 @@ en:
     custom:
       label_short: "Custom"
       label: "Custom Period"
+      comparison_label: "%{start} to %{end_date}"
+    errors:
+      invalid_date: "must be a valid date, got %{value}"
+      start_after_end: "must be before end date"

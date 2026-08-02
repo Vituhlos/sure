@@ -1,0 +1,1638 @@
+{
+  "@@locale": "cs",
+  "appTitle": "Sure Finances",
+  "@appTitle": {
+    "description": "Application title shown in the OS task switcher."
+  },
+  "commonCancel": "Zrušit",
+  "@commonCancel": {
+    "description": "Generic cancel action label."
+  },
+  "commonSave": "Uložit",
+  "@commonSave": {
+    "description": "Generic save/confirm action label."
+  },
+  "commonTryAgain": "Zkusit znovu",
+  "@commonTryAgain": {
+    "description": "Generic retry action label."
+  },
+  "commonDelete": "Odstranit",
+  "@commonDelete": {
+    "description": "Generic delete action label."
+  },
+  "commonAll": "Vše",
+  "@commonAll": {
+    "description": "Label for the 'All' filter chip (currency filter, category filter, etc.)."
+  },
+  "commonRefresh": "Aktualizovat",
+  "@commonRefresh": {
+    "description": "Generic refresh action label."
+  },
+  "commonClose": "Zavřít",
+  "@commonClose": {
+    "description": "Generic close/dismiss action label."
+  },
+  "commonUndo": "Vrátit zpět",
+  "@commonUndo": {
+    "description": "Generic undo action label."
+  },
+  "commonButtonLoading": "{label}, probíhá načítání",
+  "@commonButtonLoading": {
+    "description": "Accessibility label announced while a button action is in progress.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "chatSuggestionNetWorth": "Jaké je mé současné čisté jmění?",
+  "@chatSuggestionNetWorth": {
+    "description": "Suggested chat prompt on the empty assistant screen."
+  },
+  "chatSuggestionSpending": "Jak se změnily mé výdaje za tento měsíc?",
+  "@chatSuggestionSpending": {
+    "description": "Suggested chat prompt on the empty assistant screen."
+  },
+  "chatSuggestionSavings": "Jak mohu zvýšit míru úspor?",
+  "@chatSuggestionSavings": {
+    "description": "Suggested chat prompt on the empty assistant screen."
+  },
+  "chatSuggestionExpenses": "Jaké byly v poslední době mé největší výdaje?",
+  "@chatSuggestionExpenses": {
+    "description": "Suggested chat prompt on the empty assistant screen."
+  },
+  "loginEmailLabel": "E-mail",
+  "@loginEmailLabel": {
+    "description": "Label for the email text field on the login screen."
+  },
+  "loginEmailRequired": "E-mail je povinný.",
+  "@loginEmailRequired": {
+    "description": "Validation error when email field is empty."
+  },
+  "loginEmailInvalid": "Zadejte platný e-mail.",
+  "@loginEmailInvalid": {
+    "description": "Validation error when email format is invalid."
+  },
+  "loginPasswordLabel": "Heslo",
+  "@loginPasswordLabel": {
+    "description": "Label for the password field on the login screen."
+  },
+  "loginPasswordRequired": "Heslo je povinné.",
+  "@loginPasswordRequired": {
+    "description": "Validation error when password field is empty."
+  },
+  "loginSignIn": "Přihlásit se",
+  "@loginSignIn": {
+    "description": "Primary sign-in button label."
+  },
+  "loginSignInWithGoogle": "Přihlásit se přes Google",
+  "@loginSignInWithGoogle": {
+    "description": "Google SSO button label."
+  },
+  "loginMfaLabel": "Ověřovací kód",
+  "@loginMfaLabel": {
+    "description": "Label for the MFA code input field."
+  },
+  "loginApiKeyLabel": "Klíč API",
+  "@loginApiKeyLabel": {
+    "description": "Label for the API key input field."
+  },
+  "navHome": "Domů",
+  "@navHome": {
+    "description": "Bottom navigation label for the Home (dashboard) tab."
+  },
+  "navIntro": "Úvod",
+  "@navIntro": {
+    "description": "Bottom navigation label for the Intro tab."
+  },
+  "navAssistant": "Asistent",
+  "@navAssistant": {
+    "description": "Bottom navigation label for the AI assistant tab."
+  },
+  "navMore": "Další",
+  "@navMore": {
+    "description": "Bottom navigation label for the More tab."
+  },
+  "dashboardSyncError": "Synchronizace se nezdařila.",
+  "@dashboardSyncError": {
+    "description": "Snackbar message when a sync attempt fails."
+  },
+  "dashboardSyncFailed": "Synchronizace se nezdařila. Zkuste to prosím znovu.",
+  "@dashboardSyncFailed": {
+    "description": "Snackbar message when a sync attempt fails with retry instruction."
+  },
+  "dashboardRefreshing": "Obnovování účtů…",
+  "@dashboardRefreshing": {
+    "description": "Snackbar message while accounts are being refreshed after a transaction."
+  },
+  "dashboardAccountsUpdated": "Účty byly aktualizovány.",
+  "@dashboardAccountsUpdated": {
+    "description": "Snackbar message shown after accounts refresh completes."
+  },
+  "dashboardSyncing": "Synchronizace dat ze serveru…",
+  "@dashboardSyncing": {
+    "description": "Snackbar message while sync is in progress."
+  },
+  "dashboardSynced": "Synchronizováno",
+  "@dashboardSynced": {
+    "description": "Label shown in the sync status indicator after a successful sync."
+  },
+  "dashboardErrorLoadingAccounts": "Načtení účtů se nezdařilo",
+  "@dashboardErrorLoadingAccounts": {
+    "description": "Error state message when accounts fail to load."
+  },
+  "dashboardNoAccounts": "Zatím žádné účty",
+  "@dashboardNoAccounts": {
+    "description": "Empty state message when no accounts exist."
+  },
+  "dashboardNoAccountsSubtitle": "Přidejte účty ve webové aplikaci a zobrazí se i zde.",
+  "@dashboardNoAccountsSubtitle": {
+    "description": "Empty state subtitle when no accounts exist."
+  },
+  "dashboardFilterEmpty": "Žádné účty neodpovídají aktuálnímu filtru",
+  "@dashboardFilterEmpty": {
+    "description": "Empty state when the active account filter returns no results."
+  },
+  "chatListTitle": "Chaty",
+  "@chatListTitle": {
+    "description": "Title for the chat list screen / app bar."
+  },
+  "chatListNewChat": "Nový chat",
+  "@chatListNewChat": {
+    "description": "FAB tooltip for creating a new chat."
+  },
+  "chatListEmpty": "Zatím nemáte žádné chaty",
+  "@chatListEmpty": {
+    "description": "Empty-state heading on the chat list screen."
+  },
+  "chatListEmptySubtitle": "Zahajte chat s asistentem využívajícím AI.",
+  "@chatListEmptySubtitle": {
+    "description": "Empty-state subtitle on the chat list screen."
+  },
+  "chatListDeleteTitle": "Odstranit chat",
+  "@chatListDeleteTitle": {
+    "description": "Title for the delete-chat confirmation dialog."
+  },
+  "chatConversationNewTitle": "Nový chat",
+  "@chatConversationNewTitle": {
+    "description": "Placeholder title for a new conversation before it is saved."
+  },
+  "chatConversationMessageHint": "Zeptejte se na cokoli, co se týká vašich financí…",
+  "@chatConversationMessageHint": {
+    "description": "Hint text inside the chat message input field."
+  },
+  "chatConversationGreetingWithName": "Dobrý den, {firstName}! Jak vám mohu pomoci?",
+  "@chatConversationGreetingWithName": {
+    "description": "Greeting shown in a new conversation when the user's first name is known.",
+    "placeholders": {
+      "firstName": {
+        "type": "String"
+      }
+    }
+  },
+  "chatConversationGreetingNoName": "Dobrý den! Jak vám mohu pomoci?",
+  "@chatConversationGreetingNoName": {
+    "description": "Greeting shown in a new conversation when the user's first name is not available."
+  },
+  "transactionFormNewTitle": "Nová transakce",
+  "@transactionFormNewTitle": {
+    "description": "App bar title for the new-transaction form."
+  },
+  "transactionFormTypeLabel": "Typ",
+  "@transactionFormTypeLabel": {
+    "description": "Label for the transaction type segmented control."
+  },
+  "transactionFormTypeExpense": "Výdaj",
+  "@transactionFormTypeExpense": {
+    "description": "Segment label for an expense transaction."
+  },
+  "transactionFormTypeIncome": "Příjem",
+  "@transactionFormTypeIncome": {
+    "description": "Segment label for an income transaction."
+  },
+  "transactionFormAmountLabel": "Částka",
+  "@transactionFormAmountLabel": {
+    "description": "Label for the amount input field."
+  },
+  "transactionFormAmountRequired": "Je nutné zadat částku.",
+  "@transactionFormAmountRequired": {
+    "description": "Validation error when amount is empty."
+  },
+  "transactionFormAmountInvalid": "Zadejte platnou částku.",
+  "@transactionFormAmountInvalid": {
+    "description": "Validation error when amount is not a number."
+  },
+  "transactionFormDateLabel": "Datum",
+  "@transactionFormDateLabel": {
+    "description": "Label for the date picker field."
+  },
+  "transactionFormNameLabel": "Název",
+  "@transactionFormNameLabel": {
+    "description": "Label for the transaction name/payee field."
+  },
+  "transactionFormCategoryLabel": "Kategorie",
+  "@transactionFormCategoryLabel": {
+    "description": "Label for the category picker field."
+  },
+  "transactionEditTitle": "Upravit transakci",
+  "@transactionEditTitle": {
+    "description": "App bar title for the edit-transaction screen."
+  },
+  "transactionEditNameLabel": "Název",
+  "@transactionEditNameLabel": {
+    "description": "Label for the name field in the edit form."
+  },
+  "transactionEditNameRequired": "Název je povinný.",
+  "@transactionEditNameRequired": {
+    "description": "Validation error when name is empty in edit form."
+  },
+  "transactionEditNotesLabel": "Poznámky",
+  "@transactionEditNotesLabel": {
+    "description": "Label for the notes field in the edit form."
+  },
+  "transactionEditCategoryLabel": "Kategorie",
+  "@transactionEditCategoryLabel": {
+    "description": "Label for the category field in the edit form."
+  },
+  "transactionEditMerchantLabel": "Obchodník",
+  "@transactionEditMerchantLabel": {
+    "description": "Label for the merchant field in the edit form."
+  },
+  "transactionEditTagsLabel": "Štítky",
+  "@transactionEditTagsLabel": {
+    "description": "Label for the tags field in the edit form."
+  },
+  "transactionEditSaving": "Ukládání…",
+  "@transactionEditSaving": {
+    "description": "In-progress label shown on the save button while saving."
+  },
+  "transactionsListDeleteTitle": "Odstranit transakci",
+  "@transactionsListDeleteTitle": {
+    "description": "Title for the single-transaction delete confirmation dialog."
+  },
+  "transactionsListDeleteSingleContent": "Opravdu chcete odstranit „{name}“?",
+  "@transactionsListDeleteSingleContent": {
+    "description": "Body of the delete confirmation dialog for a named transaction.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "transactionsListDeleteMultiTitle": "Odstranit transakce",
+  "@transactionsListDeleteMultiTitle": {
+    "description": "Title for the multi-transaction delete confirmation dialog."
+  },
+  "transactionsListDeleteMultiContent": "Opravdu chcete smazat vybrané transakce?",
+  "@transactionsListDeleteMultiContent": {
+    "description": "Body of the multi-transaction delete confirmation dialog."
+  },
+  "transactionsListEmpty": "Žádné transakce",
+  "@transactionsListEmpty": {
+    "description": "Empty-state message when no transactions exist."
+  },
+  "transactionsListAuthFailed": "Ověření se nezdařilo. Přihlaste se prosím znovu.",
+  "@transactionsListAuthFailed": {
+    "description": "Snackbar message when the API returns an auth failure."
+  },
+  "transactionsListNoTransactionsYet": "Zatím žádné transakce",
+  "@transactionsListNoTransactionsYet": {
+    "description": "Empty-state heading when an account has no transactions."
+  },
+  "transactionsListEmptyAddFirst": "Klepnutím na + přidejte svou první transakci.",
+  "@transactionsListEmptyAddFirst": {
+    "description": "Empty-state subtitle prompting the user to add their first transaction."
+  },
+  "transactionsListNoCategoryMatch": "Této kategorii neodpovídají žádné transakce.",
+  "@transactionsListNoCategoryMatch": {
+    "description": "Empty state shown when category filter returns no transactions."
+  },
+  "transactionsListRetry": "Zkusit znovu",
+  "@transactionsListRetry": {
+    "description": "Button label on the transactions error state."
+  },
+  "transactionsListDeletedSuccess": "Transakce byla odstraněna.",
+  "@transactionsListDeletedSuccess": {
+    "description": "Snackbar after a single transaction is deleted."
+  },
+  "transactionsListSingleDeleteFailed": "Transakci se nepodařilo odstranit.",
+  "@transactionsListSingleDeleteFailed": {
+    "description": "Snackbar when deleting a single transaction fails."
+  },
+  "transactionsListDeletedMulti": "{count, plural, one{Byla odstraněna {count} transakce} few{Byly odstraněny {count} transakce} many{Bylo odstraněno {count} transakce} other{Bylo odstraněno {count} transakcí}}",
+  "@transactionsListDeletedMulti": {
+    "description": "Snackbar message after multiple transactions are deleted.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "transactionsListDeleteFailed": "Transakce se nepodařilo odstranit.",
+  "@transactionsListDeleteFailed": {
+    "description": "Snackbar when multi-delete fails."
+  },
+  "transactionsListDeleteNoToken": "Transakci nelze odstranit: chybí přístupový token.",
+  "@transactionsListDeleteNoToken": {
+    "description": "Snackbar when delete fails due to missing token."
+  },
+  "transactionsListUndoTitle": "Vrátit změnu transakce",
+  "@transactionsListUndoTitle": {
+    "description": "Title for the undo-transaction dialog."
+  },
+  "transactionsListUndoRemovePending": "Odstranit tuto transakci čekající na synchronizaci?",
+  "@transactionsListUndoRemovePending": {
+    "description": "Confirmation question for removing a pending transaction."
+  },
+  "transactionsListUndoRestoreConfirm": "Obnovit tuto transakci?",
+  "@transactionsListUndoRestoreConfirm": {
+    "description": "Confirmation question for restoring a transaction."
+  },
+  "transactionsListUndoPendingRemoved": "Transakce čekající na synchronizaci byla odstraněna.",
+  "@transactionsListUndoPendingRemoved": {
+    "description": "Snackbar after a pending transaction is removed."
+  },
+  "transactionsListUndoRestored": "Transakce obnovena",
+  "@transactionsListUndoRestored": {
+    "description": "Snackbar after a transaction is restored."
+  },
+  "transactionsListUndoFailed": "Změnu transakce se nepodařilo vrátit zpět.",
+  "@transactionsListUndoFailed": {
+    "description": "Snackbar when undoing a transaction fails."
+  },
+  "settingsSectionDisplay": "Zobrazení",
+  "@settingsSectionDisplay": {
+    "description": "Settings section header for display/appearance options."
+  },
+  "settingsSectionConnection": "Připojení",
+  "@settingsSectionConnection": {
+    "description": "Settings section header for server/connection options."
+  },
+  "settingsSectionDataManagement": "Správa dat",
+  "@settingsSectionDataManagement": {
+    "description": "Settings section header for data import/export options."
+  },
+  "settingsSectionSecurity": "Zabezpečení",
+  "@settingsSectionSecurity": {
+    "description": "Settings section header for security options."
+  },
+  "settingsSectionDangerZone": "Rizikové operace",
+  "@settingsSectionDangerZone": {
+    "description": "Settings section header for destructive actions."
+  },
+  "settingsThemeLabel": "Motiv",
+  "@settingsThemeLabel": {
+    "description": "Label for the theme picker setting."
+  },
+  "settingsThemeSystem": "Podle systému",
+  "@settingsThemeSystem": {
+    "description": "Theme option: follow system setting."
+  },
+  "settingsThemeLight": "Světlý",
+  "@settingsThemeLight": {
+    "description": "Theme option: light mode."
+  },
+  "settingsThemeDark": "Tmavý",
+  "@settingsThemeDark": {
+    "description": "Theme option: dark mode."
+  },
+  "settingsProxyHeadersLabel": "Vlastní záhlaví proxy",
+  "@settingsProxyHeadersLabel": {
+    "description": "Label for the custom proxy headers setting."
+  },
+  "settingsPrivacyHideAmountsLabel": "Skrýt částky",
+  "@settingsPrivacyHideAmountsLabel": {
+    "description": "Label for the toggle that masks monetary amounts across the app."
+  },
+  "settingsPrivacyHideAmountsContent": "Skryje peněžní částky v celé aplikaci.",
+  "@settingsPrivacyHideAmountsContent": {
+    "description": "Subtitle describing the hide-amounts toggle."
+  },
+  "settingsBiometricLabel": "Biometrický zámek",
+  "@settingsBiometricLabel": {
+    "description": "Label for the biometric lock toggle."
+  },
+  "settingsBiometricEnable": "Povolit biometrický zámek?",
+  "@settingsBiometricEnable": {
+    "description": "Title of the dialog to enable biometric lock."
+  },
+  "settingsBiometricEnableContent": "Při obnovení aplikace vyžadovat biometrické ověření.",
+  "@settingsBiometricEnableContent": {
+    "description": "Body text of the enable-biometric dialog."
+  },
+  "settingsCheckForUpdates": "Zkontrolovat aktualizace",
+  "@settingsCheckForUpdates": {
+    "description": "Label for the check-for-updates action."
+  },
+  "settingsUpdateAvailableTitle": "Aktualizace k dispozici",
+  "@settingsUpdateAvailableTitle": {
+    "description": "Title for the update-available dialog."
+  },
+  "settingsUpdateAvailableContent": "K dispozici je aktualizace ({version}). Chcete ji nainstalovat?",
+  "@settingsUpdateAvailableContent": {
+    "description": "Body text for the update-available dialog.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsUpdateNewerVersionFallback": "novější verze",
+  "@settingsUpdateNewerVersionFallback": {
+    "description": "Fallback used in the update-available dialog when the store version number is unknown (e.g. 'Version a newer version is available')."
+  },
+  "settingsUpdateNow": "Aktualizovat nyní",
+  "@settingsUpdateNow": {
+    "description": "Confirm button in the update-available dialog."
+  },
+  "settingsNoUpdateAvailable": "Používáte nejnovější verzi.",
+  "@settingsNoUpdateAvailable": {
+    "description": "Snackbar when no update is available."
+  },
+  "settingsUpdateError": "Nelze zkontrolovat aktualizace.",
+  "@settingsUpdateError": {
+    "description": "Snackbar when the update check fails."
+  },
+  "settingsClearDataTitle": "Vymazat všechna data",
+  "@settingsClearDataTitle": {
+    "description": "Title for the clear-all-data confirmation dialog."
+  },
+  "settingsClearDataContent": "Tím se odstraní všechna data uložená v místní mezipaměti. Vaše data na serveru nebudou ovlivněna.",
+  "@settingsClearDataContent": {
+    "description": "Body text for the clear-all-data dialog."
+  },
+  "settingsClearData": "Vymazat data",
+  "@settingsClearData": {
+    "description": "Confirm button in the clear-data dialog."
+  },
+  "settingsClearDataSuccess": "Místní data byla vymazána.",
+  "@settingsClearDataSuccess": {
+    "description": "Snackbar after local data is cleared."
+  },
+  "settingsDeleteAccountTitle": "Odstranit účet",
+  "@settingsDeleteAccountTitle": {
+    "description": "Title for the delete-account confirmation dialog."
+  },
+  "settingsDeleteAccount": "Odstranit účet",
+  "@settingsDeleteAccount": {
+    "description": "Confirm button in the delete-account dialog."
+  },
+  "settingsSignOutTitle": "Odhlásit se",
+  "@settingsSignOutTitle": {
+    "description": "Title for the sign-out confirmation dialog."
+  },
+  "settingsSignOutContent": "Opravdu se chcete odhlásit?",
+  "@settingsSignOutContent": {
+    "description": "Body text for the sign-out dialog."
+  },
+  "settingsSignOut": "Odhlásit se",
+  "@settingsSignOut": {
+    "description": "Confirm button in the sign-out dialog and settings list tile label."
+  },
+  "settingsDebugLogs": "Diagnostické protokoly",
+  "@settingsDebugLogs": {
+    "description": "Label for the debug logs navigation tile."
+  },
+  "ssoOnboardingTitle": "Propojit účet",
+  "@ssoOnboardingTitle": {
+    "description": "App bar title for the SSO onboarding screen."
+  },
+  "ssoOnboardingTabLink": "Propojit existující",
+  "@ssoOnboardingTabLink": {
+    "description": "Tab label for linking an existing Sure account via SSO."
+  },
+  "ssoOnboardingTabCreate": "Vytvořit nový",
+  "@ssoOnboardingTabCreate": {
+    "description": "Tab label for creating a new Sure account via SSO."
+  },
+  "ssoOnboardingFirstNameLabel": "Jméno",
+  "@ssoOnboardingFirstNameLabel": {
+    "description": "Label for the first-name field on the SSO onboarding screen."
+  },
+  "ssoOnboardingLastNameLabel": "Příjmení",
+  "@ssoOnboardingLastNameLabel": {
+    "description": "Label for the last-name field on the SSO onboarding screen."
+  },
+  "ssoOnboardingLinkButton": "Propojit účet",
+  "@ssoOnboardingLinkButton": {
+    "description": "Button label to link an existing account."
+  },
+  "ssoOnboardingCreateButton": "Vytvořit účet",
+  "@ssoOnboardingCreateButton": {
+    "description": "Button label to create a new account."
+  },
+  "ssoOnboardingAcceptInvitation": "Přijmout pozvánku",
+  "@ssoOnboardingAcceptInvitation": {
+    "description": "Tab and submit button label when the user has a pending household invitation to accept."
+  },
+  "calendarTitle": "Kalendář účtu",
+  "@calendarTitle": {
+    "description": "App bar title for the account calendar screen."
+  },
+  "calendarAccountTypeSection": "Typ účtu",
+  "@calendarAccountTypeSection": {
+    "description": "Section header for the account-type selector on the calendar screen."
+  },
+  "calendarSegmentAssets": "Majetek",
+  "@calendarSegmentAssets": {
+    "description": "Segment label for asset-type accounts on the calendar."
+  },
+  "calendarSegmentLiabilities": "Závazky",
+  "@calendarSegmentLiabilities": {
+    "description": "Segment label for liability-type accounts on the calendar."
+  },
+  "calendarSelectAccount": "Vyberte účet",
+  "@calendarSelectAccount": {
+    "description": "Placeholder shown in the account dropdown when none is selected."
+  },
+  "calendarMonthlyChange": "Měsíční změna",
+  "@calendarMonthlyChange": {
+    "description": "Label for the monthly-change metric on the calendar screen."
+  },
+  "calendarNoTransactions": "Pro tento den nejsou žádné transakce.",
+  "@calendarNoTransactions": {
+    "description": "Empty-state message when no transactions exist for the selected day."
+  },
+  "moreCalendar": "Kalendář účtu",
+  "@moreCalendar": {
+    "description": "Menu item title for Account Calendar in the More screen."
+  },
+  "moreCalendarSubtitle": "Zobrazit měsíční změny zůstatku podle účtu",
+  "@moreCalendarSubtitle": {
+    "description": "Subtitle for the Account Calendar menu item in the More screen."
+  },
+  "moreRecentTransactions": "Nedávné transakce",
+  "@moreRecentTransactions": {
+    "description": "Menu item title for Recent Transactions in the More screen."
+  },
+  "moreRecentTransactionsSubtitle": "Zobrazit nedávné transakce ze všech účtů",
+  "@moreRecentTransactionsSubtitle": {
+    "description": "Subtitle for the Recent Transactions menu item."
+  },
+  "biometricTitle": "Aplikace uzamčena",
+  "@biometricTitle": {
+    "description": "Heading shown on the biometric lock screen."
+  },
+  "biometricSubtitle": "Pro pokračování se ověřte.",
+  "@biometricSubtitle": {
+    "description": "Subtitle shown on the biometric lock screen."
+  },
+  "biometricUnlock": "Odemknout",
+  "@biometricUnlock": {
+    "description": "Button label when biometric prompt is ready."
+  },
+  "biometricAuthenticating": "Ověřování…",
+  "@biometricAuthenticating": {
+    "description": "Button label while the biometric prompt is in progress."
+  },
+  "biometricLogOut": "Odhlásit se",
+  "@biometricLogOut": {
+    "description": "Button to log out from the biometric lock screen."
+  },
+  "backendConfigTitle": "Konfigurace",
+  "@backendConfigTitle": {
+    "description": "Headline on the backend configuration screen."
+  },
+  "backendConfigSubtitle": "Změňte adresu URL svého serveru Sure.",
+  "@backendConfigSubtitle": {
+    "description": "Subtitle below the headline on the backend configuration screen."
+  },
+  "backendConfigExampleUrlsLabel": "Příklady adres URL",
+  "@backendConfigExampleUrlsLabel": {
+    "description": "Label for the example URLs info box on the config screen."
+  },
+  "backendConfigUrlLabel": "Adresa URL serveru Sure",
+  "@backendConfigUrlLabel": {
+    "description": "Label for the server URL field on the config screen."
+  },
+  "backendConfigUrlHint": "https://app.sure.am",
+  "@backendConfigUrlHint": {
+    "description": "Hint text for the server URL field."
+  },
+  "backendConfigProxyHeadersLabel": "Vlastní záhlaví proxy",
+  "@backendConfigProxyHeadersLabel": {
+    "description": "Label for the custom proxy headers section on the config screen."
+  },
+  "backendConfigProxyHeadersSubtitle": "Volitelná záhlaví pro reverzní proxy nebo ověřovací bránu",
+  "@backendConfigProxyHeadersSubtitle": {
+    "description": "Subtitle for the proxy headers expansion tile when no headers are configured."
+  },
+  "backendConfigProxyHeadersCount": "Nastaveno: {count}",
+  "@backendConfigProxyHeadersCount": {
+    "description": "Subtitle for the proxy headers expansion tile when headers are configured.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backendConfigTesting": "Testování…",
+  "@backendConfigTesting": {
+    "description": "Label on the test-connection button while the test is in progress."
+  },
+  "backendConfigTestButton": "Otestovat připojení",
+  "@backendConfigTestButton": {
+    "description": "Button label to test the server connection."
+  },
+  "backendConfigContinueButton": "Pokračovat",
+  "@backendConfigContinueButton": {
+    "description": "Button label to proceed after saving configuration."
+  },
+  "backendConfigChangeHint": "Později to můžete změnit v nastavení.",
+  "@backendConfigChangeHint": {
+    "description": "Helper text below the config form."
+  },
+  "recentTransactionsTitle": "Nedávné transakce",
+  "@recentTransactionsTitle": {
+    "description": "App bar title for the recent transactions screen."
+  },
+  "recentTransactionsEmpty": "Žádné transakce",
+  "@recentTransactionsEmpty": {
+    "description": "Empty-state message on the recent transactions screen."
+  },
+  "recentTransactionsDisplayLimit": "Limit zobrazení",
+  "@recentTransactionsDisplayLimit": {
+    "description": "Tooltip for the display-limit popup menu on the recent transactions screen."
+  },
+  "recentTransactionsShowN": "Zobrazit {count}",
+  "@recentTransactionsShowN": {
+    "description": "Menu item label to show N recent transactions.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "recentTransactionsPullToRefresh": "Tažením dolů seznam aktualizujete.",
+  "@recentTransactionsPullToRefresh": {
+    "description": "Empty-state subtitle prompting the user to pull to refresh."
+  },
+  "logViewerTitle": "Diagnostické protokoly",
+  "@logViewerTitle": {
+    "description": "App bar title for the log viewer screen."
+  },
+  "logViewerFilterAll": "Vše",
+  "@logViewerFilterAll": {
+    "description": "Log level filter chip: show all log entries."
+  },
+  "logViewerFilterInfo": "Informace",
+  "@logViewerFilterInfo": {
+    "description": "Log level filter chip: show info entries only."
+  },
+  "logViewerFilterWarning": "Upozornění",
+  "@logViewerFilterWarning": {
+    "description": "Log level filter chip: show warning entries only."
+  },
+  "logViewerFilterError": "Chyba",
+  "@logViewerFilterError": {
+    "description": "Log level filter chip: show error entries only."
+  },
+  "logViewerFilterDebug": "Ladění",
+  "@logViewerFilterDebug": {
+    "description": "Log level filter chip: show debug entries only."
+  },
+  "logViewerAutoScrollEnable": "Povolit automatické posouvání",
+  "@logViewerAutoScrollEnable": {
+    "description": "Tooltip for the auto-scroll toggle button when auto-scroll is off."
+  },
+  "logViewerAutoScrollDisable": "Zakázat automatické posouvání",
+  "@logViewerAutoScrollDisable": {
+    "description": "Tooltip for the auto-scroll toggle button when auto-scroll is on."
+  },
+  "logViewerCopyLogs": "Kopírovat protokoly",
+  "@logViewerCopyLogs": {
+    "description": "Tooltip for the copy-logs action button."
+  },
+  "logViewerClearLogs": "Vymazat protokoly",
+  "@logViewerClearLogs": {
+    "description": "Tooltip for the clear-logs action button."
+  },
+  "logViewerLogsCopied": "Protokoly byly zkopírovány do schránky.",
+  "@logViewerLogsCopied": {
+    "description": "Snackbar message after logs are copied to the clipboard."
+  },
+  "logViewerEmpty": "Zatím žádné protokoly",
+  "@logViewerEmpty": {
+    "description": "Empty-state message shown when there are no log entries to display."
+  },
+  "connectivityOffline": "Jste offline",
+  "@connectivityOffline": {
+    "description": "Message shown in the connectivity banner when the device has no network."
+  },
+  "connectivityPendingSync": "{count, plural, one{{count} transakce čeká na synchronizaci} few{{count} transakce čekají na synchronizaci} many{{count} transakce čeká na synchronizaci} other{{count} transakcí čeká na synchronizaci}}",
+  "@connectivityPendingSync": {
+    "description": "Connectivity banner message showing how many transactions are queued for sync.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "connectivitySyncNow": "Synchronizovat nyní",
+  "@connectivitySyncNow": {
+    "description": "Button label in the connectivity banner to trigger an immediate sync."
+  },
+  "proxyHeadersAddHeader": "Přidat záhlaví",
+  "@proxyHeadersAddHeader": {
+    "description": "Button label to add a new custom proxy header."
+  },
+  "proxyHeadersNameLabel": "Název záhlaví",
+  "@proxyHeadersNameLabel": {
+    "description": "Label for the header-name input field."
+  },
+  "proxyHeadersNameHint": "X-Auth-Token",
+  "@proxyHeadersNameHint": {
+    "description": "Hint text for the header-name input (example header name)."
+  },
+  "proxyHeadersValueLabel": "Hodnota záhlaví",
+  "@proxyHeadersValueLabel": {
+    "description": "Label for the header-value input field."
+  },
+  "proxyHeadersRemove": "Odstranit záhlaví",
+  "@proxyHeadersRemove": {
+    "description": "Tooltip for the remove-header icon button."
+  },
+  "accountDetailRefreshTooltip": "Aktualizuje podrobnosti účtu",
+  "@accountDetailRefreshTooltip": {
+    "description": "Tooltip for the refresh button on the account detail header."
+  },
+  "accountDetailRecentBalanceHistory": "Nedávná historie zůstatků",
+  "@accountDetailRecentBalanceHistory": {
+    "description": "Section heading for the balance history chart in the account detail header."
+  },
+  "accountDetailTopHoldings": "Největší pozice",
+  "@accountDetailTopHoldings": {
+    "description": "Section heading for the top holdings list in the account detail header."
+  },
+  "accountDetailHoldingFallback": "Pozice",
+  "@accountDetailHoldingFallback": {
+    "description": "Fallback label when a holding has no name."
+  },
+  "accountDetailCashChip": "Volná hotovost {amount}",
+  "@accountDetailCashChip": {
+    "description": "Label for the cash position chip in the account detail header.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "biometricLockFailedRetry": "Ověření se nezdařilo. Klepněte na Odemknout a zkuste to znovu.",
+  "@biometricLockFailedRetry": {
+    "description": "Snackbar shown on the biometric lock screen when authentication fails."
+  },
+  "settingsBiometricVerifyReason": "Biometrickým ověřením zapnete zámek aplikace.",
+  "@settingsBiometricVerifyReason": {
+    "description": "Reason shown in the system biometric prompt when enabling app lock from settings."
+  },
+  "settingsBiometricFailed": "Biometrické ověření se nezdařilo.",
+  "@settingsBiometricFailed": {
+    "description": "Snackbar shown when biometric verification fails while enabling app lock."
+  },
+  "settingsUpdateOpenStoreError": "Odkaz na obchod s aplikacemi nelze otevřít.",
+  "@settingsUpdateOpenStoreError": {
+    "description": "Snackbar shown when the app store update link cannot be opened."
+  },
+  "settingsClearDataFailed": "Místní data se nepodařilo vymazat.",
+  "@settingsClearDataFailed": {
+    "description": "Snackbar shown when clearing local data fails."
+  },
+  "settingsClearDataSuccessDetailed": "Místní data byla vymazána. Tažením dolů je znovu synchronizujete ze serveru.",
+  "@settingsClearDataSuccessDetailed": {
+    "description": "Snackbar shown after local data is cleared, prompting the user to pull to refresh."
+  },
+  "settingsContactOpenLinkError": "Odkaz nelze otevřít.",
+  "@settingsContactOpenLinkError": {
+    "description": "Snackbar shown when the contact/Discord link cannot be opened."
+  },
+  "settingsResetAccountContent": "Obnovením výchozího stavu odstraníte všechny své účty, kategorie, obchodníky, štítky a další data, ale uživatelský účet zůstane zachován.\n\nTuto akci nelze vrátit zpět. Opravdu chcete pokračovat?",
+  "@settingsResetAccountContent": {
+    "description": "Body text for the reset-account confirmation dialog."
+  },
+  "settingsResetAccount": "Obnovit výchozí stav účtu",
+  "@settingsResetAccount": {
+    "description": "Title and confirm button label for the reset-account action."
+  },
+  "settingsResetAccountInitiated": "Bylo zahájeno obnovení výchozího stavu účtu. Může to chvíli trvat.",
+  "@settingsResetAccountInitiated": {
+    "description": "Snackbar shown after an account reset is initiated."
+  },
+  "settingsResetAccountFailed": "Výchozí stav účtu se nepodařilo obnovit.",
+  "@settingsResetAccountFailed": {
+    "description": "Snackbar shown when resetting the account fails."
+  },
+  "settingsDeleteAccountConfirmContent": "Odstraněním účtu trvale smažete všechna svá data. Tuto akci nelze vrátit zpět.\n\nOpravdu chcete účet odstranit?",
+  "@settingsDeleteAccountConfirmContent": {
+    "description": "Body text for the delete-account confirmation dialog on the settings screen."
+  },
+  "settingsDeleteAccountFailed": "Účet se nepodařilo odstranit.",
+  "@settingsDeleteAccountFailed": {
+    "description": "Snackbar shown when deleting the account fails."
+  },
+  "settingsProxyHeadersNote": "Záhlaví odesílá aplikace s požadavky API. Stránky externího prohlížeče SSO je nemusí přijímat.",
+  "@settingsProxyHeadersNote": {
+    "description": "Explanatory note shown in the custom proxy headers dialog."
+  },
+  "settingsProxyHeadersSaved": "Vlastní záhlaví proxy byla uložena.",
+  "@settingsProxyHeadersSaved": {
+    "description": "Snackbar shown after custom proxy headers are saved."
+  },
+  "settingsProxyHeadersSaveFailed": "Vlastní záhlaví proxy se nepodařilo uložit.",
+  "@settingsProxyHeadersSaveFailed": {
+    "description": "Snackbar shown when saving custom proxy headers fails."
+  },
+  "settingsAppVersion": "Verze aplikace: {version}",
+  "@settingsAppVersion": {
+    "description": "App version list tile title on the settings screen.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsCheckForUpdatesSubtitle": "Zjistit, zda je k dispozici novější verze",
+  "@settingsCheckForUpdatesSubtitle": {
+    "description": "Subtitle for the check-for-updates list tile."
+  },
+  "settingsContactUs": "Kontaktovat nás",
+  "@settingsContactUs": {
+    "description": "Title for the contact-us list tile on the settings screen."
+  },
+  "settingsDebugLogsSemantics": "Otevře diagnostické protokoly",
+  "@settingsDebugLogsSemantics": {
+    "description": "Accessibility label for the debug logs list tile."
+  },
+  "settingsDebugLogsSubtitle": "Zobrazit diagnostické protokoly aplikace",
+  "@settingsDebugLogsSubtitle": {
+    "description": "Subtitle for the debug logs list tile."
+  },
+  "settingsGroupByAccountType": "Seskupit podle typu účtu",
+  "@settingsGroupByAccountType": {
+    "description": "Title for the group-by-account-type toggle on the settings screen."
+  },
+  "settingsGroupByAccountTypeSubtitle": "Seskupit účty podle typu (kryptoaktiva, bankovní účty apod.)",
+  "@settingsGroupByAccountTypeSubtitle": {
+    "description": "Subtitle for the group-by-account-type toggle."
+  },
+  "settingsProxyHeadersTileTitle": "Vlastní záhlaví proxy",
+  "@settingsProxyHeadersTileTitle": {
+    "description": "Title for the custom proxy headers list tile on the settings screen."
+  },
+  "settingsProxyHeadersTileSubtitleEmpty": "Volitelná záhlaví pro reverzní proxy nebo ověřovací bránu",
+  "@settingsProxyHeadersTileSubtitleEmpty": {
+    "description": "Subtitle for the custom proxy headers list tile when no headers are configured."
+  },
+  "settingsProxyHeadersTileSubtitleCount": "Nastaveno: {count}",
+  "@settingsProxyHeadersTileSubtitleCount": {
+    "description": "Subtitle for the custom proxy headers list tile when headers are configured.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsClearDataTileSubtitle": "Odstranit všechny transakce a účty uložené v mezipaměti",
+  "@settingsClearDataTileSubtitle": {
+    "description": "Subtitle for the clear-local-data list tile."
+  },
+  "settingsResetAccountTileSubtitle": "Odstranit všechny účty, kategorie, obchodníky a štítky, ale ponechat uživatelský účet",
+  "@settingsResetAccountTileSubtitle": {
+    "description": "Subtitle for the reset-account list tile in the danger zone."
+  },
+  "settingsDeleteAccountTileSubtitle": "Trvale odstranit všechna data. Tuto akci nelze vrátit zpět.",
+  "@settingsDeleteAccountTileSubtitle": {
+    "description": "Subtitle for the delete-account list tile in the danger zone."
+  },
+  "settingsUserFallback": "Uživatel",
+  "@settingsUserFallback": {
+    "description": "Fallback display name when the user has no name set."
+  },
+  "chatListDeleteMultiContent": "{count, plural, one{Odstranit {count} chat? Tuto akci nelze vrátit zpět.} few{Odstranit {count} chaty? Tuto akci nelze vrátit zpět.} many{Odstranit {count} chatu? Tuto akci nelze vrátit zpět.} other{Odstranit {count} chatů? Tuto akci nelze vrátit zpět.}}",
+  "@chatListDeleteMultiContent": {
+    "description": "Body text for the multi-chat delete confirmation dialog.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "chatListDeletedSuccess": "Chaty byly odstraněny.",
+  "@chatListDeletedSuccess": {
+    "description": "Snackbar shown after multiple chats are deleted."
+  },
+  "chatListDeleteFailed": "Chaty se nepodařilo odstranit.",
+  "@chatListDeleteFailed": {
+    "description": "Snackbar shown when deleting multiple chats fails."
+  },
+  "chatListError": "Chaty se nepodařilo načíst",
+  "@chatListError": {
+    "description": "Error-state heading on the chat list screen."
+  },
+  "chatListJustNow": "Právě teď",
+  "@chatListJustNow": {
+    "description": "Relative time label for very recent chats."
+  },
+  "chatListDeleteSingleContent": "Opravdu chcete odstranit „{title}“?",
+  "@chatListDeleteSingleContent": {
+    "description": "Body text for the single-chat delete confirmation dialog.",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "loginSignUpOpenError": "Registrační stránku nelze otevřít.",
+  "@loginSignUpOpenError": {
+    "description": "Snackbar shown when the sign-up page cannot be opened."
+  },
+  "loginApiKeyDialogTitle": "Přihlášení pomocí klíče API",
+  "@loginApiKeyDialogTitle": {
+    "description": "Title for the API key login dialog on the login screen."
+  },
+  "loginApiKeyDialogBody": "Pro přihlášení zadejte svůj klíč API.",
+  "@loginApiKeyDialogBody": {
+    "description": "Body text for the API key login dialog."
+  },
+  "loginApiKeyInvalid": "Neplatný klíč API",
+  "@loginApiKeyInvalid": {
+    "description": "Fallback error shown when an API key login fails."
+  },
+  "loginApiKeySignIn": "Přihlásit se",
+  "@loginApiKeySignIn": {
+    "description": "Sign-in button label in the API key login dialog."
+  },
+  "loginDemoOrSignUpPrefix": "Ukázkový účet nebo ",
+  "@loginDemoOrSignUpPrefix": {
+    "description": "Leading text before the Sign Up link on the login screen."
+  },
+  "loginSignUpLink": "registrace",
+  "@loginSignUpLink": {
+    "description": "Tappable Sign Up link text on the login screen."
+  },
+  "loginSignUpSuffix": "!",
+  "@loginSignUpSuffix": {
+    "description": "Trailing punctuation after the Sign Up link on the login screen."
+  },
+  "loginMfaInfo": "Je zapnuté dvoufaktorové ověření. Zadejte ověřovací kód.",
+  "@loginMfaInfo": {
+    "description": "Info banner shown when MFA is required during login."
+  },
+  "loginMfaCodeRequired": "Zadejte ověřovací kód.",
+  "@loginMfaCodeRequired": {
+    "description": "Validation error when the MFA code field is empty."
+  },
+  "loginOrDivider": "nebo",
+  "@loginOrDivider": {
+    "description": "Divider label between primary and alternate sign-in options."
+  },
+  "loginServerUrlHeading": "Adresa URL serveru Sure:",
+  "@loginServerUrlHeading": {
+    "description": "Heading above the displayed server URL on the login screen."
+  },
+  "loginApiKeyLoginButton": "Přihlásit se pomocí klíče API",
+  "@loginApiKeyLoginButton": {
+    "description": "Button label to open the API key login dialog."
+  },
+  "loginBackendSettingsTooltip": "Otevře nastavení serveru",
+  "@loginBackendSettingsTooltip": {
+    "description": "Tooltip for the backend settings button on the login screen."
+  },
+  "transactionEditSessionExpired": "Platnost relace vypršela. Přihlaste se prosím znovu.",
+  "@transactionEditSessionExpired": {
+    "description": "Snackbar shown when the session expires while editing a transaction."
+  },
+  "transactionEditUpdated": "Transakce byla aktualizována.",
+  "@transactionEditUpdated": {
+    "description": "Snackbar shown after a transaction is updated successfully."
+  },
+  "transactionEditUpdateFailed": "Transakci se nepodařilo aktualizovat.",
+  "@transactionEditUpdateFailed": {
+    "description": "Fallback snackbar shown when updating a transaction fails."
+  },
+  "transactionEditNameMaxLength": "Název může obsahovat nejvýše {max} znaků.",
+  "@transactionEditNameMaxLength": {
+    "description": "Validation error when the transaction name exceeds the maximum length.",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "transactionEditNameInvalidChars": "Název obsahuje nepodporované znaky.",
+  "@transactionEditNameInvalidChars": {
+    "description": "Validation error when the transaction name contains control characters."
+  },
+  "transactionEditNotesMaxLength": "Poznámky mohou obsahovat nejvýše {max} znaků.",
+  "@transactionEditNotesMaxLength": {
+    "description": "Validation error when the notes exceed the maximum length.",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "transactionEditNotesInvalidChars": "Poznámky obsahují nepodporované znaky.",
+  "@transactionEditNotesInvalidChars": {
+    "description": "Validation error when the notes contain control characters."
+  },
+  "transactionEditNoCategory": "Bez kategorie",
+  "@transactionEditNoCategory": {
+    "description": "Dropdown option representing no selected category in the edit form."
+  },
+  "transactionEditCurrentCategory": "Stávající kategorie",
+  "@transactionEditCurrentCategory": {
+    "description": "Fallback dropdown label for the currently selected category when its name is unknown."
+  },
+  "transactionEditNoMerchant": "Žádný obchodník",
+  "@transactionEditNoMerchant": {
+    "description": "Dropdown option representing no selected merchant in the edit form."
+  },
+  "transactionEditCurrentMerchant": "Stávající obchodník",
+  "@transactionEditCurrentMerchant": {
+    "description": "Fallback dropdown label for the currently selected merchant when its name is unknown."
+  },
+  "transactionEditNoTags": "Nejsou k dispozici žádné štítky.",
+  "@transactionEditNoTags": {
+    "description": "Message shown when no tags are available to select in the edit form."
+  },
+  "transactionEditUnknownTag": "Neznámý štítek",
+  "@transactionEditUnknownTag": {
+    "description": "Fallback label for a selected tag whose name is unknown."
+  },
+  "transactionEditSyncedOnly": "Z mobilu lze upravovat pouze synchronizované transakce.",
+  "@transactionEditSyncedOnly": {
+    "description": "Notice shown when a transaction cannot be edited because it is not yet synced."
+  },
+  "transactionEditCategoryHelper": "Vyberte jinou kategorii.",
+  "@transactionEditCategoryHelper": {
+    "description": "Helper text under the category dropdown in the edit form."
+  },
+  "transactionEditMerchantHelper": "Vyberte jiného obchodníka.",
+  "@transactionEditMerchantHelper": {
+    "description": "Helper text under the merchant dropdown in the edit form."
+  },
+  "transactionFormSessionExpired": "Platnost relace vypršela. Přihlaste se prosím znovu.",
+  "@transactionFormSessionExpired": {
+    "description": "Snackbar shown when the session expires while creating a transaction."
+  },
+  "transactionFormAmountRequiredPrompt": "Zadejte částku",
+  "@transactionFormAmountRequiredPrompt": {
+    "description": "Validation error when the amount field is empty in the create form."
+  },
+  "transactionFormAmountInvalidNumber": "Zadejte platné číslo.",
+  "@transactionFormAmountInvalidNumber": {
+    "description": "Validation error when the amount is not a valid number."
+  },
+  "transactionFormAmountTooSmall": "Částka musí být větší než 0.",
+  "@transactionFormAmountTooSmall": {
+    "description": "Validation error when the amount is zero or negative."
+  },
+  "transactionFormCreateSuccessOnline": "Transakce byla vytvořena.",
+  "@transactionFormCreateSuccessOnline": {
+    "description": "Snackbar shown after a transaction is created while online."
+  },
+  "transactionFormCreateSuccessOffline": "Transakce byla uložena a synchronizuje se po připojení.",
+  "@transactionFormCreateSuccessOffline": {
+    "description": "Snackbar shown after a transaction is saved while offline."
+  },
+  "transactionFormCreateFailed": "Transakci se nepodařilo vytvořit.",
+  "@transactionFormCreateFailed": {
+    "description": "Snackbar shown when creating a transaction fails."
+  },
+  "transactionFormGenericError": "Chyba: {error}",
+  "@transactionFormGenericError": {
+    "description": "Snackbar shown when an unexpected error occurs while creating a transaction.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "transactionFormLess": "Méně",
+  "@transactionFormLess": {
+    "description": "Toggle label to hide the optional transaction fields."
+  },
+  "transactionFormMore": "Více",
+  "@transactionFormMore": {
+    "description": "Toggle label to show the optional transaction fields."
+  },
+  "transactionFormDateHelper": "Nepovinné (výchozí hodnota: dnešní datum)",
+  "@transactionFormDateHelper": {
+    "description": "Helper text for the date field in the create form."
+  },
+  "transactionFormNameHelper": "Nepovinné (výchozí hodnota: SureApp)",
+  "@transactionFormNameHelper": {
+    "description": "Helper text for the name field in the create form."
+  },
+  "transactionFormCategoryLoading": "Načítání kategorií…",
+  "@transactionFormCategoryLoading": {
+    "description": "Placeholder shown while categories are loading in the create form."
+  },
+  "transactionFormCategoryHelper": "Nepovinné",
+  "@transactionFormCategoryHelper": {
+    "description": "Helper text for the category dropdown in the create form."
+  },
+  "transactionFormNoCategory": "Bez kategorie",
+  "@transactionFormNoCategory": {
+    "description": "Dropdown option representing no selected category in the create form."
+  },
+  "transactionFormCreateButton": "Vytvořit transakci",
+  "@transactionFormCreateButton": {
+    "description": "Submit button label on the create-transaction form."
+  },
+  "transactionFormAmountHelper": "Povinné",
+  "@transactionFormAmountHelper": {
+    "description": "Helper text under the amount field indicating it is required."
+  },
+  "logViewerClearConfirm": "Opravdu chcete vymazat všechny protokoly?",
+  "@logViewerClearConfirm": {
+    "description": "Body text for the clear-logs confirmation dialog."
+  },
+  "logViewerClear": "Vymazat",
+  "@logViewerClear": {
+    "description": "Confirm button label in the clear-logs dialog."
+  },
+  "chatConversationEditTitle": "Upravit název",
+  "@chatConversationEditTitle": {
+    "description": "Title for the edit-chat-title dialog."
+  },
+  "chatConversationTitleLabel": "Název chatu",
+  "@chatConversationTitleLabel": {
+    "description": "Label for the chat title input field in the edit dialog."
+  },
+  "chatConversationRefreshTooltip": "Aktualizuje chat",
+  "@chatConversationRefreshTooltip": {
+    "description": "Tooltip for the refresh button in the chat conversation screen."
+  },
+  "chatConversationLoadError": "Chat se nepodařilo načíst",
+  "@chatConversationLoadError": {
+    "description": "Error-state heading when a chat fails to load."
+  },
+  "navEnableAiChatTitle": "Zapnout chat s AI?",
+  "@navEnableAiChatTitle": {
+    "description": "Title for the dialog prompting the user to enable AI chat."
+  },
+  "navEnableAiChatContent": "Chat s AI je v nastavení účtu vypnutý. Chcete ho nyní zapnout?",
+  "@navEnableAiChatContent": {
+    "description": "Body text for the enable-AI-chat dialog."
+  },
+  "navEnableAiChatNotNow": "Teď ne",
+  "@navEnableAiChatNotNow": {
+    "description": "Dismiss button in the enable-AI-chat dialog."
+  },
+  "navEnableAiChatConfirm": "Zapnout chat s AI",
+  "@navEnableAiChatConfirm": {
+    "description": "Confirm button in the enable-AI-chat dialog."
+  },
+  "navEnableAiChatFailed": "Momentálně nelze zapnout chat s AI.",
+  "@navEnableAiChatFailed": {
+    "description": "Snackbar shown when enabling AI chat fails."
+  },
+  "transactionsListEditTooltip": "Otevře úpravu transakce",
+  "@transactionsListEditTooltip": {
+    "description": "Tooltip for the edit button on a transaction row."
+  },
+  "connectivitySignInToSync": "Chcete-li synchronizovat transakce, přihlaste se.",
+  "@connectivitySignInToSync": {
+    "description": "Snackbar shown when trying to sync without being signed in."
+  },
+  "connectivitySyncSuccess": "Transakce byly synchronizovány.",
+  "@connectivitySyncSuccess": {
+    "description": "Snackbar shown after transactions sync successfully."
+  },
+  "connectivitySyncFailed": "Transakce se nepodařilo synchronizovat. Zkuste to prosím znovu.",
+  "@connectivitySyncFailed": {
+    "description": "Snackbar shown when a manual sync fails."
+  },
+  "connectivityAuthFailed": "Ověření se nezdařilo. Zkuste to prosím znovu.",
+  "@connectivityAuthFailed": {
+    "description": "Snackbar shown when authentication fails during a manual sync."
+  },
+  "ssoOnboardingSignedInAs": "Jste přihlášeni jako {email}",
+  "@ssoOnboardingSignedInAs": {
+    "description": "Header text on the SSO onboarding screen showing the signed-in Google email.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "ssoOnboardingGoogleVerified": "Účet Google ověřen",
+  "@ssoOnboardingGoogleVerified": {
+    "description": "Header text on the SSO onboarding screen when the Google email is unknown."
+  },
+  "ssoOnboardingLinkCredentialsNote": "Zadejte přihlašovací údaje svého stávajícího účtu, který chcete propojit s přihlášením přes Google.",
+  "@ssoOnboardingLinkCredentialsNote": {
+    "description": "Explanatory note on the link-existing form prompting the user to enter their credentials."
+  },
+  "ssoOnboardingPendingInvitationNote": "Čeká na vás pozvánka. Přijměte ji a připojte se ke stávající domácnosti.",
+  "@ssoOnboardingPendingInvitationNote": {
+    "description": "Explanatory note on the create form when the user has a pending household invitation."
+  },
+  "ssoOnboardingCreateIdentityNote": "Vytvořte si nový účet pomocí identity Google.",
+  "@ssoOnboardingCreateIdentityNote": {
+    "description": "Explanatory note on the create form when creating a brand-new account via Google."
+  },
+  "ssoOnboardingFirstNameRequired": "Je nutné zadat jméno.",
+  "@ssoOnboardingFirstNameRequired": {
+    "description": "Validation error when the first-name field is empty on the SSO onboarding screen."
+  },
+  "ssoOnboardingLastNameRequired": "Je nutné zadat příjmení.",
+  "@ssoOnboardingLastNameRequired": {
+    "description": "Validation error when the last-name field is empty on the SSO onboarding screen."
+  },
+  "backendConfigTimeout": "Vypršel časový limit připojení. Zkontrolujte prosím adresu URL a zkuste to znovu.",
+  "@backendConfigTimeout": {
+    "description": "Error shown when the connection test times out."
+  },
+  "backendConfigSuccess": "Připojení bylo úspěšné.",
+  "@backendConfigSuccess": {
+    "description": "Message shown when the connection test succeeds."
+  },
+  "backendConfigServerError": "Server odpověděl stavovým kódem {code}. Ověřte, že jde o server Sure.",
+  "@backendConfigServerError": {
+    "description": "Error shown when the server returns a non-success status during the connection test.",
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "backendConfigConnectionFailed": "Připojení se nezdařilo: {error}",
+  "@backendConfigConnectionFailed": {
+    "description": "Error shown when the connection test fails with an exception.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backendConfigSaveFailed": "Nepodařilo se uložit adresu URL: {error}",
+  "@backendConfigSaveFailed": {
+    "description": "Error shown when saving the backend URL fails.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "backendConfigUrlRequired": "Zadejte adresu URL serveru.",
+  "@backendConfigUrlRequired": {
+    "description": "Validation error when the backend URL field is empty."
+  },
+  "backendConfigUrlScheme": "Adresa URL musí začínat řetězcem „http://“ nebo „https://“.",
+  "@backendConfigUrlScheme": {
+    "description": "Validation error when the backend URL is missing an http(s) scheme."
+  },
+  "backendConfigUrlInvalid": "Zadejte platnou adresu URL.",
+  "@backendConfigUrlInvalid": {
+    "description": "Validation error when the backend URL is malformed."
+  },
+  "backendConfigHeadersHelp": "Záhlaví odesílá aplikace s požadavky API. Stránky externího prohlížeče SSO je nemusí přijímat.",
+  "@backendConfigHeadersHelp": {
+    "description": "Helper text below the custom proxy headers section on the backend config screen."
+  },
+  "recentTransactionsUnknownAccount": "Neznámý účet",
+  "@recentTransactionsUnknownAccount": {
+    "description": "Fallback label when a transaction's account cannot be resolved."
+  },
+  "accountDetailUnavailable": "Podrobnosti o účtu jsou dočasně nedostupné.",
+  "@accountDetailUnavailable": {
+    "description": "Error message shown when account detail and balances both fail to load."
+  },
+  "chatListMinutesAgo": "před {minutes} min",
+  "@chatListMinutesAgo": {
+    "description": "Relative time label for a chat updated some minutes ago.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "chatListHoursAgo": "před {hours} h",
+  "@chatListHoursAgo": {
+    "description": "Relative time label for a chat updated some hours ago.",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "chatListDaysAgo": "před {days} d",
+  "@chatListDaysAgo": {
+    "description": "Relative time label for a chat updated some days ago.",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "chatConversationStartFailed": "Konverzaci se nepodařilo zahájit. Zkuste to prosím znovu.",
+  "@chatConversationStartFailed": {
+    "description": "Fallback snackbar shown when creating a new conversation from the first message fails."
+  },
+  "introComingSoon": "Rozšířený úvod připravujeme",
+  "@introComingSoon": {
+    "description": "Heading for the placeholder intro experience."
+  },
+  "introComingSoonBody": "Připravujeme podrobnější úvod, který zohlední vaše cíle, důležité milníky a každodenní potřeby. Zatím můžete v postranním panelu zahájit chat se Sure a popsat, v jaké fázi své finanční cesty se nacházíte.",
+  "@introComingSoonBody": {
+    "description": "Body text for the placeholder intro experience."
+  },
+  "navTogglePrivacy": "Skryje nebo zobrazí částky",
+  "@navTogglePrivacy": {
+    "description": "Tooltip and accessibility label for masking money values."
+  },
+  "accountCardTransactions": "Transakce",
+  "@accountCardTransactions": {
+    "description": "Swipe action label on an account card."
+  },
+  "netWorthTitle": "Čisté jmění",
+  "@netWorthTitle": {
+    "description": "Net worth card heading."
+  },
+  "netWorthOutdated": "Neaktuální",
+  "@netWorthOutdated": {
+    "description": "Badge shown when net worth data is stale."
+  },
+  "chatThinking": "Přemýšlím",
+  "@chatThinking": {
+    "description": "Assistant typing indicator label."
+  },
+  "syncStatusPending": "Čeká na synchronizaci",
+  "@syncStatusPending": {
+    "description": "Pending synchronization badge."
+  },
+  "syncStatusPendingSemantics": "Transakce čeká na synchronizaci",
+  "@syncStatusPendingSemantics": {
+    "description": "Accessibility label for a pending transaction."
+  },
+  "syncStatusDeleting": "Odstraňování",
+  "@syncStatusDeleting": {
+    "description": "Pending deletion badge."
+  },
+  "syncStatusDeletingSemantics": "Transakce čeká na odstranění",
+  "@syncStatusDeletingSemantics": {
+    "description": "Accessibility label for a pending deletion."
+  },
+  "syncStatusFailed": "Nezdařilo se",
+  "@syncStatusFailed": {
+    "description": "Failed synchronization badge."
+  },
+  "syncStatusFailedSemantics": "Synchronizace se nezdařila",
+  "@syncStatusFailedSemantics": {
+    "description": "Accessibility label for a failed synchronization."
+  },
+  "transactionFormDefaultNote": "Tato transakce byla vytvořena v mobilní aplikaci.",
+  "@transactionFormDefaultNote": {
+    "description": "Default note attached to a transaction created on mobile."
+  },
+  "biometricUnlockReason": "Odemkněte Sure, abyste mohli pokračovat.",
+  "@biometricUnlockReason": {
+    "description": "Reason shown in the operating system biometric prompt."
+  },
+  "accountTypeDepository": "Bankovní účet",
+  "@accountTypeDepository": {
+    "description": "Depository account type."
+  },
+  "accountTypeCreditCard": "Kreditní karta",
+  "@accountTypeCreditCard": {
+    "description": "Credit card account type."
+  },
+  "accountTypeInvestment": "Investice",
+  "@accountTypeInvestment": {
+    "description": "Investment account type."
+  },
+  "accountTypeLoan": "Úvěr",
+  "@accountTypeLoan": {
+    "description": "Loan account type."
+  },
+  "accountTypeProperty": "Nemovitost",
+  "@accountTypeProperty": {
+    "description": "Property account type."
+  },
+  "accountTypeVehicle": "Vozidlo",
+  "@accountTypeVehicle": {
+    "description": "Vehicle account type."
+  },
+  "accountTypeCrypto": "Kryptoaktiva",
+  "@accountTypeCrypto": {
+    "description": "Crypto account type."
+  },
+  "accountTypeOtherAsset": "Ostatní majetek",
+  "@accountTypeOtherAsset": {
+    "description": "Other asset account type."
+  },
+  "accountTypeOtherLiability": "Ostatní závazek",
+  "@accountTypeOtherLiability": {
+    "description": "Other liability account type."
+  },
+  "defaultCategoryIncome": "Příjem",
+  "@defaultCategoryIncome": {
+    "description": "Default income category."
+  },
+  "defaultCategoryFoodAndDrink": "Jídlo a nápoje",
+  "@defaultCategoryFoodAndDrink": {
+    "description": "Default food and drink category."
+  },
+  "defaultCategoryGroceries": "Potraviny",
+  "@defaultCategoryGroceries": {
+    "description": "Default groceries category."
+  },
+  "defaultCategoryShopping": "Nákupy",
+  "@defaultCategoryShopping": {
+    "description": "Default shopping category."
+  },
+  "defaultCategoryTransportation": "Doprava",
+  "@defaultCategoryTransportation": {
+    "description": "Default transportation category."
+  },
+  "defaultCategoryTravel": "Cestování",
+  "@defaultCategoryTravel": {
+    "description": "Default travel category."
+  },
+  "defaultCategoryEntertainment": "Zábava",
+  "@defaultCategoryEntertainment": {
+    "description": "Default entertainment category."
+  },
+  "defaultCategoryHealthcare": "Zdravotní péče",
+  "@defaultCategoryHealthcare": {
+    "description": "Default healthcare category."
+  },
+  "defaultCategoryPersonalCare": "Osobní péče",
+  "@defaultCategoryPersonalCare": {
+    "description": "Default personal care category."
+  },
+  "defaultCategoryHomeImprovement": "Údržba a úpravy domácnosti",
+  "@defaultCategoryHomeImprovement": {
+    "description": "Default home improvement category."
+  },
+  "defaultCategoryMortgageRent": "Hypotéka / nájem",
+  "@defaultCategoryMortgageRent": {
+    "description": "Default mortgage and rent category."
+  },
+  "defaultCategoryUtilities": "Energie a služby",
+  "@defaultCategoryUtilities": {
+    "description": "Default utilities category."
+  },
+  "defaultCategorySubscriptions": "Předplatné",
+  "@defaultCategorySubscriptions": {
+    "description": "Default subscriptions category."
+  },
+  "defaultCategoryInsurance": "Pojištění",
+  "@defaultCategoryInsurance": {
+    "description": "Default insurance category."
+  },
+  "defaultCategorySportsAndFitness": "Sport a fitness",
+  "@defaultCategorySportsAndFitness": {
+    "description": "Default sports and fitness category."
+  },
+  "defaultCategoryGiftsAndDonations": "Dary a příspěvky",
+  "@defaultCategoryGiftsAndDonations": {
+    "description": "Default gifts and donations category."
+  },
+  "defaultCategoryTaxes": "Daně",
+  "@defaultCategoryTaxes": {
+    "description": "Default taxes category."
+  },
+  "defaultCategoryLoanPayments": "Splátky úvěrů",
+  "@defaultCategoryLoanPayments": {
+    "description": "Default loan payments category."
+  },
+  "defaultCategoryServices": "Služby",
+  "@defaultCategoryServices": {
+    "description": "Default services category."
+  },
+  "defaultCategoryFees": "Poplatky",
+  "@defaultCategoryFees": {
+    "description": "Default fees category."
+  },
+  "defaultCategorySavingsAndInvestments": "Úspory a investice",
+  "@defaultCategorySavingsAndInvestments": {
+    "description": "Default savings and investments category."
+  },
+  "defaultCategoryInvestmentContributions": "Investiční vklady",
+  "@defaultCategoryInvestmentContributions": {
+    "description": "Default investment contributions category."
+  },
+  "proxyHeadersNameRequired": "Je nutné zadat název záhlaví.",
+  "@proxyHeadersNameRequired": {
+    "description": "Validation error for an empty proxy header name."
+  },
+  "proxyHeadersNameInvalid": "Použijte platný název záhlaví HTTP.",
+  "@proxyHeadersNameInvalid": {
+    "description": "Validation error for an invalid proxy header name."
+  },
+  "proxyHeadersNameManaged": "Toto záhlaví spravuje aplikace.",
+  "@proxyHeadersNameManaged": {
+    "description": "Validation error for a reserved proxy header."
+  },
+  "proxyHeadersValueRequired": "Je nutné zadat hodnotu záhlaví.",
+  "@proxyHeadersValueRequired": {
+    "description": "Validation error for an empty proxy header value."
+  },
+  "proxyHeadersValueInvalid": "Hodnota záhlaví obsahuje řídicí znaky.",
+  "@proxyHeadersValueInvalid": {
+    "description": "Validation error for an unsafe proxy header value."
+  },
+  "clientErrorNetworkUnavailable": "Síť není dostupná. Zkontrolujte připojení a zkuste to znovu.",
+  "@clientErrorNetworkUnavailable": {
+    "description": "Generic network-unavailable error."
+  },
+  "clientErrorRequestTimedOut": "Časový limit požadavku vypršel. Zkontrolujte připojení a zkuste to znovu.",
+  "@clientErrorRequestTimedOut": {
+    "description": "Generic request-timeout error."
+  },
+  "clientErrorInvalidServerResponse": "Server vrátil neplatnou odpověď.",
+  "@clientErrorInvalidServerResponse": {
+    "description": "Generic invalid-server-response error."
+  },
+  "clientErrorUnexpected": "Něco se pokazilo. Zkuste to prosím znovu.",
+  "@clientErrorUnexpected": {
+    "description": "Generic unexpected client error."
+  },
+  "clientErrorLoginFailed": "Přihlášení se nezdařilo. Zkuste to prosím znovu.",
+  "@clientErrorLoginFailed": {
+    "description": "Generic sign-in failure."
+  },
+  "clientErrorInvalidSsoResponse": "Odpověď na přihlášení byla neplatná. Zkuste to prosím znovu.",
+  "@clientErrorInvalidSsoResponse": {
+    "description": "Invalid SSO response error."
+  },
+  "clientErrorAuthorizationExchangeFailed": "Autorizaci nebylo možné dokončit. Zkuste to prosím znovu.",
+  "@clientErrorAuthorizationExchangeFailed": {
+    "description": "Authorization-code exchange failure."
+  },
+  "clientErrorAccountLinkFailed": "Účet se nepodařilo propojit. Zkuste to prosím znovu.",
+  "@clientErrorAccountLinkFailed": {
+    "description": "Account-link failure."
+  },
+  "clientErrorAccountCreationFailed": "Účet se nepodařilo vytvořit. Zkuste to prosím znovu.",
+  "@clientErrorAccountCreationFailed": {
+    "description": "Account-creation failure."
+  },
+  "clientErrorOfflineAccounts": "Chcete-li načíst své účty, připojte se k internetu.",
+  "@clientErrorOfflineAccounts": {
+    "description": "Offline error shown when no cached accounts exist."
+  },
+  "clientErrorSecureConnection": "Nepodařilo se navázat zabezpečené připojení. Zkontrolujte připojení a zkuste to znovu.",
+  "@clientErrorSecureConnection": {
+    "description": "TLS or certificate connection error."
+  },
+  "clientErrorSendMessageFailed": "Zprávu nebylo možné odeslat. Zkuste to prosím znovu.",
+  "@clientErrorSendMessageFailed": {
+    "description": "Chat-message sending failure."
+  },
+  "clientErrorDeleteChatFailed": "Chat se nepodařilo odstranit. Zkuste to prosím znovu.",
+  "@clientErrorDeleteChatFailed": {
+    "description": "Single-chat deletion failure."
+  },
+  "clientErrorAssistantTimedOut": "Asistentovi trvalo příliš dlouho, než odpověděl. Zkuste to prosím znovu.",
+  "@clientErrorAssistantTimedOut": {
+    "description": "Assistant response timeout."
+  },
+  "clientErrorAuthenticationCodeInvalid": "Ověřovací kód je neplatný. Zkuste to prosím znovu.",
+  "@clientErrorAuthenticationCodeInvalid": {
+    "description": "Invalid MFA code error."
+  },
+  "clientErrorBrowserOpenFailed": "Přihlašovací stránku nelze otevřít v prohlížeči.",
+  "@clientErrorBrowserOpenFailed": {
+    "description": "External browser launch failure."
+  },
+  "clientErrorSignInStartFailed": "Přihlášení nebylo možné spustit. Zkuste to prosím znovu.",
+  "@clientErrorSignInStartFailed": {
+    "description": "SSO launch failure."
+  },
+  "clientErrorSignInFailed": "Přihlášení se nezdařilo. Zkuste to prosím znovu.",
+  "@clientErrorSignInFailed": {
+    "description": "SSO callback failure."
+  },
+  "clientErrorMissingSsoSession": "Platnost přihlašovací relace vypršela. Zahajte přihlášení znovu.",
+  "@clientErrorMissingSsoSession": {
+    "description": "Missing pending SSO session error."
+  },
+  "clientErrorTransactionEditRequiresOnline": "Před úpravou synchronizované transakce se připojte k internetu.",
+  "@clientErrorTransactionEditRequiresOnline": {
+    "description": "Error shown when editing a synchronized transaction while offline."
+  },
+  "clientErrorTransactionUploadFailed": "Transakce byla uložena místně a synchronizuje se po připojení k internetu.",
+  "@clientErrorTransactionUploadFailed": {
+    "description": "Message shown when a new transaction is stored locally but cannot be uploaded."
+  },
+  "clientErrorFetchTransactionsFailed": "Transakce se nepodařilo načíst. Zkuste to prosím znovu.",
+  "@clientErrorFetchTransactionsFailed": {
+    "description": "Error shown when a transaction list cannot be loaded."
+  },
+  "clientErrorFetchTransactionFailed": "Transakci se nepodařilo načíst. Zkuste to prosím znovu.",
+  "@clientErrorFetchTransactionFailed": {
+    "description": "Error shown when one transaction cannot be loaded."
+  },
+  "clientErrorSyncInProgress": "Synchronizace již probíhá.",
+  "@clientErrorSyncInProgress": {
+    "description": "Message shown when another synchronization operation is already running."
+  },
+  "clientErrorAiFeaturesDisabled": "Chat s AI je v nastavení účtu vypnutý.",
+  "@clientErrorAiFeaturesDisabled": {
+    "description": "Error shown when an AI chat operation is rejected because AI features are disabled."
+  }
+}

@@ -1,0 +1,5 @@
+---
+cs:
+  pdf_import_mailer:
+    next_steps:
+      subject: "Analýza dokumentu PDF byla dokončena – %{product_name}"

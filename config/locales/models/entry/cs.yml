@@ -1,0 +1,14 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        entry:
+          attributes:
+            excluded:
+              split_transaction_required: "nelze u rozdělené transakce vypnout"
+            date:
+              split_parent_mismatch: "musí být u dílčí položky stejné jako datum nadřazené transakce"
+            base:
+              invalid_sell_quantity: "nelze prodat %{sell_qty} akcií %{ticker}, protože jich vlastníte pouze %{current_qty}"
+              invalid_split_total: "Součet rozdělených částek musí odpovídat původní částce (očekáváno %{expected}, zadáno %{actual})"

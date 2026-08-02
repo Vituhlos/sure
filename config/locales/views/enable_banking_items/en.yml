@@ -1,9 +1,39 @@
 ---
 en:
   enable_banking_items:
+    sync_status:
+      no_accounts: No accounts found
+      all_synced:
+        one: 1 account synced
+        other: "%{count} accounts synced"
+      partial: "%{linked} synced, %{unlinked} need setup"
+    institution_summary:
+      none: No institutions connected
+      count:
+        one: 1 institution
+        other: "%{count} institutions"
+    syncer:
+      session_expired: Session expired - re-authorization required
+      importing_accounts: Importing accounts from Enable Banking...
+      reauthorization_required: Re-authorization required
+      accounts_failed:
+        one: 1 account failed
+        other: "%{count} accounts failed"
+      transactions_failed:
+        one: 1 transaction failed
+        other: "%{count} transactions failed"
+      import_failed: Import failed
+      checking_account_configuration: Checking account configuration...
+      accounts_need_setup:
+        one: 1 account needs setup...
+        other: "%{count} accounts need setup..."
+      processing_transactions: Processing transactions...
+      calculating_balances: Calculating balances...
     errors:
       api_error: "A communication error occurred with the bank."
+      bank_not_selected: No bank is selected for this connection.
       network_unreachable: "The banking service is temporarily unreachable. Please try again later."
+      provider_not_configured: Enable Banking is not configured.
       session_invalid: "Session expired. Please reconnect your bank."
       unexpected: "An unexpected error occurred during synchronization."
     authorize:
@@ -24,6 +54,7 @@ en:
       no_accounts: No accounts available to set up.
       success: Successfully created %{count} accounts!
     create:
+      default_name: Enable Banking Connection
       success: Enable Banking configuration successful.
     destroy:
       success: Enable Banking connection has been queued for deletion.
@@ -67,9 +98,52 @@ en:
       header_subtitle: Choose the correct account types for your imported accounts
       choose_account_type: "Choose the correct account type for each Enable Banking account:"
       historical_data_range: "Historical Data Range:"
+      psd2_savings_notice: "Note: Some regulated French savings accounts (Livret A, PEL, LEP, LDDS) may offer limited or no access through Open Banking (PSD2). If a savings account is missing, you can add it manually."
       sync_start_date_label: "Start syncing transactions from:"
       sync_start_date_help: Select how far back you want to sync transaction history. Maximum 2 years of history available.
       account_type_label: "Account Type:"
+      account_types:
+        skip: Skip this account
+        depository: Checking or Savings Account
+        credit_card: Credit Card
+        investment: Investment Account
+        loan: Loan or Mortgage
+        other_asset: Other Asset
+      subtype_labels:
+        depository: "Account Subtype:"
+        credit_card: ""
+        investment: "Investment Type:"
+        loan: "Loan Type:"
+        other_asset: ""
+      subtype_messages:
+        credit_card: Credit cards will be automatically set up as credit card accounts.
+        other_asset: Other assets will be set up as general assets.
+      subtypes:
+        depository:
+          checking: Checking
+          savings: Savings
+          hsa: Health Savings Account
+          cd: Certificate of Deposit
+          money_market: Money Market
+        investment:
+          brokerage: Brokerage
+          pension: Pension
+          retirement: Retirement
+          "401k": "401(k)"
+          roth_401k: "Roth 401(k)"
+          "403b": "403(b)"
+          tsp: Thrift Savings Plan
+          "529_plan": "529 Plan"
+          hsa: Health Savings Account
+          mutual_fund: Mutual Fund
+          ira: Traditional IRA
+          roth_ira: Roth IRA
+          angel: Angel
+        loan:
+          mortgage: Mortgage
+          student: Student Loan
+          auto: Auto Loan
+          other: Other Loan
       balance: Balance
       create_accounts: Create Accounts
       creating_accounts: Creating Accounts...

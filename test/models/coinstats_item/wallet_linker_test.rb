@@ -29,7 +29,7 @@ class CoinstatsItem::WalletLinkerTest < ActiveSupport::TestCase
 
     refute result.success?
     assert_equal 0, result.created_count
-    assert_includes result.errors, "No tokens found for wallet"
+    assert_includes result.errors, I18n.t("models.coinstats_item.wallet_linker.no_tokens_found")
   end
 
   test "link creates account from single token" do

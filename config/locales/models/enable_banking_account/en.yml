@@ -1,0 +1,19 @@
+---
+en:
+  enable_banking_accounts:
+    account_types:
+      CACC: "Current/checking account"
+      SVGS: "Savings account"
+      CARD: "Card account"
+      CRCD: "Credit card"
+      LOAN: "Loan account"
+      MORT: "Mortgage account"
+      ODFT: "Overdraft account"
+      CASH: "Cash account"
+      TRAN: "Transaction account"
+      SALA: "Salary account"
+      MOMA: "Money market account"
+      NREX: "Non-resident external account"
+      TAXE: "Tax account"
+      TRAS: "Cash trading account"
+      ONDP: "Overnight deposit"

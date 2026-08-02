@@ -1,0 +1,7 @@
+---
+cs:
+  messages:
+    chat_form:
+      placeholder: "Na cokoli se zeptejte…"
+      disclaimer: "Odpovědi AI mají pouze informativní charakter a nejsou finančním poradenstvím."
+      coming_soon: "Již brzy"

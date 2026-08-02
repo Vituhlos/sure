@@ -45,7 +45,7 @@ class MerchantsProvider with ChangeNotifier {
         _log.error('MerchantsProvider', 'Failed to fetch merchants: $_error');
       }
     } catch (e) {
-      _error = 'Failed to load merchants';
+      _error = 'fetch_merchants_failed';
       _log.error('MerchantsProvider', 'Exception fetching merchants: $e');
     } finally {
       _isLoading = false;

@@ -43,7 +43,10 @@
               </div>
               <span class="text-sm text-primary"><%= merchant.name %></span>
               <% if merchant.is_a?(ProviderMerchant) %>
-                <span class="text-xs text-subdued">(<%= merchant.source&.titleize %>)</span>
+                <span class="text-xs text-subdued">(<%= t(
+                  "family_merchants.provider_sources.#{merchant.source}",
+                  default: merchant.source&.titleize
+                ) %>)</span>
               <% end %>
             </label>
           <% end %>

@@ -30,6 +30,7 @@ en:
       subtitle: Let's configure your preferences.
       example: Example account
       preview: Preview how data displays based on preferences.
+      as_of: "as of %{date}"
       color_theme: Color theme
       theme_system: System
       theme_light: Light

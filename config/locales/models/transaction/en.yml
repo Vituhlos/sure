@@ -5,6 +5,9 @@ en:
       models:
         transaction:
           attributes:
+            exchange_rate:
+              not_a_number: "must be a number"
+              greater_than: "must be greater than %{count}"
             attachments:
               too_many: "cannot exceed %{max} files per transaction"
               too_large: "file %{index} is too large (maximum %{max_mb}MB)"

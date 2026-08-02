@@ -2,8 +2,10 @@
 en:
   valuations:
     confirmation_contents:
-      this_will: "This will %{action_verb} the account value on"
-      to_colon: "to:"
+      investment_set_intro: "This will set the account value on %{date} to:"
+      investment_update_intro: "This will update the account value on %{date} to:"
+      value_set_sentence: "%{value_name} on %{date} will be set to %{amount}."
+      value_update_sentence: "%{value_name} on %{date} will be updated to %{amount}."
       total_account_value: Total account value
       holdings_value: Holdings value
       brokerage_cash: Brokerage cash
@@ -16,11 +18,13 @@ en:
       asset_value: asset value
       liability_balance: liability balance
       balance: balance
-      "on": "on"
-      to: "to"
-      recalculate_notice: "All future transactions and balances will be recalculated based on this %{change_or_update}."
-      change: change
-      update: update
+      recalculate_notice: "All future transactions and balances will be recalculated based on this change."
+    confirm_create:
+      title: Confirm new balance
+      submit: Confirm
+    confirm_update:
+      title: Update balance
+      submit: Update
     create:
       account_updated: Account updated
     update:
@@ -42,6 +46,8 @@ en:
       value: value
     new:
       title: New balance
+      amount: Amount
+      submit: Save balance
     show:
       amount: Amount
       amount_label: Account value on date
@@ -58,3 +64,18 @@ en:
       settings: Settings
       opening_balance: "Opening balance"
       update_value: Update value
+    names:
+      opening_anchor:
+        property_or_vehicle: Original purchase price
+        loan: Original principal
+        account_value: Opening account value
+        balance: Opening balance
+      current_anchor:
+        property_or_vehicle: Current market value
+        loan: Current loan balance
+        account_value: Current account value
+        balance: Current balance
+      reconciliation:
+        value: Manual value update
+        principal: Manual principal update
+        balance: Manual balance update

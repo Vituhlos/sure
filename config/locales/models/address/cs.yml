@@ -1,0 +1,11 @@
+---
+cs:
+  address:
+    attributes:
+      country: "Země"
+      line1: "Adresa – 1. řádek"
+      line2: "Adresa – 2. řádek"
+      locality: "Obec"
+      postal_code: "PSČ"
+      region: "Kraj"
+    format: "%{line1} %{line2}, %{postal_code} %{locality}, %{region}, %{country}"

@@ -33,7 +33,7 @@ class RecurringTransaction < ApplicationRecord
 
     if expected_amount_min.present? && expected_amount_max.present?
       if expected_amount_min > expected_amount_max
-        errors.add(:expected_amount_min, "cannot be greater than expected_amount_max")
+        errors.add(:expected_amount_min, :greater_than_max)
       end
     end
   end
@@ -44,21 +44,21 @@ class RecurringTransaction < ApplicationRecord
     return if destination_account_id.blank?
 
     if account_id.blank?
-      errors.add(:account, "must be present on a recurring transfer")
+      errors.add(:account, :required_for_transfer)
     elsif account.blank?
       # account_id references a row that was destroyed. Mirror the
       # destination_account.blank? branch so the source side surfaces a
       # normal validation error too.
-      errors.add(:account, "must exist")
+      errors.add(:account, :missing)
     elsif destination_account.blank?
       # destination_account_id references a row that was destroyed (or never
       # existed). Surface as a normal validation error instead of letting
       # the FK fire on save.
-      errors.add(:destination_account, "must exist")
+      errors.add(:destination_account, :missing)
     elsif account_id == destination_account_id
-      errors.add(:destination_account, "cannot be the same as the source account")
+      errors.add(:destination_account, :same_as_source)
     elsif account.family_id != destination_account.family_id
-      errors.add(:destination_account, "must belong to the same family as the source account")
+      errors.add(:destination_account, :different_family)
     end
   end
 

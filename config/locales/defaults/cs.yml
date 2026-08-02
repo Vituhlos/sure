@@ -1,12 +1,19 @@
 ---
 cs:
+  defaults:
+    brand_name: "%{brand_name}"
+    product_name: "%{product_name}"
+    common:
+      close: "Zavřít"
+  global:
+    expand: "Rozbalit"
   activerecord:
     errors:
       messages:
-        record_invalid: 'Validace je neúspešná: %{errors}'
+        record_invalid: "Ověření se nezdařilo: %{errors}"
         restrict_dependent_destroy:
-          has_many: Nemůžu smazat položku protože existuje závislé/ý %{record}
-          has_one: Nemůžu smazat položku protože existuje závislá/ý/é %{record}
+          has_many: "Záznam nelze odstranit, protože na něm závisejí záznamy typu %{record}."
+          has_one: "Záznam nelze odstranit, protože na něm závisí záznam typu %{record}."
   date:
     abbr_day_names:
     - Ne
@@ -39,9 +46,11 @@ cs:
     - Pátek
     - Sobota
     formats:
-      default: "%d. %m. %Y"
-      long: "%d. %B %Y"
-      short: "%d %b"
+      default: "%-d. %-m. %Y"
+      long: "%-d. %-m. %Y"
+      short: "%-d. %-m."
+      month_year: "%B %Y"
+      short_month_year: "%b %Y"
     month_names:
     -
     - Leden
@@ -63,50 +72,66 @@ cs:
   datetime:
     distance_in_words:
       about_x_hours:
-        few: asi %{count} hodinami
-        one: asi hodinou
-        other: asi %{count} hodinami
+        one: "asi %{count} hodinou"
+        few: "asi %{count} hodinami"
+        many: "asi %{count} hodiny"
+        other: "asi %{count} hodinami"
       about_x_months:
-        few: asi %{count} měsíci
-        one: asi měsícem
-        other: asi %{count} měsíci
+        one: "asi %{count} měsícem"
+        few: "asi %{count} měsíci"
+        many: "asi %{count} měsíce"
+        other: "asi %{count} měsíci"
       about_x_years:
-        few: asi %{count} roky
-        one: asi rokem
-        other: asi %{count} roky
+        one: "asi %{count} rokem"
+        few: "asi %{count} roky"
+        many: "asi %{count} roku"
+        other: "asi %{count} lety"
       almost_x_years:
-        few: téměř %{count} roky
-        one: téměř rokem
-        other: téměř %{count} roky
-      half_a_minute: půl minutou
+        one: "téměř %{count} rokem"
+        few: "téměř %{count} lety"
+        many: "téměř %{count} roku"
+        other: "téměř %{count} lety"
+      half_a_minute: "půl minutou"
       less_than_x_minutes:
-        few: ani ne %{count} minutami
-        one: necelou minutou
-        other: ani ne %{count} minutami
+        one: "méně než minutou"
+        few: "méně než %{count} minutami"
+        many: "méně než %{count} minuty"
+        other: "méně než %{count} minutami"
       less_than_x_seconds:
-        few: ani ne %{count} sekundami
-        one: necelou sekundou
-        other: ani ne %{count} sekundami
+        one: "méně než %{count} sekundou"
+        few: "méně než %{count} sekundami"
+        many: "méně než %{count} sekundy"
+        other: "méně než %{count} sekundami"
       over_x_years:
-        few: více než %{count} roky
-        one: více než rokem
-        other: více než %{count} roky
+        one: "více než %{count} rokem"
+        few: "více než %{count} lety"
+        many: "více než %{count} roku"
+        other: "více než %{count} lety"
       x_days:
+        one: "%{count} dnem"
         few: "%{count} dny"
-        one: 24 hodinami
+        many: "%{count} dne"
         other: "%{count} dny"
       x_minutes:
+        one: "%{count} minutou"
         few: "%{count} minutami"
-        one: minutou
+        many: "%{count} minuty"
         other: "%{count} minutami"
       x_months:
+        one: "%{count} měsícem"
         few: "%{count} měsíci"
-        one: měsícem
+        many: "%{count} měsíce"
         other: "%{count} měsíci"
       x_seconds:
+        one: "%{count} sekundou"
         few: "%{count} sekundami"
-        one: sekundou
+        many: "%{count} sekundy"
         other: "%{count} sekundami"
+      x_years:
+        one: "%{count} rokem"
+        few: "%{count} roky"
+        many: "%{count} roku"
+        other: "%{count} lety"
     prompts:
       day: Den
       hour: Hodina
@@ -117,40 +142,55 @@ cs:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      accepted: musí být potvrzeno
-      blank: je povinná položka
-      confirmation: nebylo potvrzeno
-      empty: nesmí být prázdný/á/é
-      equal_to: musí být rovno %{count}
-      even: musí být sudé číslo
-      exclusion: je vyhrazeno pro jiný účel
-      greater_than: musí být větší než %{count}
-      greater_than_or_equal_to: musí být větší nebo rovno %{count}
-      inclusion: není v seznamu povolených hodnot
-      invalid: není platná hodnota
-      less_than: musí být méně než %{count}
-      less_than_or_equal_to: musí být méně nebo rovno %{count}
-      not_a_number: není číslo
-      not_an_integer: musí být celé číslo
-      odd: musí být liché číslo
-      other_than: musí být rozdílný/á/é od %{count}
-      present: musí být prázdný/á/é
-      required: musí existovat
-      taken: již databáze obsahuje
-      too_long: je příliš dlouhý/á/é (max. %{count} znaků)
-      too_short: je příliš krátký/á/é (min. %{count} znaků)
-      wrong_length: nemá správnou délku (očekáváno %{count} znaků)
+      accepted: "je nutné potvrdit"
+      blank: "je nutné vyplnit"
+      confirmation: "se neshoduje s polem %{attribute}"
+      empty: "je nutné vyplnit"
+      equal_to: "musí mít hodnotu %{count}"
+      even: "musí být sudé číslo"
+      exclusion: "obsahuje vyhrazenou hodnotu"
+      greater_than: "musí být větší než %{count}"
+      greater_than_or_equal_to: "musí být větší nebo rovno %{count}"
+      in: "musí být v rozsahu %{count}"
+      inclusion: "není v seznamu povolených hodnot"
+      invalid: "nemá platnou hodnotu"
+      less_than: "musí být menší než %{count}"
+      less_than_or_equal_to: "musí být menší nebo rovno %{count}"
+      model_invalid: "Ověření se nezdařilo: %{errors}"
+      not_a_number: "musí být číslo"
+      not_an_integer: "musí být celé číslo"
+      odd: "musí být liché číslo"
+      other_than: "nesmí mít hodnotu %{count}"
+      present: "musí zůstat bez hodnoty"
+      required: "musí existovat"
+      taken: "se už používá"
+      too_long:
+        one: "překračuje maximální délku (%{count} znak)"
+        few: "překračuje maximální délku (%{count} znaky)"
+        many: "překračuje maximální délku (%{count} znaku)"
+        other: "překračuje maximální délku (%{count} znaků)"
+      too_short:
+        one: "nedosahuje minimální délky (%{count} znak)"
+        few: "nedosahuje minimální délky (%{count} znaky)"
+        many: "nedosahuje minimální délky (%{count} znaku)"
+        other: "nedosahuje minimální délky (%{count} znaků)"
+      wrong_length:
+        one: "nemá požadovanou délku (%{count} znak)"
+        few: "nemá požadovanou délku (%{count} znaky)"
+        many: "nemá požadovanou délku (%{count} znaku)"
+        other: "nemá požadovanou délku (%{count} znaků)"
     template:
-      body: 'Následující pole obsahují chybně vyplněné údaje: '
+      body: "Problémy se týkají těchto polí:"
       header:
-        few: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné
-          jej uložit
-        one: Při ukládání objektu %{model} došlo k chybám a nebylo jej možné uložit
-        other: Při ukládání objektu %{model} došlo ke %{count} chybám a nebylo možné
-          jej uložit
+        one: "Objekt %{model} se nepodařilo uložit. Nalezena %{count} chyba."
+        few: "Objekt %{model} se nepodařilo uložit. Nalezeny %{count} chyby."
+        many: "Objekt %{model} se nepodařilo uložit. Počet chyb: %{count}."
+        other: "Objekt %{model} se nepodařilo uložit. Nalezeno %{count} chyb."
   helpers:
     select:
-      prompt: Prosím vyberte si
+      prompt: "Vyberte možnost"
+      search_placeholder: "Hledat"
+      default_label: "Vybrat…"
     submit:
       create: Vytvořit %{model}
       submit: Uložit %{model}
@@ -158,28 +198,44 @@ cs:
   number:
     currency:
       format:
-        delimiter: " "
-        format: "%n %u"
-        precision: 2
-        separator: ","
         significant: false
         strip_insignificant_zeros: false
-        unit: Kč
     format:
-      delimiter: "."
+      delimiter: " "
       precision: 3
+      round_mode: default
       separator: ","
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: "%n %u"
+        format: "%n %u"
         units:
-          billion: Miliarda
-          million: Milion
-          quadrillion: Biliarda
-          thousand: Tisíc
-          trillion: Bilion
+          billion:
+            one: miliarda
+            few: miliardy
+            many: miliardy
+            other: miliard
+          million:
+            one: milion
+            few: miliony
+            many: milionu
+            other: milionů
+          quadrillion:
+            one: biliarda
+            few: biliardy
+            many: biliardy
+            other: biliard
+          thousand:
+            one: tisíc
+            few: tisíce
+            many: tisíce
+            other: tisíců
+          trillion:
+            one: bilion
+            few: biliony
+            many: bilionu
+            other: bilionů
           unit: ''
       format:
         delimiter: ''
@@ -187,20 +243,23 @@ cs:
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: "%n %u"
+        format: "%n %u"
         units:
           byte:
-            few: B
             one: B
+            few: B
+            many: B
             other: B
+          eb: EB
           gb: GB
           kb: KB
           mb: MB
+          pb: PB
           tb: TB
     percentage:
       format:
         delimiter: ''
-        format: "%n%"
+        format: "%n %"
     precision:
       format:
         delimiter: ''
@@ -212,7 +271,7 @@ cs:
   time:
     am: dopoledne
     formats:
-      default: "%a %e. %B %Y %H:%M %z"
-      long: "%A %e. %B %Y %H:%M"
-      short: "%e. %-m. %H:%M"
+      default: "%a %-d. %-m. %Y %H:%M %z"
+      long: "%-d. %-m. %Y %H:%M"
+      short: "%-d. %-m. %H:%M"
     pm: odpoledne

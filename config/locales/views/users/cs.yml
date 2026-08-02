@@ -1,0 +1,31 @@
+---
+cs:
+  users:
+    destroy:
+      success: "Účet byl odstraněn."
+    update:
+      ai_enabled: "Asistent AI byl zapnut."
+      ai_disabled: "Asistent AI byl vypnut."
+      email_change_failed: "E-mailovou adresu se nepodařilo změnit."
+      email_change_initiated: "Pokyny k potvrzení byly odeslány na novou e-mailovou adresu."
+      success: "Profil byl aktualizován."
+    resend_confirmation_email:
+      success: "Nový potvrzovací e-mail byl zařazen k odeslání."
+      no_pending_change: "Na potvrzení momentálně nečeká žádná změna e-mailové adresy."
+    reset:
+      success: "Účet byl obnoven do výchozího stavu. Data budou za chvíli odstraněna na pozadí."
+      unauthorized: "K provedení této akce nemáte oprávnění."
+    reset_with_sample_data:
+      success: "Účet byl obnoven do výchozího stavu a připravují se ukázková data. Za chvíli se zobrazí."
+    roles:
+      admin: "Správce"
+      member: "Člen"
+      super_admin: "Hlavní správce"
+    user_menu:
+      aria_label: "Otevřít nabídku účtu"
+      version: "Verze"
+      settings: "Nastavení"
+      changelog: "Přehled změn"
+      feedback: "Zpětná vazba"
+      contact: "Kontakt"
+      log_out: "Odhlásit se"

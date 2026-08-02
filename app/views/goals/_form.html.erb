@@ -2,9 +2,16 @@
 
 <div data-controller="goal-form"
      data-goal-form-currency-value="<%= Current.family.primary_currency_code %>"
+     data-goal-form-locale-value="<%= I18n.locale %>"
      data-goal-form-require-account-value="<%= !goal.persisted? %>"
      data-goal-form-suggested-with-date-value="<%= t("goals.form.suggested_with_date") %>"
-     data-goal-form-suggested-no-date-value="<%= t("goals.form.suggested_no_date") %>">
+     data-goal-form-suggested-no-date-value="<%= t("goals.form.suggested_no_date") %>"
+     data-goal-form-account-count-labels-value="<%= {
+       one: t("goals.form.account_count.one"),
+       few: t("goals.form.account_count.few"),
+       many: t("goals.form.account_count.many"),
+       other: t("goals.form.account_count.other")
+     }.to_json %>">
   <%= styled_form_with model: goal,
                        url: goal.persisted? ? goal_path(goal) : goals_path,
                        method: goal.persisted? ? :patch : :post,

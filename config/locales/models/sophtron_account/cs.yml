@@ -1,0 +1,7 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        sophtron_account:
+          no_balance: Účet Sophtron musí mít aktuální nebo disponibilní zůstatek.

@@ -1,0 +1,7 @@
+---
+cs:
+  other_liabilities:
+    edit:
+      edit: "Upravit: %{account}"
+    new:
+      title: "Zadat údaje o závazku"

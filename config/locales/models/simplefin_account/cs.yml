@@ -1,0 +1,7 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        simplefin_account:
+          no_balance: Účet SimpleFIN musí mít aktuální nebo disponibilní zůstatek.

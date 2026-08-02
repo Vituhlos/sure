@@ -1,6 +1,15 @@
 ---
 en:
   coinstats_items:
+    errors:
+      missing_wallet_fields: Wallet address or blockchain is missing.
+      portfolio_missing: CoinStats did not return the portfolio identifier.
+      provider_not_configured: CoinStats is not configured.
+      unsupported_exchange: "Unsupported exchange connection: %{connection}"
+      missing_exchange_fields: "Required exchange fields are missing: %{fields}"
+      exchange_required: "Select an exchange."
+      exchange_credentials_required: "Enter the exchange credentials."
+      exchange_link_failed: "Failed to link the exchange."
     create:
       success: CoinStats provider connection configured successfully.
       default_name: CoinStats Connection

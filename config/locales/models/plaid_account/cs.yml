@@ -1,0 +1,7 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        plaid_account:
+          no_balance: Účet Plaid musí mít aktuální nebo disponibilní zůstatek.

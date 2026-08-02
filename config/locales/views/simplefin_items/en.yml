@@ -1,6 +1,35 @@
 ---
 en:
   simplefin_items:
+    defaults:
+      name: SimpleFIN Connection
+    sync_status:
+      no_accounts: No accounts found
+      synced:
+        one: "%{count} account synced"
+        other: "%{count} accounts synced"
+      synced_with_setup: "%{linked} synced, %{unlinked} need setup"
+    institution_summary:
+      none: No institutions connected
+      count:
+        one: "%{count} institution"
+        other: "%{count} institutions"
+    rate_limit:
+      message: "You've hit SimpleFIN's daily refresh limit. Please try again after the bridge refreshes (up to 24 hours)."
+    stale_sync:
+      last_successful:
+        one: "Last successful sync was %{count} day ago. Your SimpleFIN connection may need attention."
+        other: "Last successful sync was %{count} days ago. Your SimpleFIN connection may need attention."
+      no_transactions:
+        one: "No new transactions in %{count} day. Check your SimpleFIN dashboard to ensure your bank connections are active."
+        other: "No new transactions in %{count} days. Check your SimpleFIN dashboard to ensure your bank connections are active."
+    attention:
+      connection_needs_update: Connection needs update
+      accounts_need_setup: Accounts need setup
+    select_option: "Select %{type}"
+    select_option_attention: "Please select a %{type}"
+    subtype: subtype
+    type: type
     new:
       title: Connect SimpleFIN
       setup_token: Setup token
@@ -23,7 +52,7 @@ en:
         blank_token: Please enter a SimpleFIN setup token.
         invalid_token: Invalid setup token. Please check that you copied the complete token from SimpleFIN Bridge.
         token_compromised: The setup token may be compromised, expired, or already used. Please create a new one.
-        update_failed: "Failed to update connection: %{message}"
+        update_failed: "Failed to update SimpleFIN connection: %{message}"
         unexpected: An unexpected error occurred. Please try again.
     edit:
       setup_token:
@@ -42,6 +71,22 @@ en:
       title: Set Up Your SimpleFin Accounts
       header_subtitle: Choose the correct account types for your imported accounts
       choose_account_type: "Choose the correct account type for each SimpleFin account:"
+      account_types:
+        skip: Skip this account
+        depository: Checking or Savings Account
+        credit_card: Credit Card
+        investment: Investment Account
+        crypto: Crypto Account
+        loan: Loan or Mortgage
+        other_asset: Other Asset
+      subtype_labels:
+        depository: "Account Subtype:"
+        investment: "Investment Type:"
+        loan: "Loan Type:"
+      subtype_messages:
+        credit_card: Credit cards will be automatically set up as credit card accounts.
+        crypto: Crypto accounts track cryptocurrency holdings.
+        other_asset: No additional options needed for Other Assets.
       account_type_checking_savings: Checking or Savings
       account_type_checking_savings_desc: Regular bank accounts
       account_type_credit_card: Credit Card
@@ -124,12 +169,15 @@ en:
       reconciled_details_note: "(see sync summary for details)"
       duplicate_accounts_skipped: "Some accounts were skipped as duplicates — use 'Link existing accounts' to merge."
     select_existing_account:
+      dialog_title: Link SimpleFIN account
       title: "Link %{account_name} to SimpleFIN"
       description: Select a SimpleFIN account to link to your existing account
+      balance_label: "Balance:"
       cancel: Cancel
       link_account: Link account
       no_accounts_found: "No SimpleFIN accounts found for this %{moniker}."
       wait_for_sync: If you just connected or synced, try again after the sync completes.
+      check_provider_health: Check the SimpleFIN connection status in Provider Settings.
       unlink_to_move: To move a link, first unlink it from the account’s actions menu.
       all_accounts_already_linked: All SimpleFIN accounts appear to be linked already.
       currently_linked_to: "Currently linked to: %{account_name}"

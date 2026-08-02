@@ -22,4 +22,11 @@ class ApplicationMailer < ActionMailer::Base
     def brand_name
       Rails.configuration.x.brand_name
     end
+
+    def locale_for(user = nil, family: nil)
+      user&.locale.presence ||
+        user&.family&.locale.presence ||
+        family&.locale.presence ||
+        I18n.default_locale
+    end
 end

@@ -168,7 +168,7 @@ class SimplefinItemsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to accounts_path
-    assert_equal "SimpleFIN connection updated.", flash[:notice]
+    assert_equal I18n.t("simplefin_items.update.success"), flash[:notice]
   end
 
   test "should handle update with invalid token" do
@@ -241,7 +241,7 @@ class SimplefinItemsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to accounts_path
-    assert_equal "SimpleFIN connection updated.", flash[:notice]
+    assert_equal I18n.t("simplefin_items.update.success"), flash[:notice]
 
     # Verify the same SimpleFIN item was updated (not a new one created)
     @simplefin_item.reload

@@ -1,0 +1,58 @@
+---
+cs:
+  activerecord:
+    attributes:
+      import:
+        col_sep: "Oddělovač sloupců"
+        col_seps:
+          comma: "Čárka (,)"
+          semicolon: "Středník (;)"
+        currency: "Měna"
+        number_format: "Formát čísla"
+    errors:
+      models:
+        import:
+          duplicate_headers: "Záhlaví CSV po normalizaci obsahuje duplicitní sloupce: %{columns}"
+          attributes:
+            raw_file_str:
+              invalid_csv_format: "nemá platný formát CSV"
+            account:
+              wrong_family: "musí patřit do vaší domácnosti"
+            import_session:
+              wrong_family: "musí patřit do vaší domácnosti"
+            sequence:
+              required_for_session_chunk: "je u částí importní relace povinné"
+            checksum:
+              required_for_session_chunk: "je u částí importní relace povinný"
+            summary:
+              must_be_object: "musí být objekt"
+            error_details:
+              must_be_object: "musí být objekt"
+            rows_to_skip:
+              outside_file: "musí být menší než počet řádků v souboru (%{line_count})"
+        import/row:
+          attributes:
+            base:
+              unknown_amount_type_strategy: "Import používá neznámý způsob určení typu částky: %{strategy}"
+            amount:
+              blank: "je nutné zadat"
+            date:
+              invalid_format: "musí přesně odpovídat formátu %{expected_format}"
+              outside_supported_range: "musí být v rozmezí od %{min_date} do %{max_date}"
+            currency:
+              invalid_code: "není platný kód měny"
+        import_session:
+          attributes:
+            import_type:
+              invalid_type: "musí mít hodnotu SureImport"
+            summary:
+              must_be_object: "musí být objekt"
+            error_details:
+              must_be_object: "musí být objekt"
+        import_source_mapping:
+          attributes:
+            family:
+              session_mismatch: "musí odpovídat importní relaci"
+            target:
+              missing: "musí existovat"
+              wrong_family: "musí patřit do vaší domácnosti"

@@ -17,7 +17,7 @@ class UpItem::Importer
     Rails.logger.info "UpItem::Importer - Starting import for item #{up_item.id}"
 
     accounts_data = fetch_accounts_data
-    return failed_result("Failed to fetch accounts data") unless accounts_data
+    return failed_result(I18n.t("up_items.importer.fetch_accounts_failed")) unless accounts_data
 
     up_item.upsert_up_snapshot!(accounts_data)
 
@@ -148,7 +148,7 @@ class UpItem::Importer
     rescue JSON::ParserError => e
       Rails.logger.error "UpItem::Importer - Failed to parse transaction response for account #{up_account.id}: #{e.class}"
       capture_sync_error("Failed to parse Up transactions response", e, up_account: up_account)
-      { success: false, transactions_count: 0, error: "Failed to parse response" }
+      { success: false, transactions_count: 0, error: I18n.t("up_items.importer.parse_response_failed") }
     rescue => e
       Rails.logger.error "UpItem::Importer - Unexpected error fetching transactions for account #{up_account.id}: #{e.class}"
       Rails.logger.error e.backtrace.join("\n")

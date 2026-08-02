@@ -1,6 +1,6 @@
-Demo family refresh has completed.
+<%= t(".heading") %>
 
-Period (UTC): <%= @period_start.iso8601 %> to <%= @period_end.iso8601 %>
-Old demo family: <%= @old_family_name || "not found" %><% if @old_family_id %> (ID: <%= @old_family_id %>)<% end %>
-Unique login sessions for old demo family in period: <%= @old_family_session_count %>
-New family accounts created in period: <%= @newly_created_families_count %>
+<%= t(".period", start: @period_start.iso8601, end: @period_end.iso8601) %>
+<%= t(".old_family", name: @old_family_name || t(".not_found")) %><% if @old_family_id %> (ID: <%= @old_family_id %>)<% end %>
+<%= t(".sessions_count", count: @old_family_session_count) %>
+<%= t(".families_count", count: @newly_created_families_count) %>

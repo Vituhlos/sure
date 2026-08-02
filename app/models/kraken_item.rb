@@ -36,7 +36,7 @@ class KrakenItem < ApplicationRecord
 
   def import_latest_kraken_data
     provider = kraken_provider
-    raise StandardError, "Kraken credentials not configured" unless provider
+    raise StandardError, I18n.t("kraken_item.syncer.credentials_invalid") unless provider
 
     KrakenItem::Importer.new(self, kraken_provider: provider).import
   rescue StandardError => e

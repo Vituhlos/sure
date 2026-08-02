@@ -1,0 +1,32 @@
+---
+cs:
+  credit_cards:
+    edit:
+      edit: "Upravit: %{account}"
+    form:
+      annual_fee: "Roční poplatek"
+      annual_fee_placeholder: "99"
+      apr: "Roční úroková sazba (APR)"
+      apr_placeholder: "15,99"
+      available_credit: "Dostupný úvěrový rámec"
+      available_credit_placeholder: "10 000"
+      expiration_date: "Datum platnosti"
+      minimum_payment: "Minimální splátka"
+      minimum_payment_placeholder: "100"
+      treat_balance_as_available_credit_description: "Zapněte, pokud banka uvádí jako zůstatek této karty zbývající dostupný úvěrový rámec místo dlužné částky. Dluh se pak vypočítá z úvěrového limitu oznámeného bankou. Pokud ho banka neposkytne, použije se hodnota z pole Dostupný úvěrový rámec."
+      treat_balance_as_available_credit_label: "Zůstatek představuje dostupný úvěrový rámec"
+    new:
+      title: "Zadat údaje o kreditní kartě"
+    overview:
+      amount_owed: "Dlužná částka"
+      annual_fee: "Roční poplatek"
+      apr: "Roční úroková sazba (APR)"
+      available_credit: "Dostupný úvěrový rámec"
+      edit_account_details: "Upravit údaje o účtu"
+      expiration_date: "Datum platnosti"
+      minimum_payment: "Minimální splátka"
+      unknown: "Neuvedeno"
+    subtypes:
+      credit_card:
+        long: "Kreditní karta"
+        short: "Kreditní karta"

@@ -1,0 +1,7 @@
+cs:
+  simplefin_items:
+    update:
+      success: "Připojení SimpleFIN bylo aktualizováno."
+      errors:
+        blank_token: "Chybí přístupový token SimpleFIN. Zadejte token nebo pokračujte volbou Propojit existující účty."
+        update_failed: "Připojení SimpleFIN se nepodařilo aktualizovat: %{message}"

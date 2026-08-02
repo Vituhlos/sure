@@ -1,0 +1,13 @@
+---
+cs:
+  activemodel:
+    errors:
+      models:
+        trend:
+          attributes:
+            current:
+              must_be_of_the_same_type_as_previous: "musí být stejného typu jako předchozí hodnota"
+              must_be_of_type_money_numeric_or_nil: "musí být typu Money, Numeric nebo nil"
+            previous:
+              must_be_of_the_same_type_as_current: "musí být stejného typu jako aktuální hodnota"
+              must_be_of_type_money_numeric_or_nil: "musí být typu Money, Numeric nebo nil"

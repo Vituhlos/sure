@@ -8,7 +8,8 @@ class Transactions::BulkDeletionsController < ApplicationController
                       .where(parent_entry_id: nil)
     destroyed = entries_scope.destroy_by(id: bulk_delete_params[:entry_ids])
     destroyed.map(&:account).uniq.each(&:sync_later)
-    redirect_back_or_to transactions_url, notice: "#{destroyed.count} transaction#{destroyed.count == 1 ? "" : "s"} deleted"
+    redirect_back_or_to transactions_url,
+                        notice: t(".success", count: destroyed.count)
   end
 
   private

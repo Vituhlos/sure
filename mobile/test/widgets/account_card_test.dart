@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sure_mobile/models/account.dart';
+import 'package:sure_mobile/l10n/app_localizations.dart';
 import 'package:sure_mobile/providers/privacy_provider.dart';
 import 'package:sure_mobile/services/preferences_service.dart';
 import 'package:sure_mobile/theme/sure_theme.dart';
@@ -31,6 +32,8 @@ void main() {
         create: (_) => PrivacyProvider(),
         child: MaterialApp(
           theme: SureTheme.light,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           home: Scaffold(body: AccountCard(account: a)),
         ),
       ),

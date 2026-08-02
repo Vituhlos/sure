@@ -19,7 +19,10 @@
     </div>
   </td>
   <td class="py-3 px-4 text-sm text-secondary align-middle">
-    <%= provider_merchant.source&.titleize %>
+    <%= t(
+      "family_merchants.provider_sources.#{provider_merchant.source}",
+      default: provider_merchant.source&.titleize
+    ) %>
   </td>
   <td class="py-3 px-4 text-sm text-right align-middle">
     <%= render DS::Menu.new do |menu| %>

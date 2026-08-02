@@ -1,0 +1,230 @@
+---
+cs:
+  simplefin_items:
+    defaults:
+      name: Připojení SimpleFIN
+    sync_status:
+      no_accounts: Nebyly nalezeny žádné účty
+      synced:
+        one: "Synchronizován %{count} účet"
+        few: "Synchronizovány %{count} účty"
+        many: "Synchronizováno %{count} účtu"
+        other: "Synchronizováno %{count} účtů"
+      synced_with_setup: "Synchronizováno: %{linked}, nastavení vyžaduje: %{unlinked}"
+    institution_summary:
+      none: Nejsou připojeny žádné instituce
+      count:
+        one: "%{count} instituce"
+        few: "%{count} instituce"
+        many: "%{count} instituce"
+        other: "%{count} institucí"
+    rate_limit:
+      message: "Dosáhli jste denního limitu aktualizací SimpleFIN. Zkuste to znovu po aktualizaci služby Bridge (nejpozději za 24 hodin)."
+    stale_sync:
+      last_successful:
+        one: "Poslední úspěšná synchronizace proběhla před %{count} dnem. Připojení SimpleFIN může vyžadovat pozornost."
+        few: "Poslední úspěšná synchronizace proběhla před %{count} dny. Připojení SimpleFIN může vyžadovat pozornost."
+        many: "Poslední úspěšná synchronizace proběhla před %{count} dne. Připojení SimpleFIN může vyžadovat pozornost."
+        other: "Poslední úspěšná synchronizace proběhla před %{count} dny. Připojení SimpleFIN může vyžadovat pozornost."
+      no_transactions:
+        one: "Po dobu %{count} dne nepřibyla žádná nová transakce. Na hlavním panelu SimpleFIN zkontrolujte, zda jsou připojení k bankám aktivní."
+        few: "Po dobu %{count} dnů nepřibyly žádné nové transakce. Na hlavním panelu SimpleFIN zkontrolujte, zda jsou připojení k bankám aktivní."
+        many: "Po dobu %{count} dne nepřibyly žádné nové transakce. Na hlavním panelu SimpleFIN zkontrolujte, zda jsou připojení k bankám aktivní."
+        other: "Po dobu %{count} dnů nepřibyly žádné nové transakce. Na hlavním panelu SimpleFIN zkontrolujte, zda jsou připojení k bankám aktivní."
+    attention:
+      connection_needs_update: Připojení je třeba aktualizovat
+      accounts_need_setup: Účty je třeba nastavit
+    select_option: "Vyberte %{type}"
+    select_option_attention: "Vyberte %{type}"
+    subtype: podtyp
+    type: typ
+    new:
+      title: Připojit SimpleFIN
+      setup_token: Nastavovací token
+      setup_token_placeholder: vložte nastavovací token SimpleFIN
+      connect: Připojit
+      cancel: Zrušit
+    create:
+      success: Připojení SimpleFIN bylo úspěšně přidáno. Vaše účty se zobrazí zanedlouho po dokončení synchronizace na pozadí.
+      errors:
+        blank_token: Zadejte nastavovací token SimpleFIN.
+        invalid_token: Nastavovací token není platný. Zkontrolujte, zda jste zkopírovali celý token ze služby SimpleFIN Bridge.
+        token_compromised: Nastavovací token mohl být prozrazen, vypršela jeho platnost nebo už byl použit. Vytvořte nový.
+        create_failed: "Připojení se nezdařilo: %{message}"
+        unexpected: Došlo k neočekávané chybě. Zkuste to znovu.
+    destroy:
+      success: Připojení SimpleFIN bude odebráno
+    update:
+      success: Připojení SimpleFIN bylo úspěšně aktualizováno. Vaše účty se znovu připojují.
+      errors:
+        blank_token: Zadejte nastavovací token SimpleFIN.
+        invalid_token: Nastavovací token není platný. Zkontrolujte, zda jste zkopírovali celý token ze služby SimpleFIN Bridge.
+        token_compromised: Nastavovací token mohl být prozrazen, vypršela jeho platnost nebo už byl použit. Vytvořte nový.
+        update_failed: "Aktualizace připojení SimpleFIN se nezdařila: %{message}"
+        unexpected: Došlo k neočekávané chybě. Zkuste to znovu.
+    edit:
+      setup_token:
+        label: "Nastavovací token SimpleFIN:"
+        placeholder: "Sem vložte nastavovací token SimpleFIN…"
+        help_text: "Token by měl být dlouhý řetězec začínající písmeny a číslicemi"
+      title: Aktualizovat připojení SimpleFIN
+      header_subtitle: Získejte nový nastavovací token a znovu připojte svůj účet SimpleFIN
+      connection_needs_update: "Připojení SimpleFIN je třeba aktualizovat:"
+      step_1_html: "Navštivte <a href=\"https://bridge.simplefin.org/simplefin/create\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-link hover:text-link underline\">SimpleFIN Bridge</a> a vytvořte nový nastavovací token"
+      step_2: Zkopírujte token a vložte jej níže
+      step_3: "Kliknutím na „Aktualizovat“ obnovte přístup"
+      update: Aktualizovat
+      cancel: Zrušit
+    setup_accounts:
+      title: Nastavení účtů SimpleFIN
+      header_subtitle: Vyberte správné typy importovaných účtů
+      choose_account_type: "Pro každý účet SimpleFIN vyberte správný typ účtu:"
+      account_types:
+        skip: Přeskočit tento účet
+        depository: Běžný nebo spořicí účet
+        credit_card: Kreditní karta
+        investment: Investiční účet
+        crypto: Kryptoměnový účet
+        loan: Úvěr nebo hypotéka
+        other_asset: Jiné aktivum
+      subtype_labels:
+        depository: "Podtyp účtu:"
+        investment: "Typ investice:"
+        loan: "Typ úvěru:"
+      subtype_messages:
+        credit_card: Kreditní karty budou automaticky nastaveny jako účty kreditních karet.
+        crypto: Kryptoměnové účty slouží ke sledování držených kryptoměn.
+        other_asset: U jiných aktiv nejsou potřeba žádné další možnosti.
+      account_type_checking_savings: Běžný nebo spořicí účet
+      account_type_checking_savings_desc: Běžné bankovní účty
+      account_type_credit_card: Kreditní karta
+      account_type_credit_card_desc: Účty kreditních karet
+      account_type_investment: Investiční účet
+      account_type_investment_desc: "Makléřské účty a účty 401(k) či IRA"
+      account_type_loan: Úvěr nebo hypotéka
+      account_type_loan_desc: Dluhové účty
+      account_type_other_asset: Jiné aktivum
+      account_type_other_asset_desc: Vše ostatní
+      transaction_history_title: "Historie transakcí:"
+      transaction_history_description_html: "SimpleFIN obvykle poskytuje historii transakcí za <strong>60–90 dní</strong> v závislosti na vaší bance. Po počátečním nastavení se budou nové transakce automaticky synchronizovat. Dostupnost starších údajů se liší podle instituce a typu účtu."
+      account_type_label: "Typ účtu:"
+      create_accounts: Vytvořit účty
+      creating_accounts: Vytváření účtů…
+      cancel: Zrušit
+      account_card:
+        balance: "Zůstatek"
+      activity:
+        recent:
+          one: "1 transakce • poslední %{when}"
+          few: "%{count} transakce • poslední %{when}"
+          many: "%{count} transakce • poslední %{when}"
+          other: "%{count} transakcí • poslední %{when}"
+        dormant: "Žádná aktivita po dobu %{days} dní"
+        empty: "Dosud nebyly importovány žádné transakce"
+        likely_closed: "Žádná nedávná aktivita a nulový zůstatek — karta mohla být zrušena nebo nahrazena"
+        today: "dnes"
+        yesterday: "včera"
+        days_ago:
+          one: "před 1 dnem"
+          few: "před %{count} dny"
+          many: "před %{count} dne"
+          other: "před %{count} dny"
+      stale_accounts:
+        title: "Účty, které už SimpleFIN neposkytuje"
+        description: "Tyto účty existují ve vaší databázi, ale SimpleFIN je již neposkytuje. Může k tomu dojít při změně nastavení účtů u poskytovatele."
+        action_prompt: "Co chcete udělat?"
+        action_delete: "Smazat účet i všechny transakce"
+        action_move: "Přesunout transakce do:"
+        action_skip: "Prozatím přeskočit"
+        transaction_count:
+          one: "%{count} transakce"
+          few: "%{count} transakce"
+          many: "%{count} transakce"
+          other: "%{count} transakcí"
+    complete_account_setup:
+      all_skipped: "Všechny účty byly přeskočeny. Nebyl vytvořen žádný účet."
+      no_accounts: "Nejsou zde žádné účty k nastavení."
+      success:
+        one: "Úspěšně vytvořen %{count} účet SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        few: "Úspěšně vytvořeny %{count} účty SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        many: "Úspěšně vytvořeno %{count} účtu SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        other: "Úspěšně vytvořeno %{count} účtů SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+      stale_accounts_processed: "Zastaralé účty: smazáno %{deleted}, přesunuto %{moved}."
+      stale_accounts_errors:
+        one: "Akce u %{count} zastaralého účtu se nezdařila. Podrobnosti najdete v protokolech."
+        few: "Akce u %{count} zastaralých účtů se nezdařily. Podrobnosti najdete v protokolech."
+        many: "Akce u %{count} zastaralého účtu se nezdařily. Podrobnosti najdete v protokolech."
+        other: "Akce u %{count} zastaralých účtů se nezdařily. Podrobnosti najdete v protokolech."
+    simplefin_item:
+      add_new: Přidat nové připojení
+      confirm_accept: Smazat připojení
+      confirm_body: Tímto trvale smažete všechny účty v této skupině i všechna související data.
+      confirm_title: Smazat připojení SimpleFIN?
+      delete: Smazat
+      deletion_in_progress: "(probíhá mazání…)"
+      error: Při synchronizaci dat došlo k chybě
+      no_accounts_description: Toto připojení zatím nemá žádné synchronizované účty.
+      no_accounts_title: Nebyly nalezeny žádné účty
+      requires_update: Znovu připojit
+      setup_needed: Nové účty jsou připraveny k nastavení
+      setup_description: Vyberte typy nově importovaných účtů SimpleFIN.
+      setup_action: Nastavit nové účty
+      setup_accounts_menu: Nastavit účty
+      more_accounts_available:
+        one: "K nastavení je k dispozici ještě %{count} účet"
+        few: "K nastavení jsou k dispozici ještě %{count} účty"
+        many: "K nastavení je k dispozici ještě %{count} účtu"
+        other: "K nastavení je k dispozici ještě %{count} účtů"
+      accounts_skipped_tooltip: "Některé účty byly přeskočeny kvůli chybám při synchronizaci"
+      accounts_skipped_label: "Přeskočeno: %{count}"
+      rate_limited_ago: "Omezeno limitem požadavků (před %{time})"
+      rate_limited_recently: "Nedávno omezeno limitem požadavků"
+      status: Poslední synchronizace před %{timestamp}
+      status_never: Zatím nesynchronizováno
+      status_with_summary: "Poslední synchronizace před %{timestamp} • %{summary}"
+      syncing: Synchronizace…
+      update: Aktualizovat
+      stale_pending_note: "(nezahrnuto do rozpočtů)"
+      stale_pending_accounts: "v účtech: %{accounts}"
+      reconciled_details_note: "(podrobnosti najdete v souhrnu synchronizace)"
+      duplicate_accounts_skipped: "Některé účty byly přeskočeny jako duplicitní — ke sloučení použijte možnost „Propojit existující účty“."
+    select_existing_account:
+      dialog_title: Propojit účet SimpleFIN
+      title: "Propojit účet %{account_name} se službou SimpleFIN"
+      description: Vyberte účet SimpleFIN, který chcete propojit se svým existujícím účtem
+      balance_label: "Zůstatek:"
+      cancel: Zrušit
+      link_account: Propojit účet
+      no_accounts_found: "Pro tento typ účtu (%{moniker}) nebyly nalezeny žádné účty SimpleFIN."
+      wait_for_sync: Pokud jste se právě připojili nebo spustili synchronizaci, zkuste to znovu po jejím dokončení.
+      check_provider_health: Zkontrolujte stav připojení SimpleFIN v nastavení poskytovatelů.
+      unlink_to_move: Chcete-li propojení změnit, nejprve je zrušte v nabídce akcí daného účtu.
+      all_accounts_already_linked: Zdá se, že všechny účty SimpleFIN jsou již propojeny.
+      currently_linked_to: "Aktuálně propojeno s účtem: %{account_name}"
+    link_existing_account:
+      success: Účet byl úspěšně propojen se službou SimpleFIN
+      errors:
+        only_manual: Propojit lze pouze ručně vedené účty
+        different_provider: Tento účet je propojen s jiným poskytovatelem. Nejprve toto propojení zrušte a poté účet propojte se službou SimpleFIN.
+        invalid_simplefin_account: Vybraný účet SimpleFIN není platný
+    dismiss_replacement_suggestion:
+      dismissed: Návrh na nahrazení byl skryt
+    replacement_prompt:
+      title: "Vaše karta od instituce %{institution} mohla být nahrazena"
+      description: "Účet „%{account_name}“ je propojen s kartou „%{old_name}“, která nemá žádnou nedávnou aktivitu a má nulový zůstatek. U stejné instituce je nyní aktivní nová karta „%{new_name}“. Změňte propojení, aby vaše historie zůstala zachována."
+      relink: Propojit s novou kartou
+      confirm_title: Propojit s novou kartou?
+      confirm_body: "Účet „%{account_name}“ bude propojen s kartou „%{new_name}“. Historie transakcí zůstane zachována a budoucí transakce se budou načítat z nové karty."
+      dismiss_aria: Skrýt návrh na nahrazení
+    reconciled_status:
+      message:
+        one: "Sloučena %{count} duplicitní čekající transakce"
+        few: "Sloučeny %{count} duplicitní čekající transakce"
+        many: "Sloučeno %{count} duplicitní čekající transakce"
+        other: "Sloučeno %{count} duplicitních čekajících transakcí"
+    stale_pending_status:
+      message:
+        one: "%{count} čekající transakce starší než %{days} dní"
+        few: "%{count} čekající transakce starší než %{days} dní"
+        many: "%{count} čekající transakce starší než %{days} dní"
+        other: "%{count} čekajících transakcí starších než %{days} dní"

@@ -48,7 +48,7 @@ class Assistant::External::Client
     rescue *TRANSIENT_ERRORS => e
       if streaming_started
         Rails.logger.warn("[External::Client] Stream interrupted: #{e.class} - #{e.message}")
-        raise Assistant::Error, "External assistant connection was interrupted."
+        raise Assistant::Error, I18n.t("assistant.external.connection_interrupted")
       end
 
       retries += 1
@@ -58,7 +58,7 @@ class Assistant::External::Client
         retry
       end
       Rails.logger.error("[External::Client] Unreachable after #{MAX_RETRIES + 1} attempts: #{e.class} - #{e.message}")
-      raise Assistant::Error, "External assistant is temporarily unavailable."
+      raise Assistant::Error, I18n.t("assistant.external.temporarily_unavailable")
     end
   end
 
@@ -72,7 +72,7 @@ class Assistant::External::Client
       http.request(request) do |response|
         unless response.is_a?(Net::HTTPSuccess)
           Rails.logger.warn("[External::Client] Upstream HTTP #{response.code}: #{response.body.to_s.truncate(500)}")
-          raise Assistant::Error, "External assistant returned HTTP #{response.code}."
+          raise Assistant::Error, I18n.t("assistant.external.http_error", code: response.code)
         end
 
         response.read_body do |chunk|
@@ -80,7 +80,7 @@ class Assistant::External::Client
           buffer << chunk
 
           if buffer.bytesize > MAX_SSE_BUFFER
-            raise Assistant::Error, "External assistant stream exceeded maximum buffer size."
+            raise Assistant::Error, I18n.t("assistant.external.buffer_exceeded")
           end
 
           while (line_end = buffer.index("\n"))

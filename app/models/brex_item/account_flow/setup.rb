@@ -74,7 +74,7 @@ class BrexItem::AccountFlow
           options: translate_subtypes("loan", Loan::SUBTYPES)
         },
         "OtherAsset" => {
-          label: I18n.t("brex_items.setup_accounts.subtype_labels.other_asset", default: "Other asset"),
+          label: I18n.t("brex_items.setup_accounts.subtype_labels.other_asset"),
           options: [],
           message: I18n.t("brex_items.setup_accounts.subtype_messages.other_asset")
         }
@@ -226,7 +226,7 @@ class BrexItem::AccountFlow
     def translate_subtypes(type_key, subtypes_hash)
       subtypes_hash.map do |key, value|
         [
-          I18n.t("brex_items.setup_accounts.subtypes.#{type_key}.#{key}", default: value[:long] || key.to_s.humanize),
+          I18n.t("brex_items.setup_accounts.subtypes.#{type_key}.#{key}"),
           key
         ]
       end

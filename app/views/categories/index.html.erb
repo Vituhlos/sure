@@ -13,7 +13,13 @@
         href: destroy_all_categories_path,
         method: :delete,
         icon: "trash-2",
-        confirm: CustomConfirm.for_resource_deletion("all categories", high_severity: true)) %>
+        confirm: CustomConfirm.new(
+          title: t(".delete_all_title"),
+          body: t(".delete_all_subtitle"),
+          btn_text: t(".delete_all_button"),
+          destructive: true,
+          high_severity: true
+        )) %>
   <% end %>
 
   <%= render DS::Link.new(

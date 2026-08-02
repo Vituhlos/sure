@@ -165,7 +165,12 @@ module ApplicationHelper
 
   def currency_label(currency_or_code)
     currency = currency_or_code.is_a?(Money::Currency) ? currency_or_code : Money::Currency.new(currency_or_code)
-    "#{currency.name} (#{currency.iso_code})"
+    "#{localized_currency_name(currency)} (#{currency.iso_code})"
+  end
+
+  def localized_currency_name(currency_or_code)
+    currency = currency_or_code.is_a?(Money::Currency) ? currency_or_code : Money::Currency.new(currency_or_code)
+    I18n.t("currencies.names.#{currency.iso_code}", default: currency.name)
   end
 
   def show_super_admin_bar?

@@ -25,7 +25,7 @@ class Import::UploadsController < ApplicationController
 
       redirect_to import_configuration_path(@import, template_hint: true), notice: t("imports.create.csv_uploaded")
     else
-      flash.now[:alert] = t("import.uploads.show.csv_invalid", default: "Must be valid CSV with headers and at least one row of data")
+      flash.now[:alert] = t("import.uploads.show.csv_invalid")
 
       render :show, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Import::UploadsController < ApplicationController
     def update_sure_import_upload
       uploaded = upload_params[:ndjson_file]
       unless uploaded.present?
-        flash.now[:alert] = t("import.uploads.sure_import.ndjson_invalid", default: "Must be valid NDJSON with at least one record")
+        flash.now[:alert] = t("import.uploads.sure_import.ndjson_invalid")
         render :show, status: :unprocessable_entity
         return
       end
@@ -56,7 +56,7 @@ class Import::UploadsController < ApplicationController
         @import.sync_ndjson_rows_count!
         redirect_to import_path(@import), notice: t("imports.create.ndjson_uploaded")
       else
-        flash.now[:alert] = t("import.uploads.sure_import.ndjson_invalid", default: "Must be valid NDJSON with at least one record")
+        flash.now[:alert] = t("import.uploads.sure_import.ndjson_invalid")
 
         render :show, status: :unprocessable_entity
       end
@@ -68,12 +68,12 @@ class Import::UploadsController < ApplicationController
 
     def handle_qif_upload
       unless QifParser.valid?(csv_str)
-        flash.now[:alert] = "Must be a valid QIF file"
+        flash.now[:alert] = t("import.uploads.handle_qif_upload.invalid_qif")
         render :show, status: :unprocessable_entity and return
       end
 
       unless import_account_id.present?
-        flash.now[:alert] = "Please select an account for the QIF import"
+        flash.now[:alert] = t("import.uploads.handle_qif_upload.account_required")
         render :show, status: :unprocessable_entity and return
       end
 

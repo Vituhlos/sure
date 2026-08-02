@@ -1,0 +1,8 @@
+---
+cs:
+  invitation_mailer:
+    invite_email:
+      accept_button: "Přijmout pozvánku"
+      body: "%{inviter} vám posílá pozvánku do aplikace %{product_name}. Cíl: %{family} – %{moniker}."
+      expiry_notice: "Platnost pozvánky vyprší za %{days} dní."
+      greeting: "Vítejte v aplikaci %{product_name}!"

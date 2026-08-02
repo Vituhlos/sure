@@ -1,0 +1,10 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        invitation:
+          attributes:
+            email:
+              pending_invitation_from_another_family: "already has a pending invitation from another family"
+              already_invited_to_family: "has already been invited to this family"

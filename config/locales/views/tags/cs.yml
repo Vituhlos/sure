@@ -1,0 +1,32 @@
+---
+cs:
+  tags:
+    create:
+      created: "Štítek byl vytvořen."
+      error: "Při vytváření štítku došlo k chybě: %{error}"
+    destroy:
+      deleted: "Štítek byl odstraněn."
+    destroy_all:
+      all_deleted: "Všechny štítky byly odstraněny."
+    edit:
+      edit: "Upravit štítek"
+    form:
+      placeholder: "Název štítku"
+    index:
+      empty: "Zatím žádné štítky"
+      new: "Nový štítek"
+      tags: "Štítky"
+      delete_all: "Odstranit vše"
+      delete_all_title: "Odstranit všechny štítky?"
+      delete_all_body: "Opravdu chcete odstranit všechny štítky? Akci nelze vrátit zpět."
+      delete_all_button: "Odstranit všechny štítky"
+    new:
+      new: "Nový štítek"
+    tag:
+      delete: "Odstranit"
+      edit: "Upravit"
+      delete_title: "Odstranit štítek?"
+      delete_body: "Opravdu chcete odstranit štítek „%{name}“? Akci nelze vrátit zpět."
+      delete_button: "Odstranit štítek"
+    update:
+      updated: "Štítek byl aktualizován."

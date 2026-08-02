@@ -1,5 +1,9 @@
 ---
 en:
+  account:
+    opening_balance:
+      errors:
+        date_before_oldest_entry: "Opening balance date must be before the oldest entry date"
   account_order:
     balance_asc:
       label: Balance (Low to High)
@@ -22,6 +26,12 @@ en:
         family_id: "%{moniker}"
         name: Name
         subtype: Subtype
+    errors:
+      models:
+        account:
+          attributes:
+            owner:
+              different_family: "must belong to the same family as the account"
     models:
       account: Account
       account/credit: Credit Card

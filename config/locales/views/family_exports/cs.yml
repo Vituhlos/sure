@@ -1,0 +1,48 @@
+---
+cs:
+  family_exports:
+    access_denied: "Přístup odepřen"
+    create:
+      success: "Export byl zahájen. Brzy bude připraven ke stažení."
+    delete_confirmation: "Opravdu chcete tento export odstranit? Akci nelze vrátit zpět."
+    delete_failed_confirmation: "Opravdu chcete tento neúspěšný export odstranit?"
+    cancel:
+      cancelled: "Export byl označen jako neúspěšný. Nyní můžete vytvořit nový."
+      not_cancellable: "Export nyní nelze označit jako neúspěšný, protože jeho úloha může stále běžet. Zkuste to znovu, až bude alespoň hodinu bez aktivity."
+    destroy:
+      success: "Export byl odstraněn."
+    export_not_ready: "Export zatím není připraven ke stažení"
+    exporting: "Probíhá export…"
+    new:
+      dialog_title: "Exportovat data"
+      dialog_subtitle: "Stáhněte si všechna svá finanční data"
+      whats_included: "Obsah exportu:"
+      accounts_and_balances: "Všechny účty a zůstatky"
+      transaction_history: "Historie transakcí"
+      investment_trades: "Investiční obchody"
+      categories_tags_rules: "Kategorie, štítky a pravidla"
+      note_label: "Upozornění"
+      note_description: "Export obsahuje všechna vaše data, zpět však lze prostřednictvím importu CSV načíst pouze některá z nich. Podporovány jsou importy účtů, transakcí včetně kategorií a štítků a investičních obchodů. Ostatní údaje o účtech slouží pouze pro vaši evidenci a zpět je importovat nelze."
+      cancel: "Zrušit"
+      export_data: "Exportovat data"
+    index:
+      title: "Exporty"
+      new: "Nový export"
+    table:
+      title: "Exporty"
+      header:
+        date: "Datum"
+        filename: "Název souboru"
+        status: "Stav"
+        actions: "Akce"
+      row:
+        status:
+          in_progress: "Probíhá"
+          complete: "Dokončeno"
+          failed: "Neúspěšné"
+        actions:
+          delete: "Odstranit"
+          download: "Stáhnout"
+          mark_failed: "Označit jako neúspěšný"
+          confirm_mark_failed: "Tento export je delší dobu bez aktivity a jeho úloha na pozadí byla pravděpodobně přerušena. Chcete jej označit jako neúspěšný? Potom můžete ihned vytvořit nový export."
+      empty: "Zatím žádné exporty."

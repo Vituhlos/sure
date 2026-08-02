@@ -149,7 +149,7 @@ class TransactionsProvider with ChangeNotifier {
         'TransactionsProvider',
         'fetchTransactions failed with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -255,7 +255,7 @@ class TransactionsProvider with ChangeNotifier {
             'TransactionsProvider',
             'Upload failed with ${e.runtimeType}',
           );
-          _error = 'Failed to upload transaction. It will sync when online.';
+        _error = 'transaction_upload_failed';
           notifyListeners();
         });
       } else {
@@ -269,7 +269,7 @@ class TransactionsProvider with ChangeNotifier {
         'TransactionsProvider',
         'Failed to create transaction with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
       notifyListeners();
       return false;
     }
@@ -295,13 +295,13 @@ class TransactionsProvider with ChangeNotifier {
     try {
       final transactionId = transaction.id;
       if (transactionId == null || transactionId.isEmpty) {
-        _error = 'Only synced transactions can be edited from mobile.';
+        _error = 'transaction_synced_only';
         return false;
       }
 
       final isOnline = _connectivityService?.isOnline ?? false;
       if (!isOnline) {
-        _error = 'Connect to the internet before editing synced transactions.';
+        _error = 'transaction_edit_requires_online';
         return false;
       }
 
@@ -347,14 +347,14 @@ class TransactionsProvider with ChangeNotifier {
         return true;
       }
 
-      _error = result['error'] as String? ?? 'Failed to update transaction';
+      _error = result['error'] as String? ?? 'transaction_update_failed';
       return false;
     } catch (e) {
       _log.error(
         'TransactionsProvider',
         'Failed to update transaction with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
       return false;
     } finally {
       _isLoading = false;
@@ -384,7 +384,7 @@ class TransactionsProvider with ChangeNotifier {
           notifyListeners();
           return true;
         } else {
-          _error = result['error'] as String? ?? 'Failed to delete transaction';
+          _error = result['error'] as String? ?? 'transaction_delete_failed';
           notifyListeners();
           return false;
         }
@@ -407,7 +407,7 @@ class TransactionsProvider with ChangeNotifier {
         'TransactionsProvider',
         'Failed to delete transaction with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
       notifyListeners();
       return false;
     }
@@ -437,7 +437,7 @@ class TransactionsProvider with ChangeNotifier {
           return true;
         } else {
           _error =
-              result['error'] as String? ?? 'Failed to delete transactions';
+              result['error'] as String? ?? 'transactions_delete_failed';
           notifyListeners();
           return false;
         }
@@ -462,7 +462,7 @@ class TransactionsProvider with ChangeNotifier {
         'TransactionsProvider',
         'Failed to delete multiple transactions with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
       notifyListeners();
       return false;
     }
@@ -492,7 +492,7 @@ class TransactionsProvider with ChangeNotifier {
         notifyListeners();
         return true;
       } else {
-        _error = 'Failed to undo transaction';
+        _error = 'transaction_undo_failed';
         notifyListeners();
         return false;
       }
@@ -501,7 +501,7 @@ class TransactionsProvider with ChangeNotifier {
         'TransactionsProvider',
         'Failed to undo transaction with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
       notifyListeners();
       return false;
     }
@@ -512,7 +512,7 @@ class TransactionsProvider with ChangeNotifier {
     required String accessToken,
   }) async {
     if (_connectivityService?.isOffline == true) {
-      _error = 'Cannot sync while offline';
+      _error = 'sync_requires_online';
       notifyListeners();
       return;
     }
@@ -536,7 +536,7 @@ class TransactionsProvider with ChangeNotifier {
         'TransactionsProvider',
         'Failed to sync transactions with ${e.runtimeType}',
       );
-      _error = 'Something went wrong. Please try again.';
+      _error = 'unexpected_error';
     } finally {
       _isLoading = false;
       notifyListeners();

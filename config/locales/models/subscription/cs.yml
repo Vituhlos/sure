@@ -1,0 +1,7 @@
+---
+cs:
+  subscription:
+    names:
+      monthly: "Měsíční příspěvek"
+      annual: "Roční příspěvek"
+      demo: "Otevřené demo"

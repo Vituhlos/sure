@@ -66,8 +66,7 @@ class LunchflowItemsController < ApplicationController
         else
           # Redirect for regular requests
           redirect_to settings_providers_path,
-                     alert: t(".no_credentials_configured",
-                            default: "Please configure your Lunch Flow API key first in Provider Settings.")
+                     alert: t(".no_credentials_configured")
         end
         return
       end
@@ -82,8 +81,7 @@ class LunchflowItemsController < ApplicationController
         lunchflow_provider = Provider::LunchflowAdapter.build_provider(family: Current.family)
 
         unless lunchflow_provider.present?
-          redirect_to settings_providers_path, alert: t(".no_api_key",
-                                                        default: "Lunch Flow API key not found. Please configure it in Provider Settings.")
+          redirect_to settings_providers_path, alert: t(".no_api_key")
           return
         end
 
@@ -120,7 +118,7 @@ class LunchflowItemsController < ApplicationController
              layout: false
     rescue StandardError => e
       Rails.logger.error("Unexpected error in select_accounts: #{e.class}: #{e.message}")
-      @error_message = "An unexpected error occurred. Please try again later."
+      @error_message = t("lunchflow_items.errors.unexpected_error")
       @return_path = safe_return_to_path
       render partial: "lunchflow_items/api_error",
              locals: { error_message: @error_message, return_path: @return_path },
@@ -141,7 +139,7 @@ class LunchflowItemsController < ApplicationController
 
     # Create or find lunchflow_item for this family
     lunchflow_item = Current.family.lunchflow_items.first_or_create!(
-      name: "Lunch Flow Connection"
+      name: t("lunchflow_items.default_connection_name")
     )
 
     # Fetch account details from API
@@ -266,8 +264,7 @@ class LunchflowItemsController < ApplicationController
       else
         # Redirect for regular requests
         redirect_to settings_providers_path,
-                   alert: t(".no_credentials_configured",
-                          default: "Please configure your Lunch Flow API key first in Provider Settings.")
+                   alert: t(".no_credentials_configured")
       end
       return
     end
@@ -283,8 +280,7 @@ class LunchflowItemsController < ApplicationController
         lunchflow_provider = Provider::LunchflowAdapter.build_provider(family: Current.family)
 
         unless lunchflow_provider.present?
-          redirect_to settings_providers_path, alert: t(".no_api_key",
-                                                        default: "Lunch Flow API key not found. Please configure it in Provider Settings.")
+          redirect_to settings_providers_path, alert: t(".no_api_key")
           return
         end
 
@@ -324,7 +320,7 @@ class LunchflowItemsController < ApplicationController
              layout: false
     rescue StandardError => e
       Rails.logger.error("Unexpected error in select_existing_account: #{e.class}: #{e.message}")
-      @error_message = "An unexpected error occurred. Please try again later."
+      @error_message = t("lunchflow_items.errors.unexpected_error")
       render partial: "lunchflow_items/api_error",
              locals: { error_message: @error_message, return_path: accounts_path },
              layout: false
@@ -352,7 +348,7 @@ class LunchflowItemsController < ApplicationController
 
     # Create or find lunchflow_item for this family
     lunchflow_item = Current.family.lunchflow_items.first_or_create!(
-      name: "Lunch Flow Connection"
+      name: t("lunchflow_items.default_connection_name")
     )
 
     # Fetch account details from API
@@ -411,7 +407,7 @@ class LunchflowItemsController < ApplicationController
 
   def create
     @lunchflow_item = Current.family.lunchflow_items.build(lunchflow_params)
-    @lunchflow_item.name ||= "Lunch Flow Connection"
+    @lunchflow_item.name ||= t("lunchflow_items.default_connection_name")
 
     if @lunchflow_item.save
       # Trigger initial sync to fetch accounts
@@ -535,7 +531,7 @@ class LunchflowItemsController < ApplicationController
 
     # Helper to translate subtype options
     translate_subtypes = ->(type_key, subtypes_hash) {
-      subtypes_hash.map { |k, v| [ t(".subtypes.#{type_key}.#{k}", default: v[:long] || k.humanize), k ] }
+      subtypes_hash.map { |key, _value| [ t(".subtypes.#{type_key}.#{key}"), key ] }
     }
 
     # Subtype options for each account type (only include supported types)
@@ -642,7 +638,7 @@ class LunchflowItemsController < ApplicationController
     rescue StandardError => e
       Rails.logger.error("LunchFlow account setup failed unexpectedly: #{e.class} - #{e.message}")
       Rails.logger.error(e.backtrace.first(10).join("\n"))
-      flash[:alert] = t(".creation_failed", error: "An unexpected error occurred")
+      flash[:alert] = t(".creation_failed", error: t(".unexpected_error"))
       redirect_to accounts_path, status: :see_other
       return
     end

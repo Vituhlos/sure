@@ -39,7 +39,7 @@ class TagsProvider with ChangeNotifier {
         _log.error('TagsProvider', 'Failed to fetch tags: $_error');
       }
     } catch (e) {
-      _error = 'Failed to load tags';
+      _error = 'fetch_tags_failed';
       _log.error('TagsProvider', 'Exception fetching tags: $e');
     } finally {
       _isLoading = false;

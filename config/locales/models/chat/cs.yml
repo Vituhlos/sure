@@ -1,0 +1,9 @@
+---
+cs:
+  chat:
+    errors:
+      rate_limited: "Poskytovatel AI právě omezuje počet požadavků. Zkuste to znovu za několik minut."
+      temporarily_unavailable: "Poskytovatel AI je dočasně nedostupný. Zkuste to znovu za několik minut."
+      misconfigured: "Poskytovatel AI není správně nakonfigurován. Obraťte se na správce."
+      no_response: "Asistent neodpověděl. Proces na pozadí možná neběží nebo AI není plně nakonfigurována. Zkuste to znovu."
+      default: "Odpověď se nepodařilo vygenerovat. Zkuste to znovu."

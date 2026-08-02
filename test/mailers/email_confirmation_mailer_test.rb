@@ -11,4 +11,17 @@ class EmailConfirmationMailerTest < ActionMailer::TestCase
     assert_equal [ "hello@example.com" ], mail.from
     assert_match "confirm", mail.body.encoded
   end
+
+  test "uses the recipient's Czech locale" do
+    user = users(:new_email)
+    user.update_column(:locale, "cs")
+
+    mail = EmailConfirmationMailer.with(user: user).confirmation_email
+
+    assert_equal I18n.t(
+      "email_confirmation_mailer.confirmation_email.subject",
+      locale: :cs,
+      product_name: Rails.configuration.x.product_name
+    ), mail.subject
+  end
 end

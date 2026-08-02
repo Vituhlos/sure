@@ -42,7 +42,7 @@
                   <% if import.account.present? %>
                     <%= import.account.name + " " %>
                   <% end %>
-                  <%= import.type.titleize.gsub(/ Import\z/, "") %>
+                  <%= import_type_label(import, short: true) %>
                 <% end %>
               </td>
               <td class="px-2 py-3">
@@ -103,7 +103,12 @@
                                   class: "flex items-center gap-2 text-destructive hover:text-destructive-hover",
                                   aria: { label: t("imports.table.row.actions.delete") },
                                   data: {
-                                    turbo_confirm: CustomConfirm.for_resource_deletion("import")
+                                    turbo_confirm: CustomConfirm.new(
+                                      destructive: true,
+                                      title: t("imports.table.row.actions.delete_confirm_title"),
+                                      body: t("imports.table.row.actions.delete_confirm_body"),
+                                      btn_text: t("imports.table.row.actions.delete_confirm_button")
+                                    )
                                   } do %>
                       <%= icon "trash-2", class: "w-5 h-5 text-destructive" %>
                     <% end %>

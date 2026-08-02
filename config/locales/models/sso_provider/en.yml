@@ -1,12 +1,57 @@
 ---
 en:
+  sso_provider_tester:
+    unknown_strategy: "Unknown strategy: %{strategy}"
+    issuer_required: "Issuer URL is required"
+    discovery_http_error: "Discovery endpoint returned HTTP %{status}"
+    discovery_missing_fields: "Discovery document missing required fields: %{fields}"
+    issuer_mismatch: "Issuer mismatch: expected %{expected}, got %{actual}"
+    oidc_valid: "OIDC discovery validated successfully"
+    connection_timeout: "Connection timed out"
+    connection_failed: "Connection failed: %{error}"
+    invalid_discovery_json: "Invalid JSON response from discovery endpoint"
+    error: "Error: %{error}"
+    client_id_required: "Client ID is required"
+    client_secret_required: "Client Secret is required"
+    google_oauth_valid: "Google OAuth2 configuration looks valid"
+    github_oauth_valid: "GitHub OAuth configuration looks valid"
+    full_validation_note: "Full validation occurs during actual authentication"
+    saml_url_required: "Either IdP Metadata URL or IdP SSO URL is required"
+    metadata_http_error: "Metadata endpoint returned HTTP %{status}"
+    invalid_saml_metadata: "Response does not appear to be valid SAML metadata"
+    saml_metadata_valid: "SAML metadata fetched successfully"
+    saml_valid: "SAML configuration looks valid"
+    trailing_slash_hint: "trailing slash mismatch. This usually means the issuer URL differs only by a trailing slash. Update the configured issuer to exactly match the discovery document"
   activerecord:
     errors:
       models:
         sso_provider:
           attributes:
+            strategy:
+              unsupported_strategy: "%{value} is not a supported strategy"
+            name:
+              invalid_identifier: "must contain only lowercase letters, numbers, and underscores"
+            icon:
+              whitespace_only: "cannot be blank or contain only whitespace"
+            issuer:
+              required_for_oidc: "is required for OpenID Connect providers"
+              invalid_url: "must be a valid URL"
+              discovery_http_error: "discovery endpoint returned %{status}"
+              discovery_missing_issuer: "discovery endpoint did not return valid issuer"
+              discovery_connection_failed: "could not connect to discovery endpoint: %{error}"
+              discovery_invalid_json: "discovery endpoint returned invalid JSON"
+              discovery_validation_failed: "discovery validation failed: %{error}"
+            client_id:
+              required_for_oidc: "is required for OpenID Connect providers"
+              required_for_oauth: "is required for OAuth providers"
+            client_secret:
+              required_for_oidc: "is required for OpenID Connect providers"
+              required_for_oauth: "is required for OAuth providers"
+            redirect_uri:
+              invalid_url: "must be a valid URL"
             settings:
               saml_url_required: "Either IdP Metadata URL or IdP SSO URL is required for SAML providers"
               saml_cert_required: "Either IdP Certificate or Certificate Fingerprint is required when not using metadata URL"
               metadata_url_invalid: "IdP Metadata URL must be a valid URL"
               sso_url_invalid: "IdP SSO URL must be a valid URL"
+              invalid_default_role: "default_role must be guest, member, admin, or super_admin"

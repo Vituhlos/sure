@@ -107,7 +107,7 @@ class Invitation < ApplicationRecord
       end
 
       if existing
-        errors.add(:email, "already has a pending invitation from another family")
+        errors.add(:email, :pending_invitation_from_another_family)
       end
     end
 
@@ -123,7 +123,7 @@ class Invitation < ApplicationRecord
         scope.where("LOWER(email) = ?", email.to_s.strip.downcase).exists?
       end
 
-      errors.add(:email, "has already been invited to this family") if exists
+      errors.add(:email, :already_invited_to_family) if exists
     end
 
     def inviter_is_admin

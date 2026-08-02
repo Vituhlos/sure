@@ -1,0 +1,30 @@
+---
+cs:
+  activerecord:
+    attributes:
+      account_statement:
+        account: "Účet"
+        account_last4_hint: "Poslední čtyři číslice účtu"
+        account_name_hint: "Rozpoznaný název účtu"
+        closing_balance: "Konečný zůstatek"
+        content_sha256: "Kontrolní otisk obsahu"
+        currency: "Měna"
+        filename: "Název souboru"
+        institution_name_hint: "Rozpoznaná instituce"
+        opening_balance: "Počáteční zůstatek"
+        original_file: "Soubor s výpisem"
+        period_end_on: "Konec období"
+        period_start_on: "Začátek období"
+    errors:
+      models:
+        account_statement:
+          attributes:
+            checksum:
+              duplicate_statement_file: "již byl pro tuto domácnost nahrán"
+            content_sha256:
+              duplicate_statement_file: "již byl pro tuto domácnost nahrán"
+            original_file:
+              invalid_format: "musí být soubor ve formátu PDF, CSV nebo XLSX"
+              too_large: "je příliš velký; nejvyšší povolená velikost je %{max_mb} MB"
+            period_end_on:
+              on_or_after_start: "musí připadat na den začátku období nebo později"

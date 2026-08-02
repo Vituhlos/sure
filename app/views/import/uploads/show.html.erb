@@ -5,7 +5,10 @@
 <%= content_for :previous_path, imports_path %>
 
 <% if @import.is_a?(SureImport) %>
-  <div class="space-y-4" data-controller="drag-and-drop-import">
+  <div class="space-y-4"
+       data-controller="drag-and-drop-import"
+       data-drag-and-drop-import-accepted-extensions-value='[".ndjson", ".json"]'
+       data-drag-and-drop-import-invalid-file-message-value="<%= t("import.uploads.sure_import.ndjson_invalid") %>">
     <!-- Overlay -->
     <%= render "imports/drag_drop_overlay", title: t("import.uploads.sure_import.drop_title"), subtitle: t("import.uploads.sure_import.drop_subtitle") %>
 
@@ -91,7 +94,10 @@
 
 <% else %>
   <%# ── Standard CSV upload ── %>
-  <div class="space-y-4" data-controller="drag-and-drop-import">
+  <div class="space-y-4"
+       data-controller="drag-and-drop-import"
+       data-drag-and-drop-import-accepted-extensions-value='[".csv"]'
+       data-drag-and-drop-import-invalid-file-message-value="<%= t(".csv_invalid") %>">
     <!-- Overlay -->
     <%= render "imports/drag_drop_overlay", title: t(".drop_csv_title"), subtitle: t(".drop_csv_subtitle") %>
 

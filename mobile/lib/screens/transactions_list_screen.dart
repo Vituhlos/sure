@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/account.dart';
+import '../models/category.dart';
 import '../models/transaction.dart';
 import '../models/offline_transaction.dart';
 import '../providers/auth_provider.dart';
@@ -18,6 +19,7 @@ import '../utils/amount_parser.dart';
 import '../utils/money_masker.dart';
 import '../widgets/money_text.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class TransactionsListScreen extends StatefulWidget {
   final Account account;
@@ -53,7 +55,10 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
     bool isLiability,
   ) {
     try {
-      final parsed = AmountParser.parse(amount);
+      final parsed = AmountParser.parse(
+        amount,
+        locale: Localizations.localeOf(context).toLanguageTag(),
+      );
       var numericValue = parsed.value;
 
       // For asset and liability accounts, flip the sign to match accounting conventions
@@ -96,12 +101,19 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
   }
 
   String? _getCategoryDisplayName(String? categoryId, String? fallbackName) {
-    if (categoryId == null) return fallbackName;
+    final l = AppLocalizations.of(context);
+    if (categoryId == null) {
+      return fallbackName == null
+          ? null
+          : Category.localizedDefaultName(l, fallbackName);
+    }
     final categoriesProvider = Provider.of<CategoriesProvider>(context);
     for (final cat in categoriesProvider.categories) {
-      if (cat.id == categoryId) return cat.displayName;
+      if (cat.id == categoryId) return cat.localizedDisplayName(l);
     }
-    return fallbackName;
+    return fallbackName == null
+        ? null
+        : Category.localizedDefaultName(l, fallbackName);
   }
 
   List<OfflineTransaction> _getFilteredTransactions(List<OfflineTransaction> transactions) {
@@ -408,7 +420,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
                           const Icon(Icons.error_outline, size: 48, color: Colors.red),
                           const SizedBox(height: 16),
                           Text(
-                            transactionsProvider.error!,
+                            localizedClientError(l, transactionsProvider.error),
                             style: const TextStyle(color: Colors.red),
                           ),
                           const SizedBox(height: 16),
@@ -711,8 +723,8 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
                                           width: 1,
                                         ),
                                       ),
-                                      child: const Text(
-                                        'Undo',
+                                      child: Text(
+                                        l.commonUndo,
                                         style: TextStyle(
                                           color: Colors.blue,
                                           fontSize: 11,

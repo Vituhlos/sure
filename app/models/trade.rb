@@ -46,8 +46,7 @@ class Trade < ApplicationRecord
 
   class << self
     def build_name(type, qty, ticker)
-      prefix = type == "buy" ? "Buy" : "Sell"
-      "#{prefix} #{qty.to_d.abs} shares of #{ticker}"
+      I18n.t("trades.names.#{type}", qty: qty.to_d.abs, ticker: ticker)
     end
   end
 
@@ -80,11 +79,11 @@ class Trade < ApplicationRecord
 
     def exchange_rate_must_be_valid
       if extra&.dig("exchange_rate_invalid")
-        errors.add(:exchange_rate, "must be a number")
+        errors.add(:exchange_rate, :not_a_number)
       elsif exchange_rate.present?
         numeric_rate = Float(exchange_rate) rescue nil
         if numeric_rate.nil? || !numeric_rate.finite? || numeric_rate <= 0
-          errors.add(:exchange_rate, "must be greater than 0")
+          errors.add(:exchange_rate, :greater_than, count: 0)
         end
       end
     end

@@ -1,0 +1,12 @@
+---
+cs:
+  activerecord:
+    attributes:
+      enable_banking_item:
+        psu_type: "Typ uživatele"
+    errors:
+      models:
+        enable_banking_item:
+          attributes:
+            psu_type:
+              unsupported: "musí být jedním z typů podporovaných poskytovatelem ASPSP"

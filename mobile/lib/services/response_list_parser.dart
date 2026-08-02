@@ -70,7 +70,7 @@ Future<Map<String, dynamic>> fetchApiList<T>({
       'error': extractErrorMessage(response.body, fallback: failureMessage),
     };
   } catch (e) {
-    return {'success': false, 'error': 'Network error: ${e.toString()}'};
+    return {'success': false, 'error': 'network_unavailable'};
   }
 }
 

@@ -1,0 +1,8 @@
+---
+en:
+  exchange_rates:
+    errors:
+      currencies_required: "from and to currencies are required"
+      invalid_date: "Invalid date format"
+      fetch_failed: "Failed to fetch exchange rate"
+      not_found: "Exchange rate not found"

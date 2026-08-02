@@ -31,7 +31,11 @@ module AccountStatementsHelper
 
   def account_statement_period(statement)
     if statement.period_start_on.present? && statement.period_end_on.present?
-      "#{format_date(statement.period_start_on)} - #{format_date(statement.period_end_on)}"
+      t(
+        "account_statements.period.range",
+        start: format_date(statement.period_start_on),
+        end_date: format_date(statement.period_end_on)
+      )
     else
       t("account_statements.period.unknown")
     end
@@ -42,7 +46,7 @@ module AccountStatementsHelper
   end
 
   def account_statement_month_label(date)
-    l(date, format: "%b %Y")
+    l(date, format: :short_month_year)
   end
 
   def account_statement_coverage_range(coverage)
@@ -75,7 +79,7 @@ module AccountStatementsHelper
   def account_statement_currency_options(statement)
     currency_picker_options_for_family(Current.family, extra: [ statement.currency ]).map do |code|
       currency = Money::Currency.new(code)
-      [ "#{currency.name} (#{currency.iso_code})", currency.iso_code ]
+      [ currency_label(currency), currency.iso_code ]
     end
   end
 

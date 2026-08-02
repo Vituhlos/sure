@@ -3,7 +3,7 @@
   <div class="max-w-full w-full lg:w-auto overflow-x-auto no-scrollbar">
     <%= render DS::SegmentedControl.new(
           full_width: true,
-          aria_label: t("budgets.show.filter.aria_label", default: "Filter budget categories"),
+          aria_label: t("budgets.show.filter.aria_label"),
           class: "w-full lg:w-auto") do |sc| %>
       <% sc.with_segment t("budgets.show.filter.all"),
            active: current_filter == "all",

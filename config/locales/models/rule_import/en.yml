@@ -7,3 +7,11 @@ en:
           unsupported_resource_type: "Unsupported resource type: %{resource_type}"
           invalid_json: "Invalid JSON in conditions or actions: %{message}"
           min_actions: "Rule must have at least one action"
+  rule_import:
+    errors:
+      invalid_json_detail: "The JSON syntax is invalid."
+    samples:
+      categorize_groceries: "Categorize groceries"
+      groceries_match: "grocery"
+      groceries_category: "Groceries"
+      auto_categorize_transactions: "Auto-categorize transactions"

@@ -58,7 +58,7 @@
                     { label: t(".environment_label"), selected: trading212_item.environment || "live" } %>
 
     <%= form.select :currency,
-                    Money::Currency.as_options.map { |c| [ "#{c.name} (#{c.iso_code})", c.iso_code ] },
+                    Money::Currency.as_options.map { |c| [ currency_label(c), c.iso_code ] },
                     { label: t(".currency_label"), selected: trading212_item.currency.presence || Current.family.currency } %>
 
     <div class="flex flex-wrap justify-end gap-2">

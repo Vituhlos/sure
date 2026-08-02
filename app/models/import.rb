@@ -16,19 +16,13 @@ class Import < ApplicationRecord
   # User-facing (shown as the import's error in the UI), so resolved through
   # i18n at call time rather than frozen at boot.
   def self.lost_error_message
-    I18n.t(
-      "imports.errors.presumed_lost",
-      default: "Marked as failed after the background job was presumed lost. The imported data was rolled back — you can safely try again."
-    )
+    I18n.t("imports.errors.presumed_lost")
   end
 
   # User-facing (shown as the import's error in the UI). Resolved at reap
   # time; the sweep runs from cron so this snapshots the default locale.
   def self.interrupted_error_message
-    I18n.t(
-      "imports.errors.interrupted",
-      default: "The background worker was interrupted before this finished. Imported data was rolled back — you can safely try again."
-    )
+    I18n.t("imports.errors.interrupted")
   end
 
   # Shared CSV upload/content limit for web and API imports, including preflight.
@@ -554,7 +548,7 @@ class Import < ApplicationRecord
     end
 
     def default_row_name
-      "Imported item"
+      I18n.t("imports.default_row_name")
     end
 
     def default_currency
@@ -753,26 +747,26 @@ class Import < ApplicationRecord
       return if account.nil?
       return if account.family_id == family_id
 
-      errors.add(:account, "must belong to your family")
+      errors.add(:account, :wrong_family)
     end
 
     def import_session_belongs_to_family
       return if import_session.nil?
       return if import_session.family_id == family_id
 
-      errors.add(:import_session, "must belong to your family")
+      errors.add(:import_session, :wrong_family)
     end
 
     def session_chunk_metadata
       return if import_session.nil?
 
-      errors.add(:sequence, "must be present for import session chunks") if sequence.blank?
-      errors.add(:checksum, "must be present for import session chunks") if checksum.blank?
+      errors.add(:sequence, :required_for_session_chunk) if sequence.blank?
+      errors.add(:checksum, :required_for_session_chunk) if checksum.blank?
     end
 
     def session_payloads_are_json_objects
-      errors.add(:summary, "must be an object") unless summary.is_a?(Hash)
-      errors.add(:error_details, "must be an object") unless error_details.is_a?(Hash)
+      errors.add(:summary, :must_be_object) unless summary.is_a?(Hash)
+      errors.add(:error_details, :must_be_object) unless error_details.is_a?(Hash)
     end
 
     def rows_to_skip_within_file_bounds
@@ -782,7 +776,7 @@ class Import < ApplicationRecord
       line_count = raw_file_str.lines.count
 
       if rows_to_skip.to_i >= line_count
-        errors.add(:rows_to_skip, "must be less than the number of lines in the file (#{line_count})")
+        errors.add(:rows_to_skip, :outside_file, line_count: line_count)
       end
     end
 end

@@ -1,0 +1,43 @@
+---
+cs:
+  sessions:
+    create:
+      invalid_credentials: "Nesprávná e-mailová adresa nebo heslo."
+      local_login_disabled: "Přihlašování heslem je vypnuté. Použijte jednotné přihlášení."
+    destroy:
+      logout_successful: "Odhlášení proběhlo úspěšně."
+    post_logout:
+      logout_successful: "Odhlášení proběhlo úspěšně."
+    openid_connect:
+      account_linked: "Účet byl úspěšně propojen se službou %{provider}."
+      failed: "Ověření pomocí OpenID Connect se nepodařilo."
+    failure:
+      failed: "Ověření se nepodařilo."
+      sso_provider_unavailable: "Poskytovatel jednotného přihlášení momentálně není dostupný. Zkuste to později nebo se obraťte na správce."
+      sso_invalid_response: "Poskytovatel jednotného přihlášení vrátil neplatnou odpověď. Zkuste to znovu."
+      sso_failed: "Ověření pomocí jednotného přihlášení se nepodařilo. Zkuste to znovu."
+    mobile_sso_start:
+      redirecting_html: "Probíhá přesměrování k přihlášení… Pokud k němu nedojde, <a href=\"%{url}\">pokračujte tímto odkazem</a>."
+    mobile_sso:
+      errors:
+        invalid_provider: "Poskytovatel SSO není nakonfigurován"
+        missing_device_info: "Je nutné zadat údaje o zařízení"
+        mfa_not_supported: "Uživatelé s vícefaktorovým ověřováním se musí přihlásit e-mailem a heslem"
+        authentication_failed: "Ověření pomocí SSO se nezdařilo"
+        session_expired: "Platnost relace mobilního SSO vypršela"
+        device_registration_failed: "Zařízení se nepodařilo zaregistrovat"
+    new:
+      email: "E-mailová adresa"
+      email_placeholder: "uzivatel@example.com"
+      forgot_password: "Obnovit zapomenuté heslo"
+      password: "Heslo"
+      submit: "Přihlásit se"
+      title: "Sure"
+      password_placeholder: "Zadejte heslo"
+      openid_connect: "Přihlásit se přes OpenID Connect"
+      oidc: "Přihlásit se přes OpenID Connect"
+      google_auth_connect: "Přihlásit se přes Google"
+      local_login_admin_only: "Přihlášení heslem je omezené na správce."
+      no_auth_methods_enabled: "Momentálně není povolen žádný způsob přihlášení. Obraťte se na správce."
+      demo_banner_title: "Aktivní ukázkový režim"
+      demo_banner_message: "Toto je ukázkové prostředí. Přihlašovací údaje jsou pro usnadnění předvyplněné. Nezadávejte skutečné ani citlivé údaje."

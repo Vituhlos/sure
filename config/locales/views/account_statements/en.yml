@@ -54,6 +54,7 @@ en:
       success: Linked statement to %{account}.
     period:
       unknown: Period unknown
+      range: "%{start}–%{end_date}"
     reconciliation:
       checks:
         closing_balance: Closing balance
@@ -72,6 +73,9 @@ en:
       closing_balance: Closing balance
       currency: Currency
       delete: Delete
+      delete_title: Delete statement?
+      delete_body: Are you sure you want to delete this statement? This cannot be undone.
+      delete_button: Delete statement
       difference: Difference
       download: Download
       institution_name_hint: Institution hint

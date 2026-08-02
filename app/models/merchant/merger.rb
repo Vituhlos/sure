@@ -8,10 +8,15 @@ class Merchant::Merger
     @target_merchant = target_merchant
     @merged_count = 0
 
-    validate_merchant_belongs_to_family!(target_merchant, "Target merchant")
+    validate_merchant_belongs_to_family!(target_merchant, I18n.t("family_merchants.merge_errors.target"))
 
     sources = Array(source_merchants)
-    sources.each { |m| validate_merchant_belongs_to_family!(m, "Source merchant '#{m.name}'") }
+    sources.each do |merchant|
+      validate_merchant_belongs_to_family!(
+        merchant,
+        I18n.t("family_merchants.merge_errors.source", name: merchant.name)
+      )
+    end
 
     @source_merchants = sources.reject { |m| m.id == target_merchant.id }
   end
@@ -21,7 +26,8 @@ class Merchant::Merger
     def validate_merchant_belongs_to_family!(merchant, label)
       return if family_merchant_ids.include?(merchant.id)
 
-      raise UnauthorizedMerchantError, "#{label} does not belong to this family"
+      raise UnauthorizedMerchantError,
+            I18n.t("family_merchants.merge_errors.not_in_family", merchant: label)
     end
 
     def family_merchant_ids

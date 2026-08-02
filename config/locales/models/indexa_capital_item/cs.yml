@@ -1,0 +1,7 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        indexa_capital_item:
+          credentials_required: "Je nutné nastavit buď proměnnou prostředí INDEXA_API_TOKEN, nebo uživatelské jméno, dokument a heslo"

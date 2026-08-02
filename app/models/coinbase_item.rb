@@ -35,7 +35,7 @@ class CoinbaseItem < ApplicationRecord
     provider = coinbase_provider
     unless provider
       Rails.logger.error "CoinbaseItem #{id} - Cannot import: credentials not configured"
-      raise StandardError.new("Coinbase credentials not configured")
+      raise StandardError.new(I18n.t("coinbase_item.syncer.credentials_invalid"))
     end
 
     CoinbaseItem::Importer.new(self, coinbase_provider: provider).import
@@ -153,11 +153,11 @@ class CoinbaseItem < ApplicationRecord
     institutions = connected_institutions
     case institutions.count
     when 0
-      "No institutions connected"
+      I18n.t("coinbase_items.institution_summary.none")
     when 1
-      institutions.first["name"] || institutions.first["institution_name"] || "1 institution"
+      institutions.first["name"] || institutions.first["institution_name"] || I18n.t("coinbase_items.institution_summary.count", count: 1)
     else
-      "#{institutions.count} institutions"
+      I18n.t("coinbase_items.institution_summary.count", count: institutions.count)
     end
   end
 

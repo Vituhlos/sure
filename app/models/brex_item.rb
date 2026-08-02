@@ -49,7 +49,7 @@ class BrexItem < ApplicationRecord
     provider = brex_provider
     unless provider
       Rails.logger.error "BrexItem #{id} - Cannot import: provider is not configured"
-      raise Provider::Brex::BrexError.new("Brex provider is not configured", :not_configured)
+      raise Provider::Brex::BrexError.new(I18n.t("brex_items.errors.provider_not_configured"), :not_configured)
     end
 
     BrexItem::Importer.new(self, brex_provider: provider, sync_start_date: sync_start_date).import

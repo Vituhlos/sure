@@ -23,7 +23,7 @@
         <%= form_with url: join_impersonation_sessions_path, class: "flex items-center space-x-2 mr-4" do |f| %>
           <%= f.select :impersonation_session_id,
             Current.true_user.impersonator_support_sessions.in_progress.map { |session|
-              ["#{session.impersonated.email} (#{session.status})", session.id]
+              ["#{session.impersonated.email} (#{t(".statuses.#{session.status}")})", session.id]
             },
             { prompt: t(".join_a_session") },
             { class: "rounded-md text-sm border-0 focus:ring-0 ring-0 text-black font-mono" } %>

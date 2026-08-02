@@ -5,6 +5,11 @@ en:
       models:
         entry:
           attributes:
+            excluded:
+              split_transaction_required: "cannot be toggled off for a split transaction"
+            date:
+              split_parent_mismatch: "must match the parent transaction date for split children"
             base:
               invalid_sell_quantity: cannot sell %{sell_qty} shares of %{ticker} because
                 you only own %{current_qty} shares
+              invalid_split_total: "Split amounts must sum to the parent amount (expected %{expected}, got %{actual})"

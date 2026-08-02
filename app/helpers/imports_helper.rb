@@ -31,6 +31,11 @@ module ImportsHelper
     }[key]
   end
 
+  def import_type_label(import, short: false)
+    scope = short ? "imports.table.row.type_labels" : "imports.type_labels"
+    I18n.t("#{scope}.#{import.type.underscore}")
+  end
+
   def dry_run_resource(key)
     map = {
       transactions: DryRunResource.new(label: t("imports.dry_run_resources.transactions"), icon: "credit-card", text_class: "text-info", bg_class: "bg-info/10"),

@@ -1,0 +1,21 @@
+---
+cs:
+  pending_duplicate_merges:
+    create:
+      no_posted_selected: "Vyberte zaúčtovanou transakci, se kterou chcete záznam sloučit."
+      invalid_transaction: "Pro sloučení byla vybrána neplatná transakce."
+      merge_success: "Nezaúčtovaná transakce byla sloučena se zaúčtovanou transakcí."
+      merge_failed: "Transakce se nepodařilo sloučit."
+    set_transaction:
+      pending_only: "Tato funkce je dostupná pouze u nezaúčtovaných transakcí."
+    new:
+      title: "Sloučit se zaúčtovanou transakcí"
+      warning_title: "Ruční sloučení duplicit"
+      warning_description: "Tato funkce ručně sloučí nezaúčtovanou transakci s její zaúčtovanou verzí. Nezaúčtovaná transakce se odstraní a zůstane pouze zaúčtovaná."
+      pending_transaction: "Nezaúčtovaná transakce"
+      select_posted: "Vyberte zaúčtovanou transakci ke sloučení"
+      showing_range: "Zobrazeno %{start}–%{end}"
+      previous: "← Předchozích 10"
+      next: "Dalších 10 →"
+      no_candidates: "Na tomto účtu nebyly nalezeny žádné zaúčtované transakce."
+      submit_button: "Sloučit transakce"

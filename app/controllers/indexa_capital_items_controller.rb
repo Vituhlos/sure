@@ -22,11 +22,11 @@ class IndexaCapitalItemsController < ApplicationController
 
   def create
     @indexa_capital_item = Current.family.indexa_capital_items.build(indexa_capital_item_params)
-    @indexa_capital_item.name ||= "IndexaCapital Connection"
+    @indexa_capital_item.name ||= t(".default_name")
 
     if @indexa_capital_item.save
       if turbo_frame_request?
-        flash.now[:notice] = t(".success", default: "Successfully configured IndexaCapital.")
+        flash.now[:notice] = t(".success")
         @indexa_capital_items = Current.family.indexa_capital_items.ordered
         render turbo_stream: [
           turbo_stream.replace(
@@ -57,7 +57,7 @@ class IndexaCapitalItemsController < ApplicationController
   def update
     if @indexa_capital_item.update(indexa_capital_item_params)
       if turbo_frame_request?
-        flash.now[:notice] = t(".success", default: "Successfully updated IndexaCapital configuration.")
+        flash.now[:notice] = t(".success")
         @indexa_capital_items = Current.family.indexa_capital_items.ordered
         render turbo_stream: [
           turbo_stream.replace(
@@ -87,7 +87,7 @@ class IndexaCapitalItemsController < ApplicationController
 
   def destroy
     @indexa_capital_item.destroy_later
-    redirect_to settings_providers_path, notice: t(".success", default: "Scheduled IndexaCapital connection for deletion.")
+    redirect_to settings_providers_path, notice: t(".success")
   end
 
   def sync
@@ -267,7 +267,7 @@ class IndexaCapitalItemsController < ApplicationController
     elsif skipped_count > 0 && created_count == 0
       redirect_to accounts_path, notice: t(".all_skipped")
     else
-      redirect_to setup_accounts_indexa_capital_item_path(@indexa_capital_item), alert: t(".creation_failed", error: "Unknown error")
+      redirect_to setup_accounts_indexa_capital_item_path(@indexa_capital_item), alert: t(".creation_failed", error: t(".unknown_error"))
     end
   end
 

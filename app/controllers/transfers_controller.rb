@@ -44,7 +44,7 @@ class TransfersController < ApplicationController
     ).create
 
     if @transfer.persisted?
-      success_message = "Transfer created"
+      success_message = t(".success")
       respond_to do |format|
         format.html { redirect_back_or_to transactions_path, notice: success_message }
         format.turbo_stream { stream_redirect_back_or_to transactions_path, notice: success_message }
@@ -55,12 +55,12 @@ class TransfersController < ApplicationController
     end
   rescue Money::ConversionError
     @transfer ||= Transfer.new
-    @transfer.errors.add(:base, "Exchange rate unavailable for selected currencies and date")
+    @transfer.errors.add(:base, :exchange_rate_unavailable)
     set_accounts
     render :new, status: :unprocessable_entity
   rescue ArgumentError
     @transfer ||= Transfer.new
-    @transfer.errors.add(:date, "is invalid")
+    @transfer.errors.add(:date, :invalid)
     set_accounts
     render :new, status: :unprocessable_entity
   end
@@ -224,7 +224,7 @@ class TransfersController < ApplicationController
           account: @transfer.from_account,
           old_fee: current_source_fee,
           new_fee: new_source_fee.to_d,
-          name: "Transfer fee — #{@transfer.name}"
+          name: t("transfers.fee_name", transfer: @transfer.name)
         )
       end
 
@@ -233,7 +233,7 @@ class TransfersController < ApplicationController
           account: @transfer.to_account,
           old_fee: current_destination_fee,
           new_fee: new_destination_fee.to_d,
-          name: "Transfer fee — #{@transfer.name}"
+          name: t("transfers.fee_name", transfer: @transfer.name)
         )
       end
 

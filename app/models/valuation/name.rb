@@ -21,37 +21,37 @@ class Valuation::Name
     def opening_anchor_name
       case accountable_type
       when "Property", "Vehicle"
-        "Original purchase price"
+        I18n.t("valuations.names.opening_anchor.property_or_vehicle")
       when "Loan"
-        "Original principal"
+        I18n.t("valuations.names.opening_anchor.loan")
       when "Investment", "Crypto", "OtherAsset"
-        "Opening account value"
+        I18n.t("valuations.names.opening_anchor.account_value")
       else
-        "Opening balance"
+        I18n.t("valuations.names.opening_anchor.balance")
       end
     end
 
     def current_anchor_name
       case accountable_type
       when "Property", "Vehicle"
-        "Current market value"
+        I18n.t("valuations.names.current_anchor.property_or_vehicle")
       when "Loan"
-        "Current loan balance"
+        I18n.t("valuations.names.current_anchor.loan")
       when "Investment", "Crypto", "OtherAsset"
-        "Current account value"
+        I18n.t("valuations.names.current_anchor.account_value")
       else
-        "Current balance"
+        I18n.t("valuations.names.current_anchor.balance")
       end
     end
 
     def recon_name
       case accountable_type
       when "Property", "Investment", "Vehicle", "Crypto", "OtherAsset"
-        "Manual value update"
+        I18n.t("valuations.names.reconciliation.value")
       when "Loan"
-        "Manual principal update"
+        I18n.t("valuations.names.reconciliation.principal")
       else
-        "Manual balance update"
+        I18n.t("valuations.names.reconciliation.balance")
       end
     end
 end

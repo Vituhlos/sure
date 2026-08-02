@@ -670,7 +670,7 @@ class Account < ApplicationRecord
 
     def owner_belongs_to_family
       return if User.where(id: owner_id, family_id: family_id).exists?
-      errors.add(:owner, :invalid, message: "must belong to the same family as the account")
+      errors.add(:owner, :different_family)
     end
 
     def capture_account_statement_ids_to_move

@@ -191,7 +191,10 @@ class _RecentTransactionsScreenState extends State<RecentTransactionsScreen> {
 
     double? amount;
     try {
-      amount = AmountParser.parse(transaction.amount).value;
+      amount = AmountParser.parse(
+        transaction.amount,
+        locale: Localizations.localeOf(context).toLanguageTag(),
+      ).value;
     } on FormatException {
       // Keep the list renderable if the server returns a malformed amount.
     }
@@ -208,18 +211,12 @@ class _RecentTransactionsScreenState extends State<RecentTransactionsScreen> {
     final isPositive = amount == null || amount >= 0;
     final moneyTrend = SureMoney.trendForAmount(amount);
     final amountColor = SureMoney.color(context, moneyTrend);
-    final sign = amount == null
-        ? ''
-        : isPositive
-            ? '+'
-            : '-';
 
     String formattedDate;
     try {
       final date = DateTime.parse(transaction.date);
-      formattedDate = DateFormat('yyyy-MM-dd HH:mm',
-              Localizations.localeOf(context).toString())
-          .format(date);
+      final locale = Localizations.localeOf(context).toString();
+      formattedDate = DateFormat.yMd(locale).add_Hm().format(date);
     } catch (e) {
       formattedDate = transaction.date;
     }
@@ -283,7 +280,7 @@ class _RecentTransactionsScreenState extends State<RecentTransactionsScreen> {
         MoneyMasker.mask(
           amount == null
               ? transaction.amount
-              : '$sign${transaction.currency} ${_formatAmount(amount.abs())}',
+              : _formatCurrency(amount, transaction.currency),
           hidden: hideAmounts,
         ),
         trend: moneyTrend,
@@ -297,7 +294,19 @@ class _RecentTransactionsScreenState extends State<RecentTransactionsScreen> {
 
   String _formatAmount(double amount) {
     // Support up to 8 decimal places, but omit unnecessary trailing zeros
-    final formatter = NumberFormat('#,##0.########');
+    final formatter = NumberFormat(
+      '#,##0.########',
+      Localizations.localeOf(context).toString(),
+    );
     return formatter.format(amount);
+  }
+
+  String _formatCurrency(double amount, String currency) {
+    final locale = Localizations.localeOf(context);
+    final sign = amount >= 0 ? '+' : '-';
+    final formatted = _formatAmount(amount.abs());
+    return locale.languageCode == 'cs'
+        ? '$sign$formatted\u00a0$currency'
+        : '$sign$currency $formatted';
   }
 }

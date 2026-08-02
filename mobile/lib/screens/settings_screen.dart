@@ -20,6 +20,7 @@ import '../services/api_config.dart';
 import '../services/custom_proxy_headers_service.dart';
 import '../widgets/custom_proxy_headers_editor.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -61,7 +62,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _loadCustomHeaders();
     _manualUpgrader = Upgrader(
       durationUntilAlertAgain: Duration.zero,
-      countryCode: 'us',
     );
   }
 
@@ -357,7 +357,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['error'] ?? l.settingsResetAccountFailed),
+            content: Text(
+              localizedClientError(l, result['error'] as String?),
+            ),
             backgroundColor: Colors.red,
           ),
         );
@@ -414,7 +416,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['error'] ?? l.settingsDeleteAccountFailed),
+            content: Text(
+              localizedClientError(l, result['error'] as String?),
+            ),
             backgroundColor: Colors.red,
           ),
         );

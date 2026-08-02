@@ -179,7 +179,7 @@ class AuthProvider with ChangeNotifier {
           if (otpCode != null && otpCode.isNotEmpty) {
             // Backend returns "Two-factor authentication required" for both cases
             // Replace with clearer message when OTP was actually submitted
-            _errorMessage = 'Invalid authentication code. Please try again.';
+            _errorMessage = 'authentication_code_invalid';
           } else {
             // First time requesting MFA - don't show error message, it's a normal flow
             _errorMessage = null;
@@ -211,7 +211,7 @@ class AuthProvider with ChangeNotifier {
         operation: 'auth.login',
       );
       _errorMessage =
-          'Unable to connect. Please check your network and try again.';
+          'network_unavailable';
       _isLoading = false;
       notifyListeners();
       return false;
@@ -263,7 +263,7 @@ class AuthProvider with ChangeNotifier {
         operation: 'auth.api_key_login',
       );
       _errorMessage =
-          'Unable to connect. Please check your network and try again.';
+          'network_unavailable';
       _isLoading = false;
       notifyListeners();
       return false;
@@ -315,7 +315,7 @@ class AuthProvider with ChangeNotifier {
         operation: 'auth.signup',
       );
       _errorMessage =
-          'Unable to connect. Please check your network and try again.';
+          'network_unavailable';
       _isLoading = false;
       notifyListeners();
       return false;
@@ -342,7 +342,7 @@ class AuthProvider with ChangeNotifier {
         data: {'launched': launched},
       );
       if (!launched) {
-        _errorMessage = 'Unable to open browser for sign-in.';
+        _errorMessage = 'browser_open_failed';
       }
     } catch (e, stackTrace) {
       _logAuthException('SSO launch', e);
@@ -351,7 +351,7 @@ class AuthProvider with ChangeNotifier {
         stackTrace,
         operation: 'auth.sso_launch',
       );
-      _errorMessage = 'Unable to start sign-in. Please try again.';
+      _errorMessage = 'sign_in_start_failed';
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -415,7 +415,7 @@ class AuthProvider with ChangeNotifier {
         stackTrace,
         operation: 'auth.sso_callback',
       );
-      _errorMessage = 'Sign-in failed. Please try again.';
+      _errorMessage = 'sign_in_failed';
       _isLoading = false;
       notifyListeners();
       return false;
@@ -427,7 +427,7 @@ class AuthProvider with ChangeNotifier {
     required String password,
   }) async {
     if (_ssoLinkingCode == null) {
-      _errorMessage = 'No pending SSO session. Please try signing in again.';
+      _errorMessage = 'missing_sso_session';
       notifyListeners();
       return false;
     }
@@ -469,7 +469,7 @@ class AuthProvider with ChangeNotifier {
         stackTrace,
         operation: 'auth.sso_link',
       );
-      _errorMessage = 'Failed to link account. Please try again.';
+      _errorMessage = 'account_link_failed';
       _isLoading = false;
       notifyListeners();
       return false;
@@ -481,7 +481,7 @@ class AuthProvider with ChangeNotifier {
     String? lastName,
   }) async {
     if (_ssoLinkingCode == null) {
-      _errorMessage = 'No pending SSO session. Please try signing in again.';
+      _errorMessage = 'missing_sso_session';
       notifyListeners();
       return false;
     }
@@ -526,7 +526,7 @@ class AuthProvider with ChangeNotifier {
         stackTrace,
         operation: 'auth.sso_create_account',
       );
-      _errorMessage = 'Failed to create account. Please try again.';
+      _errorMessage = 'account_creation_failed';
       _isLoading = false;
       notifyListeners();
       return false;
@@ -664,7 +664,7 @@ class AuthProvider with ChangeNotifier {
   Future<bool> enableAi() async {
     final accessToken = await getValidAccessToken();
     if (accessToken == null) {
-      _errorMessage = 'Session expired. Please login again.';
+      _errorMessage = 'session_expired';
       notifyListeners();
       return false;
     }

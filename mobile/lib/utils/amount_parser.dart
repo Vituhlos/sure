@@ -188,6 +188,7 @@ class _Separators {
     final language = locale.split(RegExp(r'[-_]')).first.toLowerCase();
     return {
       'ca',
+      'cs',
       'de',
       'es',
       'fr',

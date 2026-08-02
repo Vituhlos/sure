@@ -30,7 +30,9 @@ class _BiometricLockScreenState extends State<BiometricLockScreen> {
     if (!mounted || _isAuthenticating) return;
     setState(() => _isAuthenticating = true);
 
-    final success = await BiometricService.instance.authenticate();
+    final success = await BiometricService.instance.authenticate(
+      reason: AppLocalizations.of(context).biometricUnlockReason,
+    );
 
     if (!mounted) return;
     setState(() => _isAuthenticating = false);

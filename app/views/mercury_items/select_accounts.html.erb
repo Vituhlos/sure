@@ -31,7 +31,7 @@
                   <div class="text-xs text-secondary mt-1">
                     Mercury • USD • <%= account[:status] %>
                     <% if account[:type].present? %>
-                      • <%= account[:type].titleize %>
+                      • <%= t("mercury_items.account_kind_labels.#{account[:type]}", default: account[:type]) %>
                     <% end %>
                   </div>
                   <% if has_blank_name %>

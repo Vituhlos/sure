@@ -8,9 +8,11 @@ class DemoFamilyRefreshMailer < ApplicationMailer
     @period_start = params.fetch(:period_start)
     @period_end = params.fetch(:period_end)
 
-    mail(
-      to: @super_admin.email,
-      subject: "Demo family refresh completed"
-    )
+    I18n.with_locale(locale_for(@super_admin)) do
+      mail(
+        to: @super_admin.email,
+        subject: t(".subject")
+      )
+    end
   end
 end

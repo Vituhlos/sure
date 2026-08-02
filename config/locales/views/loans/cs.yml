@@ -1,0 +1,73 @@
+---
+cs:
+  loans:
+    edit:
+      edit: "Upravit: %{account}"
+    form:
+      interest_rate: "Úroková sazba"
+      interest_rate_placeholder: "5,25"
+      initial_balance: "Původní výše úvěru"
+      rate_type: "Typ úrokové sazby"
+      term_months: "Doba splatnosti (v měsících)"
+      term_months_placeholder: "360"
+      none: "Bez podtypu"
+      subtype_prompt: "Vyberte typ úvěru"
+      subtype_none: "Bez podtypu"
+    new:
+      title: "Zadat údaje o úvěru"
+    overview:
+      interest_rate: "Úroková sazba"
+      monthly_payment: "Měsíční splátka"
+      not_applicable: "Nevztahuje se"
+      original_principal: "Původní jistina"
+      remaining_principal: "Zbývající jistina"
+      term: "Doba splatnosti"
+      type: "Typ sazby"
+      unknown: "Neuvedeno"
+    tabs:
+      overview:
+        interest_rate: "Úroková sazba"
+        monthly_payment: "Měsíční splátka"
+        not_applicable: "Nevztahuje se"
+        original_principal: "Původní jistina"
+        remaining_principal: "Zbývající jistina"
+        term: "Doba splatnosti"
+        type: "Typ sazby"
+        unknown: "Neuvedeno"
+        edit_loan_details: "Upravit údaje o úvěru"
+        months:
+          one: "%{count} měsíc"
+          few: "%{count} měsíce"
+          many: "%{count} měsíce"
+          other: "%{count} měsíců"
+        years:
+          one: "%{count} rok"
+          few: "%{count} roky"
+          many: "%{count} roku"
+          other: "%{count} let"
+    rate_types:
+      fixed: "Pevná"
+      variable: "Proměnná"
+      adjustable: "Pravidelně upravovaná"
+    subtypes:
+      mortgage:
+        long: "Hypoteční úvěr"
+        short: "Hypotéka"
+      student:
+        long: "Studentský úvěr"
+        short: "Studentský úvěr"
+      auto:
+        long: "Úvěr na vozidlo"
+        short: "Úvěr na vozidlo"
+      home_equity:
+        long: "Úvěr zajištěný nemovitostí"
+        short: "Úvěr zajištěný nemovitostí"
+      line_of_credit:
+        long: "Úvěrový rámec"
+        short: "Úvěrový rámec"
+      business:
+        long: "Podnikatelský úvěr"
+        short: "Podnikatelský úvěr"
+      other:
+        long: "Jiný úvěr"
+        short: "Jiný úvěr"

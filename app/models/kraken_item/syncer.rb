@@ -53,11 +53,11 @@ class KrakenItem::Syncer
     end
   rescue Provider::Kraken::AuthenticationError, Provider::Kraken::PermissionError, Provider::Kraken::OTPRequiredError => e
     kraken_item.update!(status: :requires_update)
-    mark_failed(sync, e.message)
+    mark_failed(sync, I18n.t("kraken_item.syncer.credentials_invalid"))
     raise
   rescue StandardError => e
     Rails.logger.error "KrakenItem::Syncer - unexpected error during sync: #{e.message}\n#{e.backtrace&.first(5)&.join("\n")}"
-    mark_failed(sync, e.message)
+    mark_failed(sync, I18n.t("kraken_item.syncer.failed"))
     raise
   end
 

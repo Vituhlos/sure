@@ -1,0 +1,254 @@
+---
+cs:
+  settings:
+    hostings:
+      invite_code_settings:
+        description: Určete, jak se mohou noví uživatelé registrovat do vaší instance aplikace %{product}.
+        email_confirmation_description: Je-li tato možnost zapnutá, musí uživatelé při změně e-mailové adresy novou adresu potvrdit.
+        email_confirmation_title: Vyžadovat potvrzení e-mailu
+        default_family_title: Výchozí domácnost pro nové uživatele
+        default_family_description: "Nové uživatele bez pozvánky přidat do této domácnosti či skupiny."
+        default_family_none: Žádná (vytvořit novou domácnost)
+        generate_tokens: Vygenerovat nový kód
+        generated_tokens: Vygenerované kódy
+        title: Registrace uživatelů
+        states:
+          open: Otevřená
+          closed: Uzavřená
+          invite_only: Pouze na pozvání
+      show:
+        general: Obecná nastavení
+        ai_assistant: Asistent s AI
+        financial_data_providers: Poskytovatelé finančních dat
+        property_valuation_providers: Poskytovatelé ocenění nemovitostí
+        sync_settings: Nastavení synchronizace
+        invites: Zvací kódy
+        title: Vlastní provoz
+        danger_zone: Rizikové operace
+        clear_cache: Vymazat mezipaměť dat
+        clear_cache_warning: Vymazáním mezipaměti dat odstraníte všechny směnné kurzy, ceny cenných papírů, zůstatky účtů a další odvozená data. Účty, transakce, kategorie ani jiná uživatelská data odstraněna nebudou.
+        confirm_clear_cache:
+          title: Vymazat mezipaměť dat?
+          body: Opravdu chcete vymazat mezipaměť dat? Odstraní se všechny směnné kurzy, ceny cenných papírů, zůstatky účtů a další odvozená data. Tuto akci nelze vrátit zpět.
+      provider_selection:
+        exchange_rate_title: Poskytovatel směnných kurzů
+        exchange_rate_description: Vyberte jednoho poskytovatele pro načítání směnných kurzů.
+        exchange_rate_provider_label: Poskytovatel směnných kurzů
+        securities_title: Poskytovatelé cen cenných papírů
+        securities_description: Zapněte jednoho či více poskytovatelů cen akcií, ETF a podílových fondů. Při vyhledávání se použijí všichni zapnutí poskytovatelé a jejich výsledky se sloučí.
+        env_configured_message: Výběr poskytovatele je vypnutý, protože jsou nastavené proměnné prostředí. Chcete-li výběr povolit zde, odstraňte tyto proměnné prostředí z konfigurace.
+        twelve_data_hint: vyžaduje klíč API, 800 kreditů denně
+        yahoo_finance_hint: zdarma, bez klíče API
+        requires_api_key: vyžaduje klíč API
+        requires_api_key_eodhd: vyžaduje klíč API, limit 20 volání denně
+        requires_api_key_alpha_vantage: vyžaduje klíč API, limit 25 volání denně
+        mfapi_hint: zdarma, bez klíče API – pouze indické podílové fondy
+        binance_public_hint: zdarma, bez klíče API – pouze kryptoměny (BTC, ETH apod.)
+        moex_public_hint: zdarma, bez klíče API – ruské akcie, fondy a dluhopisy (MOEX), včetně kurzů RUB
+        tinkoff_invest_hint: vyžaduje token pouze pro čtení – ceny ruských akcií, fondů a dluhopisů a loga značek
+        providers:
+          twelve_data: Twelve Data
+          yahoo_finance: Yahoo Finance
+          tiingo: Tiingo
+          eodhd: EODHD
+          alpha_vantage: Alpha Vantage
+          mfapi: MFAPI.in
+          binance_public: Binance
+          moex_public: MOEX
+          tinkoff_invest: T-Invest (T-Bank)
+          frankfurter: Frankfurter
+      assistant_settings:
+        title: Asistent s AI
+        description: Zvolte způsob, jakým má chatovací asistent odpovídat. Integrovaný asistent používá přímo nastaveného poskytovatele LLM. Externí asistent předává požadavky vzdálenému agentovi AI, který může prostřednictvím MCP volat finanční nástroje Sure.
+        type_label: Typ asistenta
+        type_builtin: Integrovaný (přímé LLM)
+        type_external: Externí (vzdálený agent)
+        external_status: Koncový bod externího asistenta
+        external_configured: Nastaveno
+        external_not_configured: Není nastaveno. Zadejte níže adresu URL a token, případně nastavte proměnné prostředí EXTERNAL_ASSISTANT_URL a EXTERNAL_ASSISTANT_TOKEN.
+        env_notice: "Typ asistenta je prostřednictvím proměnné prostředí ASSISTANT_TYPE pevně nastaven na „%{type}“."
+        env_configured_external: Úspěšně nastaveno prostřednictvím proměnných prostředí.
+        url_label: Adresa URL koncového bodu
+        url_placeholder: "https://your-agent-host/v1/chat"
+        url_help: Úplná adresa URL koncového bodu API vašeho agenta. Získáte ji od jeho poskytovatele.
+        token_label: Token API
+        token_placeholder: Zadejte token od poskytovatele agenta
+        token_help: Ověřovací token poskytnutý provozovatelem externího agenta. S každým požadavkem se odesílá jako token Bearer.
+        agent_id_label: ID agenta (nepovinné)
+        agent_id_placeholder: "main (výchozí)"
+        agent_id_help: Pokud poskytovatel provozuje více agentů, směruje požadavky konkrétnímu z nich. Pro použití výchozího agenta ponechte prázdné.
+        disconnect_title: Externí připojení
+        disconnect_description: Odeberte připojení externího asistenta a přepněte zpět na integrovaného asistenta.
+        disconnect_button: Odpojit
+        confirm_disconnect:
+          title: Odpojit externího asistenta?
+          body: Uložená adresa URL, token a ID agenta budou odstraněny a aplikace se přepne na integrovaného asistenta. Později se můžete znovu připojit zadáním nových přihlašovacích údajů.
+      brand_fetch_settings:
+        description: Zadejte ID klienta, které jste získali od služby Brandfetch.
+        env_configured_message: ID klienta služby Brandfetch bylo úspěšně nastaveno prostřednictvím proměnné prostředí BRAND_FETCH_CLIENT_ID.
+        show_details: "(zobrazit podrobnosti)"
+        setup_step_1_html: 'Navštivte web <a href="https://brandfetch.com/developers" target="_blank" rel="noopener noreferrer" class="underline">brandfetch.com</a> a vytvořte si bezplatný vývojářský účet Brandfetch.'
+        setup_step_2_html: 'Přejděte na stránku <a href="https://developers.brandfetch.com/dashboard/logo-api" target="_blank" rel="noopener noreferrer" class="underline">Logo API</a>.'
+        setup_step_3: 'Klepnutím na ikonu oka v části „Your Client ID“ zobrazte ID klienta a vložte jej níže.'
+        label: ID klienta
+        placeholder: Zadejte ID klienta
+        title: Nastavení služby Brandfetch
+        high_res_label: Používat loga ve vysokém rozlišení
+        high_res_description: Při zapnutí se loga načítají v rozlišení 120 × 120 namísto 40 × 40. Na displejích s vysokou hustotou bodů tak budou ostřejší.
+      llm_provider_selector:
+        title: Poskytovatel AI
+        description: Zvolte LLM používané chatem s AI. Dávkové operace, například kategorizace transakcí, rozpoznávání obchodníků a zpracování PDF, v současnosti vždy používají OpenAI.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí LLM_PROVIDER.
+        provider_label: Aktivní poskytovatel LLM
+        provider_openai: OpenAI
+        provider_anthropic: Anthropic (Claude)
+        provider_help: Změna poskytovatele se projeví při příštím chatu. Níže nastavte přihlašovací údaje aktivního poskytovatele.
+        not_configured_hint: "Poskytovatele %{provider} aktivujete přidáním klíče API níže."
+        data_retention_heading: Nakládání s daty
+        data_retention: Vstupy API se ve výchozím nastavení nepoužívají k trénování modelů. Hostovaná API poskytovatelů uchovávají data přibližně 30 dní pro účely zabezpečení a prevence zneužití. Pro vlastní nebo lokálně provozované koncové body platí vaše vlastní zásady.
+      anthropic_settings:
+        title: Anthropic (Claude)
+        description: Zadejte klíč API služby Anthropic. Adresu Base URL můžete volitelně nasměrovat na AWS Bedrock nebo GCP Vertex.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnných prostředí.
+        access_token_label: Klíč API
+        access_token_placeholder: Zadejte klíč API služby Anthropic
+        base_url_label: Základní adresa URL (nepovinné)
+        base_url_placeholder: "https://api.anthropic.com (výchozí)"
+        model_label: Výchozí model (nepovinné)
+        model_placeholder: "claude-sonnet-4-6 (výchozí)"
+        model_help: Používá se pro chat a zpracování PDF. Dávkové operace, například kategorizace a rozpoznávání obchodníků, ve výchozím nastavení kvůli nákladům používají model Haiku.
+      openai_settings:
+        description: Zadejte přístupový token a volitelně nastavte vlastního poskytovatele kompatibilního s OpenAI.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnných prostředí.
+        access_token_label: Přístupový token
+        access_token_placeholder: Zadejte přístupový token
+        uri_base_label: Základní adresa URL API (nepovinné)
+        uri_base_placeholder: "https://api.openai.com/v1 (výchozí)"
+        model_label: Model (nepovinné)
+        model_placeholder: "gpt-4.1 (výchozí)"
+        json_mode_label: Režim JSON
+        json_mode_auto: Automaticky (doporučeno)
+        json_mode_strict: Přísný (nejvhodnější pro uvažující modely)
+        json_mode_none: Žádný (nejvhodnější pro standardní modely)
+        json_mode_json_object: Objekt JSON
+        json_mode_help: "Přísný režim je nejvhodnější pro uvažující modely (qwen-thinking, deepseek-reasoner). Režim Žádný je nejvhodnější pro standardní modely (llama, mistral, gpt-oss)."
+        budget_heading: Limit tokenů
+        budget_description: Platí pro volání kompatibilní s OpenAI, tedy chat, automatickou kategorizaci, rozpoznávání obchodníků a zpracování PDF. Výchozí hodnoty jsou konzervativní, aby vyhovovaly lokálním modelům s malým kontextem. U cloudových modelů s větším kontextovým oknem je můžete zvýšit.
+        context_window_label: Kontextové okno (nepovinné)
+        context_window_help: "Celkový počet tokenů, které model přijme. Výchozí hodnota: 2 048. U cloudového OpenAI nebo lokálních modelů s velkým kontextem ji zvyšte na 8 192 či více."
+        max_response_tokens_label: Nejvyšší počet tokenů odpovědi (nepovinné)
+        max_response_tokens_help: "Počet tokenů vyhrazených pro odpověď modelu. Výchozí hodnota: 512. Snížením uvolníte více prostoru pro delší historii."
+        max_items_per_call_label: Nejvyšší počet položek v dávce (nepovinné)
+        max_items_per_call_help: "Horní mez velikosti dávky při automatické kategorizaci a rozpoznávání obchodníků. Výchozí hodnota: 25. Větší dávky se automaticky rozdělí tak, aby se vešly do kontextového okna."
+        title: OpenAI
+      yahoo_finance_settings:
+        title: Yahoo Finance
+        description: Yahoo Finance poskytuje bezplatný přístup k cenám akcií, směnným kurzům a finančním datům bez nutnosti klíče API.
+        status_healthy: Yahoo Finance je aktivní a funguje.
+        status_rate_limited: Yahoo Finance dočasně omezuje četnost požadavků.
+        rate_limited_title: Byl dosažen limit požadavků služby Yahoo Finance.
+        rate_limited_message: Není třeba nic dělat. Sure po dobu 30 minut nebude provádět další kontroly dostupnosti. Načítání cen a směnných kurzů pokračuje nezávisle.
+        status_unavailable: Yahoo Finance momentálně není dostupný.
+        unavailable_title: Yahoo Finance se nepodařilo ověřit.
+        unavailable_message: Služba Yahoo Finance není dostupná nebo vrátila neočekávanou odpověď. Zkontrolujte připojení k internetu a zkuste to později.
+        status_unknown: Stav služby Yahoo Finance se ověřuje.
+      rentcast_settings:
+        title: RentCast
+        description: Zadejte klíč API služby RentCast pro vyhledávání údajů a odhadů hodnoty nemovitostí v USA při přidávání nemovitosti. Bezplatný tarif umožňuje nejvýše 50 požadavků API měsíčně, společně pro vyhledávání nemovitostí a denní aktualizace ocenění. U placeného tarifu můžete limit zvýšit proměnnou prostředí RENTCAST_MAX_REQUESTS_PER_MONTH.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí RENTCAST_API_KEY.
+        label: Klíč API
+        placeholder: Zadejte klíč API služby RentCast
+        usage: "Využito %{used} z %{limit} požadavků za měsíc"
+      realie_settings:
+        title: Realie
+        description: Zadejte klíč API služby Realie pro vyhledávání údajů a odhadů hodnoty nemovitostí v USA při přidávání nemovitosti. Bezplatný tarif umožňuje nejvýše 25 požadavků API měsíčně, společně pro vyhledávání nemovitostí a denní aktualizace ocenění. U placeného tarifu můžete limit zvýšit proměnnou prostředí REALIE_MAX_REQUESTS_PER_MONTH.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí REALIE_API_KEY.
+        label: Klíč API
+        placeholder: Zadejte klíč API služby Realie
+        usage: "Využito %{used} z %{limit} požadavků za měsíc"
+      tiingo_settings:
+        title: Tiingo
+        description: Zadejte token API poskytnutý službou Tiingo. Bezplatný tarif podporuje 50 jedinečných symbolů za hodinu a více než 30 let historických dat.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí TIINGO_API_KEY.
+        label: Token API
+        placeholder: Zadejte token API služby Tiingo
+        show_details: "(zobrazit podrobnosti)"
+        step_1_html: 'Navštivte web <a href="https://www.tiingo.com" target="_blank" rel="noopener noreferrer" class="underline">tiingo.com</a> a vytvořte si bezplatný účet.'
+        step_2_html: 'Přejděte na stránku <a href="https://www.tiingo.com/account/api/token" target="_blank" rel="noopener noreferrer" class="underline">tokenu API</a>.'
+        step_3: Zkopírujte token API a vložte jej níže.
+      tinkoff_invest_settings:
+        title: T-Invest (T-Bank)
+        description: Zadejte token API služby T-Invest s oprávněním pouze ke čtení. Používá se k načítání logotypů cenných papírů včetně fondů a dluhopisů, a to i při použití cen z MOEX, a při zapnutí výše také k načítání cen ruských instrumentů.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí TINKOFF_INVEST_API_KEY.
+        label: Token API
+        placeholder: Zadejte token API služby T-Invest
+        show_details: "(zobrazit podrobnosti)"
+        step_1: Otevřete investice v T-Bank, přejděte do Nastavení a poté do části s tokeny API. Je vyžadován otevřený brokerský účet T-Bank.
+        step_2: Vytvořte token s oprávněním pouze ke čtení.
+        step_3: Zkopírujte token a vložte jej níže.
+      eodhd_settings:
+        title: EODHD
+        description: Zadejte token API poskytnutý službou EODHD. Podporuje evropské ETF na burzách LSE, XETRA a dalších světových burzách.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí EODHD_API_KEY.
+        label: Token API
+        placeholder: Zadejte token API služby EODHD
+        show_details: "(zobrazit podrobnosti)"
+        step_1_html: 'Navštivte web <a href="https://eodhd.com/register" target="_blank" rel="noopener noreferrer" class="underline">eodhd.com</a> a vytvořte si bezplatný účet.'
+        step_2_html: 'Token API najdete na svém <a href="https://eodhd.com/cp/dashboard" target="_blank" rel="noopener noreferrer" class="underline">řídicím panelu</a>.'
+        step_3: Zkopírujte token API a vložte jej níže.
+        rate_limit_warning: Bezplatný tarif EODHD je omezen na 20 volání API denně. Nejlépe se hodí jako doplňkový poskytovatel evropských ETF, které ostatní poskytovatelé nenabízejí.
+      alpha_vantage_settings:
+        title: Alpha Vantage
+        description: Zadejte klíč API služby Alpha Vantage. Podporuje evropské ETF na Londýnské burze, XETRA a dalších burzách.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí ALPHA_VANTAGE_API_KEY.
+        label: Klíč API
+        placeholder: Zadejte klíč API služby Alpha Vantage
+        show_details: "(zobrazit podrobnosti)"
+        step_1_html: 'Na webu <a href="https://www.alphavantage.co/support/#api-key" target="_blank" rel="noopener noreferrer" class="underline">alphavantage.co</a> si vyžádejte bezplatný klíč API.'
+        step_2: Zkopírujte klíč API a vložte jej níže.
+        rate_limit_warning: Bezplatný tarif Alpha Vantage je omezen na 25 volání API denně. Nejlépe se hodí jako doplňkový poskytovatel evropských ETF, které ostatní poskytovatelé nenabízejí.
+        no_health_check_note: Kvůli přísnému omezení počtu požadavků není pro tohoto poskytovatele dostupná kontrola stavu připojení.
+      twelve_data_settings:
+        api_calls_used: "Využito %{used} z %{limit} denních volání API (%{percentage})"
+        description: Zadejte klíč API poskytnutý službou Twelve Data.
+        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí TWELVE_DATA_API_KEY.
+        label: Klíč API
+        placeholder: Zadejte klíč API
+        show_details: "(zobrazit podrobnosti)"
+        step_1_html: 'Navštivte web <a href="https://twelvedata.com/register" target="_blank" rel="noopener noreferrer" class="underline">twelvedata.com</a> a vytvořte si bezplatný vývojářský účet Twelve Data.'
+        step_2_html: 'Přejděte na stránku <a href="https://twelvedata.com/account/api-keys" target="_blank" rel="noopener noreferrer" class="underline">klíčů API</a>.'
+        step_3: Zobrazte tajný klíč a vložte jej níže.
+        plan: "tarif %{plan}"
+        plan_upgrade_warning_title: Některé symboly vyžadují placený tarif
+        plan_upgrade_warning_description: U následujících symbolů ve vašem portfoliu nelze se současným tarifem Twelve Data synchronizovat ceny.
+        requires_plan: vyžaduje tarif %{plan}
+        view_pricing: Zobrazit ceny Twelve Data
+        title: Twelve Data
+      update:
+        failure: Neplatná hodnota nastavení
+        success: Nastavení bylo aktualizováno.
+        invalid_onboarding_state: Neplatný stav úvodního nastavení
+        invalid_sync_time: Neplatný formát času synchronizace. Použijte formát HH:MM, například 02:30.
+        invalid_llm_budget: "%{field} musí být celé číslo alespoň %{minimum}."
+        invalid_anthropic_base_url: Základní adresa URL služby Anthropic musí používat protokol HTTP nebo HTTPS.
+        anthropic_model_required_for_base_url: Při použití vlastní základní adresy URL je nutné zadat model Anthropic.
+        scheduler_sync_failed: Nastavení bylo uloženo, ale plán synchronizace se nepodařilo aktualizovat. Zkuste to znovu nebo zkontrolujte protokoly serveru.
+      disconnect_external_assistant:
+        external_assistant_disconnected: Externí asistent byl odpojen.
+      clear_cache:
+        cache_cleared: Mezipaměť dat byla vymazána. Dokončení může chvíli trvat.
+      not_authorized: K provedení této akce nemáte oprávnění.
+      ensure_admin:
+        not_authorized: K provedení této akce nemáte oprávnění.
+      ensure_super_admin_for_onboarding:
+        not_authorized: K provedení této akce nemáte oprávnění.
+      sync_auto_sync_scheduler!:
+        scheduler_sync_failed: Nastavení bylo uloženo, ale plán synchronizace se nepodařilo aktualizovat. Zkuste to znovu nebo zkontrolujte protokoly serveru.
+      sync_settings:
+        auto_sync_label: Zapnout automatickou synchronizaci
+        auto_sync_description: Při zapnutí se všechny účty každý den automaticky synchronizují v určený čas.
+        auto_sync_time_label: Čas synchronizace (HH:MM)
+        auto_sync_time_description: Určete denní dobu, kdy se má automatická synchronizace spouštět.
+        include_pending_label: Zahrnout čekající transakce
+        include_pending_description: Při zapnutí se naimportují také čekající, dosud nezaúčtované transakce a po jejich zaúčtování se automaticky spárují. Pokud vaše banka poskytuje nespolehlivé údaje o čekajících transakcích, tuto možnost vypněte.
+        env_configured_message: Toto nastavení je vypnuté, protože je nastavena proměnná prostředí poskytovatele SIMPLEFIN_INCLUDE_PENDING nebo PLAID_INCLUDE_PENDING. Chcete-li nastavení povolit, proměnnou odstraňte.

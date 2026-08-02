@@ -56,11 +56,11 @@ class Assistant::Function::UpdateTransaction < Assistant::Function
 
   def call(params = {})
     transaction = find_transaction(params["id"])
-    return error("not_found", "Transaction with id '#{params["id"]}' not found.") unless transaction
+    return error("not_found", I18n.t("assistant.functions.update_transaction.not_found", id: params["id"])) unless transaction
 
     entry = transaction.entry
-    return error("split_child", "Split child transactions cannot be edited directly. Use the split editor.") if entry.split_child?
-    return error("not_authorized", "You do not have permission to update this transaction.") unless permitted_to_update?(entry.account, params)
+    return error("split_child", I18n.t("assistant.functions.update_transaction.split_child")) if entry.split_child?
+    return error("not_authorized", I18n.t("assistant.functions.update_transaction.not_authorized")) unless permitted_to_update?(entry.account, params)
 
     entry_attrs = entry_attributes(params, entry)
     return entry_attrs if error_response?(entry_attrs)
@@ -68,10 +68,10 @@ class Assistant::Function::UpdateTransaction < Assistant::Function
     tag_ids = nil
     if params.key?("tag_ids")
       tag_ids = Array(params["tag_ids"]).map(&:to_s).reject(&:blank?)
-      return error("invalid_tags", "One or more tag_ids do not belong to the user's family.") unless valid_tag_ids?(tag_ids)
+      return error("invalid_tags", I18n.t("assistant.functions.update_transaction.invalid_tags")) unless valid_tag_ids?(tag_ids)
     end
 
-    return error("no_changes", "Provide at least one field to update.") if no_changes?(entry_attrs, params)
+    return error("no_changes", I18n.t("assistant.functions.update_transaction.no_changes")) if no_changes?(entry_attrs, params)
 
     Entry.transaction do
       entry.update!(entry_attrs)
@@ -89,7 +89,7 @@ class Assistant::Function::UpdateTransaction < Assistant::Function
     {
       success: true,
       transaction: serialize(transaction.reload),
-      message: "Transaction '#{transaction.entry.name}' updated."
+      message: I18n.t("assistant.functions.update_transaction.updated", name: transaction.entry.name)
     }
   rescue ActiveRecord::RecordInvalid => e
     error("validation_failed", e.record.errors.full_messages.join("; "))
@@ -118,7 +118,7 @@ class Assistant::Function::UpdateTransaction < Assistant::Function
       if params.key?("category_id")
         category_id = optional_uuid(params["category_id"])
         return category_id if error_response?(category_id)
-        return error("invalid_category", "category_id does not belong to the user's family.") if category_id && !family.categories.exists?(id: category_id)
+        return error("invalid_category", I18n.t("assistant.functions.update_transaction.invalid_category")) if category_id && !family.categories.exists?(id: category_id)
 
         entryable_attrs[:category_id] = category_id
       end
@@ -126,7 +126,7 @@ class Assistant::Function::UpdateTransaction < Assistant::Function
       if params.key?("merchant_id")
         merchant_id = optional_uuid(params["merchant_id"])
         return merchant_id if error_response?(merchant_id)
-        return error("invalid_merchant", "merchant_id is not available to the user's family.") if merchant_id && !available_merchants.exists?(id: merchant_id)
+        return error("invalid_merchant", I18n.t("assistant.functions.update_transaction.invalid_merchant")) if merchant_id && !available_merchants.exists?(id: merchant_id)
 
         entryable_attrs[:merchant_id] = merchant_id
       end
@@ -142,7 +142,7 @@ class Assistant::Function::UpdateTransaction < Assistant::Function
       return nil if value.nil? || value == ""
       return value.to_s if valid_uuid?(value)
 
-      error("invalid_uuid", "Expected a valid UUID.")
+      error("invalid_uuid", I18n.t("assistant.functions.update_transaction.invalid_uuid"))
     end
 
     def valid_tag_ids?(tag_ids)

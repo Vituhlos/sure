@@ -30,6 +30,9 @@ en:
       categories_expenses: Expense categories
       categories_incomes: Income categories
       delete_all: Delete all
+      delete_all_title: Delete all categories?
+      delete_all_subtitle: Are you sure you want to delete all categories? This cannot be undone.
+      delete_all_button: Delete all categories
       empty: No categories found
       merge: Merge categories
       new: New category

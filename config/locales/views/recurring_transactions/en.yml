@@ -23,8 +23,12 @@ en:
       triggers:
         - CSV imports complete (transactions, trades, accounts, etc. )
         - Any provider sync completes ( Plaid, SimpleFIN, etc. )
-    identified: Identified %{count} recurring transaction patterns
-    cleaned_up: Cleaned up %{count} stale recurring transactions
+    identified:
+      one: Identified %{count} recurring transaction pattern
+      other: Identified %{count} recurring transaction patterns
+    cleaned_up:
+      one: Cleaned up %{count} stale recurring transaction
+      other: Cleaned up %{count} stale recurring transactions
     marked_inactive: Recurring transaction marked as inactive
     marked_active: Recurring transaction marked as active
     deleted: Recurring transaction deleted

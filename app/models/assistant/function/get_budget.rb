@@ -174,11 +174,11 @@ class Assistant::Function::GetBudget < Assistant::Function
       when /\A[A-Za-z]{3}-\d{4}\z/   then "%b-%Y"
       end
 
-      raise Assistant::Error, "Invalid month: #{raw}. Use YYYY-MM or MMM-YYYY." if fmt.nil?
+      raise Assistant::Error, I18n.t("assistant.functions.get_budget.invalid_month", value: raw) if fmt.nil?
 
       Date.strptime(raw, fmt)
     rescue ArgumentError
-      raise Assistant::Error, "Invalid month: #{raw}. Use YYYY-MM or MMM-YYYY."
+      raise Assistant::Error, I18n.t("assistant.functions.get_budget.invalid_month", value: raw)
     end
 
     def shift_months(date, n)

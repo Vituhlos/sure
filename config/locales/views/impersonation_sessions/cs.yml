@@ -1,0 +1,39 @@
+---
+cs:
+  impersonation_sessions:
+    approve:
+      success: "Žádost byla schválena."
+    complete:
+      success: "Relace byla ukončena."
+    create:
+      success: "Žádost byla odeslána uživateli. Čeká se na schválení."
+    join:
+      success: "Připojili jste se k relaci."
+    leave:
+      success: "Opustili jste relaci."
+    reject:
+      success: "Žádost byla zamítnuta."
+    super_admin_bar:
+      super_admin: "Hlavní správce"
+      jobs: "Úlohy"
+      impersonating: "Zastupování uživatele"
+      leave: "Opustit"
+      terminate: "Ukončit"
+      join_a_session: "Připojit se k relaci"
+      join: "Připojit se"
+      uuid_placeholder: "UUID"
+      request_impersonation: "Požádat o přístup"
+      statuses:
+        pending: "Čeká na vyřízení"
+        in_progress: "Probíhá"
+        complete: "Ukončeno"
+        rejected: "Zamítnuto"
+    approval_bar:
+      access_session: "Relace vzdáleného přístupu"
+      access_request: "Žádost o vzdálený přístup"
+      pending_description: "Pracovník podpory Sure požádal o přístup k vašemu účtu, pravděpodobně aby vám pomohl s požadavkem na podporu. Pokud žádost schválíte, veškerá jeho činnost bude z bezpečnostních a auditních důvodů zaznamenána."
+      approve: "Schválit"
+      reject: "Zamítnout"
+      active_description: "Pracovník týmu Sure právě prohlíží vaše data. Relaci můžete kdykoli ukončit."
+      end_session: "Ukončit relaci"
+      error: "Něco se pokazilo. Obraťte se na podporu."

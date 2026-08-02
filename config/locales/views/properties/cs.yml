@@ -1,0 +1,132 @@
+---
+cs:
+  properties:
+    update:
+      success: "Údaje o nemovitosti byly aktualizovány."
+      failure: "Údaje o nemovitosti se nepodařilo aktualizovat."
+    update_balances:
+      success: "Hodnota nemovitosti byla aktualizována."
+    update_address:
+      success: "Adresa byla aktualizována."
+      failure: "Adresu se nepodařilo aktualizovat. Zkontrolujte povinná pole."
+    edit:
+      edit: "Upravit: %{account}"
+    form_tabs:
+      overview: "Přehled"
+      value: "Hodnota"
+      address: "Adresa"
+    form:
+      address_line1: "Ulice a číslo domu"
+      address_line1_placeholder: "Hlavní 123"
+      area: "Obytná plocha"
+      area_placeholder: "120"
+      area_unit: "Jednotka plochy"
+      country: "Země"
+      country_placeholder: "CZ"
+      locality: "Obec"
+      locality_placeholder: "Praha"
+      none: "Bez podtypu"
+      postal_code: "PSČ"
+      postal_code_placeholder: "110 00"
+      region: "Stát, provincie nebo region"
+      region_placeholder: "Hlavní město Praha"
+      subtype_prompt: "Vyberte typ nemovitosti"
+      year_built: "Rok výstavby"
+      year_built_placeholder: "2000"
+    avm_providers:
+      rentcast: "RentCast"
+      realie: "Realie"
+    new:
+      title: "Zadat nemovitost ručně"
+      next: "Další"
+      avm_option: "Přidat pomocí služby %{provider}"
+      avm_title: "Přidat nemovitost pomocí služby %{provider}"
+      avm_description: "Zadejte název nemovitosti a její adresu. Služba %{provider} vyhledá podrobnosti o nemovitosti a odhad její tržní hodnoty."
+      avm_us_only: "Služba %{provider} podporuje pouze nemovitosti ve Spojených státech."
+      avm_submit: "Vyhledat nemovitost"
+      avm_preview_title: "Potvrďte údaje o nemovitosti"
+      avm_preview_description: "Služba %{provider} našla následující údaje. Před přidáním nemovitosti je zkontrolujte. Zatím nebylo nic vytvořeno."
+      avm_preview_no_record: "Služba %{provider} na této adrese nenašla záznam o nemovitosti. Zobrazená hodnota je proto odhadem podle okolních nemovitostí. Než budete pokračovat, adresu pečlivě zkontrolujte."
+      avm_preview_back: "Zpět"
+      avm_preview_confirm: "Přidat nemovitost"
+    address:
+      title: "Zadat nemovitost ručně"
+      address_line1_label: "Ulice a číslo domu"
+      address_line1_placeholder: "Hlavní 123"
+      city_label: "Obec"
+      city_placeholder: "Praha"
+      state_region_label: "Stát, provincie nebo region"
+      state_region_placeholder: "Hlavní město Praha"
+      postal_code_label: "PSČ"
+      postal_code_placeholder: "110 00"
+      country_label: "Země"
+      country_placeholder: "Česko"
+      save: "Uložit"
+    balances:
+      title: "Zadat nemovitost ručně"
+      market_value_label: "Odhadovaná tržní hodnota"
+      market_value_tooltip: "Odhadovaná tržní hodnota nemovitosti. Tento údaj lze často najít na webech, jako jsou Zillow nebo Redfin, nikdy však nejde o přesnou hodnotu."
+      save: "Uložit"
+      next: "Další"
+    overview_fields:
+      name_label: "Název"
+      name_placeholder: "Rekreační nemovitost"
+      subtype_prompt: "Vyberte typ"
+      property_type_label: "Typ nemovitosti"
+      year_built_label: "Rok výstavby (nepovinné)"
+      year_built_placeholder: "1990"
+      area_label: "Plocha (nepovinné)"
+      area_placeholder: "120"
+      square_feet: "Čtvereční stopy"
+      square_meters: "Metry čtvereční"
+      area_unit_label: "Jednotka plochy"
+    overview:
+      living_area: "Obytná plocha"
+      market_value: "Tržní hodnota"
+      purchase_price: "Pořizovací cena"
+      trend: "Vývoj"
+      unknown: "Neuvedeno"
+      year_built: "Rok výstavby"
+    tabs:
+      overview:
+        living_area: "Obytná plocha"
+        market_value: "Tržní hodnota"
+        purchase_price: "Pořizovací cena"
+        trend: "Vývoj"
+        unknown: "Neuvedeno"
+        year_built: "Rok výstavby"
+        edit_account_details: "Upravit údaje o účtu"
+    subtypes:
+      single_family_home:
+        short: "Rodinný dům"
+        long: "Rodinný dům"
+      multi_family_home:
+        short: "Vícebytový dům"
+        long: "Dům s více bytovými jednotkami"
+      condominium:
+        short: "Bytová jednotka"
+        long: "Bytová jednotka"
+      townhouse:
+        short: "Řadový dům"
+        long: "Řadový dům"
+      investment_property:
+        short: "Investiční nemovitost"
+        long: "Investiční nemovitost"
+      second_home:
+        short: "Druhá nemovitost"
+        long: "Druhá nemovitost"
+      apartment:
+        short: "Byt"
+        long: "Byt"
+      plot:
+        short: "Pozemek"
+        long: "Pozemek"
+      commercial:
+        short: "Komerční nemovitost"
+        long: "Komerční nemovitost"
+      rented:
+        short: "Pronajímaná nemovitost"
+        long: "Pronajímaná nemovitost"
+      agri_land:
+        short: "Zemědělská půda"
+        long: "Zemědělská půda"

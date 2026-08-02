@@ -1,0 +1,57 @@
+---
+cs:
+  sso_provider_tester:
+    unknown_strategy: "Neznámá strategie: %{strategy}"
+    issuer_required: "Je nutné zadat adresu URL vydavatele"
+    discovery_http_error: "Koncový bod zjišťování vrátil stav HTTP %{status}"
+    discovery_missing_fields: "V dokumentu zjišťování chybějí povinná pole: %{fields}"
+    issuer_mismatch: "Vydavatelé se neshodují: očekáváno %{expected}, vráceno %{actual}"
+    oidc_valid: "Zjišťování OIDC bylo úspěšně ověřeno"
+    connection_timeout: "Vypršel časový limit připojení"
+    connection_failed: "Připojení se nezdařilo: %{error}"
+    invalid_discovery_json: "Koncový bod zjišťování vrátil neplatný dokument JSON"
+    error: "Chyba: %{error}"
+    client_id_required: "Je nutné zadat ID klienta"
+    client_secret_required: "Je nutné zadat tajný klíč klienta"
+    google_oauth_valid: "Konfigurace Google OAuth 2.0 se jeví jako platná"
+    github_oauth_valid: "Konfigurace GitHub OAuth se jeví jako platná"
+    full_validation_note: "Úplné ověření proběhne při skutečném přihlášení"
+    saml_url_required: "Je nutné zadat adresu URL metadat IdP nebo adresu URL SSO IdP"
+    metadata_http_error: "Koncový bod metadat vrátil stav HTTP %{status}"
+    invalid_saml_metadata: "Odpověď zřejmě neobsahuje platná metadata SAML"
+    saml_metadata_valid: "Metadata SAML byla úspěšně načtena"
+    saml_valid: "Konfigurace SAML se jeví jako platná"
+    trailing_slash_hint: "neshoduje se koncové lomítko. Adresy URL vydavatele se pravděpodobně liší pouze koncovým lomítkem. Upravte nakonfigurovaného vydavatele tak, aby se přesně shodoval s dokumentem zjišťování"
+  activerecord:
+    errors:
+      models:
+        sso_provider:
+          attributes:
+            strategy:
+              unsupported_strategy: "%{value} není podporovaná strategie"
+            name:
+              invalid_identifier: "smí obsahovat pouze malá písmena, číslice a podtržítka"
+            icon:
+              whitespace_only: "nesmí být prázdná ani obsahovat pouze mezery"
+            issuer:
+              required_for_oidc: "je u poskytovatele OpenID Connect povinná"
+              invalid_url: "musí být platná adresa URL"
+              discovery_http_error: "koncový bod zjišťování vrátil stav %{status}"
+              discovery_missing_issuer: "koncový bod zjišťování nevrátil platného vydavatele"
+              discovery_connection_failed: "ke koncovému bodu zjišťování se nepodařilo připojit: %{error}"
+              discovery_invalid_json: "koncový bod zjišťování vrátil neplatný dokument JSON"
+              discovery_validation_failed: "ověření zjišťování se nezdařilo: %{error}"
+            client_id:
+              required_for_oidc: "je u poskytovatele OpenID Connect povinné"
+              required_for_oauth: "je u poskytovatele OAuth povinné"
+            client_secret:
+              required_for_oidc: "je u poskytovatele OpenID Connect povinný"
+              required_for_oauth: "je u poskytovatele OAuth povinný"
+            redirect_uri:
+              invalid_url: "musí být platná adresa URL"
+            settings:
+              saml_url_required: "U poskytovatele SAML je nutné zadat adresu URL metadat IdP nebo adresu URL SSO IdP"
+              saml_cert_required: "Pokud nepoužíváte adresu URL metadat, je nutné zadat certifikát IdP nebo jeho otisk"
+              metadata_url_invalid: "Adresa URL metadat IdP musí být platná"
+              sso_url_invalid: "Adresa URL SSO IdP musí být platná"
+              invalid_default_role: "výchozí role musí být host, člen, správce nebo hlavní správce"

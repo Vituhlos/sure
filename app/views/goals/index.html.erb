@@ -125,7 +125,7 @@
               horizontally when the column is too narrow for all six chips,
               rather than wrapping "On track" mid-label or forcing the row
               wider than the viewport. %>
-          <%= render DS::SegmentedControl.new(aria_label: t(".chips_aria", default: "Filter goals by status"), class: "overflow-x-auto max-w-full") do |sc| %>
+          <%= render DS::SegmentedControl.new(aria_label: t(".chips_aria"), class: "overflow-x-auto max-w-full") do |sc| %>
             <% %w[all on_track behind no_target_date paused completed].each do |status| %>
               <% sc.with_segment(t(".chips.#{status}"),
                    active: status == "all",

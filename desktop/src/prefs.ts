@@ -1,10 +1,15 @@
 import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { P, S } from "./strings";
+import { locale, localizeDocument, P, S } from "./strings";
 import { serverErrorMessage } from "./status";
 
 interface ServerEntry { url: string; label: string; }
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+localizeDocument(P.documentTitle);
+void invoke("set_app_locale", { locale }).catch(() => {
+  // The preferences UI remains localized if the native-menu locale cannot be saved.
+});
 
 $("prefs-title").textContent = P.title;
 $("servers-title").textContent = P.servers;

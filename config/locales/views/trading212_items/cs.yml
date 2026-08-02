@@ -1,0 +1,117 @@
+---
+cs:
+  providers:
+    trading212:
+      name: Trading 212
+      connection_description: Připojte investiční účet Trading 212 pomocí klíče API.
+      institution_name: Trading 212
+  trading212_items:
+    defaults:
+      name: Trading 212
+    transaction_names:
+      contribution: "Vklad"
+      withdrawal: "Výběr"
+      interest: "Úrok"
+      fee: "Poplatek"
+      buy: "Nákup %{quantity} ks %{ticker}"
+      sell: "Prodej %{quantity} ks %{ticker}"
+      dividend: "Dividenda"
+      dividend_from: "Dividenda z %{ticker}"
+    trading212_item:
+      deletion_in_progress: Probíhá odstraňování
+      environment_label_live: Skutečný účet
+      environment_label_demo: Ukázkový účet
+      syncing: Synchronizace
+      requires_update: Klíč API vyžaduje pozornost
+      error: Chyba
+      synced: "Synchronizováno před %{time}. %{summary}."
+      never_synced: Dosud nesynchronizováno.
+      setup_accounts: Nastavit účty
+      delete: Odstranit
+      accounts_need_setup: Účet vyžaduje nastavení
+      accounts_need_setup_description: Účet Trading 212 je nutné propojit s účtem v aplikaci Sure.
+      no_accounts_discovered: Zatím nebyl nalezen žádný účet Trading 212.
+      no_accounts_discovered_description: Po uložení klíče API spusťte synchronizaci, která účet vyhledá.
+    setup_accounts:
+      page_title: Nastavení účtu Trading 212
+      dialog_title: Nastavte účet Trading 212
+      subtitle: Propojte svůj investiční účet Trading 212.
+      info_box:
+        title: Import z API Trading 212
+        items:
+          item_1: Aktuální pozice včetně cen a množství
+          item_2: Úplná historie pokynů k nákupu a prodeji
+          item_3: Dividendy a hotovostní transakce
+      status:
+        fetching_accounts: Načítání účtu z Trading 212…
+        no_accounts_found_title: Nebyl nalezen žádný účet.
+        no_accounts_found_description: Sure nenašel žádný účet Trading 212. Ověřte platnost klíče API.
+      available_accounts:
+        title: Dostupný účet
+        account_type_investment: Investiční
+        account_summary: "%{account_type} • Zůstatek: %{balance}"
+        account_id: "ID účtu: %{account_id}"
+      link_existing:
+        description: Nalezený účet Trading 212 můžete také propojit se stávajícím ručním investičním účtem.
+        manual_account_option: "%{name} (%{balance})"
+        select_prompt: Vyberte účet…
+      linked_accounts:
+        title: Již propojeno
+        linked_to_html: "Propojeno s účtem: %{account}"
+      buttons:
+        refresh: Obnovit
+        cancel: Zrušit
+        back_to_settings: Zpět do nastavení
+        create_selected_accounts: Vytvořit vybrané účty
+        link: Propojit
+        done: Hotovo
+    sync:
+      status:
+        checking_credentials: Ověřování přihlašovacích údajů Trading 212…
+        importing_account: Import účtu Trading 212…
+        checking_configuration: Kontrola nastavení účtu…
+        accounts_need_setup:
+          one: 1 účet Trading 212 vyžaduje nastavení…
+          few: "%{count} účty Trading 212 vyžadují nastavení…"
+          many: "%{count} účtu Trading 212 vyžaduje nastavení…"
+          other: "%{count} účtů Trading 212 vyžaduje nastavení…"
+        processing_activity: Zpracování pozic a aktivit…
+        calculating_balances: Výpočet zůstatků…
+    sync_status:
+      no_accounts: Zatím nebyl nalezen žádný účet Trading 212
+      all_linked:
+        one: Propojen 1 účet
+        few: "Propojeny %{count} účty"
+        many: "Propojeno %{count} účtu"
+        other: "Propojeno %{count} účtů"
+      partial: "Propojeno: %{linked}, nastavení vyžaduje: %{unlinked}"
+    select_existing_account:
+      title: Propojit účet Trading 212
+      no_accounts_available: Zatím nejsou dostupné žádné nepropojené účty Trading 212.
+      run_sync_hint: "Po uložení klíče API spusťte synchronizaci v nabídce Nastavení > Poskytovatelé."
+      wait_for_sync: Vyčkejte na dokončení synchronizace, která vyhledává účty.
+      balance: Zůstatek
+      link: Propojit
+      cancel: Zrušit
+    create:
+      success: Trading 212 byl úspěšně nastaven.
+    update:
+      success: Nastavení Trading 212 bylo úspěšně aktualizováno.
+    destroy:
+      success: Připojení Trading 212 bylo zařazeno k odstranění.
+    select_accounts:
+      not_configured: Trading 212 není nastaven.
+    link_existing_account:
+      not_found: Účet nebo nastavení Trading 212 nebyly nalezeny.
+      only_manual_investment: S Trading 212 lze propojit pouze ruční investiční účty.
+      already_linked: Tento účet Trading 212 je již propojen.
+      success: Účet byl úspěšně propojen s účtem Trading 212.
+      failed: Účet Trading 212 se nepodařilo propojit.
+    complete_account_setup:
+      success:
+        one: "Byl úspěšně vytvořen %{count} účet Trading 212."
+        few: "Byly úspěšně vytvořeny %{count} účty Trading 212."
+        many: "Bylo úspěšně vytvořeno %{count} účtu Trading 212."
+        other: "Bylo úspěšně vytvořeno %{count} účtů Trading 212."
+      none_selected: Nebyly vybrány žádné účty.
+      none_created: Nebyly vytvořeny žádné účty.

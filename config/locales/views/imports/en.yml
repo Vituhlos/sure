@@ -63,6 +63,9 @@ en:
         currency_label: Currency
         format_label: Format
         amount_type_strategy_label: Amount type strategy
+        amount_type_strategies:
+          signed_amount: Signed amount
+          custom_column: Custom column
         select_strategy: Select strategy
         set: Set
         as_amount_type_column: as amount type column
@@ -115,7 +118,21 @@ en:
         description: Upload a CSV file with your merchants. We'll automatically map the columns for you.
         instructions: Select continue to parse your CSV and move on to the clean step.
       mint_import:
+        preconfigured_notice: We have pre-configured your Mint import for you. Please proceed to the next step.
+        leave_empty: Leave empty
+        date_label: Date
         date_format_label: Date format
+        amount_label: Amount
+        incomes_are_negative: Incomes are negative
+        incomes_are_positive: Incomes are positive
+        currency_label: Currency
+        format_label: Format
+        select_format: Select format
+        account_label: Account (optional)
+        name_label: Name (optional)
+        category_label: Category (optional)
+        tags_label: Tags (optional)
+        apply_configuration: Apply configuration
       actual_import:
         preconfigured_notice: We have pre-configured your Actual Budget import for you. Please proceed to the next step.
         leave_empty: Leave empty
@@ -149,6 +166,11 @@ en:
       show:
         description: Select the columns that correspond to each field in your CSV.
         title: Configure your import
+        template_found: Template configuration found
+        template_description: We found a configuration from a previous import for this account. Would you like to apply it to this import?
+        manual_configuration: Manually configure
+        apply_template: Apply template
+        sample_caption: Sample data from your uploaded CSV
     confirms:
       sure_import:
         title: Confirm your import
@@ -183,9 +205,12 @@ en:
         tag_mapping_description: Assign all of your imported file's tags to %{product_name}'s
           existing tags.  You can also add new tags or leave them uncategorized.
         tag_mapping_title: Assign your tags
+        step_label: "Step %{step}"
     uploads:
       handle_qif_upload:
         qif_uploaded: "QIF file uploaded successfully."
+        invalid_qif: "Must be a valid QIF file."
+        account_required: "Please select an account for the QIF import."
       update:
         qif_uploaded: "QIF file uploaded successfully."
       show:
@@ -234,6 +259,13 @@ en:
       account: "Account"
       category: "Category"
       tag: "Tag"
+    mapping_options:
+      add_new_account: "Add as new account"
+      add_new_category: "Add as new category"
+      add_new_tag: "Add as new tag"
+      select_option: "Select an option"
+      leave_unassigned: "Leave unassigned"
+      unassigned: "(unassigned)"
     dry_run_resources:
       transactions: "Transactions"
       balances: "Balances"
@@ -378,6 +410,9 @@ en:
           revert: Revert
           confirm_revert: This will delete transactions that were imported, but you will still be able to review and re-import your data at any time.
           delete: Delete
+          delete_confirm_title: Delete import?
+          delete_confirm_body: Are you sure you want to delete this import? This is not reversible.
+          delete_confirm_button: Delete import
           view: View
           mark_failed: Mark as failed
           confirm_mark_failed: This import has been inactive for a while and its background job was likely interrupted. Mark it as failed so you can try again? No imported data is kept.
@@ -418,7 +453,6 @@ en:
       document_uploaded: Document uploaded successfully.
       document_upload_failed: We couldn't upload the document to the vector store. Please try again.
       invalid_ndjson_file_type: Invalid file type or format. Please upload a valid .ndjson or .json export file.
-      ndjson_uploaded: NDJSON file uploaded successfully.
       document_provider_not_configured: No vector store is configured for document uploads.
     show:
       finalize_upload: Please finalize your file upload.
@@ -436,6 +470,92 @@ en:
       custom_column_requires_inflow: "Custom column imports require an inflow column to be selected"
       interrupted: "The background worker was interrupted before this finished. Imported data was rolled back — you can safely try again."
       presumed_lost: "Marked as failed after the background job was presumed lost. The imported data was rolled back — you can safely try again."
+    default_row_name: "Imported item"
+    account_import:
+      invalid_balance_date: "Balance date \"%{date}\" does not match the expected format %{expected_format}."
+    transaction_import:
+      blank_account: "(blank)"
+      unmapped_account: "Row %{row}: Account \"%{account}\" is not mapped to an existing account. Map this account in the import configuration."
+    sure_import:
+      not_publishable: "Import was uploaded but has no publishable records."
+    qif_import:
+      unknown_security: "Unknown"
+      transaction_names:
+        dividend: "Dividend"
+        dividend_with_security: "Dividend: %{security}"
+        interest: "Interest"
+        interest_with_security: "Interest: %{security}"
+        cash_transfer_in: "Cash Transfer In"
+        cash_transfer_out: "Cash Transfer Out"
+        capital_gain_long: "Capital Gain (Long)"
+        capital_gain_long_with_security: "Capital Gain (Long): %{security}"
+        capital_gain_short: "Capital Gain (Short)"
+        capital_gain_short_with_security: "Capital Gain (Short): %{security}"
+        miscellaneous_income: "Miscellaneous Income"
+        miscellaneous_expense: "Miscellaneous Expense"
+    preflight:
+      invalid_import_type: "type must be one of: %{types}"
+      missing_csv_content: "Provide a CSV file or raw_file_content."
+      missing_sure_content: "Provide a Sure NDJSON file or raw_file_content."
+      file_too_large: "File is too large. Maximum size is %{max_size}MB."
+      content_too_large: "Content is too large. Maximum size is %{max_size}MB."
+      invalid_csv_file_type: "Invalid file type. Please upload a CSV file."
+      invalid_sure_file_type: "Invalid file type. Please upload a Sure NDJSON file."
+      unsupported_import_type: "Preflight supports CSV import types and SureImport."
+      missing_required_headers: "Missing required columns: %{columns}"
+      no_data_rows: "No data rows were found."
+      row_limit_warning: "Row count exceeds this import type's publish limit."
+      no_importable_records_warning: "No importable records were found."
+    sure_preflight:
+      failed_header: "Sure import preflight failed:"
+      record_must_be_object: "Line %{line} must be a JSON object."
+      record_must_include_type_and_data: "Line %{line} must include type and data."
+      unsupported_record_type: "Line %{line} has unsupported record type %{type}."
+      data_must_be_object: "Line %{line} data must be a JSON object."
+      invalid_json: "Line %{line} is not valid JSON."
+      no_data_rows: "No data rows were found."
+      record_location: "Line %{line} %{type}"
+      split_line_location: "Line %{line} Transaction split line %{index}"
+      existing_taxonomy_collision: "Line %{line} %{type} name %{name} already exists in this family."
+      duplicate_taxonomy_name: "%{type} name %{name} appears more than once in the NDJSON on lines %{lines}."
+      duplicate_source_id: "%{resource} source id %{id} appears more than once (%{locations})."
+      missing_required_fields: "Line %{line} %{type} is missing required field(s): %{fields}."
+      invalid_accountable_type: "Line %{line} Account has invalid accountable_type %{type}."
+      invalid_accountable_subtype: "Line %{line} Account has invalid %{accountable_type} subtype %{subtype}."
+      split_lines_must_be_array: "Line %{line} Transaction split_lines must be an array."
+      split_line_must_be_object: "Line %{line} Transaction split line %{index} must be a JSON object."
+      split_line_missing_amount: "Line %{line} Transaction split line %{index} is missing required field(s): amount."
+      split_amount_mismatch: "Line %{line} Transaction split line amounts must sum to transaction amount %{expected} but sum to %{actual}."
+      missing_reference: "Line %{line} %{type} references missing %{field} %{value}."
+      transaction_split_line: "Transaction split line"
+      duplicate_valuation: "Line %{line} duplicates valuation for account %{account_id} on %{date}; first seen on line %{first_line}."
+      resource_types:
+        accounts: "account"
+        categories: "category"
+        tags: "tag"
+        merchants: "merchant"
+        recurring_transactions: "recurring transaction"
+        transactions: "transaction"
+        budgets: "budget"
+    import_session:
+      errors:
+        client_session_expected_chunks_conflict: "client_session_id already exists with a different expected_chunks value"
+        sequence_positive: "sequence must be a positive integer"
+        sequence_exceeds_expected_chunks: "sequence exceeds expected_chunks"
+        publishing_started: "cannot add chunks after publishing starts"
+        chunk_content_conflict: "chunk already exists with different content"
+        enqueue_failed: "Import session could not be queued."
+        identifiers_refer_to_different_chunks: "sequence and client_chunk_id refer to different chunks"
+        client_chunk_sequence_conflict: "client_chunk_id already exists with a different sequence"
+        sequence_client_chunk_conflict: "sequence already exists with a different client_chunk_id"
+        chunk_incomplete: "chunk already exists but is incomplete"
+        no_chunks: "import session has no chunks"
+        chunks_incomplete: "import session chunks are incomplete"
+        missing_sequences: "missing sequences: %{sequences}"
+        unexpected_sequences: "unexpected sequences: %{sequences}"
+        sequence_mismatch: "import session chunks do not match expected sequences (%{details})"
+        failed: "Import session failed."
+        family_sync_enqueue_failed: "Family sync could not be queued after import completion."
     document_types:
       bank_statement: Bank Statement
       credit_card_statement: Credit Card Statement
@@ -464,6 +584,11 @@ en:
       unknown_state_description: This import is in an unexpected state. Please return to imports.
       processing_failed_with_message: "%{message}"
       processing_failed_generic: "Processing failed: %{error}"
+      unknown_processing_error: "Unknown PDF processing error"
+      unknown_extraction_error: "Unknown extraction error"
+      account_required: "Select an account before publishing this PDF import."
+      provider_not_configured: "No AI provider is configured."
+      provider_pdf_unsupported: "The configured AI provider does not support PDF processing."
       ready_for_review_title: Ready for Review
       ready_for_review_description: "We extracted %{count} transactions from your statement. Review and publish them to add to your account."
       transactions_extracted: Transactions Extracted

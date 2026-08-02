@@ -17,10 +17,16 @@ en:
       new: New tag
       tags: Tags
       delete_all: Delete all
+      delete_all_title: Delete all tags?
+      delete_all_body: Are you sure you want to delete all tags? This cannot be undone.
+      delete_all_button: Delete all tags
     new:
       new: New tag
     tag:
       delete: Delete
       edit: Edit
+      delete_title: Delete tag?
+      delete_body: "Are you sure you want to delete \"%{name}\"? This cannot be undone."
+      delete_button: Delete tag
     update:
       updated: Tag updated

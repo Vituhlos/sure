@@ -1,0 +1,106 @@
+---
+cs:
+  insights:
+    index:
+      title: "Finanční postřehy"
+      subtitle: "Co se děje ve vašich financích. Informace se obnovují každou noc."
+      refresh: "Vyhledat nové postřehy"
+      empty:
+        title: "Zatím žádné postřehy"
+        description: "Postřehy se zde objeví, až bude na účtech dostatek pohybů. Automaticky se obnovují každou noc."
+    refresh:
+      queued: "Připravujeme nové postřehy. Vraťte se sem přibližně za minutu."
+      checking: "Probíhá kontrola…"
+    card:
+      acknowledge: "Rozumím"
+      acknowledge_title: "Skryje postřeh, dokud se hodnoty nezmění"
+      new: "Nové"
+      acknowledged: "Rozumím – skryto do další změny"
+      undo: "Vrátit zpět"
+    feed:
+      view_all: "Zobrazit všechny postřehy"
+      header: "Nejnovější"
+      header_new: "Nové"
+      acknowledge_aria: "Rozumím: %{title}"
+    types:
+      spending_anomaly: "Výdaje"
+      cash_flow_warning: "Peněžní tok"
+      net_worth_milestone: "Čisté jmění"
+      subscription_audit: "Předplatná"
+      savings_rate_change: "Míra úspor"
+      idle_cash: "Nevyužité prostředky"
+      budget_at_risk: "Rozpočet"
+      budget_on_track: "Rozpočet"
+    meta:
+      next_n_days:
+        one: "Následující den"
+        few: "Následující %{count} dny"
+        many: "Následujícího %{count} dne"
+        other: "Následujících %{count} dní"
+      last_n_days:
+        one: "Poslední den"
+        few: "Poslední %{count} dny"
+        many: "Posledního %{count} dne"
+        other: "Posledních %{count} dní"
+      date_range: "%{from} až %{to}"
+    figures:
+      vs_previous: "oproti předchozímu měsíci"
+      today: "dnes"
+      on_pace: "při současném tempu"
+      of_budget: "z rozpočtu"
+      need_attention: "ke kontrole"
+      days_overdue:
+        one: "po splatnosti %{count} den"
+        few: "po splatnosti %{count} dny"
+        many: "po splatnosti %{count} dne"
+        other: "po splatnosti %{count} dní"
+      idle_days:
+        one: "bez pohybu %{count} den"
+        few: "bez pohybu %{count} dny"
+        many: "bez pohybu %{count} dne"
+        other: "bez pohybu %{count} dní"
+    actions:
+      spending_anomaly: "Zobrazit transakce v kategorii %{category}"
+      cash_flow_warning: "Zkontrolovat opakující se transakce"
+      net_worth_milestone: "Zobrazit přehled čistého jmění"
+      subscription_audit: "Zkontrolovat opakující se transakce"
+      savings_rate_change: "Zobrazit transakce za daný měsíc"
+      idle_cash: "Přejít na účet"
+      budget: "Zobrazit rozpočet"
+    titles:
+      spending_anomaly:
+        above: "Výdaje v kategorii %{category} rostou"
+        below: "Výdaje v kategorii %{category} klesají"
+      cash_flow_warning:
+        low: "Zůstatek peněžních prostředků může klesnout příliš nízko"
+        negative: "Zůstatek peněžních prostředků může být záporný"
+      net_worth_milestone: "Nová hranice čistého jmění: %{milestone}"
+      subscription_audit: "Je předplatné %{name} stále aktivní?"
+      savings_rate_change:
+        up: "Míra úspor se za %{month} zvýšila"
+        down: "Míra úspor se za %{month} snížila"
+      idle_cash: "Nevyužité prostředky na účtu %{account}"
+      budget_at_risk:
+        one: "Jedna kategorie rozpočtu vyžaduje pozornost"
+        few: "%{count} kategorie rozpočtu vyžadují pozornost"
+        many: "%{count} kategorie rozpočtu vyžaduje pozornost"
+        other: "%{count} kategorií rozpočtu vyžaduje pozornost"
+      budget_on_track: "Čerpání rozpočtu odpovídá plánu"
+    templates:
+      spending_anomaly:
+        above: "Při současném tempu utratíte tento měsíc v kategorii %{category} přibližně %{projected_spend}, tedy asi o %{deviation_pct} % více než činí váš nedávný měsíční průměr %{baseline_spend}."
+        below: "Při současném tempu utratíte tento měsíc v kategorii %{category} přibližně %{projected_spend}, tedy asi o %{deviation_pct} % méně než činí váš nedávný měsíční průměr %{baseline_spend}."
+      cash_flow_warning:
+        low: "Podle nadcházejících opakujících se transakcí a obvyklých výdajů může zůstatek peněžních prostředků kolem data %{projected_low_date} klesnout na %{projected_low}."
+        negative: "Podle nadcházejících opakujících se transakcí a obvyklých výdajů může zůstatek peněžních prostředků kolem data %{projected_low_date} klesnout na %{projected_low}."
+      net_worth_milestone: "Čisté jmění překročilo hranici %{milestone} a nyní dosahuje %{net_worth}."
+      subscription_audit: "Platba %{name} ve výši %{amount} se neobjevila od očekávaného data %{expected_on}. Předplatné mohlo být zrušeno nebo se mohl změnit den účtování."
+      savings_rate_change:
+        up: "Za %{month} jste ušetřili %{current_rate} % příjmů, což je o %{change_pp} procentního bodu více než %{previous_rate} % v předchozím měsíci."
+        down: "Za %{month} jste ušetřili %{current_rate} % příjmů, což je o %{change_pp} procentního bodu méně než %{previous_rate} % v předchozím měsíci."
+        down_negative: "Za %{month} byly výdaje vyšší než příjmy: míra úspor klesla z %{previous_rate} % v předchozím měsíci na %{current_rate} %."
+      idle_cash: "Na účtu %{account} leží %{balance} bez pohybu po dobu posledních %{idle_days} dní."
+      budget_at_risk:
+        over: "%{categories} tento měsíc překročily rozpočet. Z celkového rozpočtu jste zatím vyčerpali %{budget_spent_pct} %."
+        near: "%{categories} se tento měsíc blíží svým limitům. Z celkového rozpočtu jste zatím vyčerpali %{budget_spent_pct} %."
+      budget_on_track: "Z rozpočtovaných %{budgeted} jste utratili %{spent}, tedy %{budget_spent_pct} %. Žádná kategorie nepřekračuje svůj limit."

@@ -1,0 +1,203 @@
+---
+cs:
+  account:
+    entries:
+      destroy:
+        success: "Záznam byl odstraněn."
+  accounts:
+    not_authorized: "Ke správě tohoto účtu nemáte oprávnění."
+    account:
+      complete_setup: "Dokončit nastavení"
+      edit: "Upravit"
+      link_lunchflow: "Propojit se službou Lunch Flow"
+      link_provider: "Propojit s poskytovatelem"
+      unlink_provider: "Odpojit od poskytovatele"
+      change_simplefin_account: "Změnit účet SimpleFIN"
+      troubleshoot: "Řešení potíží"
+      enable: "Aktivovat účet"
+      disable: "Deaktivovat účet"
+      exclude_from_reports: "Vyloučit ze všech přehledů"
+      include_in_reports: "Zahrnout do přehledů"
+      excluded_from_reports_indicator: "Vyloučeno z přehledů"
+      set_default: "Nastavit jako výchozí"
+      remove_default: "Zrušit jako výchozí"
+      default_label: "Výchozí"
+      delete: "Odstranit účet"
+      sharing: "Sdílení"
+    chart:
+      data_not_available: "Pro zvolené období nejsou data k dispozici."
+    create:
+      success: "Účet byl vytvořen (%{type})."
+    set_default:
+      depository_only: "Jako výchozí lze nastavit pouze hotovostní účet nebo kreditní kartu."
+    destroy:
+      success: "Odstranění účtu bylo naplánováno (%{type})."
+      cannot_delete_linked: "Propojený účet nelze odstranit. Nejprve ho odpojte."
+      failed: "Účet se nepodařilo odstranit. Zkuste to znovu později."
+    empty:
+      empty_message: "Přidejte účet propojením, importem nebo ručním zadáním."
+      new_account: "Nový účet"
+      no_accounts: "Zatím nemáte žádné účty"
+    form:
+      balance: "Zůstatek k datu:"
+      opening_balance_date_label: "Datum počátečního zůstatku"
+      name_label: "Název účtu"
+      name_placeholder: "Např. Běžný účet"
+      additional_details: "Další údaje"
+      institution_name_label: "Název finanční instituce"
+      institution_name_placeholder: "Např. Česká spořitelna"
+      institution_domain_label: "Doména finanční instituce"
+      institution_domain_placeholder: "Např. csas.cz"
+      notes_label: "Poznámky"
+      notes_placeholder: "Uložte si další údaje, například číslo účtu, kód banky, IBAN nebo směrovací číslo."
+      exclude_from_reports: "Vyloučit ze všech přehledů"
+      enable_category_matcher_label: "Zapnout přiřazování kategorií"
+      enable_category_matcher_hint: "Je-li tato možnost zapnutá, k importovaným transakcím se použije kategorie navržená poskytovatelem. Po vypnutí zůstanou nové transakce bez kategorie."
+    index:
+      accounts: "Účty"
+      cancel_sync: "Zrušit synchronizaci"
+      manual_accounts:
+        other_accounts: "Ostatní účty"
+      new_account: "Nový účet"
+      sync: "Synchronizovat vše"
+    sync_all:
+      syncing: "Probíhá synchronizace účtů…"
+    new:
+      import_accounts: "Importovat účty"
+      container:
+        select: "Vybrat"
+        navigate: "Procházet"
+        close: "Zavřít"
+        previous: "Předchozí"
+        next: "Další"
+      method_selector:
+        connected_entry: "Připojit účet"
+        connected_entry_eu: "Připojit účet v EU"
+        link_with_provider: "Propojit s poskytovatelem %{provider}"
+        lunchflow_entry: "Připojit účet Lunch Flow"
+        manual_entry: "Zadat zůstatek ručně"
+        title: "Jak chcete účet přidat?"
+      title: "Co chcete přidat?"
+    show:
+      limited_fx_history_warning: "Historie směnných kurzů je dostupná až od %{date}. Pro transakce před tímto datem se používají přibližné přepočty měn. Může k tomu dojít, když poskytovatel kurzů nabízí jen omezené historické období."
+      tabs:
+        activity: "Pohyby"
+        holdings: "Pozice"
+        overview: "Přehled"
+        statements: "Výpisy"
+      activity:
+        amount: "Částka"
+        balance: "Zůstatek"
+        confirmed: "Potvrzeno"
+        date: "Datum"
+        entries: "záznamy"
+        entry: "záznam"
+        filter: "Filtrovat"
+        new: "Nový"
+        new_activity: "Nový záznam"
+        new_balance: "Nový zůstatek"
+        new_trade: "Nový obchod"
+        new_transaction: "Nová transakce"
+        new_transfer: "Nový převod"
+        no_entries: "Nebyly nalezeny žádné záznamy"
+        pending: "Nezaúčtováno"
+        search:
+          placeholder: "Hledat záznamy podle názvu"
+        search_placeholder: "Hledat záznamy podle názvu"
+        status: "Stav"
+        title: "Pohyby"
+      chart:
+        balance: "Zůstatek"
+        owed: "Dlužná částka"
+      header:
+        complete_setup: "Dokončit nastavení"
+      menu:
+        confirm_accept: "Odstranit „%{name}“"
+        confirm_body_html: "<p>Odstraněním tohoto účtu smažete celou historii jeho hodnoty. To ovlivní souhrnné údaje, výpočet čistého jmění i grafy účtů.</p><br /> <p>Odstraněné údaje nelze obnovit. Účet byste museli znovu přidat jako nový.</p>"
+        confirm_title: "Odstranit účet?"
+        delete_account: "Odstranit účet"
+        edit: "Upravit"
+        import: "Importovat transakce"
+        import_trades: "Importovat obchody"
+        import_transactions: "Importovat transakce"
+        manage: "Spravovat účty"
+        sharing: "Sdílení"
+        statements: "Výpisy"
+        exclude_from_reports: "Vyloučit ze všech přehledů"
+        include_in_reports: "Zahrnout do přehledů"
+    update:
+      success: "Účet byl aktualizován (%{type})."
+    sidebar:
+      missing_data: "Chybějí historická data"
+      missing_data_description: "%{product} získává historické směnné kurzy, ceny investičních nástrojů a další údaje od externích poskytovatelů. Tato data jsou potřeba k přesnému výpočtu historických zůstatků účtů."
+      configure_providers: "Poskytovatele můžete nastavit zde."
+      tabs:
+        all: "Vše"
+        assets: "Majetek"
+        debts: "Dluhy"
+      new_asset: "Nová položka majetku"
+      new_debt: "Nový dluh"
+      new_account: "Nový účet"
+      new_account_group: "Nová skupina: %{account_group}"
+    types:
+      depository: "Hotovost"
+      investment: "Investice"
+      crypto: "Kryptoaktiva"
+      property: "Nemovitost"
+      vehicle: "Vozidlo"
+      other_asset: "Ostatní majetek"
+      credit_card: "Kreditní karta"
+      loan: "Úvěr"
+      other_liability: "Ostatní závazek"
+    types_plural:
+      depository: "Hotovost"
+      investment: "Investice"
+      crypto: "Kryptoaktiva"
+      property: "Nemovitosti"
+      vehicle: "Vozidla"
+      other_asset: "Ostatní majetek"
+      credit_card: "Kreditní karty"
+      loan: "Úvěry"
+      other_liability: "Ostatní závazky"
+    tax_treatments:
+      taxable: "Zdanitelný"
+      tax_deferred: "S odloženým zdaněním"
+      tax_exempt: "Osvobozený od daně"
+      tax_advantaged: "Daňově zvýhodněný"
+    tax_treatment_descriptions:
+      taxable: "Zisky se daní při realizaci"
+      tax_deferred: "Příspěvky lze odečíst od základu daně, zdanění proběhne při výběru"
+      tax_exempt: "Příspěvky se hradí po zdanění, zisky se nedaní"
+      tax_advantaged: "Zvláštní daňové výhody při splnění podmínek"
+    subtype_regions:
+      us: "Spojené státy"
+      uk: "Spojené království"
+      ca: "Kanada"
+      au: "Austrálie"
+      eu: "Evropa"
+      in: "Indie"
+      generic: "Obecné"
+    confirm_unlink:
+      title: "Odpojit účet od poskytovatele?"
+      description_html: "Chystáte se odpojit účet <strong>%{account_name}</strong> od poskytovatele <strong>%{provider_name}</strong>. Poté se z něj stane ručně vedený účet."
+      warning_title: "Co to znamená"
+      warning_no_sync: "Účet se již nebude automaticky synchronizovat s poskytovatelem"
+      warning_manual_updates: "Transakce a zůstatky budete muset přidávat a aktualizovat ručně"
+      warning_transactions_kept: "Všechny dosavadní transakce a zůstatky zůstanou zachovány"
+      warning_can_delete: "Po odpojení budete moci účet v případě potřeby odstranit"
+      confirm_button: "Potvrdit a odpojit"
+    unlink:
+      success: "Účet byl odpojen a nyní je vedený ručně."
+      not_linked: "Účet není propojený s poskytovatelem."
+      error: "Účet se nepodařilo odpojit: %{error}"
+      generic_error: "Došlo k neočekávané chybě. Zkuste to znovu."
+    select_provider:
+      title: "Vyberte poskytovatele k propojení"
+      description: "Vyberte poskytovatele, se kterým chcete účet %{account_name} propojit."
+      already_linked: "Účet už je propojený s poskytovatelem."
+      no_providers: "Momentálně nejsou nastaveni žádní poskytovatelé."
+
+  email_confirmations:
+    new:
+      invalid_token: "Potvrzovací odkaz je neplatný nebo jeho platnost vypršela."
+      success_login: "E-mailová adresa byla potvrzena. Přihlaste se pomocí nové e-mailové adresy."

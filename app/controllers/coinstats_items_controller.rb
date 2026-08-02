@@ -109,7 +109,7 @@ class CoinstatsItemsController < ApplicationController
       .slice(*allowed_field_keys)
       .transform_values { |value| value.to_s.strip }
       .compact_blank
-    @exchange_connection_name ||= exchange[:name].presence || @exchange_connection_id.to_s.titleize
+    @exchange_connection_name ||= exchange[:name].presence || @exchange_connection_id.to_s
 
     unless @exchange_connection_fields.present?
       return render_link_exchange_error(t(".missing_params"))
@@ -124,7 +124,7 @@ class CoinstatsItemsController < ApplicationController
 
     if result.success?
       redirect_to accounts_path,
-                  notice: t(".success", name: @exchange_connection_name.presence || @exchange_connection_id.to_s.titleize),
+                  notice: t(".success", name: @exchange_connection_name),
                   status: :see_other
     else
       render_link_exchange_error(result.errors.join("; ").presence || t(".failed"))
@@ -179,7 +179,7 @@ class CoinstatsItemsController < ApplicationController
 
     def render_success_response(notice_key)
       if turbo_frame_request?
-        flash.now[:notice] = t(notice_key, default: notice_key.to_s.humanize)
+        flash.now[:notice] = t(notice_key)
         @coinstats_items = Current.family.coinstats_items.ordered
         render turbo_stream: [
           turbo_stream.replace(

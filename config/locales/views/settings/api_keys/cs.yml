@@ -1,0 +1,75 @@
+---
+cs:
+  settings:
+    api_keys_controller:
+      success: Klíč API byl úspěšně vytvořen.
+      revoked_successfully: Klíč API byl úspěšně zneplatněn.
+      revoke_failed: Klíč API se nepodařilo zneplatnit.
+    api_keys:
+      create:
+        success: Klíč API byl úspěšně vytvořen.
+      destroy:
+        revoked_successfully: Klíč API byl úspěšně zneplatněn.
+        revoke_failed: Klíč API se nepodařilo zneplatnit.
+      shared:
+        active: Aktivní
+        created_ago: "Vytvořen před %{time}"
+        last_used_ago: "Naposledy použit před %{time}"
+        never_used: Dosud nepoužit
+        scope_read_only: Pouze čtení
+        scope_read_write: Čtení i zápis
+      index:
+        title: Klíče API
+        subtitle: Spravujte klíče API pro programový přístup ke svým datům.
+        new_key: Nový klíč API
+        empty_heading: Zatím nemáte žádné klíče API
+        empty_description: Vytvořte klíč API, který umožní programový přístup k vašim datům.
+        revoke_key: Zneplatnit
+        revoke_confirmation: "Opravdu chcete zneplatnit klíč „%{name}“? Všechny aplikace, které jej používají, okamžitě ztratí přístup."
+      show:
+        title: Správa klíče API
+        newly_created:
+          page_title: Klíč API byl úspěšně vytvořen
+          heading: Klíč API byl úspěšně vytvořen
+          key_ready: "Nový klíč API „%{name}“ byl vytvořen a je připraven k použití."
+          your_api_key: Váš klíč API
+          copy_store_securely: Klíč zkopírujte a bezpečně uložte. Budete jej potřebovat k ověřování požadavků na API.
+          copy_api_key: Zkopírovat klíč API
+          how_to_use: Jak klíč API používat
+          continue: Pokračovat do nastavení klíčů API
+        current_api_key:
+          title: Váš klíč API
+          permissions: Oprávnění
+          copy_api_key: Zkopírovat klíč API
+          copy_store_securely: Klíč zkopírujte a bezpečně uložte. Budete jej potřebovat k ověřování požadavků na API.
+          usage_instructions_title: Jak klíč API používat
+          usage_instructions: "Při odesílání požadavků na API aplikace %{product_name} vložte klíč API do hlavičky X-Api-Key:"
+          back_to_keys: Zpět na klíče API
+          revoke_key: Zneplatnit klíč
+          revoke_confirmation: Opravdu chcete tento klíč API zneplatnit? Tuto akci nelze vrátit zpět a všechny aplikace, které klíč používají, okamžitě ztratí přístup.
+      new:
+        title: Vytvořit klíč API
+        create_new_api_key: Vytvořit nový klíč API
+        subtitle: Vygenerujte nový klíč API pro programový přístup ke svým datům v Sure.
+        description: Zadejte výstižný název nového klíče API a nastavte vhodná oprávnění.
+        name_label: Název klíče API
+        name_placeholder: "např. Rozpočtová aplikace nebo Sledování portfolia"
+        name_help_text: Zvolte výstižný název, podle kterého klíč později poznáte.
+        name_help: Zvolte výstižný název, který připomene účel tohoto klíče.
+        permissions_label: Oprávnění
+        permissions_help: "Vyberte oprávnění, která má tento klíč API získat:"
+        scope_read_only: Pouze čtení
+        scope_read_only_description: Zobrazení účtů, transakcí a zůstatků
+        scope_read_write: Čtení i zápis
+        scope_read_write_description: Zobrazení dat a vytváření nových transakcí
+        scope_details:
+          read_accounts: Zobrazení informací o účtech, zůstatků a dalších údajů účtů
+          read_transactions: Zobrazení transakcí, kategorií a podrobností transakcí
+          read_balances: Zobrazení historických zůstatků a vývoje hodnoty účtů
+          write_transactions: Vytváření a úpravy transakcí (již brzy)
+        security_warning_title: Bezpečnostní upozornění
+        security_warning_body: Klíč API se po vytvoření zobrazí pouze jednou. Nezapomeňte jej zkopírovat a bezpečně uložit. Každý, kdo klíč získá, může k vašim datům přistupovat v rozsahu zvolených oprávnění.
+        security_warning: Klíč API se po vytvoření zobrazí pouze jednou. Bezpečně jej uložte a nikdy jej veřejně nesdílejte. Pokud jej ztratíte, budete muset vytvořit nový.
+        create_key: Vytvořit klíč API
+        cancel: Zrušit
+        save_api_key: Uložit klíč API

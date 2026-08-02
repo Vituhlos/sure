@@ -1,0 +1,65 @@
+---
+en:
+  assistant:
+    external:
+      not_configured: "External assistant is not configured. Set the URL and token in Settings > Self-Hosting or via environment variables."
+      not_authorized: "Your account is not authorized to use the external assistant."
+      empty_response: "External assistant returned an empty response."
+      unexpected_error: "Something went wrong with the external assistant. Check server logs for details."
+      connection_interrupted: "External assistant connection was interrupted."
+      temporarily_unavailable: "External assistant is temporarily unavailable."
+      http_error: "External assistant returned HTTP %{code}."
+      buffer_exceeded: "External assistant stream exceeded the maximum buffer size."
+    functions:
+      create_category:
+        name_required: "Please provide a name for the category."
+        parent_not_found: "Parent category with id '%{id}' was not found."
+        created: "Category '%{name}' created."
+      create_tag:
+        name_required: "Please provide a name for the tag."
+        created: "Tag '%{name}' created."
+      update_category:
+        not_found: "Category with id '%{id}' was not found."
+        no_changes: "Provide at least one of name, color, or icon to update."
+        updated: "Category '%{name}' updated."
+      update_tag:
+        not_found: "Tag '%{name}' was not found."
+        no_changes: "Provide at least one of new_name or color to update."
+        updated: "Tag updated."
+      update_transaction:
+        not_found: "Transaction with id '%{id}' not found."
+        split_child: "Split child transactions cannot be edited directly. Use the split editor."
+        not_authorized: "You do not have permission to update this transaction."
+        invalid_tags: "One or more selected tags do not belong to the user's family."
+        no_changes: "Provide at least one field to update."
+        updated: "Transaction '%{name}' updated."
+        invalid_category: "The selected category does not belong to the user's family."
+        invalid_merchant: "The selected merchant is not available to the user's family."
+        invalid_uuid: "Expected a valid UUID."
+      create_goal:
+        name_required: "Please provide a name for the goal."
+        target_amount_invalid: "Target amount must be greater than zero."
+        no_linked_accounts: "Please specify at least one Depository account to link to this goal."
+        unknown_accounts: "Some account names did not match the user's Depository accounts."
+        ambiguous_accounts: "Multiple accounts share a name. Ask the user which one to use."
+        currency_mismatch: "All linked accounts must share the same currency. Found: %{currencies}."
+        created: "Created goal '%{name}' (target %{target}). View it at %{url}."
+      get_budget:
+        invalid_month: "Invalid month: %{value}. Use YYYY-MM or MMM-YYYY."
+      import_bank_statement:
+        not_found: "Could not find a PDF import with ID: %{id}"
+        not_bank_statement: "This PDF is not a bank statement. Document type: %{type}"
+        use_different_pdf: "Use a different PDF that is a bank statement"
+        account_required: "Please specify which account to import transactions into."
+        account_not_found: "Account not found."
+        provider_not_configured: "AI provider is not configured."
+        extraction_failed: "Failed to extract transactions from the bank statement."
+        no_transactions: "Could not extract any transactions from the bank statement."
+        created:
+          one: "Successfully extracted 1 transaction. Import created with ID: %{id}. Review and publish it when ready."
+          other: "Successfully extracted %{count} transactions. Import created with ID: %{id}. Review and publish them when ready."
+      search_family_files:
+        no_documents: "No documents have been uploaded to the family document store yet."
+        provider_not_configured: "No vector store is configured. Set VECTOR_STORE_PROVIDER (openai | pgvector | qdrant), configure OpenAI, or, for Anthropic-only installations, enable the pgvector adapter and point EMBEDDING_URI_BASE at an embeddings endpoint."
+        search_failed: "The documents could not be searched."
+        no_matches: "No matching documents were found for the query."

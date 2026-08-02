@@ -68,13 +68,13 @@ class CategoriesService {
       } else {
         return {
           'success': false,
-          'error': 'Failed to fetch categories',
+          'error': 'fetch_categories_failed',
         };
       }
     } catch (e) {
       return {
         'success': false,
-        'error': 'Network error: ${e.toString()}',
+        'error': 'network_unavailable',
       };
     }
   }

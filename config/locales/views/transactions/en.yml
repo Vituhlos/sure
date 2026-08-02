@@ -1,6 +1,7 @@
 ---
 en:
   transactions:
+    exchange_rate_not_found: "Exchange rate not found"
     bulk_updates:
       new:
         cancel: Cancel
@@ -23,7 +24,16 @@ en:
     selection_bar:
       duplicate: Duplicate
       edit: Edit
+      delete: Delete
+      delete_title: Delete selected transactions?
+      delete_subtitle: Are you sure you want to delete the selected transactions? This cannot be undone.
+      delete_button: Delete transactions
       selected: selected
+    bulk_deletions:
+      create:
+        success:
+          one: "%{count} transaction deleted"
+          other: "%{count} transactions deleted"
     form:
       details: Details
       account: Account
@@ -42,6 +52,7 @@ en:
       note_label: Notes
       note_placeholder: Enter a note
       create_tag: Create
+      create_tag_error: "Could not create tag"
       submit: Add transaction
       tag_search_placeholder: Search or create tag
       tags_label: Tags
@@ -124,7 +135,6 @@ en:
     mark_recurring_title: Recurring Transaction
     potential_duplicate_title: Possible duplicate detected
     potential_duplicate_description: This pending transaction may be the same as the posted transaction below. If so, merge them to avoid double-counting.
-    merge_duplicate: Yes, merge them
     keep_both: No, keep both
     split_parent_row:
       split_label: "Split"
@@ -136,6 +146,8 @@ en:
       reject_match: Reject match
       transfer_confirmed: Transfer is confirmed
     transaction:
+      one_time_income_tooltip: "One-time income (excluded from averages)"
+      one_time_expense_tooltip: "One-time expense (excluded from averages)"
       pending: Pending
       pending_tooltip: Pending transaction — may change when posted
       linked_with_provider: Linked with %{provider}
@@ -332,6 +344,9 @@ en:
         search_placeholder: "Search transactions ..."
         filter: "Filter"
     attachments:
+      delete_title: "Delete attachment?"
+      delete_subtitle: "Are you sure you want to delete this attachment? This cannot be undone."
+      delete_button: "Delete attachment"
       cannot_exceed: "Cannot exceed %{count} attachments per transaction"
       uploaded_one: "Attachment uploaded successfully"
       uploaded_many: "%{count} attachments uploaded successfully"
@@ -342,6 +357,13 @@ en:
       upload_failed: "Failed to upload attachment. Please try again or contact support."
       delete_failed: "Failed to delete attachment. Please try again or contact support."
       upload: "Upload"
+      upload_files:
+        one: "Upload %{count} file"
+        few: "Upload %{count} files"
+        many: "Upload %{count} files"
+        other: "Upload %{count} files"
+      too_many_files: "Too many files (max %{count})"
+      file_too_large: "File too large (max %{size} MB)"
       no_attachments: "No attachments yet"
       select_up_to: "Select up to %{count} files (images or PDFs, max %{size}MB each) • %{used} of %{count} used"
       files:

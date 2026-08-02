@@ -23,8 +23,12 @@ class AccountImport < Import
         balance_date = if row.date.present?
           begin
             Date.strptime(row.date, date_format)
-          rescue ArgumentError => e
-            raise OpeningBalanceError, "Invalid date format for '#{row.date}': #{e.message}"
+          rescue ArgumentError
+            raise OpeningBalanceError, I18n.t(
+              "imports.account_import.invalid_balance_date",
+              date: row.date,
+              expected_format: date_format
+            )
           end
         else
           nil

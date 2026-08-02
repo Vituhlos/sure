@@ -1,0 +1,14 @@
+---
+cs:
+  activerecord:
+    errors:
+      models:
+        transaction:
+          attributes:
+            exchange_rate:
+              not_a_number: "musí být číslo"
+              greater_than: "musí být větší než %{count}"
+            attachments:
+              too_many: "nelze připojit více než %{max} souborů k jedné transakci"
+              too_large: "soubor č. %{index} je příliš velký (nejvýše %{max_mb} MB)"
+              invalid_format: "soubor č. %{index} má nepodporovaný formát (%{file_format})"

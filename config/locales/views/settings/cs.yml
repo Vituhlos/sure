@@ -1,0 +1,697 @@
+---
+cs:
+  views:
+    settings:
+      payments:
+        renewal: "Další příspěvek proběhne %{date}."
+        cancellation: "Váš příspěvek skončí %{date}."
+  settings:
+    background_jobs:
+      show:
+        page_title: Úlohy na pozadí
+        title: Stav pracovních procesů
+        subtitle: "Aktuální stav běhového prostředí Sidekiq: pracovní procesy, délky front a sady opakovaných či neúspěšných úloh."
+        redis_unreachable: Stav Sidekiq není dostupný, protože se nelze připojit k Redis. Nelze určit, zda procesy běží, a proto jsou akce vypnuté.
+        operations_title: Probíhající operace
+        operations_subtitle: Synchronizace, importy a exporty napříč všemi domácnostmi, které dosud nedosáhly konečného stavu. Operace bez viditelné úlohy, které jsou neaktivní déle než 30 minut, se považují za ztracené a lze je tak označit.
+        empty: Neprobíhají žádné operace.
+        missing_value: "-"
+        stats:
+          workers: Pracovní procesy
+          busy: Vytížené
+          enqueued: Ve frontě
+          retries: Opakování
+          scheduled: Naplánované
+          dead: Neúspěšné
+          latency: "prodleva %{value} s"
+        table:
+          type: Operace
+          family: Domácnost
+          status: Stav
+          last_activity: Poslední aktivita
+          liveness: Aktivita procesu
+          action: Akce
+      operation:
+        ago: "před %{time}"
+        sync_label: "Synchronizace · %{type}"
+        running: Probíhá
+        queued: Ve frontě
+        recent: Nedávno aktivní
+        unknown: Neznámá
+        stuck: Zaseknutá – pravděpodobně ztracená
+        confirm: Označit tuto operaci jako ztracenou? Záznam se přesune do konečného stavu, aby bylo možné operaci zopakovat. Podkladová data se nezmění.
+        missing_value: "-"
+        actions:
+          mark_stale: Označit jako zastaralou
+          mark_failed: Označit jako neúspěšnou
+          release_claim: Uvolnit přidělení
+      cancel:
+        cancelled: "Operace %{type} byla označena jako ztracená."
+        not_cancellable: Tuto operaci nyní nelze změnit. Její úloha může být stále ve frontě nebo právě probíhat. Zkuste to znovu, až bude nejméně 30 minut neaktivní.
+        cancelled_error: Správce operaci označil jako neúspěšnou, protože úloha na pozadí byla pravděpodobně ztracena.
+    debugs:
+      show:
+        page_title: Ladění
+        title: Protokol diagnostických událostí
+        subtitle: Významné provozní události určené hlavním správcům. Nejnovější jsou uvedeny jako první.
+        empty: Nebyly nalezeny žádné diagnostické události.
+        missing_value: "-"
+        filters:
+          all: Vše
+          category: Kategorie
+          level: Úroveň
+          source: Zdroj
+          provider: Poskytovatel
+          start_date: Od
+          end_date: Do
+          family_id: ID domácnosti
+          account_id: ID účtu
+          user_id: ID uživatele
+          account_provider_id: ID připojení účtu
+          submit: Filtrovat
+          reset: Obnovit
+        table:
+          time: Čas
+          level: Úroveň
+          category: Kategorie
+          source: Zdroj
+          message: Zpráva
+          context: Kontext
+          metadata: Metadata
+          view_metadata: Zobrazit
+        context:
+          provider: "provider=%{value}"
+          family: "family=%{value}"
+          account: "account=%{value}"
+          user: "user=%{value}"
+          account_provider: "account_provider=%{value}"
+    llm_usages:
+      show:
+        page_title: Využití a náklady LLM
+        subtitle: Sledujte využití AI a odhadované náklady.
+        start_date: Datum od
+        end_date: Datum do
+        filter: Filtrovat
+        total_requests: Celkem požadavků
+        total_tokens: Celkem tokenů
+        prompt: vstup
+        completion: odpověď
+        total_cost: Celkové náklady
+        avg_cost_per_request: Průměrné náklady na požadavek
+        based_on_requests: "Vypočteno z %{with_cost} z %{total} požadavků s údaji o nákladech"
+        cost_by_operation: Náklady podle operace
+        cost_by_model: Náklady podle modelu
+        recent_usage: Nedávné využití
+        col_date: Datum
+        col_operation: Operace
+        col_model: Model
+        col_tokens: Tokeny
+        col_cost: Náklady
+        failed: Neúspěšné
+        http_status: "Stav HTTP: %{status}"
+        not_available: Není k dispozici
+        operations:
+          chat: Konverzace
+          auto_categorize: Automatická kategorizace
+          auto_detect_merchants: Automatické rozpoznávání obchodníků
+          enhance_provider_merchants: Doplňování údajů o obchodnících poskytovatele
+          process_pdf: Zpracování PDF
+          process_pdf_vision: Vizuální zpracování PDF
+          extract_bank_statement: Zpracování bankovního výpisu
+        no_usage_data: Pro zvolené období nebyly nalezeny žádné údaje o využití.
+        cost_estimates_title: O odhadech nákladů
+        cost_estimates_description: Náklady jsou odhadnuty z veřejných ceníků poskytovatelů, včetně cen OpenAI platných v červenci 2026. Skutečné náklady se mohou lišit. Ceny jsou uvedeny za milion tokenů a liší se podle modelu. U vlastních nebo lokálně provozovaných modelů se zobrazí „N/A“ a do celkových nákladů se nezapočítají.
+    ai_prompts:
+      show:
+        page_title: Pokyny pro AI
+        openai_label: OpenAI
+        disable_ai: Vypnout asistenta s AI
+        prompt_instructions: Pokyny pro zadání
+        main_system_prompt:
+          title: Hlavní systémové zadání
+          subtitle: Základní pokyny určující chování asistenta s AI ve všech konverzacích
+        transaction_categorizer:
+          title: Kategorizace transakcí
+          subtitle: AI automaticky zařazuje transakce do vámi definovaných kategorií.
+        merchant_detector:
+          title: Rozpoznávání obchodníků
+          subtitle: AI rozpoznává obchodníky a doplňuje jejich údaje k transakcím.
+    payments:
+      show:
+        page_title: Platby
+        subscription_subtitle: Aktualizujte údaje své platební karty.
+        subscription_title: Správa příspěvků
+        currently_on_plan: "Aktuálně používáte tarif"
+        trialing: "Aktuálně používáte veřejnou ukázkovou verzi aplikace %{product_name}"
+        trial_days_left:
+          one: "Data budou odstraněna za %{count} den"
+          few: "Data budou odstraněna za %{count} dny"
+          many: "Data budou odstraněna za %{count} dne"
+          other: "Data budou odstraněna za %{count} dní"
+        not_contributing_prefix: "V současnosti"
+        not_contributing_emphasis: "nepřispíváte"
+        contributions_note: "Zde se zobrazí příspěvky na provoz aplikace %{product_name}."
+        manage: Spravovat
+        choose_level: Zvolit výši
+        payment_via_stripe: Platba prostřednictvím Stripe
+    appearances:
+      show:
+        page_title: Vzhled
+        theme_title: Motiv
+        theme_subtitle: Zvolte upřednostňovaný vzhled aplikace.
+        theme_dark: Tmavý
+        theme_light: Světlý
+        theme_system: Podle systému
+        theme_preview_alt: "Náhled motivu: %{theme}"
+        modals_title: Dialogová okna
+        modals_subtitle: Přizpůsobte chování dialogových oken.
+        disable_modal_click_outside_title: Nezavírat dialogová okna kliknutím mimo ně
+        disable_modal_click_outside_description: Zabraňuje zavření dialogového okna při kliknutí mimo něj. Pomáhá předejít nechtěné ztrátě neuložených změn.
+        transactions_title: Transakce
+        transactions_subtitle: Přizpůsobte způsob zobrazení transakcí.
+        dashboard_title: Přehled
+        dashboard_subtitle: Přizpůsobte způsob zobrazení přehledu.
+        dashboard_two_column_title: Rozložení do dvou sloupců
+        dashboard_two_column_description: Na velkých obrazovkách zobrazí prvky přehledu ve dvou sloupcích a v záhlaví každého prvku zpřístupní nastavení šířky a výšky. Při vypnutí se prvky řadí pod sebe do jednoho sloupce.
+        split_grouped_title: Seskupovat rozdělené transakce
+        split_grouped_description: V seznamu transakcí zobrazí rozdělené transakce pod jejich nadřazenou transakcí. Při vypnutí se jednotlivé části zobrazují jako samostatné řádky.
+    preferences:
+      show:
+        country: Země
+        currency: Měna
+        date_format: Formát data
+        general_subtitle: Nastavte své předvolby.
+        general_title: Obecné
+        default_period: Výchozí období
+        default_account_order: Výchozí řazení účtů
+        account_orders:
+          name_asc: Název (A–Z)
+          name_desc: Název (Z–A)
+          balance_asc: Zůstatek (od nejnižšího)
+          balance_desc: Zůstatek (od nejvyššího)
+        language: Jazyk
+        language_auto: Jazyk prohlížeče
+        page_title: Předvolby
+        timezone: Časové pásmo
+        month_start_day: Rozpočtový měsíc začíná
+        month_start_day_hint: Nastavte začátek rozpočtového měsíce, například podle výplatního dne.
+        month_start_day_warning: Rozpočty a výpočty od začátku měsíce budou namísto prvního dne kalendářního měsíce používat tento vlastní počáteční den.
+        translations_notice: Překlady do některých jazyků se stále doplňují.
+        currencies_title: "Měny – %{moniker}"
+        currencies_subtitle: "Zvolte měny, které se mají zobrazovat v peněžních polích pro: %{moniker}."
+        base_currency_label: Základní měna
+        base_currency_badge: Základní měna
+        additional_currencies_label: Další měny
+        no_additional_currencies: Není vybrána žádná
+        currencies_more: "+%{count} dalších"
+        manage_currencies: Spravovat měny
+        manage_currencies_subtitle: Zrušte výběr měn, které nikdy nepoužíváte, nebo seznam omezte jen na několik potřebných.
+        select_all_currencies: Vybrat všechny
+        select_base_only: Pouze základní měna
+        currency_search_placeholder: Hledat měny
+        no_matching_currencies: Nebyly nalezeny žádné měny.
+        selected_currencies_count:
+          one: "Vybrána %{count} měna"
+          few: "Vybrány %{count} měny"
+          many: "Vybráno %{count} měny"
+          other: "Vybráno %{count} měn"
+        save_currencies: Uložit měny
+        sharing_title: "Sdílení – %{moniker}"
+        sharing_subtitle: "Nastavte sdílení účtů v rámci: %{moniker}."
+        sharing_default_label: Výchozí sdílení nových účtů
+        sharing_shared: Sdílet se všemi členy
+        sharing_private: Ve výchozím nastavení ponechat soukromé
+        preview:
+          title: Zapnout funkce v předběžném přístupu
+          description: Zapojte se do testování rozpracovaných funkcí označených jako preview nebo canary.
+    profiles:
+      destroy:
+        cannot_remove_self: Ze svého účtu nemůžete odebrat sami sebe.
+        member_owns_other_family_data: Tento člen stále vlastní účty v jiné domácnosti, a proto jej nelze odebrat. Nejdříve tyto účty převeďte nebo odstraňte.
+        member_removal_failed: Při odebírání člena došlo k chybě.
+        member_removed: Člen byl úspěšně odebrán.
+        not_authorized: K odebírání členů nemáte oprávnění.
+      show:
+        confirm_delete:
+          body: Opravdu chcete svůj účet trvale odstranit? Tuto akci nelze vrátit zpět.
+          title: Odstranit účet?
+        confirm_reset:
+          body: Opravdu chcete obnovit výchozí stav účtu? Odstraní se všechny vaše účty, kategorie, obchodníci, štítky a další data. Tuto akci nelze vrátit zpět.
+          title: Obnovit výchozí stav účtu?
+        confirm_reset_with_sample_data:
+          body: Opravdu chcete obnovit výchozí stav účtu a načíst ukázková data? Stávající data budou odstraněna a nahrazena ukázkovými, abyste si mohli Sure bezpečně vyzkoušet.
+          title: Obnovit výchozí stav účtu a načíst ukázková data?
+        confirm_remove_invitation:
+          body: "Opravdu chcete odebrat pozvánku pro adresu %{email}?"
+          title: Odebrat pozvánku
+        confirm_remove_member:
+          body: "Opravdu chcete odebrat uživatele %{name} ze svého účtu?"
+          title: Odebrat člena
+        danger_zone_title: Rizikové operace
+        delete_account: Odstranit účet
+        delete_account_warning: Odstraněním účtu trvale smažete všechna svá data. Tuto akci nelze vrátit zpět.
+        reset_account: Obnovit výchozí stav účtu
+        reset_account_warning: Obnovením výchozího stavu odstraníte všechny své účty, kategorie, obchodníky, štítky a další data, ale svůj uživatelský účet zachováte.
+        reset_account_with_sample_data: Obnovit a načíst ukázková data
+        reset_account_with_sample_data_warning: Odstraňte všechna stávající data a načtěte nová ukázková data, abyste si mohli aplikaci vyzkoušet v předem vyplněném prostředí.
+        email: E-mail
+        first_name: Jméno
+        group_form_input_placeholder: Zadejte název skupiny
+        group_form_label: Název skupiny
+        group_title: Členové skupiny
+        household_form_input_placeholder: Zadejte název domácnosti
+        household_form_label: Název domácnosti
+        household_subtitle: "Pozvaní uživatelé se mohou přihlásit k účtu %{moniker} a přistupovat ke sdíleným prostředkům."
+        household_title: Domácnost
+        invitation_link: Odkaz s pozvánkou
+        copy_invitation_link: Zkopírovat odkaz s pozvánkou
+        invite_member: Přidat člena
+        last_name: Příjmení
+        page_title: Profilové údaje
+        pending: Čeká na přijetí
+        profile_subtitle: "Přizpůsobte své zobrazení v aplikaci %{product_name}."
+        profile_title: Osobní údaje
+        remove_invitation: Odebrat pozvánku
+        remove_member: Odebrat člena
+        member_avatar_alt: "Profilová fotografie uživatele %{name}"
+        resend_confirmation_link: vyžádat nový potvrzovací e-mail
+        save: Uložit
+        unconfirmed_email_notice_html: "Požádali jste o změnu e-mailové adresy na %{email}. Aby se změna projevila, otevřete potvrzovací e-mail a novou adresu potvrďte. Pokud jste e-mail neobdrželi, zkontrolujte složku s nevyžádanou poštou nebo si můžete %{resend_link}."
+    securities:
+      show:
+        page_title: Zabezpečení
+        encryption_warning:
+          title: Chybí šifrovací klíče
+          intro: "Citlivá data, například klíče API, tokeny poskytovatelů, tajné údaje MFA a osobní údaje, jsou v úložišti ukládána nešifrovaně. Šifrování zapnete nastavením následujících klíčů v proměnných prostředí nebo přihlašovacích údajích Rails:"
+          keys:
+            - ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY
+            - ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY
+            - ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT
+          generate: "Sadu vygenerujete příkazem: bin/rails db:encryption:init"
+        sso_title: Propojené účty
+        sso_subtitle: Spravujte propojení účtů jednotného přihlášení.
+        sso_disconnect: Odpojit
+        sso_last_used: Naposledy použito
+        sso_never: Nikdy
+        sso_no_email: Bez e-mailu
+        sso_no_identities: Nejsou propojeny žádné účty SSO.
+        sso_connect_hint: Účet propojíte tak, že se odhlásíte a znovu přihlásíte prostřednictvím poskytovatele SSO.
+        sso_confirm_title: Odpojit účet?
+        sso_confirm_body: "Opravdu chcete odpojit účet poskytovatele %{provider}? Později jej můžete znovu propojit přihlášením prostřednictvím stejného poskytovatele."
+        sso_confirm_button: Odpojit
+        sso_warning_message: Toto je váš jediný způsob přihlášení. Před odpojením si v nastavení zabezpečení vytvořte heslo, jinak můžete ztratit přístup ke svému účtu.
+    mcp:
+      show:
+        page_title: Server MCP
+        connect_title: Připojení asistenta s AI
+        connect_subtitle: Vložením této adresy URL do Claude.ai nebo jiného klienta podporujícího MCP jej připojíte ke svému účtu Sure.
+        copy_url: Kopírovat
+        copied: Zkopírováno
+        how_to_connect_title: Jak připojit Claude
+        step_1: "Otevřete Claude.ai a přejděte do Settings → Integrations."
+        step_2: Klikněte na „Add integration“ a vložte adresu URL serveru MCP uvedenou výše.
+        step_3: Klikněte na „Connect“. Budete přesměrováni do Sure, kde se přihlásíte a přístup schválíte.
+        step_4: Po schválení může Claude číst vaše účty, transakce a údaje o zůstatcích.
+        connected_title: Připojení klienti
+        connected_subtitle: Tyto aplikace mají v současnosti přístup k vašim datům v Sure. Přístup aplikací, které již nepoužíváte, odvolejte.
+        unknown_client: Neznámý klient
+        connected_ago: "Připojeno před %{time}"
+        revoke: Odvolat přístup
+        revoke_confirm: Odvolat tomuto klientovi přístup?
+      revoke:
+        revoked: Připojení bylo zrušeno.
+    settings_nav:
+      accounts_label: Účty
+      advanced_section_title: Pokročilé
+      ai_prompts_label: Pokyny pro AI
+      background_jobs_label: Úlohy na pozadí
+      api_key_label: Klíče API
+      payment_label: Platby
+      categories_label: Kategorie
+      feedback_label: Zpětná vazba
+      general_section_title: Obecné
+      imports_label: Importy
+      exports_label: Exporty
+      llm_usage_label: Využití LLM
+      logout: Odhlásit se
+      merchants_label: Obchodníci
+      providers_label: Poskytovatelé
+      guides_label: Návody
+      other_section_title: Další
+      preferences_label: Předvolby
+      profile_label: Profilové údaje
+      recurring_transactions_label: Opakující se transakce
+      rules_label: Pravidla
+      mcp_label: MCP
+      security_label: Zabezpečení
+      self_hosting_label: Vlastní provoz
+      sso_providers_label: Poskytovatelé SSO
+      statement_vault_label: Archiv výpisů
+      tags_label: Štítky
+      transactions_section_title: Transakce
+      users_label: Uživatelé
+      whats_new_label: Novinky
+      api_keys_label: Klíče API
+      appearance_label: Vzhled
+      bank_sync_label: Bankovní synchronizace
+      debug_label: Ladění
+    settings_nav_link_large:
+      next: Další
+      previous: Zpět
+    user_avatar_field:
+      accepted_formats: JPG nebo PNG, nejvýše 5 MB
+      choose: Nahrát fotografii
+      choose_label: (nepovinné)
+      change: Změnit fotografii
+      profile_image_alt: Profilová fotografie
+      preview_alt: Náhled profilové fotografie
+      remove_photo: Odebrat profilovou fotografii
+    providers:
+      update:
+        updated_successfully: Nastavení poskytovatele bylo úspěšně aktualizováno.
+        no_changes: Nebyly provedeny žádné změny.
+        update_failed: Nastavení poskytovatele se nepodařilo aktualizovat. Zkuste to znovu.
+      not_authorized: Nemáte oprávnění.
+      bank_sync:
+        page_title: Bankovní synchronizace
+        lede: Připojte externí účty a nechte transakce, zůstatky a držená aktiva automaticky přenášet do Sure.
+      status:
+        ok: Připojeno
+        warn: Vyžaduje pozornost
+        err: Chyba
+        off: Nenastaveno
+      maturity:
+        beta: Beta
+        alpha: Alfa
+      drawer_trust_statement: Sure má přístup pouze pro čtení, nikdy nemůže přesouvat peníze a vaše přihlašovací údaje ukládá šifrovaně.
+      setup_steps:
+        eyebrow: Nastavení
+        need_help: Potřebujete pomoc?
+      connect: Připojit
+      groups:
+        your_connections: Vaše připojení
+        available: Dostupní poskytovatelé
+        empty_available: Všichni dostupní poskytovatelé jsou připojeni.
+      health_strip:
+        connected: připojeno
+        needs_attention: vyžaduje pozornost
+        accounts_syncing: účty se synchronizují
+        last_synced: "Naposledy synchronizováno před %{time}"
+      meta:
+        sync_error: Chyba synchronizace
+        no_recent_sync: Synchronizace má zpoždění
+        reconsent_required: Je vyžadován nový souhlas
+        reconsent_needed:
+          one: Nový souhlas bude potřeba za 1 den
+          few: "Nový souhlas bude potřeba za %{count} dny"
+          many: "Nový souhlas bude potřeba za %{count} dne"
+          other: "Nový souhlas bude potřeba za %{count} dní"
+        last_synced: "Synchronizováno před %{time}"
+      sync_all: Synchronizovat vše
+      sync_all_in_progress: Synchronizují se všichni připojení poskytovatelé…
+      sync_all_recently: Synchronizace již probíhá. Zkuste to znovu za okamžik.
+      sync_provider: Synchronizovat
+      sync_provider_in_progress: Synchronizace byla zahájena.
+      recently_synced: Synchronizace proběhla nedávno. Zkuste to znovu za okamžik.
+      taglines:
+        akahu: Synchronizujte novozélandské finanční instituce prostřednictvím Akahu.
+        simplefin: Připojte bankovní účty v USA prostřednictvím otevřeného protokolu SimpleFIN.
+        lunchflow: Připojte více než 20 000 bank ze 40 zemí včetně Spojeného království, EU a USA.
+        redbark: Synchronizujte australské bankovní účty prostřednictvím otevřeného bankovnictví Redbark.
+        enable_banking: Synchronizujte evropské bankovní účty prostřednictvím otevřeného bankovnictví PSD2.
+        coinstats: Sledujte celé kryptoměnové portfolio napříč peněženkami a burzami.
+        wise: Automaticky synchronizujte víceměnové zůstatky Wise a mezinárodní převody.
+        mercury: Automaticky synchronizujte firemní bankovní účty Mercury.
+        brex: Synchronizujte hotovostní účty a firemní karty Brex s přístupem pouze pro čtení.
+        coinbase: Importujte kryptoměnová aktiva z Coinbase a sledujte jejich výkonnost.
+        binance: Synchronizujte spotové zůstatky Binance pomocí klíče API pouze pro čtení.
+        kraken: Synchronizujte zůstatky a uskutečněné spotové obchody z Kraken pomocí klíče API pouze pro čtení.
+        snaptrade: Připojte brokerské účty prostřednictvím agregační sítě SnapTrade.
+        trading212: Synchronizujte investiční portfolio Trading 212 pomocí klíče API pouze pro čtení.
+        ibkr: Synchronizujte investiční účty Interactive Brokers prostřednictvím importů Flex Query.
+        questrade: Synchronizujte investiční účty Questrade přímo prostřednictvím API Questrade.
+        indexa_capital: Sledujte automatizované investiční portfolio Indexa Capital.
+        sophtron: Připojte banky a poskytovatele služeb v USA a Kanadě.
+        plaid: Připojte tisíce finančních institucí v USA prostřednictvím Plaid.
+        plaid_eu: Připojte evropské finanční instituce prostřednictvím Plaid a otevřeného bankovnictví PSD2.
+      search_filters:
+        aria_label: Hledat poskytovatele
+        placeholder: Hledat poskytovatele
+        chips:
+          all: Vše
+          bank: Banky
+          crypto: Kryptoměny
+          investment: Investice
+      empty_filter: Filtru neodpovídá žádný poskytovatel.
+      clear_filter: Vymazat filtry
+      encryption_error:
+        title: Chybí šifrovací klíče
+        message: Bankovní synchronizace vyžaduje šifrování Active Record. Nastavte hodnoty primary_key, deterministic_key a key_derivation_salt v přihlašovacích údajích Rails nebo proměnných prostředí.
+      provider_form:
+        environment_configuration_notice: Nastavení lze načíst z proměnných prostředí nebo přepsat níže.
+        optional: Nepovinné
+        plaid_dashboard: Řídicí panel Plaid
+        fields:
+          plaid:
+            client_id:
+              label: ID klienta
+              description: ID klienta Plaid z řídicího panelu Plaid
+            secret:
+              label: Tajný klíč
+              description: Tajný klíč Plaid z řídicího panelu Plaid
+            environment:
+              label: Prostředí
+              description: "Prostředí Plaid: sandbox, development nebo production"
+          plaid_eu:
+            client_id:
+              label: ID klienta
+              description: ID klienta Plaid pro oblast EU z řídicího panelu Plaid
+            secret:
+              label: Tajný klíč
+              description: Tajný klíč Plaid pro oblast EU z řídicího panelu Plaid
+            environment:
+              label: Prostředí
+              description: "Prostředí Plaid: sandbox, development nebo production"
+        save_and_connect: Uložit a připojit
+      coinbase_panel:
+        setup_instructions: "Připojení Coinbase:"
+        step1_html: Přejděte do <a href="https://portal.cdp.coinbase.com/projects/api-keys" target="_blank" rel="noopener noreferrer" class="text-primary underline">nastavení API Coinbase</a>.
+        step2: Vytvořte nový klíč API s oprávněním pouze ke čtení, tedy k zobrazení účtů a transakcí.
+        step3: Zkopírujte klíč API a tajný klíč API a vložte je níže.
+        api_key_label: Klíč API
+        api_key_placeholder: Zadejte klíč API Coinbase
+        api_secret_label: Tajný klíč API
+        api_secret_placeholder: Zadejte tajný klíč API Coinbase
+        connect_button: Připojit Coinbase
+        syncing: Synchronizace…
+        sync: Synchronizovat
+        disconnect_confirm: Opravdu chcete toto připojení Coinbase odpojit? Synchronizované účty se změní na ruční.
+      binance_panel:
+        setup_instructions: "Pro připojení Binance vytvořte klíč API pouze pro čtení:"
+        step1_html: 'Přejděte do <a href="https://www.binance.com/en/my/settings/api-management" target="_blank" rel="noopener noreferrer" class="underline">správy API Binance</a>.'
+        step2: Vytvořte nový klíč API pouze s oprávněním Enable Reading.
+        step3: Vložte níže klíč API a tajný klíč.
+        no_withdraw_title: Pouze klíč pro čtení
+        no_withdraw_body: Při vytváření klíče API Binance nepovolujte výběry. Sure potřebuje pouze oprávnění ke čtení.
+        ip_hint_title: Je vyžadován seznam povolených IP adres
+        ip_hint_body: "Přidejte odchozí IP adresu aplikačního serveru do seznamu povolených adres klíče API Binance:"
+        ip_hint_contact_admin: Odchozí IP adresu aplikačního serveru získáte od správce.
+        api_key_label: Klíč API
+        api_key_placeholder: Vložte klíč API Binance
+        api_secret_label: Tajný klíč API
+        api_secret_placeholder: Vložte tajný klíč API Binance
+        connect_button: Připojit Binance
+        syncing: Synchronizace…
+        sync: Synchronizovat
+        historical_import: Nastavení historického importu
+        sync_start_date_label: Importovat data od
+        sync_start_date_help: Zvolte, jak hluboko do minulosti se mají načíst historické obchody.
+        disconnect_confirm: Opravdu chcete Binance odpojit?
+      kraken_panel:
+        step1_html: 'Přejděte do <a href="https://pro.kraken.com/app/settings/api" target="_blank" rel="noopener noreferrer" class="underline">nastavení API Kraken</a>.'
+        step2: Vytvořte klíč API pouze s oprávněními Query Funds a Query Closed Orders & Trades.
+        step3: Vložte níže klíč API a soukromý klíč.
+        read_only_title: Pouze synchronizace burzy pro čtení
+        read_only_body: Nepovolujte obchodování, rušení příkazů, výběry, export, účetní knihu, Earn, staking ani převody. Sure pouze importuje zůstatky, držená aktiva a uskutečněné spotové obchody.
+        default_connection_name: Kraken
+        add_connection: Přidat připojení Kraken
+        update_connection: Aktualizovat připojení
+        connection_name_label: Název připojení
+        connection_name_placeholder: Hlavní účet Kraken
+        api_key_label: Klíč API
+        api_key_placeholder: Vložte klíč API Kraken
+        keep_api_key_placeholder: Chcete-li zachovat stávající klíč API, ponechte prázdné.
+        api_secret_label: Soukromý klíč
+        api_secret_placeholder: Vložte soukromý klíč Kraken
+        keep_api_secret_placeholder: Chcete-li zachovat stávající soukromý klíč, ponechte prázdné.
+        setup_accounts: Nastavit účet
+        syncing: Synchronizace…
+        sync: Synchronizovat
+        disconnect: Odpojit
+        disconnect_confirm: "Opravdu chcete odpojit připojení %{name}?"
+      enable_banking_panel:
+        callback_url_instruction: "Jako adresu URL zpětného volání použijte %{callback_url}."
+        connection_error: Chyba připojení
+        step_1_html: "Přejděte na %{link} a získejte vývojářské přihlašovací údaje."
+        step_2: Vyberte zemi a vložte níže ID aplikace a klientský certifikát.
+        step_3: Nastavení uložte a potom pomocí možnosti Přidat připojení propojte svou banku.
+        config_locked_title: Konfigurace je uzamčena
+        config_locked_message: Před změnou těchto přihlašovacích údajů odpojte všechny propojené banky.
+        application_id_label: ID aplikace
+        application_id_placeholder_new: Zadejte ID aplikace
+        application_id_placeholder_update: Zadejte nové ID
+        client_certificate_label: Klientský certifikát včetně soukromého klíče
+        save_and_connect: Uložit a připojit
+        update_connection: Aktualizovat připojení
+        connected_bank: Připojená banka
+        session_expires: "Platnost relace vyprší: %{date}"
+        unknown: Neznámé
+        connection: Připojení
+        session_expired_reconnect: Platnost relace vypršela – připojte se znovu
+        configured: Nastaveno
+        ready_to_link: Připraveno k propojení účtů
+        sync: Synchronizovat
+        reconnect: Znovu připojit
+        connect_bank: Připojit banku
+        remove: Odebrat
+        remove_confirm: Opravdu chcete toto připojení odebrat?
+        add_connection: Přidat připojení
+        syncing: Synchronizace
+        select_country: Vyberte zemi…
+        country_label: Země
+        default_connection_name: Připojení Enable Banking
+      lunchflow_panel:
+        step_1_html: "Přejděte na %{link} a vytvořte klíč API."
+        step_2: Vložte klíč níže a připojte se.
+        step_3: Poté v části Účty propojte synchronizované účty.
+        api_key_label: Klíč API
+        api_key_placeholder_new: Vložte klíč API
+        api_key_placeholder_update: Zadejte nový klíč API
+        base_url_label: Základní adresa URL (nepovinné)
+        base_url_placeholder: "https://lunchflow.app/api/v1 (výchozí)"
+        save_and_connect: Uložit a připojit
+        update_connection: Aktualizovat připojení
+        default_connection_name: Připojení Lunch Flow
+      akahu_panel:
+        step_1_html: "Přejděte na %{link} a vytvořte osobní aplikaci."
+        step_2: Zkopírujte token aplikace a uživatelský token.
+        step_3: Vložte tokeny níže, nastavení uložte a poté propojte synchronizované účty.
+      up_panel:
+        step_1_html: "Přejděte na %{link} a vygenerujte osobní přístupový token."
+        step_2: Zkopírujte osobní přístupový token.
+        step_3: Vložte token níže, nastavení uložte a poté propojte synchronizované účty.
+      simplefin_panel:
+        step_1_html: "Na stránce %{link} získejte jednorázový nastavovací token."
+        step_2: Vložte token níže a připojte se.
+        step_3: Poté v části Účty propojte synchronizované účty.
+        setup_token_label: Nastavovací token
+        setup_token_placeholder: Vložte nastavovací token SimpleFIN
+        save_and_connect: Uložit a připojit
+      plaid_panel:
+        step_1_html: "Otevřete %{link} a zkopírujte ID klienta a tajný klíč."
+        step_2: Zvolte prostředí. Pro testování použijte sandbox, pro skutečné účty produkční prostředí.
+        step_3: Vložte níže přihlašovací údaje a připojte se.
+      plaid_eu_panel:
+        step_1_html: "Otevřete %{link} a zkopírujte evropské ID klienta a tajný klíč."
+      questrade_panel:
+        eyebrow: "Nastavení · pouze na počítači"
+        steps:
+          s1_html: 'V prohlížeči na počítači se přihlaste do <a href="https://my.questrade.com" target="_blank" rel="noopener noreferrer" class="text-primary font-medium underline">portálu Questrade</a>. Nastavení API není v mobilní aplikaci dostupné.'
+          s2: Otevřete Settings a v části General settings upravte nastavení IQ API.
+          s3_html: V dialogu API access klikněte na <strong>Manage</strong> v části <strong>My applications</strong>.
+          s4: Zaregistrujte osobní aplikaci, zadejte její název a popis a změny uložte.
+          s5: Přidejte nové zařízení a vygenerujte token.
+          s6: Vygenerovaný token vložte níže a uložte.
+        help_text: Dokumentace API Questrade
+        status_configured_html: 'Připojení je nastaveno a připraveno. Nalezené účty můžete spravovat a nastavit na kartě <a href="%{accounts_path}" class="link">Účty</a>.'
+        token_refresh_hint: Tokeny Questrade se automaticky obnovují při každé synchronizaci účtů. Pokud se připojení déle než 7 dní nepoužije a přestane být platné, vložte sem nový token; připojení přitom nemusíte odpojovat.
+        refresh_token_label: Obnovovací token
+        refresh_token_placeholder_new: Vložte obnovovací token
+        refresh_token_placeholder_update: Chcete-li token změnit, vložte nový
+        save_button: Uložit nastavení
+        update_button: Aktualizovat nastavení
+        disconnect: Odpojit
+        disconnect_confirm: Opravdu chcete Questrade odpojit? Připojení se odstraní a synchronizované účty se od něj odpojí.
+        default_connection_name: Připojení Questrade
+      indexa_capital_panel:
+        default_connection_name: Připojení Indexa Capital
+      not_found: Poskytovatel nebyl nalezen.
+      sync_provider_no_items: Nejsou dostupná žádná připojení k synchronizaci.
+      ibkr_panel:
+        steps:
+          step_1: 'V portálu IBKR Client Portal přejděte do „Performance & Reports“ > „Flex Queries“.'
+          step_2: 'V části „Activity Flex Query“ vytvořte nový dotaz kliknutím na ikonu „+“.'
+          step_3: 'Dotaz pojmenujte, například „Sure Sync“, a podle následujících podrobností Flex Query zapněte uvedené části, pole a možnosti konfigurace.'
+          step_4: 'Dotaz uložte a poznamenejte si „Query ID“. Poté pomocí ikony ozubeného kola v části „Flex Web Service Configuration“ vygenerujte přístupový token.'
+          step_5: Vložte níže ID dotazu a token, konfiguraci uložte a poté v části Účty propojte nalezené účty IBKR.
+        flex_query_details:
+          eyebrow: Flex Query
+          title: Části, pole a konfigurace
+          summary: Rozbalením zobrazíte přesné části, pole a nastavení, které musí dotaz IBKR Activity Flex Query obsahovat.
+          sections_heading: Zapněte následující části a pole
+          configuration_heading: Nastavte následující možnosti dotazu
+        sections:
+          account_information: "Account Information: Account ID, Currency"
+          cash_report: "Cash Report:"
+          cash_report_options: "Options: None"
+          cash_report_fields: "Fields: Currency, Ending Cash"
+          cash_transactions: "Cash Transactions:"
+          cash_transactions_options: "Options: Dividends, Deposits & Withdrawals, Detail"
+          cash_transactions_fields: "Fields: Amount, Conid, Currency, FX Rate To Base, Report Date, Transaction ID, Type"
+          change_in_position_value_summary: "Change In Position Value Summary: Currency, End Of Period Value"
+          net_asset_value: "Net Asset Value (NAV) in Base:"
+          net_asset_value_options: "Options: None"
+          net_asset_value_fields: "Fields: Currency, Report Date, Total"
+          open_positions: "Open Positions:"
+          open_positions_options: "Options: Summary"
+          open_positions_fields: "Fields: Asset Class, Conid, Cost Basis Price, Currency, FX Rate To Base, Mark Price, Quantity, Report Date, Security ID, Security ID Type, Side, Symbol"
+          trades: "Trades:"
+          trades_options: "Options: Execution"
+          trades_fields: "Fields: Asset Class, Buy/Sell, Conid, Currency, FX Rate To Base, IB Commission, IB Commission Currency, Quantity, Symbol, Trade Date, Trade ID, TradePrice, Transaction ID"
+        configuration:
+          models: "Models: Optional"
+          format: "Format: XML"
+          period: "Period: Last 365 Calendar Days"
+          date_format: "Date Format: yyyy-MM-dd"
+          time_format: "Time Format: HH:mm:ss"
+          date_time_separator: "Date/Time Separator: ; (semi-colon)"
+          profit_and_loss: "Profit and Loss: Default"
+          all_other_options: 'All other configuration options: "No"'
+        report_window_note: Přehledy IBKR Flex jsou omezeny časovým rozsahem nastaveným v IBKR. Sure z tohoto přehledu importuje úplný aktuální stav držených aktiv a aktivitu nejvýše za posledních 365 dní.
+        sync: Synchronizovat
+        disconnect_confirm: Odpojit Interactive Brokers?
+        query_id_label: ID dotazu
+        query_id_placeholder_new: Zadejte ID dotazu IBKR Flex Query
+        query_id_placeholder_existing: Chcete-li zachovat současné ID dotazu, ponechte prázdné.
+        token_label: Token
+        token_placeholder_new: Zadejte token služby IBKR Flex Web Service
+        token_placeholder_existing: Chcete-li zachovat současný token, ponechte prázdné.
+        save_configuration: Uložit konfiguraci
+        update_configuration: Aktualizovat konfiguraci
+        status_configured_prefix: "%{summary}. Přejděte na kartu"
+        accounts_tab: Účty
+        status_configured_suffix: a spravujte nalezené účty.
+        not_configured: Nenastaveno.
+      trading212_panel:
+        steps:
+          step_1: V aplikaci Trading 212 pro web nebo mobil přejděte do Nastavení → API.
+          step_2: Vygenerujte nový klíč API. Trading 212 zobrazí ID API a tajný klíč.
+          step_3: Vložte oba údaje níže, zvolte prostředí a měnu účtu a nastavení uložte.
+        api_key_label: ID API
+        api_key_placeholder_new: Vložte ID API Trading 212
+        api_key_placeholder_existing: Chcete-li zachovat současné ID API, ponechte prázdné.
+        api_secret_label: Tajný klíč
+        api_secret_placeholder_new: Vložte tajný klíč Trading 212
+        api_secret_placeholder_existing: Chcete-li zachovat současný tajný klíč, ponechte prázdné.
+        environment_label: Prostředí
+        environment_live: Skutečný účet
+        environment_demo: Ukázkový účet
+        currency_label: Měna účtu
+        save_configuration: Uložit konfiguraci
+        update_configuration: Aktualizovat konfiguraci
+        sync: Synchronizovat
+        disconnect_confirm: Odpojit Trading 212?
+        status_configured_prefix: "Nastaveno. Přejděte na kartu"
+        accounts_tab: Účty
+        status_configured_suffix: a spravujte nalezené účty.
+        not_configured: Nenastaveno.

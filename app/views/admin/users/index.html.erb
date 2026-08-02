@@ -71,10 +71,13 @@
                 <% sub = family.subscription %>
                 <% if sub&.trialing? %>
                   <span class="text-xs text-secondary">
-                    <%= t(".table.trial_ends_at") %>: <%= sub.trial_ends_at&.to_fs(:long) || t(".not_available") %>
+                    <%= t(".table.trial_ends_at") %>: <%= sub.trial_ends_at.present? ? l(sub.trial_ends_at, format: :long) : t(".not_available") %>
                   </span>
                 <% elsif sub %>
-                  <%= render DS::Pill.new(label: sub.status.humanize, tone: sub.active? ? :success : :neutral) %>
+                  <%= render DS::Pill.new(
+                    label: t(".subscription_statuses.#{sub.status}"),
+                    tone: sub.active? ? :success : :neutral
+                  ) %>
                 <% else %>
                   <span class="text-xs text-secondary"><%= t(".no_subscription") %></span>
                 <% end %>
@@ -107,7 +110,7 @@
                         </div>
                       </td>
                       <td class="px-4 py-3 text-sm text-primary whitespace-nowrap">
-                        <%= @last_login_by_user[user.id]&.to_fs(:long) || t(".table.never") %>
+                        <%= @last_login_by_user[user.id].present? ? l(@last_login_by_user[user.id], format: :long) : t(".table.never") %>
                       </td>
                       <td class="px-4 py-3 text-sm text-primary text-right whitespace-nowrap">
                         <%= number_with_delimiter(@sessions_count_by_user[user.id] || 0) %>
@@ -147,7 +150,7 @@
                           </div>
                         </td>
                         <td class="px-4 py-3 text-sm text-secondary whitespace-nowrap">
-                          <%= t(".invitations.expires", date: invitation.expires_at.to_fs(:long)) %>
+                          <%= t(".invitations.expires", date: l(invitation.expires_at, format: :long)) %>
                         </td>
                         <td class="px-4 py-3 text-sm text-secondary text-right whitespace-nowrap">
                           —

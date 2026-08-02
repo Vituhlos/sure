@@ -1,0 +1,13 @@
+---
+cs:
+  category:
+    deletions:
+      create:
+        success: "Kategorie transakcí byla odstraněna."
+      new:
+        category: "Kategorie"
+        delete_and_leave_uncategorized: "Odstranit kategorii „%{category_name}“ a ponechat transakce bez kategorie"
+        delete_and_recategorize: "Odstranit kategorii „%{category_name}“ a přiřadit transakcím jinou"
+        delete_category: "Odstranit kategorii?"
+        explanation: "Odstraněním kategorie „%{category_name}“ zůstanou všechny její transakce bez kategorie. Chcete-li, můžete jim níže rovnou přiřadit jinou kategorii."
+        replacement_category_prompt: "Vyberte kategorii"

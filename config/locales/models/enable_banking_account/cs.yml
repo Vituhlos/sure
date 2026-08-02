@@ -1,0 +1,19 @@
+---
+cs:
+  enable_banking_accounts:
+    account_types:
+      CACC: "Běžný účet"
+      SVGS: "Spořicí účet"
+      CARD: "Kartový účet"
+      CRCD: "Kreditní karta"
+      LOAN: "Úvěrový účet"
+      MORT: "Hypoteční účet"
+      ODFT: "Kontokorentní účet"
+      CASH: "Hotovostní účet"
+      TRAN: "Transakční účet"
+      SALA: "Mzdový účet"
+      MOMA: "Účet peněžního trhu"
+      NREX: "Externí účet nerezidenta"
+      TAXE: "Daňový účet"
+      TRAS: "Účet pro obchodování s hotovostí"
+      ONDP: "Jednodenní vklad"

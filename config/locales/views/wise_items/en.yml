@@ -1,6 +1,10 @@
 ---
 en:
   wise_items:
+    importer:
+      fetch_balances_failed: Failed to fetch balances
+    profile_display_name:
+      fallback: "Wise %{type}"
     profile_types:
       personal: Personal
       business: Business
@@ -134,6 +138,7 @@ en:
       title: "Link %{account_name} with Wise"
       description: Select the Wise currency balance to link with this account. Transactions will be synced automatically.
       no_accounts_found: No unlinked Wise balances found.
+      not_found: Account or Wise connection not found.
       link_account: Link balance
       cancel: Cancel
     link_accounts:

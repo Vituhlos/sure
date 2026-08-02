@@ -10,6 +10,7 @@ import '../providers/merchants_provider.dart';
 import '../providers/tags_provider.dart';
 import '../providers/transactions_provider.dart';
 import '../l10n/app_localizations.dart';
+import '../l10n/client_errors.dart';
 
 class TransactionEditScreen extends StatefulWidget {
   final OfflineTransaction transaction;
@@ -133,7 +134,7 @@ class _TransactionEditScreenState extends State<TransactionEditScreen> {
         content: Text(
           success
               ? l.transactionEditUpdated
-              : transactionsProvider.error ?? l.transactionEditUpdateFailed,
+              : localizedClientError(l, transactionsProvider.error),
         ),
         backgroundColor: success ? Colors.green : Colors.red,
       ),
@@ -223,7 +224,7 @@ class _TransactionEditScreenState extends State<TransactionEditScreen> {
       categories.map((category) {
         return DropdownMenuItem<String?>(
           value: category.id,
-          child: Text(category.displayName),
+          child: Text(category.localizedDisplayName(l)),
         );
       }),
     );

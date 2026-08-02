@@ -1,0 +1,41 @@
+---
+cs:
+  mfa:
+    backup_codes:
+      backup_codes_description: "Každý kód lze použít pouze jednou. Uložte je na bezpečné místo."
+      backup_codes_title: "Vaše záložní kódy"
+      continue: "Pokračovat do nastavení zabezpečení"
+      description: "Záložní kódy uložte na bezpečné místo. Budete je potřebovat, pokud ztratíte přístup k autentizační aplikaci."
+      page_title: "Záložní kódy"
+      title: "Uložte si záložní kódy"
+    create:
+      invalid_code: "Ověřovací kód není platný. Zkuste to znovu."
+    disable:
+      success: "Dvoufaktorové ověřování bylo vypnuto."
+    new:
+      code_label: "Ověřovací kód"
+      code_placeholder: "Zadejte šestimístný kód"
+      description: "Zvyšte zabezpečení účtu nastavením dvoufaktorového ověřování."
+      page_title: "Nastavení dvoufaktorového ověřování"
+      scan_description: "Naskenujte QR kód autentizační aplikací, například Google Authenticator nebo 1Password."
+      scan_title: "1. Naskenujte QR kód"
+      secret_description: "Pokud QR kód nemůžete naskenovat, zadejte tento tajný klíč do autentizační aplikace ručně."
+      secret_title: "Kód pro ruční zadání"
+      title: "Nastavit dvoufaktorové ověřování"
+      verify_button: "Ověřit a zapnout 2FA"
+      verify_description: "Zadejte šestimístný kód z autentizační aplikace."
+      verify_title: "2. Zadejte ověřovací kód"
+    verify:
+      description: "Pokračujte zadáním kódu z autentizační aplikace."
+      or: "nebo"
+      page_title: "Ověřit dvoufaktorové přihlášení"
+      title: "Dvoufaktorové ověřování"
+      verify_button: "Ověřit"
+      webauthn_button: "Použít přístupový nebo bezpečnostní klíč"
+      webauthn_unsupported: "Tento prohlížeč nepodporuje přístupové ani bezpečnostní klíče."
+    verify_code:
+      invalid_code: "Ověřovací kód není platný. Zkuste to znovu."
+    verify_webauthn:
+      invalid_credential: "Tento přístupový nebo bezpečnostní klíč se nepodařilo ověřit. Zkuste to znovu."
+    webauthn_options:
+      unavailable: "Pro tento účet nejsou dostupné žádné přístupové ani bezpečnostní klíče."

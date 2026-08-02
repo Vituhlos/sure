@@ -17,7 +17,7 @@
             { label: t(".date_format") },
             { data: { auto_submit_form_target: "auto" } } %>
         <%= form.select :default_account_order,
-            AccountOrder.all.map { |order| [ order.label, order.key ] },
+            AccountOrder.all.map { |order| [ t(".account_orders.#{order.key}"), order.key ] },
             { label: t(".default_account_order") },
             { data: { auto_submit_form_target: "auto" } } %>
         <%= family_form.select :country,
@@ -144,7 +144,7 @@
                     "bg-surface-inset": base_currency,
                     "cursor-default": base_currency
                   ) %>"
-                         data-filter-name="<%= "#{currency.iso_code} #{currency.name}" %>">
+                         data-filter-name="<%= "#{currency.iso_code} #{localized_currency_name(currency)}" %>">
                     <%= check_box_tag "user[family_attributes][enabled_currencies][]",
                                       currency.iso_code,
                                       checked,
@@ -165,7 +165,7 @@
                               </span>
                             <% end %>
                           </div>
-                          <p class="mt-0.5 text-sm text-secondary"><%= currency.name %></p>
+                          <p class="mt-0.5 text-sm text-secondary"><%= currency_label(currency) %></p>
                         </div>
                       </div>
                     </div>

@@ -1,6 +1,30 @@
 ---
 en:
   lunchflow_items:
+    default_connection_name: Lunch Flow Connection
+    sync_status:
+      no_accounts: No accounts found
+      all_synced:
+        one: 1 account synced
+        other: "%{count} accounts synced"
+      partial: "%{linked} synced, %{unlinked} need setup"
+    institution_summary:
+      none: No institutions connected
+      count:
+        one: 1 institution
+        other: "%{count} institutions"
+    syncer:
+      importing_accounts: Importing accounts from Lunch Flow...
+      checking_account_configuration: Checking account configuration...
+      accounts_need_setup:
+        one: 1 account needs setup...
+        other: "%{count} accounts need setup..."
+      processing_transactions_and_holdings: Processing transactions and holdings...
+      calculating_balances: Calculating balances...
+      failed: Lunch Flow synchronization failed. Please try again.
+    errors:
+      provider_not_configured: Lunch Flow is not configured.
+      unexpected_error: An unexpected error occurred. Please try again later.
     api_error:
       title: Lunch Flow Connection Error
       unable_to_connect: Unable to connect to Lunch Flow
@@ -34,6 +58,7 @@ en:
       loading_message: Loading Lunch Flow accounts...
       loading_title: Loading
     link_accounts:
+      no_api_key: Lunch Flow API key is not configured. Please configure it in Settings.
       all_already_linked:
         one: "The selected account (%{names}) is already linked"
         other: "All %{count} selected accounts are already linked: %{names}"
@@ -65,6 +90,7 @@ en:
       total: Total
       unlinked: Unlinked
     select_accounts:
+      no_credentials_configured: Please configure your Lunch Flow API key first in Provider Settings.
       accounts_selected: accounts selected
       api_error: "API error: %{message}"
       cancel: Cancel
@@ -76,6 +102,7 @@ en:
       no_name_placeholder: "(No name)"
       title: Select Lunch Flow Accounts
     select_existing_account:
+      no_credentials_configured: Please configure your Lunch Flow API key first in Provider Settings.
       account_already_linked: This account is already linked to a provider
       all_accounts_already_linked: All Lunch Flow accounts are already linked
       api_error: "API error: %{message}"
@@ -89,6 +116,7 @@ en:
       no_name_placeholder: "(No name)"
       title: "Link %{account_name} with Lunch Flow"
     link_existing_account:
+      no_api_key: Lunch Flow API key is not configured. Please configure it in Settings.
       account_already_linked: This account is already linked to a provider
       api_error: "API error: %{message}"
       invalid_account_name: Cannot link account with blank name
@@ -160,6 +188,7 @@ en:
       creation_failed: "Failed to create accounts: %{error}"
       no_accounts: "No accounts to set up."
       success: "Successfully created %{count} account(s)."
+      unexpected_error: An unexpected error occurred
     sync:
       success: Sync started
     update:

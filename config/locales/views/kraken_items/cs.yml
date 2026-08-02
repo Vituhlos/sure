@@ -1,0 +1,94 @@
+---
+cs:
+  kraken_items:
+    provider_connection:
+      default_name: "Kraken"
+      default_description: "Propojení s účtem na burze Kraken"
+      name: "Kraken – %{name}"
+      description: "Propojení s účtem %{name}"
+    create:
+      default_name: "Kraken"
+      success: "Připojení ke Krakenu bylo úspěšné. Účet na burze se nyní synchronizuje."
+    update:
+      success: "Připojení ke Krakenu bylo úspěšně aktualizováno."
+    destroy:
+      success: "Připojení ke Krakenu bylo zařazeno k odstranění."
+    select_accounts:
+      select_connection: "Vyberte připojení ke Krakenu v nastavení poskytovatelů."
+      no_credentials_configured: "Před nastavením účtů přidejte přihlašovací údaje API Kraken."
+    link_accounts:
+      select_connection: "Před propojením účtů vyberte připojení ke Krakenu."
+    select_existing_account:
+      title: "Propojení účtu Kraken"
+      no_accounts_found: "Nebyly nalezeny žádné účty Kraken."
+      wait_for_sync: "Počkejte na dokončení synchronizace Krakenu."
+      check_provider_health: "Ověřte platnost klíče a tajného klíče API Kraken."
+      link: "Propojit"
+      cancel: "Zrušit"
+    link_existing_account:
+      success: "Účet byl úspěšně propojen s účtem Kraken"
+      select_connection: "Před propojením účtů vyberte připojení ke Krakenu."
+      errors:
+        only_manual: "S Krakenem lze propojit pouze ručně vedené kryptoměnové účty bez stávajícího propojení s poskytovatelem"
+        invalid_kraken_account: "Neplatný účet Kraken"
+        kraken_account_already_linked: "Tento účet Kraken už je propojen"
+    setup_accounts:
+      title: "Import účtu Kraken"
+      subtitle: "Vyberte účet na burze, který chcete sledovat"
+      instructions: "Kraken pro toto připojení importuje jeden sloučený kryptoměnový účet včetně pozic a realizovaných spotových obchodů."
+      no_accounts: "Všechny účty Kraken už byly importovány."
+      accounts_count:
+        one: "K dispozici je %{count} účet"
+        few: "K dispozici jsou %{count} účty"
+        many: "K dispozici je %{count} účtu"
+        other: "K dispozici je %{count} účtů"
+      select_all: "Vybrat vše"
+      import_selected: "Importovat vybrané"
+      cancel: "Zrušit"
+      creating: "Probíhá import…"
+    complete_account_setup:
+      success:
+        one: "Importován %{count} účet"
+        few: "Importovány %{count} účty"
+        many: "Importováno %{count} účtu"
+        other: "Importováno %{count} účtů"
+      none_selected: "Nebyly vybrány žádné účty"
+      no_accounts: "Nejsou k dispozici žádné účty k importu"
+    kraken_item:
+      provider_name: "Kraken"
+      syncing: "Synchronizace…"
+      reconnect: "Přihlašovací údaje je třeba aktualizovat"
+      deletion_in_progress: "Probíhá odstraňování…"
+      sync_status:
+        no_accounts: "Nebyly nalezeny žádné účty"
+        all_synced:
+          one: "Synchronizován %{count} účet"
+          few: "Synchronizovány %{count} účty"
+          many: "Synchronizováno %{count} účtu"
+          other: "Synchronizováno %{count} účtů"
+        partial_sync: "Synchronizováno: %{linked_count}; nastavení vyžaduje: %{unlinked_count}"
+      status: "Poslední synchronizace před %{timestamp}"
+      status_with_summary: "Poslední synchronizace před %{timestamp} – %{summary}"
+      status_never: "Dosud nesynchronizováno"
+      delete: "Odstranit"
+      no_accounts_title: "Nebyly nalezeny žádné účty"
+      no_accounts_message: "Účet na burze Kraken se zde zobrazí po synchronizaci."
+      setup_needed: "Účet je připraven k importu"
+      setup_description: "Importujte toto připojení ke Krakenu jako kryptoměnový účet."
+      setup_action: "Importovat účet"
+      import_accounts_menu: "Importovat účet"
+      stale_rate_warning: "Zůstatek je přibližný, protože přesný směnný kurz pro datum %{date} nebyl k dispozici. Při příští synchronizaci se aktualizuje."
+  kraken_item:
+    syncer:
+      checking_credentials: "Kontrola přihlašovacích údajů…"
+      credentials_invalid: "Neplatné přihlašovací údaje API Kraken. Zkontrolujte klíč a tajný klíč API."
+      importing_accounts: "Import účtů z Krakenu…"
+      checking_configuration: "Kontrola nastavení účtů…"
+      accounts_need_setup:
+        one: "%{count} účet vyžaduje nastavení"
+        few: "%{count} účty vyžadují nastavení"
+        many: "%{count} účtu vyžaduje nastavení"
+        other: "%{count} účtů vyžaduje nastavení"
+      processing_accounts: "Zpracování dat účtů…"
+      calculating_balances: "Výpočet zůstatků…"
+      failed: "Synchronizace Krakenu se nezdařila. Zkuste to znovu."

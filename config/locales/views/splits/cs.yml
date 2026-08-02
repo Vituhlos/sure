@@ -1,0 +1,47 @@
+---
+cs:
+  splits:
+    new:
+      title: "Rozdělit transakci"
+      description: "Rozdělit transakci do několika položek s různými kategoriemi a částkami."
+      submit: "Rozdělit transakci"
+      cancel: "Zrušit"
+      add_row: "Přidat položku"
+      remove_row: "Odebrat"
+      remaining: "Zbývá"
+      amounts_must_match: "Součet částek jednotlivých položek musí odpovídat původní částce transakce."
+      name_label: "Název"
+      name_placeholder: "Název položky"
+      amount_label: "Částka"
+      category_label: "Kategorie"
+      uncategorized: "(bez kategorie)"
+      original_name: "Název:"
+      original_date: "Datum:"
+      original_amount: "Částka"
+      split_number: "Položka č. %{number}"
+    create:
+      success: "Transakce byla rozdělena."
+      not_splittable: "Tuto transakci nelze rozdělit."
+    destroy:
+      success: "Rozdělení transakce bylo zrušeno."
+    show:
+      title: "Rozdělené položky"
+      description: "Transakce je rozdělena do následujících položek."
+      button_title: "Rozdělit transakci"
+      button_description: "Rozdělit transakci do několika položek s různými kategoriemi a částkami."
+      button: "Rozdělit"
+      unsplit_title: "Zrušit rozdělení transakce?"
+      unsplit_button: "Zrušit rozdělení"
+      unsplit_confirm: "Všechny rozdělené položky se odstraní a obnoví se původní transakce."
+    edit:
+      title: "Upravit rozdělení"
+      description: "Upravit jednotlivé položky rozdělené transakce."
+      submit: "Aktualizovat rozdělení"
+      not_split: "Tato transakce není rozdělena."
+    update:
+      success: "Rozdělení bylo aktualizováno."
+    child:
+      title: "Součást rozdělené transakce"
+      description: "Tato položka je součástí rozdělené transakce."
+      edit_split: "Upravit rozdělení"
+      unsplit: "Zrušit rozdělení"

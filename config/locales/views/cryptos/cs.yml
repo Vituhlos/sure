@@ -1,0 +1,20 @@
+---
+cs:
+  cryptos:
+    edit:
+      edit: "Upravit: %{account}"
+    form:
+      subtype_label: "Typ účtu"
+      subtype_prompt: "Vyberte typ účtu"
+      subtype_none: "Bez podtypu"
+      tax_treatment_label: "Daňový režim"
+      tax_treatment_hint: "Kryptoaktiva se obvykle drží na zdanitelných účtech. Pokud je máte na daňově zvýhodněném účtu, zvolte jinou možnost."
+    new:
+      title: "Zadat zůstatek účtu"
+    subtypes:
+      wallet:
+        short: "Peněženka"
+        long: "Kryptoměnová peněženka"
+      exchange:
+        short: "Burza"
+        long: "Kryptoměnová burza"

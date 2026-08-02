@@ -10,7 +10,7 @@ class TagsService {
       resultKey: 'tags',
       fromJson: TransactionTag.fromJson,
       isValid: (tag) => tag.id.isNotEmpty,
-      failureMessage: 'Failed to fetch tags',
+      failureMessage: 'fetch_tags_failed',
     );
   }
 }

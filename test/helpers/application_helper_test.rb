@@ -107,4 +107,12 @@ class ApplicationHelperTest < ActionView::TestCase
 
     assert_equal [ "SGD", "USD", "EUR" ], currency_picker_options_for_family(family, extra: "EUR")
   end
+
+  test "#currency_label uses the Czech currency name" do
+    I18n.with_locale(:cs) do
+      assert_equal "Česká koruna (CZK)", currency_label("CZK")
+      assert_equal "Americký dolar (USD)", currency_label("USD")
+    end
+  end
+
 end

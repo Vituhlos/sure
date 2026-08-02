@@ -1,6 +1,6 @@
 class Rule::ActionExecutor::SetInvestmentActivityLabel < Rule::ActionExecutor
   def label
-    "Set investment activity label"
+    I18n.t("rules.action_executors.labels.set_investment_activity_label")
   end
 
   def type
@@ -8,7 +8,9 @@ class Rule::ActionExecutor::SetInvestmentActivityLabel < Rule::ActionExecutor
   end
 
   def options
-    Transaction::ACTIVITY_LABELS.map { |l| [ l, l ] }
+    Transaction::ACTIVITY_LABELS.map do |label|
+      [ I18n.t("transactions.activity_labels.#{label.parameterize(separator: "_")}"), label ]
+    end
   end
 
   def execute(transaction_scope, value: nil, ignore_attribute_locks: false, rule_run: nil)

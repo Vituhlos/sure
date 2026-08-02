@@ -22,6 +22,7 @@ en:
       sign_up: Create account
     shared:
       footer:
+        attribution: "%{brand_name} %{product_name} (community fork of Maybe Finance)"
         privacy_policy: Privacy Policy
         terms_of_service: Terms of Service
       confirm_dialog:

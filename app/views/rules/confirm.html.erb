@@ -10,11 +10,11 @@
 
   <% dialog.with_body do %>
     <p class="text-secondary text-sm mb-4">
-      <%= t(".apply_notice_html", count: @rule.affected_resource_count, resource: @rule.resource_type.pluralize) %>
+      <% affected_count = @rule.affected_resource_count %>
+      <%= t(".apply_notice_html", count: affected_count, resource: t("rules.resources.#{@rule.resource_type}", count: affected_count)) %>
     </p>
 
     <% if @rule.actions.any? { |a| a.action_type == "auto_categorize" } %>
-      <% affected_count = @rule.affected_resource_count %>
       <div class="mb-4">
         <%= render DS::Alert.new(title: t(".ai_cost_title"), variant: :info) do %>
           <% if @estimated_cost.present? %>

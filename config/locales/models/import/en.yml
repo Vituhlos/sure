@@ -16,3 +16,43 @@ en:
           attributes:
             raw_file_str:
               invalid_csv_format: is not a valid CSV format
+            account:
+              wrong_family: must belong to your family
+            import_session:
+              wrong_family: must belong to your family
+            sequence:
+              required_for_session_chunk: must be present for import session chunks
+            checksum:
+              required_for_session_chunk: must be present for import session chunks
+            summary:
+              must_be_object: must be an object
+            error_details:
+              must_be_object: must be an object
+            rows_to_skip:
+              outside_file: "must be less than the number of lines in the file (%{line_count})"
+        import/row:
+          attributes:
+            base:
+              unknown_amount_type_strategy: "Unknown amount type strategy for import: %{strategy}"
+            amount:
+              blank: is required
+            date:
+              invalid_format: "must exactly match the format: %{expected_format}"
+              outside_supported_range: "must be between %{min_date} and %{max_date}"
+            currency:
+              invalid_code: is not a valid currency code
+        import_session:
+          attributes:
+            import_type:
+              invalid_type: must be SureImport
+            summary:
+              must_be_object: must be an object
+            error_details:
+              must_be_object: must be an object
+        import_source_mapping:
+          attributes:
+            family:
+              session_mismatch: must match import session
+            target:
+              missing: must exist
+              wrong_family: must belong to your family
