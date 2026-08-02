@@ -117,7 +117,7 @@ class OnboardingsTest < ApplicationSystemTestCase
     visit preferences_onboarding_path
 
     # Fill out form with specific values
-    select "Spanish (es)", from: "user_family_attributes_locale"
+    select "#{LanguagesHelper::LANGUAGE_MAPPING[:es]} (es)", from: "user_family_attributes_locale"
     select "Euro (EUR)", from: "user_family_attributes_currency"
     select "DD/MM/YYYY", from: "user_family_attributes_date_format"
     select_theme("dark")

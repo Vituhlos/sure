@@ -127,7 +127,7 @@ class ImportsTest < ApplicationSystemTestCase
     all("form").each do |form|
       within(form) do
         select = form.find("select")
-        select "Depository", from: select["id"]
+        select Depository.singular_display_name, from: select["id"]
         sleep 0.5
       end
     end
