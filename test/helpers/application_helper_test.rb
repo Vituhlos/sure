@@ -114,5 +114,4 @@ class ApplicationHelperTest < ActionView::TestCase
       assert_equal "Americký dolar (USD)", currency_label("USD")
     end
   end
-
 end
