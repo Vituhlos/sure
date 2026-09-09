@@ -106,7 +106,7 @@ cs:
       unlock_confirm_title: "Odemknout pořizovací hodnotu?"
       unlock_confirm_body: "Pořizovací hodnota se poté bude moci aktualizovat při synchronizaci s poskytovatelem nebo podle výpočtů z obchodů."
       shares_label: "Počet jednotek"
-      book_value_label: "Účetní hodnota"
+      book_value_label: "Celková pořizovací hodnota"
       market_value_label: "Tržní hodnota"
       market_data_label: "Tržní data"
       market_data_sync_button: "Aktualizovat"

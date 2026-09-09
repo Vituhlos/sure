@@ -39,8 +39,8 @@ cs:
       create_goal:
         name_required: "Zadejte název cíle."
         target_amount_invalid: "Cílová částka musí být větší než nula."
-        no_linked_accounts: "Vyberte alespoň jeden vkladový účet, který chcete s tímto cílem propojit."
-        unknown_accounts: "Některé názvy neodpovídají žádnému vkladovému účtu uživatele."
+        no_linked_accounts: "Vyberte alespoň jeden peněžní účet, který chcete s tímto cílem propojit."
+        unknown_accounts: "Některé názvy neodpovídají žádnému peněžnímu účtu uživatele."
         ambiguous_accounts: "Stejný název má více účtů. Požádejte uživatele, aby upřesnil, který z nich chce použít."
         currency_mismatch: "Všechny propojené účty musí používat stejnou měnu. Nalezené měny: %{currencies}."
         created: "Cíl „%{name}“ s cílovou částkou %{target} byl vytvořen. Zobrazíte jej na adrese %{url}."

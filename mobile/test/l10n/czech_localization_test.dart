@@ -85,7 +85,7 @@ void main() {
     );
     expect(
       localizedClientError(l, 'English server details'),
-      'Došlo k neočekávané chybě. Zkuste to znovu.',
+      'Něco se pokazilo. Zkuste to prosím znovu.',
     );
   });
 }

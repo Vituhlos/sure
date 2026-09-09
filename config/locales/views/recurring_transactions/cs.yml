@@ -9,8 +9,8 @@ cs:
     expected_in:
       one: "Očekáváno za %{count} den"
       few: "Očekáváno za %{count} dny"
-      many: "Očekáváno za %{count} dní"
-      other: "Očekáváno za %{count} dne"
+      many: "Očekáváno za %{count} dne"
+      other: "Očekáváno za %{count} dní"
     day_of_month: "%{day}. den v měsíci"
     identify_patterns: "Vyhledat opakující se transakce"
     cleanup_stale: "Odstranit neaktuální"
