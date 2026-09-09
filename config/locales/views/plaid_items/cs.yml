@@ -2,7 +2,7 @@
 cs:
   plaid_items:
     create:
-      success: Účet byl úspěšně propojen. Vyčkejte, než se účty synchronizují.
+      success: Účet byl propojen. Vyčkejte, než se účty synchronizují.
     destroy:
       success: Účty byly zařazeny k odstranění.
     errors:
@@ -34,4 +34,4 @@ cs:
     link_existing_account:
       invalid_account: Byl vybrán neplatný účet Plaid.
       already_linked: Tento účet Plaid je již propojen.
-      success: Účet byl úspěšně propojen s Plaid.
+      success: Účet byl propojen se službou Plaid.

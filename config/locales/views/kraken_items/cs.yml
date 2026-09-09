@@ -10,7 +10,7 @@ cs:
       default_name: "Kraken"
       success: "Připojení ke Krakenu bylo úspěšné. Účet na burze se nyní synchronizuje."
     update:
-      success: "Připojení ke Krakenu bylo úspěšně aktualizováno."
+      success: "Připojení ke Krakenu bylo aktualizováno."
     destroy:
       success: "Připojení ke Krakenu bylo zařazeno k odstranění."
     select_accounts:
@@ -26,7 +26,7 @@ cs:
       link: "Propojit"
       cancel: "Zrušit"
     link_existing_account:
-      success: "Účet byl úspěšně propojen s účtem Kraken"
+      success: "Účet byl propojen s účtem Kraken."
       select_connection: "Před propojením účtů vyberte připojení ke Krakenu."
       errors:
         only_manual: "S Krakenem lze propojit pouze ručně vedené kryptoměnové účty bez stávajícího propojení s poskytovatelem"

@@ -6,7 +6,7 @@ cs:
     discovery_http_error: "Koncový bod zjišťování vrátil stav HTTP %{status}"
     discovery_missing_fields: "V dokumentu zjišťování chybějí povinná pole: %{fields}"
     issuer_mismatch: "Vydavatelé se neshodují: očekáváno %{expected}, vráceno %{actual}"
-    oidc_valid: "Zjišťování OIDC bylo úspěšně ověřeno"
+    oidc_valid: "Konfigurace zjišťování OIDC byla ověřena."
     connection_timeout: "Vypršel časový limit připojení"
     connection_failed: "Připojení se nezdařilo: %{error}"
     connection_failed_safe: "Připojení se nezdařilo. Zkontrolujte adresu URL a nastavení sítě a zkuste to znovu."
@@ -21,7 +21,7 @@ cs:
     saml_url_required: "Je nutné zadat adresu URL metadat IdP nebo adresu URL SSO IdP"
     metadata_http_error: "Koncový bod metadat vrátil stav HTTP %{status}"
     invalid_saml_metadata: "Odpověď zřejmě neobsahuje platná metadata SAML"
-    saml_metadata_valid: "Metadata SAML byla úspěšně načtena"
+    saml_metadata_valid: "Metadata SAML byla načtena."
     saml_valid: "Konfigurace SAML se jeví jako platná"
     trailing_slash_hint: "neshoduje se koncové lomítko. Adresy URL vydavatele se pravděpodobně liší pouze koncovým lomítkem. Upravte nakonfigurovaného vydavatele tak, aby se přesně shodoval s dokumentem zjišťování"
   activerecord:

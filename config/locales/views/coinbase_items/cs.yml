@@ -17,7 +17,7 @@ cs:
       default_name: "Coinbase"
       success: "Připojení ke Coinbase bylo úspěšné. Účty se nyní synchronizují."
     update:
-      success: "Nastavení Coinbase bylo úspěšně aktualizováno."
+      success: "Nastavení Coinbase bylo aktualizováno."
     destroy:
       success: "Připojení ke Coinbase bylo zařazeno k odstranění."
     setup_accounts:
@@ -81,7 +81,7 @@ cs:
       link: "Propojit"
       cancel: "Zrušit"
     link_existing_account:
-      success: "Účet byl úspěšně propojen s účtem Coinbase"
+      success: "Účet byl propojen s účtem Coinbase."
       errors:
         only_manual: "S Coinbase lze propojit pouze ručně vedené účty"
         invalid_coinbase_account: "Neplatný účet Coinbase"

@@ -107,10 +107,10 @@ cs:
       no_profiles_selected: Vyberte alespoň jeden profil.
       already_connected: Všechny vybrané profily jsou již připojeny.
       success:
-        one: "Úspěšně připojen %{count} profil Wise"
-        few: "Úspěšně připojeny %{count} profily Wise"
-        many: "Úspěšně připojeno %{count} profilu Wise"
-        other: "Úspěšně připojeno %{count} profilů Wise"
+        one: "Připojen %{count} profil Wise."
+        few: "Připojeny %{count} profily Wise."
+        many: "Připojeno %{count} profilu Wise."
+        other: "Připojeno %{count} profilů Wise."
     select_profiles:
       session_expired: Platnost relace vypršela. Zkuste se připojit znovu.
       title: Vyberte profily Wise
@@ -157,13 +157,13 @@ cs:
       cancel: Zrušit
     link_accounts:
       not_found: Zůstatek Wise nebyl nalezen.
-      success: Zůstatek Wise byl úspěšně propojen s účtem.
+      success: Zůstatek Wise byl propojen s účtem.
       failed: Zůstatek Wise se nepodařilo propojit. Zkuste to znovu.
     link_existing_account:
       not_found: Účet nebo zůstatek Wise nebyl nalezen.
-      success: "Účet %{account_name} byl úspěšně propojen se službou Wise."
+      success: "Účet %{account_name} byl propojen se službou Wise."
       failed: Účet se nepodařilo propojit. Zkuste to znovu.
     complete_account_setup:
       not_found: Zůstatek Wise nebyl nalezen.
-      success: Účet byl úspěšně vytvořen a propojen.
+      success: Účet byl vytvořen a propojen.
       failed: Účet se nepodařilo vytvořit. Zkuste to znovu.

@@ -45,7 +45,7 @@ cs:
       connect: Připojit
       cancel: Zrušit
     create:
-      success: Připojení SimpleFIN bylo úspěšně přidáno. Vaše účty se zobrazí zanedlouho po dokončení synchronizace na pozadí.
+      success: Připojení SimpleFIN bylo přidáno. Vaše účty se zobrazí zanedlouho po dokončení synchronizace na pozadí.
       errors:
         blank_token: Zadejte nastavovací token SimpleFIN.
         invalid_token: Nastavovací token není platný. Zkontrolujte, zda jste zkopírovali celý token ze služby SimpleFIN Bridge.
@@ -55,7 +55,7 @@ cs:
     destroy:
       success: Připojení SimpleFIN bude odebráno
     update:
-      success: Připojení SimpleFIN bylo úspěšně aktualizováno. Vaše účty se znovu připojují.
+      success: Připojení SimpleFIN bylo aktualizováno. Vaše účty se znovu připojují.
       errors:
         blank_token: Zadejte nastavovací token SimpleFIN.
         invalid_token: Nastavovací token není platný. Zkontrolujte, zda jste zkopírovali celý token ze služby SimpleFIN Bridge.
@@ -145,10 +145,10 @@ cs:
       all_skipped: "Všechny účty byly přeskočeny. Nebyl vytvořen žádný účet."
       no_accounts: "Nejsou zde žádné účty k nastavení."
       success:
-        one: "Úspěšně vytvořen %{count} účet SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
-        few: "Úspěšně vytvořeny %{count} účty SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
-        many: "Úspěšně vytvořeno %{count} účtu SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
-        other: "Úspěšně vytvořeno %{count} účtů SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        one: "Vytvořen %{count} účet SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        few: "Vytvořeny %{count} účty SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        many: "Vytvořeno %{count} účtu SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
+        other: "Vytvořeno %{count} účtů SimpleFIN. Vaše transakce a investiční pozice se importují na pozadí."
       stale_accounts_processed: "Zastaralé účty: smazáno %{deleted}, přesunuto %{moved}."
       stale_accounts_errors:
         one: "Akce u %{count} zastaralého účtu se nezdařila. Podrobnosti najdete v protokolech."
@@ -202,7 +202,7 @@ cs:
       all_accounts_already_linked: Zdá se, že všechny účty SimpleFIN jsou již propojeny.
       currently_linked_to: "Aktuálně propojeno s účtem: %{account_name}"
     link_existing_account:
-      success: Účet byl úspěšně propojen se službou SimpleFIN
+      success: Účet byl propojen se službou SimpleFIN.
       errors:
         only_manual: Propojit lze pouze ručně vedené účty
         different_provider: Tento účet je propojen s jiným poskytovatelem. Nejprve toto propojení zrušte a poté účet propojte se službou SimpleFIN.

@@ -5,11 +5,11 @@ cs:
       invalid_credentials: "Nesprávná e-mailová adresa nebo heslo."
       local_login_disabled: "Přihlašování heslem je vypnuté. Použijte jednotné přihlášení."
     destroy:
-      logout_successful: "Odhlášení proběhlo úspěšně."
+      logout_successful: "Odhlášení proběhlo."
     post_logout:
-      logout_successful: "Odhlášení proběhlo úspěšně."
+      logout_successful: "Odhlášení proběhlo."
     openid_connect:
-      account_linked: "Účet byl úspěšně propojen se službou %{provider}."
+      account_linked: "Účet byl propojen se službou %{provider}."
       failed: "Ověření pomocí OpenID Connect se nepodařilo."
     failure:
       failed: "Ověření se nepodařilo."

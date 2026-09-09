@@ -67,7 +67,7 @@ cs:
         external_configured: Nastaveno
         external_not_configured: Není nastaveno. Zadejte níže adresu URL a token, případně nastavte proměnné prostředí EXTERNAL_ASSISTANT_URL a EXTERNAL_ASSISTANT_TOKEN.
         env_notice: "Typ asistenta je prostřednictvím proměnné prostředí ASSISTANT_TYPE pevně nastaven na „%{type}“."
-        env_configured_external: Úspěšně nastaveno prostřednictvím proměnných prostředí.
+        env_configured_external: Nastaveno prostřednictvím proměnných prostředí.
         url_label: Adresa URL koncového bodu
         url_placeholder: "https://your-agent-host/v1/chat"
         url_help: Úplná adresa URL koncového bodu API vašeho agenta. Získáte ji od jeho poskytovatele.
@@ -85,7 +85,7 @@ cs:
           body: Uložená adresa URL, token a ID agenta budou odstraněny a aplikace se přepne na integrovaného asistenta. Později se můžete znovu připojit zadáním nových přihlašovacích údajů.
       brand_fetch_settings:
         description: Zadejte ID klienta, které jste získali od služby Brandfetch.
-        env_configured_message: ID klienta služby Brandfetch bylo úspěšně nastaveno prostřednictvím proměnné prostředí BRAND_FETCH_CLIENT_ID.
+        env_configured_message: ID klienta služby Brandfetch je nastaveno prostřednictvím proměnné prostředí BRAND_FETCH_CLIENT_ID.
         show_details: "(zobrazit podrobnosti)"
         setup_step_1_html: 'Navštivte web <a href="https://brandfetch.com/developers" target="_blank" rel="noopener noreferrer" class="underline">brandfetch.com</a> a vytvořte si bezplatný vývojářský účet Brandfetch.'
         setup_step_2_html: 'Přejděte na stránku <a href="https://developers.brandfetch.com/dashboard/logo-api" target="_blank" rel="noopener noreferrer" class="underline">Logo API</a>.'
@@ -98,7 +98,7 @@ cs:
       llm_provider_selector:
         title: Poskytovatel AI
         description: Zvolte LLM používané chatem s AI. Dávkové operace, například kategorizace transakcí, rozpoznávání obchodníků a zpracování PDF, v současnosti vždy používají OpenAI.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí LLM_PROVIDER.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí LLM_PROVIDER.
         provider_label: Aktivní poskytovatel LLM
         provider_openai: OpenAI
         provider_anthropic: Anthropic (Claude)
@@ -109,7 +109,7 @@ cs:
       anthropic_settings:
         title: Anthropic (Claude)
         description: Zadejte klíč API služby Anthropic. Adresu Base URL můžete volitelně nasměrovat na AWS Bedrock nebo GCP Vertex.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnných prostředí.
+        env_configured_message: Nastaveno prostřednictvím proměnných prostředí.
         access_token_label: Klíč API
         access_token_placeholder: Zadejte klíč API služby Anthropic
         base_url_label: Základní adresa URL (nepovinné)
@@ -119,7 +119,7 @@ cs:
         model_help: Používá se pro chat a zpracování PDF. Dávkové operace, například kategorizace a rozpoznávání obchodníků, ve výchozím nastavení kvůli nákladům používají model Haiku.
       openai_settings:
         description: Zadejte přístupový token a volitelně nastavte vlastního poskytovatele kompatibilního s OpenAI.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnných prostředí.
+        env_configured_message: Nastaveno prostřednictvím proměnných prostředí.
         access_token_label: Přístupový token
         access_token_placeholder: Zadejte přístupový token
         uri_base_label: Základní adresa URL API (nepovinné)
@@ -155,21 +155,21 @@ cs:
       rentcast_settings:
         title: RentCast
         description: Zadejte klíč API služby RentCast pro vyhledávání údajů a odhadů hodnoty nemovitostí v USA při přidávání nemovitosti. Bezplatný tarif umožňuje nejvýše 50 požadavků API měsíčně, společně pro vyhledávání nemovitostí a denní aktualizace ocenění. U placeného tarifu můžete limit zvýšit proměnnou prostředí RENTCAST_MAX_REQUESTS_PER_MONTH.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí RENTCAST_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí RENTCAST_API_KEY.
         label: Klíč API
         placeholder: Zadejte klíč API služby RentCast
         usage: "Využito %{used} z %{limit} požadavků za měsíc"
       realie_settings:
         title: Realie
         description: Zadejte klíč API služby Realie pro vyhledávání údajů a odhadů hodnoty nemovitostí v USA při přidávání nemovitosti. Bezplatný tarif umožňuje nejvýše 25 požadavků API měsíčně, společně pro vyhledávání nemovitostí a denní aktualizace ocenění. U placeného tarifu můžete limit zvýšit proměnnou prostředí REALIE_MAX_REQUESTS_PER_MONTH.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí REALIE_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí REALIE_API_KEY.
         label: Klíč API
         placeholder: Zadejte klíč API služby Realie
         usage: "Využito %{used} z %{limit} požadavků za měsíc"
       tiingo_settings:
         title: Tiingo
         description: Zadejte token API poskytnutý službou Tiingo. Bezplatný tarif podporuje 50 jedinečných symbolů za hodinu a více než 30 let historických dat.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí TIINGO_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí TIINGO_API_KEY.
         label: Token API
         placeholder: Zadejte token API služby Tiingo
         show_details: "(zobrazit podrobnosti)"
@@ -179,7 +179,7 @@ cs:
       tinkoff_invest_settings:
         title: T-Invest (T-Bank)
         description: Zadejte token API služby T-Invest s oprávněním pouze ke čtení. Používá se k načítání logotypů cenných papírů včetně fondů a dluhopisů, a to i při použití cen z MOEX, a při zapnutí výše také k načítání cen ruských instrumentů.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí TINKOFF_INVEST_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí TINKOFF_INVEST_API_KEY.
         label: Token API
         placeholder: Zadejte token API služby T-Invest
         show_details: "(zobrazit podrobnosti)"
@@ -189,7 +189,7 @@ cs:
       eodhd_settings:
         title: EODHD
         description: Zadejte token API poskytnutý službou EODHD. Podporuje evropské ETF na burzách LSE, XETRA a dalších světových burzách.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí EODHD_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí EODHD_API_KEY.
         label: Token API
         placeholder: Zadejte token API služby EODHD
         show_details: "(zobrazit podrobnosti)"
@@ -200,7 +200,7 @@ cs:
       alpha_vantage_settings:
         title: Alpha Vantage
         description: Zadejte klíč API služby Alpha Vantage. Podporuje evropské ETF na Londýnské burze, XETRA a dalších burzách.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí ALPHA_VANTAGE_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí ALPHA_VANTAGE_API_KEY.
         label: Klíč API
         placeholder: Zadejte klíč API služby Alpha Vantage
         show_details: "(zobrazit podrobnosti)"
@@ -211,7 +211,7 @@ cs:
       twelve_data_settings:
         api_calls_used: "Využito %{used} z %{limit} denních volání API (%{percentage})"
         description: Zadejte klíč API poskytnutý službou Twelve Data.
-        env_configured_message: Úspěšně nastaveno prostřednictvím proměnné prostředí TWELVE_DATA_API_KEY.
+        env_configured_message: Nastaveno prostřednictvím proměnné prostředí TWELVE_DATA_API_KEY.
         label: Klíč API
         placeholder: Zadejte klíč API
         show_details: "(zobrazit podrobnosti)"

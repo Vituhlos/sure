@@ -4,4 +4,4 @@ cs:
     sso_identities:
       destroy:
         cannot_unlink_last: Poslední identitu nelze odpojit.
-        success: Identita byla úspěšně odpojena.
+        success: Identita byla odpojena.

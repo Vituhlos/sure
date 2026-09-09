@@ -12,10 +12,10 @@ cs:
       no_item: "Nastavení SnapTrade nebylo nalezeno."
     complete_account_setup:
       success:
-        one: "Úspěšně propojen %{count} účet."
-        few: "Úspěšně propojeny %{count} účty."
-        many: "Úspěšně propojeno %{count} účtu."
-        other: "Úspěšně propojeno %{count} účtů."
+        one: "Propojen %{count} účet."
+        few: "Propojeny %{count} účty."
+        many: "Propojeno %{count} účtu."
+        other: "Propojeno %{count} účtů."
       partial_success:
         one: "Propojen %{count} účet. U %{failed_count} se propojení nezdařilo."
         few: "Propojeny %{count} účty. U %{failed_count} se propojení nezdařilo."
@@ -47,14 +47,14 @@ cs:
       link_button: "Propojit"
       cancel_button: "Zrušit"
     link_existing_account:
-      success: "Účet byl úspěšně propojen s účtem SnapTrade."
+      success: "Účet byl propojen s účtem SnapTrade."
       failed: "Propojení účtu se nezdařilo: %{message}"
       not_found: "Účet nebyl nalezen."
       provider_link_failed: "Propojení s účtem SnapTrade se nepodařilo vytvořit."
     connections:
       unknown_brokerage: "Neznámý makléř"
     delete_connection:
-      success: "Připojení bylo úspěšně smazáno. Uvolnilo se jedno místo."
+      success: "Připojení bylo odstraněno. Uvolnilo se jedno místo."
       failed: "Smazání připojení se nezdařilo: %{message}"
       missing_authorization_id: "Chybí ID autorizace"
       api_deletion_failed: "Připojení se nepodařilo smazat ze služby SnapTrade, protože tato položka není autorizována. Připojení může ve vašem účtu SnapTrade stále existovat."

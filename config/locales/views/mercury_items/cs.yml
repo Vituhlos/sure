@@ -59,7 +59,7 @@ cs:
       setup_step_4: "Vraťte se sem a propojte své účty"
       go_to_provider_settings: "Přejít do nastavení poskytovatelů"
     create:
-      success: "Připojení Mercury bylo úspěšně vytvořeno"
+      success: "Připojení ke službě Mercury bylo vytvořeno."
     destroy:
       success: "Připojení Mercury bylo odstraněno"
     index:
@@ -82,14 +82,14 @@ cs:
       link_failed: "Účty se nepodařilo propojit"
       no_accounts_selected: "Vyberte alespoň jeden účet"
       no_api_token: "Token API Mercury nebyl nalezen. Nastavte ho v nastavení poskytovatelů."
-      partial_invalid: "Úspěšně propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}"
-      partial_success: "Úspěšně propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})"
+      partial_invalid: "Nově propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}."
+      partial_success: "Nově propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})."
       select_connection: "Před propojením účtů vyberte připojení Mercury."
       success:
-        one: "Úspěšně propojen %{count} účet"
-        few: "Úspěšně propojeny %{count} účty"
-        many: "Úspěšně propojeno %{count} účtu"
-        other: "Úspěšně propojeno %{count} účtů"
+        one: "Propojen %{count} účet."
+        few: "Propojeny %{count} účty."
+        many: "Propojeno %{count} účtu."
+        other: "Propojeno %{count} účtů."
     mercury_item:
       accounts_need_setup: "Účty vyžadují nastavení"
       delete: "Odstranit připojení"
@@ -170,7 +170,7 @@ cs:
       missing_parameters: "Chybějí povinné parametry"
       no_api_token: "Token API Mercury nebyl nalezen. Nastavte ho v nastavení poskytovatelů."
       select_connection: "Před propojením účtů vyberte připojení Mercury."
-      success: "Účet %{account_name} byl úspěšně propojen s Mercury"
+      success: "Účet %{account_name} byl propojen se službou Mercury."
     setup_accounts:
       account_type_label: "Typ účtu:"
       all_accounts_linked: "Všechny vaše účty Mercury už byly nastaveny."
@@ -234,7 +234,7 @@ cs:
       all_skipped: "Všechny účty byly přeskočeny. Nebyly vytvořeny žádné účty."
       creation_failed: "Účty se nepodařilo vytvořit: %{error}"
       no_accounts: "Nejsou k dispozici žádné účty k nastavení."
-      success: "Počet úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."
       unexpected_error: "Došlo k neočekávané chybě"
     sync:
       success: "Synchronizace byla spuštěna"

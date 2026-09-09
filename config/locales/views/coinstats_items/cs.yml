@@ -11,18 +11,18 @@ cs:
       exchange_credentials_required: "Zadejte přihlašovací údaje k burze."
       exchange_link_failed: "Propojení burzy se nezdařilo."
     create:
-      success: "Připojení k poskytovateli CoinStats bylo úspěšně nastaveno."
+      success: "Připojení k poskytovateli CoinStats bylo nastaveno."
       default_name: "Připojení CoinStats"
       errors:
         validation_failed: "Ověření se nezdařilo: %{message}."
     update:
-      success: "Připojení k poskytovateli CoinStats bylo úspěšně aktualizováno."
+      success: "Připojení k poskytovateli CoinStats bylo aktualizováno."
       errors:
         validation_failed: "Ověření se nezdařilo: %{message}."
     destroy:
       success: "Připojení k poskytovateli CoinStats bylo zařazeno k odstranění."
     link_wallet:
-      success: "Úspěšně propojených kryptoměnových peněženek: %{count}."
+      success: "Počet propojených kryptoměnových peněženek: %{count}."
       missing_params: "Chybějí povinné parametry: adresa a blockchain."
       failed: "Propojení kryptoměnové peněženky se nezdařilo."
       error: "Propojení kryptoměnové peněženky se nezdařilo: %{message}."

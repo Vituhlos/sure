@@ -2,7 +2,7 @@
 cs:
   users:
     destroy:
-      success: "Účet byl odstraněn."
+      success: "Uživatelský účet byl odstraněn."
     update:
       ai_enabled: "Asistent AI byl zapnut."
       ai_disabled: "Asistent AI byl vypnut."

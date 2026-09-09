@@ -27,11 +27,11 @@ cs:
       connect: Připojit
       cancel: Zrušit
     create:
-      success: Připojení Sophtron bylo úspěšně vytvořeno
+      success: Připojení ke službě Sophtron bylo vytvořeno.
     destroy:
       success: Připojení Sophtron bylo odebráno
     update:
-      success: Připojení Sophtron bylo úspěšně aktualizováno. Vaše účty se znovu připojují.
+      success: Připojení ke službě Sophtron bylo aktualizováno. Vaše účty se znovu připojují.
       errors:
         blank_user_id: Zadejte ID uživatele Sophtron.
         invalid_user_id: ID uživatele není platné. Zkontrolujte, zda jste ze služby Sophtron zkopírovali celé ID uživatele.
@@ -69,13 +69,13 @@ cs:
         other: "%{count} účtů bez názvu nelze propojit"
       link_failed: Propojení účtů se nezdařilo
       no_accounts_selected: Vyberte alespoň jeden účet
-      partial_invalid: "Úspěšně propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}"
-      partial_success: "Úspěšně propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})"
+      partial_invalid: "Nově propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}."
+      partial_success: "Nově propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})."
       success:
-        one: "Úspěšně propojen %{count} účet"
-        few: "Úspěšně propojeny %{count} účty"
-        many: "Úspěšně propojeno %{count} účtu"
-        other: "Úspěšně propojeno %{count} účtů"
+        one: "Propojen %{count} účet."
+        few: "Propojeny %{count} účty."
+        many: "Propojeno %{count} účtu."
+        other: "Propojeno %{count} účtů."
       no_credentials_configured: "Nejprve nastavte ID uživatele a přístupový klíč API Sophtron v nastavení poskytovatelů."
       no_accounts_found: Nebyly nalezeny žádné účty. Zkontrolujte nastavení klíče API.
       no_access_key: Přístupový klíč Sophtron není nastaven. Nastavte jej v Nastavení.
@@ -186,7 +186,7 @@ cs:
       sophtron_account_not_found: Účet Sophtron nebyl nalezen
       missing_parameters: Chybí povinné parametry
       no_institution_connected: Nejprve prostřednictvím Sophtron připojte bankovní instituci.
-      success: "Účet %{account_name} byl úspěšně propojen se službou Sophtron"
+      success: "Účet %{account_name} byl propojen se službou Sophtron."
     setup_accounts:
       account_type_label: "Typ účtu:"
       all_accounts_linked: "Všechny vaše účty Sophtron již byly nastaveny."
@@ -230,7 +230,7 @@ cs:
       api_error: "Chyba připojení k API"
       unexpected_error: "Došlo k neočekávané chybě"
       no_accounts: "Nejsou zde žádné účty k nastavení."
-      success: "Počet úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."
     sync:
       already_running: Ruční synchronizace Sophtron již probíhá.
       api_error: "Ruční synchronizace Sophtron se nezdařila: %{message}"

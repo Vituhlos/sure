@@ -203,7 +203,11 @@ desetinná čísla do `other` a kategorii `many` nenabízí. Před aktivací če
 se proto musí doplnit a otestovat české pravidlo odpovídající CLDR. Flutter
 ARB musí používat stejné významové kategorie ve formátu ICU. Rails přijímá
 číselnou hodnotu, nikoli původní textový zápis, takže implementace musí mít
-výslovně otestované chování celočíselných a desetinných typů.
+výslovně otestované chování celočíselných a desetinných typů. Pokud produkční
+formátovač odstraňuje nevýznamné koncové nuly, například `1,0` zobrazuje jako
+`1`, smí pluralizace vycházet z této viditelné celočíselné hodnoty. Obecnou
+podporu CLDR pro viditelná desetinná místa však lze deklarovat jen tehdy,
+pokud call-site zachová i operand `v` nebo rovnocennou informaci.
 
 ## 10. Zástupné proměnné a formátovací syntaxe
 

@@ -94,9 +94,9 @@ cs:
       link: Propojit
       cancel: Zrušit
     create:
-      success: Trading 212 byl úspěšně nastaven.
+      success: Trading 212 byl nastaven.
     update:
-      success: Nastavení Trading 212 bylo úspěšně aktualizováno.
+      success: Nastavení Trading 212 bylo aktualizováno.
     destroy:
       success: Připojení Trading 212 bylo zařazeno k odstranění.
     select_accounts:
@@ -105,13 +105,13 @@ cs:
       not_found: Účet nebo nastavení Trading 212 nebyly nalezeny.
       only_manual_investment: S Trading 212 lze propojit pouze ruční investiční účty.
       already_linked: Tento účet Trading 212 je již propojen.
-      success: Účet byl úspěšně propojen s účtem Trading 212.
+      success: Účet byl propojen s účtem Trading 212.
       failed: Účet Trading 212 se nepodařilo propojit.
     complete_account_setup:
       success:
-        one: "Byl úspěšně vytvořen %{count} účet Trading 212."
-        few: "Byly úspěšně vytvořeny %{count} účty Trading 212."
-        many: "Bylo úspěšně vytvořeno %{count} účtu Trading 212."
-        other: "Bylo úspěšně vytvořeno %{count} účtů Trading 212."
+        one: "Vytvořen %{count} účet Trading 212."
+        few: "Vytvořeny %{count} účty Trading 212."
+        many: "Vytvořeno %{count} účtu Trading 212."
+        other: "Vytvořeno %{count} účtů Trading 212."
       none_selected: Nebyly vybrány žádné účty.
       none_created: Nebyly vytvořeny žádné účty.

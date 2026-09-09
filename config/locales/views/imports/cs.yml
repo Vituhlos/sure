@@ -46,7 +46,7 @@ cs:
         error_rows: "Řádky s chybami"
     configurations:
       update:
-        success: "Import byl úspěšně nastaven."
+        success: "Import byl nastaven."
       account_import:
         leave_empty: "Ponechat prázdné"
         default: "Výchozí hodnota"
@@ -202,11 +202,11 @@ cs:
         step_label: "Krok %{step}"
     uploads:
       handle_qif_upload:
-        qif_uploaded: "Soubor QIF byl úspěšně nahrán."
+        qif_uploaded: "Soubor QIF byl nahrán."
         invalid_qif: "Soubor musí být platný soubor QIF."
         account_required: "Vyberte účet, do kterého chcete soubor QIF importovat."
       update:
-        qif_uploaded: "Soubor QIF byl úspěšně nahrán."
+        qif_uploaded: "Soubor QIF byl nahrán."
       show:
         csv_invalid: "Soubor musí být platný soubor CSV se záhlavím a alespoň jedním datovým řádkem."
         drop_csv_title: "Přetáhněte sem soubor CSV"
@@ -315,7 +315,7 @@ cs:
       try_again: "Zkusit znovu"
     success:
       title: "Import byl dokončen"
-      description: "Importovaná data byla úspěšně přidána do aplikace a jsou připravena k použití."
+      description: "Importovaná data byla přidána do aplikace a jsou připravena k použití."
       back_to_dashboard: "Zpět na přehled"
       verification:
         title: "Následná kontrola dat"
@@ -434,15 +434,15 @@ cs:
     create:
       file_too_large: "Soubor je příliš velký. Maximální velikost je %{max_size} MB."
       invalid_file_type: "Neplatný typ souboru. Nahrajte soubor CSV."
-      csv_uploaded: "Soubor CSV byl úspěšně nahrán."
-      ndjson_uploaded: "Soubor NDJSON byl úspěšně nahrán."
+      csv_uploaded: "Soubor CSV byl nahrán."
+      ndjson_uploaded: "Soubor NDJSON byl nahrán."
       pdf_too_large: "Soubor PDF je příliš velký. Maximální velikost je %{max_size} MB."
       pdf_processing: "Soubor PDF se zpracovává. Po dokončení analýzy vám pošleme e-mail."
       invalid_pdf: "Nahraný soubor není platný soubor PDF."
       duplicate_pdf_unavailable: "Tento soubor PDF je již uložen jako výpis, ke kterému nemáte přístup."
       document_too_large: "Dokument je příliš velký. Maximální velikost je %{max_size} MB."
       invalid_document_file_type: "Aktivní vektorové úložiště tento typ dokumentu nepodporuje."
-      document_uploaded: "Dokument byl úspěšně nahrán."
+      document_uploaded: "Dokument byl nahrán."
       document_upload_failed: "Dokument se nepodařilo nahrát do vektorového úložiště. Zkuste to znovu."
       invalid_ndjson_file_type: "Neplatný typ nebo formát souboru. Nahrajte platný export ve formátu .ndjson nebo .json."
       document_provider_not_configured: "Pro nahrávání dokumentů není nastaveno žádné vektorové úložiště."

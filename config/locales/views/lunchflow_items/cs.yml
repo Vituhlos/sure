@@ -55,7 +55,7 @@ cs:
       setup_step_4: "Vraťte se sem a propojte své účty"
       go_to_provider_settings: "Přejít do nastavení poskytovatelů"
     create:
-      success: "Připojení Lunch Flow bylo úspěšně vytvořeno"
+      success: "Připojení ke službě Lunch Flow bylo vytvořeno."
     destroy:
       success: "Připojení Lunch Flow bylo odstraněno"
     index:
@@ -78,13 +78,13 @@ cs:
         other: "%{count} účtů s prázdným názvem nelze propojit"
       link_failed: "Účty se nepodařilo propojit"
       no_accounts_selected: "Vyberte alespoň jeden účet"
-      partial_invalid: "Úspěšně propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}"
-      partial_success: "Úspěšně propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})"
+      partial_invalid: "Nově propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}."
+      partial_success: "Nově propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})."
       success:
-        one: "Úspěšně propojen %{count} účet"
-        few: "Úspěšně propojeny %{count} účty"
-        many: "Úspěšně propojeno %{count} účtu"
-        other: "Úspěšně propojeno %{count} účtů"
+        one: "Propojen %{count} účet."
+        few: "Propojeny %{count} účty."
+        many: "Propojeno %{count} účtu."
+        other: "Propojeno %{count} účtů."
     lunchflow_item:
       accounts_need_setup: "Účty vyžadují nastavení"
       delete: "Odstranit připojení"
@@ -135,7 +135,7 @@ cs:
       lunchflow_account_already_linked: "Tento účet Lunch Flow už je propojen s jiným účtem"
       lunchflow_account_not_found: "Účet Lunch Flow nebyl nalezen"
       missing_parameters: "Chybějí povinné parametry"
-      success: "Účet %{account_name} byl úspěšně propojen s Lunch Flow"
+      success: "Účet %{account_name} byl propojen se službou Lunch Flow."
     setup_accounts:
       account_type_label: "Typ účtu:"
       all_accounts_linked: "Všechny vaše účty Lunch Flow už byly nastaveny."
@@ -199,7 +199,7 @@ cs:
       all_skipped: "Všechny účty byly přeskočeny. Nebyly vytvořeny žádné účty."
       creation_failed: "Účty se nepodařilo vytvořit: %{error}"
       no_accounts: "Nejsou k dispozici žádné účty k nastavení."
-      success: "Počet úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."
       unexpected_error: "Došlo k neočekávané chybě"
     sync:
       success: "Synchronizace byla spuštěna"

@@ -48,7 +48,7 @@ cs:
           placeholder_new: "rbk_live_…"
           placeholder_update: "Zadejte nový klíč API"
     create:
-      success: "Připojení Redbark bylo úspěšně vytvořeno"
+      success: "Připojení ke službě Redbark bylo vytvořeno."
     update:
       success: "Připojení Redbark bylo aktualizováno"
     destroy:
@@ -130,7 +130,7 @@ cs:
       provider_account_not_found: "Účet Redbark nebyl nalezen"
       missing_parameters: "Chybí povinné parametry"
       no_api_key: "Klíč API Redbark nebyl nalezen. Nastavte jej v nastavení poskytovatelů."
-      success: "Účet %{account_name} byl úspěšně propojen se službou Redbark"
+      success: "Účet %{account_name} byl propojen se službou Redbark."
     setup_accounts:
       account_type_label: "Typ účtu:"
       accounts_count:
@@ -196,4 +196,4 @@ cs:
       creation_failed_generic: "Účty se nepodařilo vytvořit."
       setup_failed: "Počet účtů, které se nepodařilo vytvořit: %{count}. Žádné další změny nebyly provedeny — opravte problém a zkuste to znovu."
       no_accounts: "Nejsou zde žádné účty k nastavení."
-      success: "Počet úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."

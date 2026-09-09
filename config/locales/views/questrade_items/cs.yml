@@ -54,7 +54,7 @@ cs:
           placeholder_new: "Sem vložte server API"
           placeholder_update: "Zadejte nový server API"
     create:
-      success: "Připojení Questrade bylo úspěšně vytvořeno"
+      success: "Připojení ke službě Questrade bylo vytvořeno."
     update:
       success: "Připojení Questrade bylo aktualizováno"
     destroy:
@@ -79,13 +79,13 @@ cs:
       link_failed: "Propojení účtů se nezdařilo"
       no_accounts_selected: "Vyberte alespoň jeden účet"
       no_api_key: "Klíč API Questrade nebyl nalezen. Nastavte jej v nastavení poskytovatelů."
-      partial_invalid: "Úspěšně propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}"
-      partial_success: "Úspěšně propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})"
+      partial_invalid: "Nově propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}."
+      partial_success: "Nově propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})."
       success:
-        one: "Úspěšně propojen %{count} účet"
-        few: "Úspěšně propojeny %{count} účty"
-        many: "Úspěšně propojeno %{count} účtu"
-        other: "Úspěšně propojeno %{count} účtů"
+        one: "Propojen %{count} účet."
+        few: "Propojeny %{count} účty."
+        many: "Propojeno %{count} účtu."
+        other: "Propojeno %{count} účtů."
     questrade_item:
       kind: Makléřský účet
       accounts_need_setup: "Účty je třeba nastavit"
@@ -161,7 +161,7 @@ cs:
       provider_account_not_found: "Účet Questrade nebyl nalezen"
       missing_parameters: "Chybí povinné parametry"
       no_api_key: "Klíč API Questrade nebyl nalezen. Nastavte jej v nastavení poskytovatelů."
-      success: "Účet %{account_name} byl úspěšně propojen se službou Questrade"
+      success: "Účet %{account_name} byl propojen se službou Questrade."
     setup_accounts:
       page_title: "Nastavit účty Questrade"
       dialog_title: "Nastavení účtů Questrade"
@@ -256,6 +256,6 @@ cs:
       creation_failed: "Účty se nepodařilo vytvořit: %{error}"
       unknown_error: Neznámá chyba
       no_accounts: "Nejsou zde žádné účty k nastavení."
-      success: "Počet úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."
     preload_accounts:
       no_credentials_configured: "Nejprve nastavte přihlašovací údaje Questrade v nastavení poskytovatelů."

@@ -229,7 +229,7 @@ cs:
         cannot_remove_self: Ze svého účtu nemůžete odebrat sami sebe.
         member_owns_other_family_data: Tento člen stále vlastní účty v jiné domácnosti, a proto jej nelze odebrat. Nejdříve tyto účty převeďte nebo odstraňte.
         member_removal_failed: Při odebírání člena došlo k chybě.
-        member_removed: Člen byl úspěšně odebrán.
+        member_removed: Člen byl odebrán.
         not_authorized: K odebírání členů nemáte oprávnění.
       show:
         confirm_delete:
@@ -368,7 +368,7 @@ cs:
       remove_photo: Odebrat profilovou fotografii
     providers:
       update:
-        updated_successfully: Nastavení poskytovatele bylo úspěšně aktualizováno.
+        updated_successfully: Nastavení poskytovatele bylo aktualizováno.
         no_changes: Nebyly provedeny žádné změny.
         update_failed: Nastavení poskytovatele se nepodařilo aktualizovat. Zkuste to znovu.
       not_authorized: Nemáte oprávnění.

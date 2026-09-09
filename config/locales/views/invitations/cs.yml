@@ -3,7 +3,7 @@ cs:
   invitations:
     accept_choice:
       create_account: "Vytvořit nový účet"
-      joined_household: "Připojení proběhlo úspěšně."
+      joined_household: "Připojení k domácnosti bylo dokončeno."
       message: "%{inviter} vám posílá pozvánku s rolí %{role}."
       sign_in_existing: "Už mám účet"
       title: "Připojit se: %{family}"

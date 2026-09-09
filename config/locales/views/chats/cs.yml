@@ -25,7 +25,7 @@ cs:
     error:
       retry: "Zkusit znovu"
     destroy:
-      notice: "Chat byl úspěšně odstraněn."
+      notice: "Chat byl odstraněn."
     index:
       chats: "Chaty"
       new_chat: "Nový chat"

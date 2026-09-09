@@ -12,7 +12,7 @@ cs:
       default_name: "Binance"
       success: "Připojení k Binance bylo úspěšné. Účet se nyní synchronizuje."
     update:
-      success: "Nastavení Binance bylo úspěšně aktualizováno."
+      success: "Nastavení Binance bylo aktualizováno."
     destroy:
       success: "Připojení k Binance bylo zařazeno k odstranění."
     setup_accounts:
@@ -73,7 +73,7 @@ cs:
       link: "Propojit"
       cancel: "Zrušit"
     link_existing_account:
-      success: "Účet byl úspěšně propojen s účtem Binance"
+      success: "Účet byl propojen s účtem Binance."
       errors:
         only_manual: "S Binance lze propojit pouze ručně vedené účty"
         invalid_binance_account: "Neplatný účet Binance"

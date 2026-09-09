@@ -92,9 +92,9 @@ cs:
       link: "Propojit"
       cancel: "Zrušit"
     create:
-      success: "Interactive Brokers bylo úspěšně nastaveno."
+      success: "Interactive Brokers bylo nastaveno."
     update:
-      success: "Nastavení Interactive Brokers bylo úspěšně aktualizováno."
+      success: "Nastavení Interactive Brokers bylo aktualizováno."
     destroy:
       success: "Připojení k Interactive Brokers bylo zařazeno k odstranění."
     select_accounts:
@@ -103,13 +103,13 @@ cs:
       not_found: "Účet nebo nastavení Interactive Brokers nebyly nalezeny."
       only_manual_investment: "S Interactive Brokers lze propojit pouze ručně vedené investiční účty."
       already_linked: "Tento účet Interactive Brokers už je propojen."
-      success: "Účet byl úspěšně propojen s účtem Interactive Brokers."
+      success: "Účet byl propojen s účtem Interactive Brokers."
       failed: "Propojení s účtem Interactive Brokers se nezdařilo."
     complete_account_setup:
       success:
-        one: "Úspěšně vytvořen %{count} účet Interactive Brokers."
-        few: "Úspěšně vytvořeny %{count} účty Interactive Brokers."
-        many: "Úspěšně vytvořeno %{count} účtu Interactive Brokers."
-        other: "Úspěšně vytvořeno %{count} účtů Interactive Brokers."
+        one: "Vytvořen %{count} účet Interactive Brokers."
+        few: "Vytvořeny %{count} účty Interactive Brokers."
+        many: "Vytvořeno %{count} účtu Interactive Brokers."
+        other: "Vytvořeno %{count} účtů Interactive Brokers."
       none_selected: "Nebyly vybrány žádné účty."
       none_created: "Nebyly vytvořeny žádné účty."

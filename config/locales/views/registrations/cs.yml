@@ -12,7 +12,7 @@ cs:
     create:
       failure: "Účet se nepodařilo vytvořit."
       invalid_invite_code: "Zvací kód není platný. Zkuste to znovu."
-      success: "Účet byl úspěšně vytvořen."
+      success: "Uživatelský účet byl vytvořen."
     new:
       invitation_message: "%{inviter} vám posílá pozvánku s rolí %{role}."
       join_family_title: "Připojit se: %{family} – %{moniker}"

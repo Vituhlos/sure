@@ -50,10 +50,10 @@ cs:
       new_category: "Nová kategorie"
     perform_merge:
       success:
-        one: "Úspěšně sloučena %{count} kategorie"
-        few: "Úspěšně sloučeny %{count} kategorie"
-        many: "Úspěšně sloučeno %{count} kategorií"
-        other: "Úspěšně sloučeno %{count} kategorií"
+        one: "Sloučena %{count} kategorie."
+        few: "Sloučeny %{count} kategorie."
+        many: "Sloučeno %{count} kategorií."
+        other: "Sloučeno %{count} kategorií."
       no_categories_selected: "Nebyly vybrány žádné kategorie ke sloučení."
       target_not_found: "Cílová kategorie nebyla nalezena."
       invalid_categories: "Byly vybrány neplatné kategorie."

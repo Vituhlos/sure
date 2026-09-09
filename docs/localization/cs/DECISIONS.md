@@ -352,3 +352,47 @@ pravidlo převážilo nad později nalezeným konkrétním kontextem.
 - **Zdroje:** [SURE], [CLDR-CS]
 - **Ověřeno:** 2. 8. 2026 ve společném parseru, modelu účtu, kalendáři,
   přehledu a seznamu transakcí.
+
+## D-030 — Rails plurál odpovídá viditelně formátovanému množství
+
+- **Stav:** approved
+- **Rozhodnutí:** Produkční `format_quantity` odstraňuje nevýznamné koncové
+  nuly, proto se integrální hodnoty `1.0`, `2.0` a `5.0` zobrazují jako `1`,
+  `2` a `5` a používají celočíselné kategorie `one`, `few` a `other`.
+  Hodnoty s nenulovou desetinnou částí používají `many`. Pokud nový call-site
+  musí zobrazit koncovou nulu, předá pluralizaci i počet viditelných
+  desetinných míst; samotný `Numeric` nestačí.
+- **Důvod:** CLDR rozlišuje matematickou hodnotu a operand `v`. Ruby
+  `Numeric` původní zápis spolehlivě nezachová, zatímco současné UI jej ani
+  nezobrazuje. Text a plurální kategorie proto vycházejí ze stejného
+  viditelného údaje bez nepravdivé deklarace obecné shody s CLDR.
+- **Zdroje:** [SURE], [CLDR-CS]
+- **Ověřeno:** 9. 9. 2026 v českém pluralizačním pravidle, helperu
+  `format_quantity` a zobrazení investičních jednotek.
+
+## D-031 — Obecný `Depository account` je „peněžní účet“
+
+- **Stav:** approved
+- **Rozhodnutí:** Společný typ Sure `Depository`, který zahrnuje běžné,
+  spořicí, HSA, termínované a money-market účty, se označuje jako „peněžní
+  účet“. Je-li znám konkrétní podtyp, použije se jeho přesný český název.
+- **Důvod:** Samotný výraz „vkladový účet“ v českém uživatelském rozhraní
+  přirozeně nepokrývá všechny podporované podtypy a mohl by uživatele mylně
+  omezit při výběru účtu pro finanční cíl.
+- **Zdroje:** [SURE], [CNB-ACCOUNTS]
+- **Ověřeno:** 9. 9. 2026 v modelu `Depository` a asistentské funkci pro
+  vytvoření cíle.
+
+## D-032 — Technické chyby se nezobrazují přímo uživateli
+
+- **Stav:** approved
+- **Rozhodnutí:** Neočekávané výjimky a providerové chyby se ukládají přes
+  `DebugLogEntry` s třídou výjimky a zkrácenou zprávou. Uživatelské rozhraní
+  dostane stabilní lokalizovanou zprávu bez raw `error.message`; přímé
+  zobrazení detailu je možné jen po výslovném bezpečném mapování.
+- **Důvod:** Technická zpráva může obsahovat interní adresu, citlivý údaj,
+  angličtinu nebo implementační detail. Pro podporu musí zůstat dohledatelná,
+  ale nepatří do běžného lokalizovaného UI.
+- **Zdroje:** [SURE]
+- **Ověřeno:** 9. 9. 2026 v PDF importu, testu poskytovatele SSO a převodu
+  transakce na investiční obchod.

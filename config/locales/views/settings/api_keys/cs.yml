@@ -2,14 +2,14 @@
 cs:
   settings:
     api_keys_controller:
-      success: Klíč API byl úspěšně vytvořen.
-      revoked_successfully: Klíč API byl úspěšně zneplatněn.
+      success: Klíč API byl vytvořen.
+      revoked_successfully: Klíč API byl zneplatněn.
       revoke_failed: Klíč API se nepodařilo zneplatnit.
     api_keys:
       create:
-        success: Klíč API byl úspěšně vytvořen.
+        success: Klíč API byl vytvořen.
       destroy:
-        revoked_successfully: Klíč API byl úspěšně zneplatněn.
+        revoked_successfully: Klíč API byl zneplatněn.
         revoke_failed: Klíč API se nepodařilo zneplatnit.
       shared:
         active: Aktivní
@@ -29,8 +29,8 @@ cs:
       show:
         title: Správa klíče API
         newly_created:
-          page_title: Klíč API byl úspěšně vytvořen
-          heading: Klíč API byl úspěšně vytvořen
+          page_title: Klíč API byl vytvořen
+          heading: Klíč API byl vytvořen
           key_ready: "Nový klíč API „%{name}“ byl vytvořen a je připraven k použití."
           your_api_key: Váš klíč API
           copy_store_securely: Klíč zkopírujte a bezpečně uložte. Budete jej potřebovat k ověřování požadavků na API.

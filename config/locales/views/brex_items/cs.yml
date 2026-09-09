@@ -16,7 +16,7 @@ cs:
       frozen: "Zmrazený"
       FROZEN: "Zmrazený"
     create:
-      success: "Připojení Brex bylo úspěšně vytvořeno"
+      success: "Připojení ke službě Brex bylo vytvořeno."
     default_card_name: "Karta Brex"
     default_cash_name: "Peněžní účet Brex %{id}"
     destroy:
@@ -78,14 +78,14 @@ cs:
       link_failed: "Účty se nepodařilo propojit"
       no_accounts_selected: "Vyberte alespoň jeden účet"
       no_api_token: "Token API Brex nebyl nalezen. Nastavte ho v nastavení poskytovatelů."
-      partial_invalid: "Úspěšně propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}"
-      partial_success: "Úspěšně propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})"
+      partial_invalid: "Nově propojeno: %{created_count}; již propojeno: %{already_linked_count}; neplatný název: %{invalid_count}."
+      partial_success: "Nově propojeno: %{created_count}. Již propojeno: %{already_linked_count} (%{already_linked_names})."
       select_connection: "Před propojením účtů vyberte připojení Brex."
       success:
-        one: "Úspěšně propojen %{count} účet"
-        few: "Úspěšně propojeny %{count} účty"
-        many: "Úspěšně propojeno %{count} účtu"
-        other: "Úspěšně propojeno %{count} účtů"
+        one: "Propojen %{count} účet."
+        few: "Propojeny %{count} účty."
+        many: "Propojeno %{count} účtu."
+        other: "Propojeno %{count} účtů."
     brex_item:
       accounts_need_setup: "Účty vyžadují nastavení"
       delete: "Odstranit připojení"
@@ -190,7 +190,7 @@ cs:
       provider_account_already_linked: "Tento účet Brex už je propojen s jiným účtem"
       provider_account_not_found: "Účet Brex nebyl nalezen"
       select_connection: "Před propojením účtů vyberte připojení Brex."
-      success: "Účet %{account_name} byl úspěšně propojen s Brex"
+      success: "Účet %{account_name} byl propojen se službou Brex."
     setup_accounts:
       account_type_label: "Typ účtu:"
       all_accounts_linked: "Všechny vaše účty Brex už byly nastaveny."
@@ -257,7 +257,7 @@ cs:
       no_accounts: "Nejsou k dispozici žádné účty k nastavení."
       partial_skipped: "Vytvořeno: %{created_count}; přeskočeno: %{skipped_count}."
       partial_success: "Vytvořeno: %{created_count}; vytvoření se nezdařilo: %{failed_count}."
-      success: "Počet úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."
       unexpected_error: "Došlo k neočekávané chybě."
     sync:
       success: "Synchronizace byla spuštěna"

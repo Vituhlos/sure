@@ -62,10 +62,10 @@ cs:
     complete_account_setup:
       all_skipped: "Všechny účty byly přeskočeny. Později je můžete nastavit na stránce účtů."
       no_accounts: "Nejsou k dispozici žádné účty k nastavení."
-      success: "Úspěšně vytvořených účtů: %{count}."
+      success: "Počet vytvořených účtů: %{count}."
     create:
       default_name: "Připojení Enable Banking"
-      success: "Enable Banking bylo úspěšně nastaveno."
+      success: "Enable Banking bylo nastaveno."
     destroy:
       success: "Připojení Enable Banking bylo zařazeno k odstranění."
     link_accounts:
@@ -73,9 +73,9 @@ cs:
       link_failed: "Účty se nepodařilo propojit"
       no_accounts_selected: "Nebyly vybrány žádné účty."
       no_session: "Není aktivní žádné připojení Enable Banking. Nejprve se připojte k bance."
-      success: "Úspěšně propojených účtů: %{count}."
+      success: "Počet propojených účtů: %{count}."
     link_existing_account:
-      success: "Účet byl úspěšně propojen přes Enable Banking"
+      success: "Účet byl propojen prostřednictvím Enable Banking."
       errors:
         only_manual: "Propojit lze pouze ručně vedené účty"
         invalid_enable_banking_account: "Byl vybrán neplatný účet Enable Banking"

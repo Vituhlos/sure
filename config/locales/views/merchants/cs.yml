@@ -68,10 +68,10 @@ cs:
       title: "Nový obchodník"
     perform_merge:
       success:
-        one: "Úspěšně sloučen %{count} obchodník"
-        few: "Úspěšně sloučeni %{count} obchodníci"
-        many: "Úspěšně sloučeno %{count} obchodníka"
-        other: "Úspěšně sloučeno %{count} obchodníků"
+        one: "Sloučen %{count} obchodník."
+        few: "Sloučeni %{count} obchodníci."
+        many: "Sloučeno %{count} obchodníka."
+        other: "Sloučeno %{count} obchodníků."
       no_merchants_selected: "Nebyli vybráni žádní obchodníci ke sloučení."
       target_not_found: "Cílový obchodník nebyl nalezen."
       invalid_merchants: "Byli vybráni neplatní obchodníci."
