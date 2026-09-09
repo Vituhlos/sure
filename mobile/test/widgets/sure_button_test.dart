@@ -110,6 +110,8 @@ void main() {
     // the button is re-enabled).
     Widget build(bool loading) => MaterialApp(
           theme: SureTheme.light,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           home: Scaffold(
             body: Center(
               child: SureButton(

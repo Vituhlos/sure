@@ -55,7 +55,7 @@ void main() {
     );
 
     expect(result['success'], false);
-    expect(result['error'], 'Invalid response from server');
+    expect(result['error'], 'invalid_server_response');
     expect(await authService.getStoredTokens(), isNull);
     expect(await authService.getStoredUser(), isNull);
   });
