@@ -71,6 +71,9 @@ en:
         title: 'Authorization required'
         prompt: 'Authorize %{client_name} to use your account?'
         able_to: 'This application will be able to'
+        authorizing: 'Authorizing…'
+        denying: 'Denying…'
+        consent: 'By authorizing, you allow this app to access your %{product_name} data according to the permissions above.'
       show:
         title: 'Authorization code'
         authorization_code_label: 'Authorization Code:'
@@ -157,3 +160,4 @@ en:
           home: 'Home'
       application:
         title: 'OAuth authorization required'
+        heading: 'Sure Authorization'

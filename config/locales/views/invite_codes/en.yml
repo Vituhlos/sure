@@ -1,6 +1,8 @@
 ---
 en:
   invite_codes:
+    invite_code:
+      delete_confirmation: "Delete this invitation code?"
     create:
       success: "Code generated"
     destroy:

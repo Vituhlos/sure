@@ -44,6 +44,7 @@ cs:
       subtitle: "Aktuální stav vašich financí"
       new: "Nové"
       sections_aria_label: "Oddíly hlavního přehledu"
+      section_reorder_aria_label: "%{section}. Stisknutím Enteru nebo mezerníku zahájíte přesouvání; polohu změníte šipkami."
       drag_to_reorder: "Přetažením změnit pořadí oddílu"
       toggle_section: "Přepnout viditelnost oddílu"
       widget_size:

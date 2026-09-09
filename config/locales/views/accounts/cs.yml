@@ -8,6 +8,7 @@ cs:
     not_authorized: "Ke správě tohoto účtu nemáte oprávnění."
     account:
       complete_setup: "Dokončit nastavení"
+      deletion_in_progress: "probíhá odstraňování…"
       edit: "Upravit"
       link_lunchflow: "Propojit se službou Lunch Flow"
       link_provider: "Propojit s poskytovatelem"

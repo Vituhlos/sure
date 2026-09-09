@@ -119,7 +119,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return destinations;
   }
 
-  PreferredSizeWidget _buildTopBar(AuthProvider authProvider, bool introLayout) {
+  PreferredSizeWidget _buildTopBar(
+    AuthProvider authProvider,
+    bool introLayout,
+    AppLocalizations l,
+  ) {
     return AppBar(
       automaticallyImplyLeading: false,
       toolbarHeight: 60,
@@ -259,7 +263,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         }
 
         return Scaffold(
-          appBar: _buildTopBar(authProvider, introLayout),
+          appBar: _buildTopBar(authProvider, introLayout, l),
           body: IndexedStack(
             index: _currentIndex,
             children: screens,

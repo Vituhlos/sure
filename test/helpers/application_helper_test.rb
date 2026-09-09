@@ -1,6 +1,16 @@
 require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
+  test "#html_lang returns the active locale as a BCP 47 language tag" do
+    I18n.with_locale(:cs) do
+      assert_equal "cs", html_lang
+    end
+
+    I18n.with_locale(:"pt-BR") do
+      assert_equal "pt-BR", html_lang
+    end
+  end
+
   test "#icon normalizes icon names to lowercase" do
     capture = []
 

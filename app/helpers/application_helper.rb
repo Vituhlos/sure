@@ -9,6 +9,10 @@ module ApplicationHelper
     Rails.configuration.x.brand_name
   end
 
+  def html_lang
+    I18n.locale.to_s.tr("_", "-")
+  end
+
   def styled_form_with(**options, &block)
     options[:builder] = StyledFormBuilder
     form_with(**options, &block)

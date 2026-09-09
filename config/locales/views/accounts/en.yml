@@ -8,6 +8,7 @@ en:
     not_authorized: "You don't have permission to manage this account"
     account:
       complete_setup: Complete setup
+      deletion_in_progress: deletion in progress…
       edit: Edit
       link_lunchflow: Link with Lunch Flow
       link_provider: Link with provider

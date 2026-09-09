@@ -44,6 +44,7 @@ en:
       subtitle: "Here's what's happening with your finances"
       new: "New"
       sections_aria_label: "Dashboard sections"
+      section_reorder_aria_label: "%{section} section. Press Enter or Space to grab it for reordering, then use the arrow keys to move it."
       drag_to_reorder: "Drag to reorder section"
       toggle_section: "Toggle section visibility"
       widget_size:

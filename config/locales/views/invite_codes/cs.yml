@@ -1,6 +1,8 @@
 ---
 cs:
   invite_codes:
+    invite_code:
+      delete_confirmation: "Opravdu chcete tento pozvánkový kód odstranit?"
     create:
       success: "Kód byl vytvořen."
     destroy:
