@@ -7,17 +7,20 @@ funkčních celcích a prošel kontextovou, terminologickou i technickou kontrol
 ## Stav
 
 - analýza repozitáře a lokalizační manuál: dokončeno;
-- závazný glosář: 82/82 položek schváleno;
+- závazný glosář: 83/83 položek schváleno;
 - Rails lokalizace: strukturálně úplná vůči angličtině;
 - mobilní lokalizace: úplná vůči anglickému ARB katalogu;
 - desktopová lokalizace: úplná vůči anglickému typovanému katalogu;
 - kontextová a jazyková revize: dokončena;
-- automatické testy a produkční build desktopu: dokončeny;
-- referenční upstream commit: `5f0f5ec89d66beb04415e05853ef6930b0d46592`;
-- referenční datum: 2. 8. 2026.
+- automatické Rails a Flutter testy a produkční build desktopu: dokončeny;
+- auditovaná výchozí revize: `66ffc034b4ba2ce0bd3c23627b7edf75c504e91e`;
+- verze Sure: `0.7.4-alpha.1`;
+- referenční datum: 9. 9. 2026.
 
-Čeština je v aplikaci zpřístupněna jako podporovaný jazyk. Nebyl vytvořen
-commit ani nebyly změny odeslány na GitHub.
+Čeština je v aplikaci zpřístupněna jako podporovaný jazyk. Opravy nezávislého
+auditu jsou rozděleny do samostatných commitů na větvi
+`feat/czech-localization`; stav odeslání na GitHub se ověřuje samostatně podle
+aktuálního remotu.
 
 ## Dokumenty
 

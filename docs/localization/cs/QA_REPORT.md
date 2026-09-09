@@ -1,91 +1,92 @@
 # Zpráva o kvalitě české lokalizace
 
-- **Stav:** dokončeno
-- **Referenční upstream commit:** `5f0f5ec89d66beb04415e05853ef6930b0d46592`
-- **Poslední aktualizace:** 2. 8. 2026
+- **Stav:** opravy auditu dokončeny a otestovány
+- **Auditovaná výchozí revize:** `66ffc034b4ba2ce0bd3c23627b7edf75c504e91e`
+- **Verze Sure:** `0.7.4-alpha.1`
+- **Poslední aktualizace:** 9. 9. 2026
 
 Kontrola zahrnuje Rails aplikaci, mobilní Flutter klient a desktopový Tauri
-klient. Angličtina byla jediným strukturálním zdrojem; významy byly ověřovány
-v modelech, kontrolerech, šablonách, testech a integračních tocích.
+klient. Význam překladu byl ověřován proti skutečným call-site; angličtina je
+strukturálním zdrojem pro párové katalogy.
 
 ## Výsledek
 
-- česká locale je mezi podporovanými jazyky;
-- 140 párových katalogů `en.yml`/`cs.yml` má shodnou normalizovanou strukturu;
-- oba Rails katalogy obsahují 7 678 normalizovaných hodnot;
-- nebyl nalezen žádný chybějící ani neočekávaný český klíč;
-- nebyla nalezena žádná neshoda interpolací;
-- všech 210 pluralizačních skupin obsahuje požadované české větve;
-- mobilní katalogy mají shodně 380 řetězců;
-- desktopový katalog je typově vynucen přes `satisfies Record<AppLocale,
-  DesktopStrings>` a produkční build prošel;
-- všech 82 položek glosáře je po kontextové kontrole schváleno.
+- 139 přímých párů `en.yml`/`cs.yml` má shodnou normalizovanou strukturu;
+- další dva české datové katalogy obsahují názvy měn a časových pásem, takže
+  repozitář obsahuje celkem 141 souborů `cs.yml`;
+- přímé páry obsahují 7 682/7 682 normalizovaných aplikačních hodnot;
+- nebyl nalezen žádný chybějící ani neočekávaný český klíč v přímých párech;
+- nebyla nalezena žádná skutečná neshoda interpolací;
+- všech 210 českých pluralizačních skupin obsahuje větve
+  `one/few/many/other`;
+- mobilní katalogy mají shodně 380 zpráv a shodné placeholdery;
+- desktopový katalog zůstává typově vynucen a produkční build prošel;
+- všech 83 položek glosáře je po kontextové kontrole schváleno.
+
+Normalizovaná hodnota znamená jeden logický překladový klíč; plurální větve
+se při tomto počtu považují za jednu skupinu. Dva samostatné datové katalogy
+nemají sourozenecký `en.yml`, proto se nezapočítávají do počtu přímých párů.
 
 ## Automatické kontroly
 
 | Kontrola | Výsledek |
 | --- | --- |
-| Striktní načtení párových YAML bez duplicit | passed — 0 chyb |
-| Shoda normalizovaných Rails klíčů | passed — 7 678/7 678 |
-| Shoda interpolací Rails | passed — 0 neshod |
+| Načtení všech locale YAML | passed — 0 chyb syntaxe |
+| Validita `GLOSSARY.csv` | passed — 83 řádků, 8 sloupců |
+| Shoda normalizovaných Rails klíčů | passed — 7 682/7 682, 0 chybějících, 0 přebytečných |
+| Shoda interpolací Rails | passed — 0 skutečných neshod |
 | České plurály `one/few/many/other` | passed — 210/210 skupin |
-| Mobilní ARB klíče | passed — 380/380 |
-| Mobilní ARB placeholdery | passed — 0 neshod |
-| Cílený Rails regresní balík | passed — 170 testů, 953 kontrol |
-| Celý Rails test suite | passed — 6 122 testů, 24 344 kontrol, 0 selhání, 30 přeskočeno |
-| Produkční build desktopu | passed — TypeScript a Vite |
+| Mobilní ARB zprávy a placeholdery | passed — 380/380, 0 neshod |
+| Cílená česká lokalizace Flutter | passed — 6/6 testů |
+| Celý Flutter suite | passed — 189/189 testů |
+| Celý Rails test suite | passed — 6 127 testů, 24 390 asercí, 0 selhání, 0 chyb, 30 přeskočeno |
+| RuboCop | passed — 2 185 souborů, 0 prohřešků |
+| Biome lint | passed — 0 prohřešků |
+| Desktop `tsc --noEmit && vite build` | passed — 15 modulů |
+| Hardcoded nálezy z auditu | passed — 0 zbývajících výskytů v produkčních ERB |
 | `git diff --check` | passed — bez chyb whitespace |
 
-Plný Rails suite byl spuštěn v izolovaném PostgreSQL 17 a Redis 7. Přeskočené
-testy jsou podmíněné testy upstreamu; běh neobsahoval žádnou chybu ani
-selhání.
+Plný Rails suite běžel v izolovaném PostgreSQL a Redis. Podmíněně přeskočené
+testy jsou součást upstream suite; běh neobsahoval chybu ani selhání. Flutter
+testy a analyzátor používaly projektovou verzi Flutter 3.32.4 v kontejneru.
 
-## Jazyková a kontextová kontrola
+## Flutter analyze
 
-- vykání, neutrální oslovování a větné psaní velkých písmen jsou jednotné;
-- akční tlačítka používají přirozený infinitiv a popisné texty úplné věty;
-- `Family` se pro uživatele překládá jako „domácnost“, ne mechanicky jako
-  „rodina“;
-- finanční účet, uživatelský účet a externí připojení jsou významově
-  rozlišeny;
-- majetek, závazky, dluh a čisté jmění nejsou zaměňovány;
-- APR kreditní karty není nesprávně označeno jako RPSN;
-- obecné množství investičních nástrojů nepředpokládá, že jde vždy o akcie;
-- nezaúčtovaná a zaúčtovaná transakce nejsou zaměněny s obecným čekajícím
-  stavem;
-- převod mezi účty a platba na účet představující závazek mají odlišné
-  názvy;
-- obchodník, příjemce a obchodník od poskytovatele mají odlišné významy;
-- stabilní tickery, MIC, názvy značek, typy aktivit a API identifikátory
-  zůstávají beze změny;
-- surové chyby poskytovatelů se nezobrazují jako anglický fallback;
-- česká typografie používá správné uvozovky, výpustku, pomlčku a pevné mezery
-  u číselných hodnot.
+`flutter analyze` již nehlásí žádnou ze tří lokalizačních kompilačních chyb
+z C-01. Příkaz končí nenulově kvůli sedmi existujícím nálezům mimo českou
+lokalizaci:
 
-## Opravené technické problémy odhalené při QA
+- dvě doporučení `prefer_const_constructors`;
+- zastaralé `dart:html` a `avoid_web_libraries_in_flutter` ve webovém stubu;
+- jeden zbytečný escape ve webovém stubu;
+- jedno `use_build_context_synchronously` ve formuláři transakce;
+- jedna nepoužitá proměnná `failedCount` ve službě transakcí.
 
-- mobilní parser již nekorumpuje české částky s desetinnou čárkou a respektuje
-  počet desetinných míst měny;
-- mobilní webový úvod a neznámé klientské chyby již nemají natvrdo zapsanou
-  angličtinu;
-- Rails importní validace nepoužívá rezervovaný interpolační název `format`,
-  který způsoboval HTTP 500;
-- soukromé metody Sophtronu znovu používají správný kontext překladových
-  klíčů;
-- výchozí názvy transakcí IBKR a Trading 212 jsou lokalizované, zatímco
-  stabilní interní hodnoty zůstaly anglické;
-- chyby CoinStats a IBKR jsou bezpečné a lokalizované;
-- přístupné popisky ikonových a segmentovaných ovladačů mají české klíče.
+Jde o šest informací a jedno varování, nikoli o Dart compile errors. Nebyly
+měněny, protože nesouvisejí s opravami české lokalizace; celý Flutter test
+suite se přesto zkompiloval a prošel.
 
-## Omezení prostředí
+## Ověřené opravy auditu
 
-Přesný nový Docker build podle aktuálního `Gemfile.lock` nebylo možné stáhnout,
-protože proxy Docker Desktopu nepřijala certifikát RubyGems. Testy proto běžely
-nad aktuálním zdrojovým stromem v kompatibilním již ověřeném obrazu Rails
-8.1.3; aktuální lock používá Rails 8.1.3.1. Aplikace se v tomto obrazu načetla,
-databáze se připravila a celý test suite prošel.
+- mobilní lokalizační objekty mají správný scope a runtime text není v
+  `const` stromu;
+- `expected_in` používá správné tvary pro 1, 2, 4, 5 a 21 dní;
+- HTML dokumenty používají jazykový tag odvozený z aktivního locale;
+- OAuth souhlas, destruktivní potvrzení, stav odstraňování účtu, přístupný
+  návod dashboardu a titulky poskytovatelů jsou v i18n;
+- „Book Value“ odpovídá skutečnému výpočtu jako „Celková pořizovací hodnota“;
+- obecný `Depository account` je „peněžní účet“;
+- raw technické chyby PDF, SSO a převodu na obchod zůstávají v
+  `DebugLogEntry`, nikoli v uživatelském textu;
+- české potvrzovací zprávy byly kontextově zbaveny redundantního
+  „úspěšně“ a sjednoceny interpunkčně;
+- odstranění uživatele výslovně uvádí „Uživatelský účet“.
 
-V hostitelském prostředí není Flutter ani Dart SDK. Mobilní widget testy proto
-nebylo možné spustit; shoda ARB katalogů, placeholderů, signatur generovaných
-lokalizací a volání v Dart zdrojích byla ověřena staticky. Připravené mobilní
-testy je nutné nechat proběhnout v běžném mobilním CI.
+## Omezení
+
+Nebyla provedena ruční vizuální kontrola na fyzickém telefonu ani úplný
+průchod všemi obrazovkami v běžícím prohlížeči. Automatické Rails integrační
+testy, Flutter widget/unit testy a statické kontroly však prošly. Obecná Rails
+pluralizace stále nemůže z pouhého `Numeric` rekonstruovat původně viditelnou
+koncovou nulu; současný produkční `format_quantity` ji nezobrazuje a testované
+tvary proto odpovídají skutečnému UI. Podrobnost zachycuje D-030.
