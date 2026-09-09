@@ -316,10 +316,12 @@ class TransactionsController < ApplicationController
     flash[:notice] = t("transactions.convert_to_trade.success")
     redirect_to account_path(@entry.account), status: :see_other
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotSaved => e
-    flash[:alert] = t("transactions.convert_to_trade.errors.conversion_failed", error: e.message)
+    capture_trade_conversion_error(e)
+    flash[:alert] = t("transactions.convert_to_trade.errors.conversion_failed_safe")
     redirect_back_or_to transactions_path, status: :see_other
   rescue StandardError => e
-    flash[:alert] = t("transactions.convert_to_trade.errors.unexpected_error", error: e.message)
+    capture_trade_conversion_error(e)
+    flash[:alert] = t("transactions.convert_to_trade.errors.unexpected_error_safe")
     redirect_back_or_to transactions_path, status: :see_other
   end
 
@@ -410,6 +412,23 @@ class TransactionsController < ApplicationController
   end
 
   private
+
+    def capture_trade_conversion_error(error)
+      DebugLogEntry.capture(
+        category: "transactions",
+        level: "error",
+        message: "Transaction to trade conversion failed",
+        source: self.class.name,
+        family: Current.family,
+        account: @entry&.account,
+        user: Current.user,
+        metadata: {
+          entry_id: @entry&.id,
+          error_class: error.class.name,
+          error_message: error.message.truncate(500)
+        }
+      )
+    end
     def accessible_transactions
       Current.family.transactions
         .joins(entry: :account)

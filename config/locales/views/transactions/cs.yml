@@ -161,7 +161,7 @@ cs:
       split_tooltip: "Transakce je rozdělena do několika položek"
       split_child_tooltip: "Součást rozdělené transakce"
     merge_duplicate:
-      success: "Transakce byly úspěšně sloučeny."
+      success: "Transakce byly sloučeny."
       failure: "Transakce se nepodařilo sloučit."
     dismiss_duplicate:
       success: "Transakce byly ponechány odděleně."
@@ -298,7 +298,9 @@ cs:
         enter_qty_or_price: "Zadejte množství nebo cenu za jednotku. Druhá hodnota se vypočítá z částky transakce."
         invalid_qty_or_price: "Množství nebo cena nejsou platné. Zadejte kladné hodnoty."
         conversion_failed: "Transakci se nepodařilo převést: %{error}"
+        conversion_failed_safe: "Transakci se nepodařilo převést. Zkontrolujte zadané hodnoty a zkuste to znovu."
         unexpected_error: "Při převodu došlo k neočekávané chybě: %{error}"
+        unexpected_error_safe: "Transakci se kvůli neočekávané chybě nepodařilo převést. Zkuste to znovu."
     searches:
       filters:
         account_filter:
@@ -357,8 +359,8 @@ cs:
       delete_subtitle: "Opravdu chcete tuto přílohu odstranit? Akci nelze vrátit zpět."
       delete_button: "Odstranit přílohu"
       cannot_exceed: "K jedné transakci lze připojit nejvýše %{count} příloh."
-      uploaded_one: "Příloha byla úspěšně nahrána."
-      uploaded_many: "Přílohy byly úspěšně nahrány (%{count})."
+      uploaded_one: "Příloha byla nahrána."
+      uploaded_many: "Přílohy byly nahrány (%{count})."
       failed_upload: "Přílohu se nepodařilo nahrát: %{error}"
       no_files_selected: "Nebyly vybrány žádné soubory."
       attachment_deleted: "Příloha byla odstraněna."

@@ -119,6 +119,28 @@ class ProcessPdfJobTest < ActiveJob::TestCase
     assert_equal "complete", @import.reload.status
   end
 
+  test "stores a localized safe error and captures raw PDF processing diagnostics" do
+    attach_pdf!(@import)
+    @import.expects(:process_with_ai).raises(RuntimeError, "English provider details: secret-value")
+    DebugLogEntry.expects(:capture).with do |attributes|
+      assert_equal "imports", attributes[:category]
+      assert_equal "error", attributes[:level]
+      assert_equal "ProcessPdfJob", attributes[:source]
+      assert_equal @import.id, attributes.dig(:metadata, :pdf_import_id)
+      assert_equal "RuntimeError", attributes.dig(:metadata, :error_class)
+      assert_includes attributes.dig(:metadata, :error_message), "English provider details"
+      true
+    end
+
+    assert_raises(RuntimeError) do
+      I18n.with_locale(:cs) { ProcessPdfJob.perform_now(@import) }
+    end
+
+    assert_equal I18n.t("imports.pdf_import.failed_description", locale: :cs), @import.reload.error
+    assert_not_includes @import.error, "English provider details"
+    assert_not_includes @import.error, "RuntimeError"
+  end
+
   private
 
     def attach_pdf!(import)

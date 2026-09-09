@@ -289,7 +289,9 @@ en:
         enter_qty_or_price: Please enter either quantity or price per share. The other will be calculated from the transaction amount.
         invalid_qty_or_price: Invalid quantity or price. Please enter valid positive values.
         conversion_failed: "Failed to convert transaction: %{error}"
+        conversion_failed_safe: "The transaction could not be converted. Check the entered values and try again."
         unexpected_error: "Unexpected error during conversion: %{error}"
+        unexpected_error_safe: "The transaction could not be converted because of an unexpected error. Try again."
     searches:
       filters:
         account_filter:

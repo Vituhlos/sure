@@ -37,10 +37,21 @@ class ProcessPdfJob < ApplicationJob
       final_status = statement_with_transactions?(document_type) && pdf_import.rows_count > 0 ? :pending : :complete
       pdf_import.update!(status: final_status)
     rescue StandardError => e
-      sanitized_error = sanitize_error_message(e)
-      Rails.logger.error("PDF processing failed for import #{pdf_import.id}: #{e.class.name} - #{sanitized_error}")
+      localized_error = I18n.t("imports.pdf_import.failed_description")
+      DebugLogEntry.capture(
+        category: "imports",
+        level: "error",
+        message: "PDF processing failed",
+        source: self.class.name,
+        family: pdf_import.family,
+        metadata: {
+          pdf_import_id: pdf_import.id,
+          error_class: e.class.name,
+          error_message: e.message.truncate(500)
+        }
+      )
       begin
-        pdf_import.update!(status: :failed, error: sanitized_error)
+        pdf_import.update!(status: :failed, error: localized_error)
       rescue StandardError => update_error
         Rails.logger.error("Failed to update import status: #{update_error.message}")
       end
@@ -49,17 +60,6 @@ class ProcessPdfJob < ApplicationJob
   end
 
   private
-
-    def sanitize_error_message(error)
-      case error
-      when RuntimeError, ArgumentError
-        I18n.t("imports.pdf_import.processing_failed_with_message",
-               message: error.message.truncate(500))
-      else
-        I18n.t("imports.pdf_import.processing_failed_generic",
-               error: error.class.name.demodulize)
-      end
-    end
 
     def upload_to_vector_store(pdf_import, document_type:)
       file_content = pdf_import.pdf_file_content

@@ -90,11 +90,13 @@ class SsoProviderTester
       rescue Faraday::TimeoutError
         Result.new(success?: false, message: localized_message(:connection_timeout), details: { url: discovery_url })
       rescue Faraday::ConnectionFailed => e
-        Result.new(success?: false, message: localized_message(:connection_failed, error: e.message), details: { url: discovery_url })
+        capture_error(e, context: "oidc_discovery", url: discovery_url)
+        Result.new(success?: false, message: localized_message(:connection_failed_safe), details: { url: discovery_url })
       rescue JSON::ParserError
         Result.new(success?: false, message: localized_message(:invalid_discovery_json), details: { url: discovery_url })
       rescue StandardError => e
-        Result.new(success?: false, message: localized_message(:error, error: e.message), details: { url: discovery_url })
+        capture_error(e, context: "oidc_discovery", url: discovery_url)
+        Result.new(success?: false, message: localized_message(:unexpected_error_safe), details: { url: discovery_url })
       end
     end
 
@@ -181,9 +183,11 @@ class SsoProviderTester
         rescue Faraday::TimeoutError
           return Result.new(success?: false, message: localized_message(:connection_timeout), details: { url: metadata_url })
         rescue Faraday::ConnectionFailed => e
-          return Result.new(success?: false, message: localized_message(:connection_failed, error: e.message), details: { url: metadata_url })
+          capture_error(e, context: "saml_metadata", url: metadata_url)
+          return Result.new(success?: false, message: localized_message(:connection_failed_safe), details: { url: metadata_url })
         rescue StandardError => e
-          return Result.new(success?: false, message: localized_message(:error, error: e.message), details: { url: metadata_url })
+          capture_error(e, context: "saml_metadata", url: metadata_url)
+          return Result.new(success?: false, message: localized_message(:unexpected_error_safe), details: { url: metadata_url })
         end
       end
 
@@ -216,5 +220,22 @@ class SsoProviderTester
 
     def localized_message(key, **options)
       I18n.t(key, scope: :sso_provider_tester, **options)
+    end
+
+    def capture_error(error, context:, url:)
+      DebugLogEntry.capture(
+        category: "authentication",
+        level: "error",
+        message: "SSO provider test failed",
+        source: self.class.name,
+        provider_key: provider.name,
+        metadata: {
+          strategy: provider.strategy,
+          context: context,
+          url: url,
+          error_class: error.class.name,
+          error_message: error.message.truncate(500)
+        }
+      )
     end
 end
